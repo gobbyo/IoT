@@ -1,0 +1,30 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "GetMessageIoTHub",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "https://mytelemetrystorage.blob.core.windows.net/mytelemetrycontainer/myhub-5e97f0eada20/00/2022/11/15/00/37.json?sp=r&st=2022-11-15T00:38:48Z&se=2022-11-15T08:38:48Z&spr=https&sv=2021-06-08&sr=b&sig=sUGqsIGE7NjITOtJWLyssr9FlJZQcqIE8HfYC4TW88w%3D"
+            ]
+        },
+        {
+            "name": "SendMessageIoTHub",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "HostName=myhub-5e97f0eada20.azure-devices.net;DeviceId=myDevice-6d523d33a7dc;SharedAccessKey=Lx2X2vO1bQjWrySaOn1VyfQPXtEPZvgc2Y5rTl9+2MI="
+            ]
+        }
+    ]
+}
