@@ -5,14 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "GetMessageIoTHub",
+            "name": "GetMessageFromStorage",
             "type": "python",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "https://mytelemetrystorage.blob.core.windows.net/mytelemetrycontainer/myhub-5e97f0eada20/00/2022/11/15/00/37.json?sp=r&st=2022-11-15T00:38:48Z&se=2022-11-15T08:38:48Z&spr=https&sv=2021-06-08&sr=b&sig=sUGqsIGE7NjITOtJWLyssr9FlJZQcqIE8HfYC4TW88w%3D"
+                "https://mymessagingd3fqt3vtn3zbm.blob.core.windows.net/mymessagingresults/myMessagingHubd3fqt3vtn3zbm/00/2022/11/17/00/32?sp=r&st=2022-11-17T00:39:48Z&se=2022-11-17T08:39:48Z&spr=https&sv=2021-06-08&sr=b&sig=88I%2B4Hz8rfNl2O6tH1E5WU5R8mZXTZ9CS2SXcqHBA%2FI%3D"
             ]
         },
         {
@@ -23,7 +23,7 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "HostName=myhub-5e97f0eada20.azure-devices.net;DeviceId=myDevice-6d523d33a7dc;SharedAccessKey=Lx2X2vO1bQjWrySaOn1VyfQPXtEPZvgc2Y5rTl9+2MI="
+                "HostName=myMessagingHubcavtvp3ytwpni.azure-devices.net;DeviceId=myDevice1;SharedAccessKey=t4GWx/RPrkPPv9FPTHUYwguIvIecKK53F1bp5VnqeBg="
             ]
         }
     ]

@@ -1,1 +1,10 @@
-{ "vehicleId": 12983746, "batteryLevel": 46, "location": { "lat":"48.499028773666986", "lon":"-122.67645877289237", "alt":"14" }}
+{ "vehicleId": 12983746, "batteryLevel": 46, "location": { "lat":"48.50354902926484", "lon":"-122.66713000468084", "alt":"14" }}
+{ "vehicleId": 12983746, "batteryLevel": 99, "location": { "lat":"48.50323185574041", "lon":"-122.66725043180017", "alt":"14" }}
+{ "vehicleId": 12983746, "batteryLevel": 88, "location": { "lat":"48.502638819267666", "lon":"-122.66634767294607", "alt":"14" }}
+{ "vehicleId": 12983746, "batteryLevel": 77, "location": { "lat":"48.504007222005214", "lon":"-122.66296966029053", "alt":"14" }}
+{ "vehicleId": 12983746, "batteryLevel": 66, "location": { "lat":"48.509719167315616", "lon":"-122.64793231784941", "alt":"14" }}
+{ "vehicleId": 12983746, "batteryLevel": 22, "location": { "lat":"48.512684879755376", "lon":"-122.63561473613612", "alt":"14" }}
+{ "vehicleId": 12983746, "batteryLevel": 33, "location": { "lat":"48.512684879755376", "lon":"-122.6140182473931", "alt":"14" }}
+{ "vehicleId": 12983746, "batteryLevel": 44, "location": { "lat":"48.507713347718536", "lon":"-122.61275797484046", "alt":"14" }}
+{ "vehicleId": 12983746, "batteryLevel": 50, "location": { "lat":"48.49771188026239", "lon":"-122.61278661788411", "alt":"14" }}
+{ "vehicleId": 12983746, "batteryLevel": 100, "location": { "lat":"48.49334629485585", "lon":"-122.61184141350499", "alt":"14" }}
