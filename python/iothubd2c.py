@@ -18,7 +18,7 @@ async def main():
     await device_client.connect()
 
     curdir = os.path.dirname(os.path.realpath(__file__))
-    with open(curdir + "\data.json","r") as data:
+    with open(curdir + "\\data\\data.json","r") as data:
         list = []
         list = data.readlines()
         i = 0
