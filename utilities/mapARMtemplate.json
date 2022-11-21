@@ -27,7 +27,7 @@
                 "Gen1", 
                 "Gen2" 
             ], 
-            "defaultValue": "Gen2", 
+            "defaultValue": "Gen1", 
             "metadata": { 
                 "description": "The pricing tier for the account. Use Gen1 for small-scale development. Use Gen2 for large-scale applications." 
             } 

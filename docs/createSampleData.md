@@ -1,4 +1,4 @@
-# Create Sample Data
+# Create Maps Service
 
 1. Run the following script to connect to your Azure subscription. Replace `{your subscription ID}` with the identifier to your Azure subscription.
 
@@ -66,5 +66,37 @@
     For example,
 
     ```powershell
-    PS > $templateFile = "C:\\repos\\various\\scripts\\ARMtemplate.json"
+    PS > $templateFile = "C:\repos\various\utilities\mapARMtemplate.json"
+    ```
+
+1. Deploy the Map ARM template
+
+    ```powershell
+    New-AzResourceGroupDeployment `
+    -ResourceGroupName $rg `
+    -TemplateFile $templateFile
+    ```
+
+    For example,
+
+    ```powershell
+    New-AzResourceGroupDeployment `
+    -ResourceGroupName $rg `
+    -TemplateFile $templateFile
+
+    DeploymentName          : mapARMtemplate
+    ResourceGroupName       : MapRG
+    ProvisioningState       : Succeeded
+    Timestamp               : 11/21/2022 7:39:29 PM
+    Mode                    : Incremental
+    TemplateLink            : 
+    Parameters              : 
+                              Name             Type                       Value
+                              ===============  =========================  ==========
+                              accountName      String                     "xxxxxxxxxx"
+                              pricingTier      String                     "S0"
+                              kind             String                     "Gen1"
+    
+    Outputs                 : 
+    DeploymentDebugLogLevel : 
     ```

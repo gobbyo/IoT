@@ -53,7 +53,7 @@
     Location          : centralus
     ProvisioningState : Succeeded
     Tags              : 
-    ResourceId        : /subscriptions/d330e131-4ea5-49ab-aa0e-238d8ad1abda/resourceGroups/myMessagingRG
+    ResourceId        : /subscriptions/d330xxxx-xxxx-xxxx-xxxx-xxxxxxxxabda/resourceGroups/myMessagingRG
     
     ```
 
@@ -69,7 +69,7 @@
     PS > $templateFile = "C:\\repos\\various\\scripts\\ARMtemplate.json"
     ```
 
-1. Deploy the ARM template
+1. Deploy the hub ARM template
 
     ```powershell
     New-AzResourceGroupDeployment `

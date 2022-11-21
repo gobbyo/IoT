@@ -16,13 +16,13 @@ async def main():
     if len(sys.argv) != 5:
         exit
 
-    blobstorageconnection = sys.argv[1]
+    storageconnection = sys.argv[1]
     blobcontainername = sys.argv[2]
     eventhubconnection = sys.argv[3]
     eventhubname = sys.argv[4] 
     
     # Create an Azure blob checkpoint store to store the checkpoints.
-    checkpoint_store = BlobCheckpointStore.from_connection_string(blobstorageconnection, blobcontainername)
+    checkpoint_store = BlobCheckpointStore.from_connection_string(storageconnection, blobcontainername)
 
     # Create a consumer client for the event hub.
     client = EventHubConsumerClient.from_connection_string(eventhubconnection, consumer_group="$Default", eventhub_name=eventhubname, checkpoint_store=checkpoint_store)

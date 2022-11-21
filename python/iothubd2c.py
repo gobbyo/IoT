@@ -6,7 +6,7 @@ import datetime
 from azure.iot.device.aio import IoTHubDeviceClient
 
 async def main():
-    # Fetch the connection string from an environment variable
+    # Fetch the connection string as an arg
     if len(sys.argv) != 2:
         exit
 

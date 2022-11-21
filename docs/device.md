@@ -4,7 +4,7 @@
 
     ```powershell
     Add-AzIotHubDevice `
-    -ResourceGroupName $rg `
+    -ResourceGroupName "{name of your IoTHub's resource group}" `
     -IotHubName "{name of your IoTHub}" `
     -DeviceId "{new device name}" `
     -AuthMethod "shared_private_key"
@@ -14,8 +14,26 @@
 
     ```powershell
     Add-AzIotHubDevice `
-    -ResourceGroupName $rg `
-    -IotHubName "myMessagingHubd3fqt3vtn3zbm" `
+    -ResourceGroupName "HubMsgRG" `
+    -IotHubName "HubMsgHubd5ylcnrzccppq" `
     -DeviceId "myDevice1" `
     -AuthMethod "shared_private_key"
+    ```
+
+2. Remove your IoT Hub device
+
+    ```powershell
+    Remove-AzIotHubDevice `
+    -ResourceGroupName "HubMsgRG" `
+    -IotHubName "{name of your IoTHub}" `
+    -DeviceId "{device name}"
+    ```
+
+    For example,
+
+    ```powershell
+    Remove-AzIotHubDevice `
+    -ResourceGroupName "HubMsgRG" `
+    -IotHubName "HubMsgHubd5ylcnrzccppq" `
+    -DeviceId "myDevice1"
     ```

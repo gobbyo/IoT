@@ -12,8 +12,8 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "STORAGE ACCOUNT KEY",
-                "STORAGE ACCOUNT NAME",
+                "STORAGE ACCOUNT CONNECTION STRING",
+                "BLOB CONTAINER NAME",
                 "EVENT HUB CONNECTION STRING",
                 "EVENT HUB NAME"
             ]
@@ -37,7 +37,7 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "AZURE KEY CREDENTIAL"
+                "AZURE SHARED KEY CREDENTIAL"
             ]
         }
     ]
