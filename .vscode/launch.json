@@ -5,14 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "GetMessageFromStorage",
+            "name": "GetMessageFromEventHub",
             "type": "python",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "https://mymessagingd3fqt3vtn3zbm.blob.core.windows.net/mymessagingresults/myMessagingHubd3fqt3vtn3zbm/00/2022/11/17/00/32?sp=r&st=2022-11-17T00:39:48Z&se=2022-11-17T08:39:48Z&spr=https&sv=2021-06-08&sr=b&sig=88I%2B4Hz8rfNl2O6tH1E5WU5R8mZXTZ9CS2SXcqHBA%2FI%3D"
+                "STORAGE ACCOUNT KEY",
+                "STORAGE ACCOUNT NAME",
+                "EVENT HUB CONNECTION STRING",
+                "EVENT HUB NAME"
             ]
         },
         {
@@ -23,7 +26,18 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "HostName=myMessagingHubcavtvp3ytwpni.azure-devices.net;DeviceId=myDevice1;SharedAccessKey=t4GWx/RPrkPPv9FPTHUYwguIvIecKK53F1bp5VnqeBg="
+                "HUB DEVICE CONNECTION STRING"
+            ]
+        },
+        {
+            "name": "GenerateDataFromMapRoute",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "AZURE KEY CREDENTIAL"
             ]
         }
     ]

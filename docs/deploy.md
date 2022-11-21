@@ -15,13 +15,15 @@
 1. Run the following script to set a new resource group name to the `$rg` powershell variable. Replace `{new resource group name}` with the new name of your resource group.
 
     ```powershell
-    $rg = "{new resource group name}"
+    $projectName = "{new project name}"
+    $rg = ($projectName + "RG")
     ```
 
     For example,
 
     ```powershell
-    PS > $rg = "myMessagingRG"
+    PS > $projectName = "HubMsg"
+    PS > $rg = ($projectName + "RG")
     ```
 
 1. Run the following script to set the PowerShell variable to a region location for your resource group.  Replace `{region location}` with the location of your resource group.
@@ -55,44 +57,34 @@
     
     ```
 
-1. Run the following script to set the path to the ARM template `hubstorageARM.json`
+1. Run the following script to set the path to the ARM template `ARMtemplate.json`
 
     ```powershell
-    $templateFile = "{path to hubstorageARM.json}"
+    $templateFile = "{path to ARMtemplate.json}"
     ```
 
     For example,
 
     ```powershell
-    PS > $templateFile = "C:\\repos\\various\\data\\hubstorageARM.json"
+    PS > $templateFile = "C:\\repos\\various\\scripts\\ARMtemplate.json"
     ```
 
 1. Deploy the ARM template
 
     ```powershell
     New-AzResourceGroupDeployment `
-        -ResourceGroupName $rg `
-        -TemplateFile $templateFile `
-        -Location $location
+    -ResourceGroupName $rg `
+    -TemplateFile $templateFile `
+    -projectName $projectName `
+    -location $location
     ```
 
     For example,
 
     ```powershell
-    PS > New-AzResourceGroupDeployment `
-        -ResourceGroupName $rg `
-        -TemplateFile $templateFile `
-        -Location $location
-
-    TemplateLink            : 
-    Parameters              : 
-                              Name             Type                       Value
-                              ===============  =========================  ==========
-                              projectName      String                     "myMessaging"
-                              location         String                     "Central US"                          skuName          String                     "S1"
-                              skuUnits         Int                        1
-                              d2cPartitions    Int                        4
-    
-    Outputs                 : 
-    DeploymentDebugLogLevel :
+    New-AzResourceGroupDeployment `
+    -ResourceGroupName $rg `
+    -TemplateFile $templateFile `
+    -projectName $projectName `
+    -location $location
     ```

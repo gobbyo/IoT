@@ -1,6 +1,7 @@
 import asyncio
 import sys
 import os
+import datetime
 
 from azure.iot.device.aio import IoTHubDeviceClient
 
@@ -18,14 +19,14 @@ async def main():
     await device_client.connect()
 
     curdir = os.path.dirname(os.path.realpath(__file__))
-    with open(curdir + "\\data\\data.json","r") as data:
+    with open("data.json","r") as data:
         list = []
         list = data.readlines()
         i = 0
         while i < len(list):
             # Send a single message
             await device_client.send_message(list[i])
-            print("Message successfully sent: {0}".format(list[i]))
+            print("[{0}] msg sent: \"{1}\"".format(datetime.datetime.utcnow(), list[i]))
             i += 1
             await asyncio.sleep(1)
 
