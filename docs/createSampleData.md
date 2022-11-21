@@ -1,4 +1,4 @@
-# Deploy a Messaging Hub
+# Create Sample Data
 
 1. Run the following script to connect to your Azure subscription. Replace `{your subscription ID}` with the identifier to your Azure subscription.
 
@@ -15,14 +15,14 @@
 1. Run the following script to set a new resource group name to the `$rg` powershell variable. Replace `{new resource group name}` with the new name of your resource group.
 
     ```powershell
-    $projectName = "{new hub project name}"
+    $projectName = "{new maps project name}"
     $rg = ($projectName + "RG")
     ```
 
     For example,
 
     ```powershell
-    PS > $projectName = "HubMsg"
+    PS > $projectName = "Map"
     PS > $rg = ($projectName + "RG")
     ```
 
@@ -49,42 +49,22 @@
     ```powershell
     PS > New-AzResourceGroup -Name $rg -Location $location
 
-    ResourceGroupName : myMessagingRG
+    ResourceGroupName : MapRG
     Location          : centralus
     ProvisioningState : Succeeded
     Tags              : 
-    ResourceId        : /subscriptions/d330e131-4ea5-49ab-aa0e-238d8ad1abda/resourceGroups/myMessagingRG
+    ResourceId        : /subscriptions/d330xxxx-xxxx-xxxx-xxxx-xxxxxxxxabda/resourceGroups/MessagingRG
     
     ```
 
 1. Run the following script to set the path to the ARM template `ARMtemplate.json`
 
     ```powershell
-    $templateFile = "{path to ARMtemplate.json}"
+    $templateFile = "{path to Map ARMtemplate.json}"
     ```
 
     For example,
 
     ```powershell
     PS > $templateFile = "C:\\repos\\various\\scripts\\ARMtemplate.json"
-    ```
-
-1. Deploy the ARM template
-
-    ```powershell
-    New-AzResourceGroupDeployment `
-    -ResourceGroupName $rg `
-    -TemplateFile $templateFile `
-    -projectName $projectName `
-    -location $location
-    ```
-
-    For example,
-
-    ```powershell
-    New-AzResourceGroupDeployment `
-    -ResourceGroupName $rg `
-    -TemplateFile $templateFile `
-    -projectName $projectName `
-    -location $location
     ```
