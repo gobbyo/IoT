@@ -1,38 +1,67 @@
-from paho.mqtt import client as mqtt
-import ssl
+import paho.mqtt.client as mqtt
+import sys
+import asyncio
+import io
+import os
+import datetime
+from base64 import b64encode, b64decode
+from time import time, sleep
+from urllib import parse
+from hmac import HMAC
+from hashlib import sha256
+from ssl import SSLContext, PROTOCOL_TLS_CLIENT, CERT_REQUIRED
 
-path_to_root_cert = "<local path to digicert.cer file>"
-device_id = "<device id from device registry>"
-sas_token = "<generated SAS token>"
-iot_hub_name = "<iot hub name>"
+def on_connect(client, obj, flags, rc):
+    print("connect: " + str(rc))
+    client.subscribe("devices/myDevice1/location/")
 
+def on_message(client, userdata, msg):
+    print(msg.topic+" "+str(msg.payload))
 
-def on_connect(client, userdata, flags, rc):
-    print("Device connected with result code: " + str(rc))
+def generate_sas_token(IOT_HUB_HOSTNAME, IOT_HUB_DEVICE_ID, IOT_HUB_SAS_KEY):
+    ttl = int(time()) + 300
+    uri = IOT_HUB_HOSTNAME + "/devices/" + IOT_HUB_DEVICE_ID
+    sign_key = uri + "\n" + str(ttl)
 
+    signature = b64encode(HMAC(b64decode(IOT_HUB_SAS_KEY), sign_key.encode('utf-8'), sha256).digest())
 
-def on_disconnect(client, userdata, rc):
-    print("Device disconnected with result code: " + str(rc))
+    return "SharedAccessSignature sr=" + uri + "&sig=" + parse.quote(signature, safe="") + "&se=" + str(ttl)
 
+if len(sys.argv) != 4:
+    exit
 
-def on_publish(client, userdata, mid):
-    print("Device sent message")
+IOT_HUB_HOSTNAME = sys.argv[1]
+IOT_HUB_DEVICE_ID = sys.argv[2]
+IOT_HUB_SAS_KEY = sys.argv[3]
 
+client = mqtt.Client(client_id=IOT_HUB_DEVICE_ID, protocol=mqtt.MQTTv311)
+client.on_connect    = on_connect
+client.on_message    = on_message
 
-client = mqtt.Client(client_id=device_id, protocol=mqtt.MQTTv311)
+client.username_pw_set(username=IOT_HUB_HOSTNAME + "/" + IOT_HUB_DEVICE_ID + "/?api-version=2021-04-12", 
+                            password=generate_sas_token(IOT_HUB_HOSTNAME, IOT_HUB_DEVICE_ID, IOT_HUB_SAS_KEY))
 
-client.on_connect = on_connect
-client.on_disconnect = on_disconnect
-client.on_publish = on_publish
+ssl_context = SSLContext(protocol=PROTOCOL_TLS_CLIENT)
+ssl_context.load_default_certs()
+ssl_context.verify_mode = CERT_REQUIRED
+ssl_context.check_hostname = True
+client.tls_set_context(context=ssl_context)
 
-client.username_pw_set(username=iot_hub_name+".azure-devices.net/" +
-                       device_id + "/?api-version=2021-04-12", password=sas_token)
+client.connect(host=IOT_HUB_HOSTNAME, port=8883, keepalive=120)
 
-client.tls_set(ca_certs=path_to_root_cert, certfile=None, keyfile=None,
-               cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1_2, ciphers=None)
-client.tls_insecure_set(False)
+# start the MQTT processing loop
+client.loop_start()
 
-client.connect(iot_hub_name+".azure-devices.net", port=8883)
-
-client.publish("devices/" + device_id + "/messages/events/", '{"id":123}', qos=1)
-client.loop_forever()
+# send messages
+curdir = os.path.dirname(os.path.realpath(__file__))
+with open(curdir + "\\data.json","r") as data:
+    list = []
+    list = data.readlines()
+    i = 0
+    while i < len(list):
+        # Send a single message
+        topic = "devices/" + IOT_HUB_DEVICE_ID + "/location/"
+        client.publish(topic, list[i], qos=1)
+        print("[{0}] topic:{1} msg:{2}".format(datetime.datetime.utcnow(), topic, list[i]))
+        i += 1
+        sleep(1)

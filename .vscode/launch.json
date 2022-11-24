@@ -30,6 +30,19 @@
             ]
         },
         {
+            "name": "SendMQTTMessageIoTHub",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "IOT_HUB_HOSTNAME",
+                "IOT_HUB_DEVICE_ID",
+                "IOT_HUB_PRIMARY_KEY"
+            ]
+        },
+        {
             "name": "GenerateDataFromMapRoute",
             "type": "python",
             "request": "launch",
