@@ -1,13 +1,9 @@
-import random
+import uuid
 import sys
+import asyncio
 from azure.iot.hub import IoTHubRegistryManager
 
-MESSAGE_COUNT = 2
-AVG_WIND_SPEED = 10.0
-MSG_TXT = "{\"service client sent a message\": %.2f}"
-
-
-def main():
+async def main():
     if len(sys.argv) != 3:
         exit
 
@@ -15,36 +11,29 @@ def main():
     deviceId = sys.argv[2]
 
     try:
-        print ("start location:")
-        startLoc = input().replace(" ","")
-        print ("end location:")
-        endLoc = input().replace(" ","")
+        uniqueuserId = input("your user ID:")
+        mapkey = input("subscription key to map service:")
+        startLoc = input("start location:").replace(" ","")
+        endLoc = input("end location:").replace(" ","")
 
         # Create IoTHubRegistryManager
         registry_manager = IoTHubRegistryManager(conn_str)
 
-        print ( 'Sending message: {0}'.format(i) )
-        data = format("\{{0}:{1}\}", startLoc, endLoc)
+        data = ("{0}:{1}").format(startLoc,endLoc)
 
         props={}
         # optional: assign system properties
-        props.update(messageId = "message_%d" % i)
-        props.update(correlationId = "correlation_%d" % i)
+        props.update(messageId = str(uuid.uuid4().hex))
+        props.update(correlationId = str(uuid.uuid4().hex))
         props.update(contentType = "application/json")
 
-        # optional: assign application properties
-        prop_text = "PropMsg_%d" % i
-        props.update(testProperty = prop_text)
+        props.update(key = str(mapkey))
+        props.update(userId = str(uniqueuserId))
+        props.update(mapType = "route")
 
         registry_manager.send_c2d_message(deviceId, data, properties=props)
 
-        try:
-            # Try Python 2.xx first
-            raw_input("Press Enter to continue...\n")
-        except:
-            pass
-            # Use Python 3.xx in the case of exception
-            input("Press Enter to continue...\n")
+        input("Message sent, press Enter to continue...\n")
 
     except Exception as ex:
         print ( "Unexpected error {0}" % ex )
@@ -54,5 +43,4 @@ def main():
 
 if __name__ == '__main__':
     print ( "Starting the Python IoT Hub C2D Messaging service sample..." )
-
-    iothub_messaging_sample_run()
+    asyncio.run(main())

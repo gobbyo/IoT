@@ -37,7 +37,7 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "HUB DEVICE CONNECTION STRING",
+                "HUB CONNECTION STRING",
                 "DEVICE ID"
             ]
         },

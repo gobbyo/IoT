@@ -2,6 +2,7 @@ import os
 import string
 import json
 import sys
+import azure.maps.route.models
 from azure.core.credentials import AzureKeyCredential
 from azure.maps.route import MapsRouteClient
 
@@ -16,8 +17,9 @@ client = MapsRouteClient(
 )
 
 fp = open("data.json","w")
-result = client.get_route_directions(route_points=[(47.61796662516246,-121.949074626174), (47.647353510681015,-121.91641447009559)], 
-travel_mode="car", vehicle_engine_type="electric", compute_travel_time="all",
+data = [azure.maps.route.models.LatLon(47.61796662516246,-121.949074626174),azure.maps.route.models.LatLon(47.647353510681015,-121.91641447009559)]
+result = client.get_route_directions(route_points=data, 
+travel_mode="car", instructions_type="text", route_type="shortest", vehicle_engine_type="electric", compute_travel_time="all",
 constant_speed_consumption_in_kw_h_per_hundred_km="50,8.2:130,21.3", current_charge_in_kw_h=80, max_charge_in_kw_h=80)
 i = 0
 print(str(result.routes[0].summary))
@@ -28,5 +30,7 @@ while i < len(result.routes[0].legs[0].points):
     print(p)
     fp.write(p + "\n")
     i += 1
+
+i = 0
 
 fp.close()
