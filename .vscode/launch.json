@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "GetMessageFromEventHub",
+            "name": "iothublisten",
             "type": "python",
             "request": "launch",
             "program": "${file}",
@@ -19,7 +19,7 @@
             ]
         },
         {
-            "name": "D2CMessageIoTHub",
+            "name": "iothubd2c",
             "type": "python",
             "request": "launch",
             "program": "${file}",
@@ -30,7 +30,7 @@
             ]
         },
         {
-            "name": "C2DMessageIoTHub",
+            "name": "iothubc2d",
             "type": "python",
             "request": "launch",
             "program": "${file}",
@@ -42,7 +42,7 @@
             ]
         },
         {
-            "name": "SendMQTTMessageIoTHub",
+            "name": "mqttconnect",
             "type": "python",
             "request": "launch",
             "program": "${file}",
@@ -52,17 +52,6 @@
                 "IOT_HUB_HOSTNAME",
                 "IOT_HUB_DEVICE_ID",
                 "IOT_HUB_PRIMARY_KEY"
-            ]
-        },
-        {
-            "name": "GenerateDataFromMapRoute",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "justMyCode": true,
-            "args": [
-                "AZURE SHARED KEY CREDENTIAL"
             ]
         }
     ]
