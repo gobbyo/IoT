@@ -11,7 +11,7 @@ from maproute import createRouteList, printRouteOfLatLon, printRouteGuidanceLatL
 from azure.iot.device.aio import IoTHubDeviceClient
 
 def message_handler(message):
-    print("Message received:")
+    print("Message Received")
     mapkey = ''
     maptype = ''
     data = []
@@ -22,17 +22,13 @@ def message_handler(message):
             for cprops in property[1].items():
                 if cprops[0] == "key":
                     mapkey = cprops[1]
-                    print("key={0}".format(mapkey))
-                elif cprops[0] == "userId":
-                    print("userId={0}".format(cprops[1]))
-                elif cprops[0] == "mapType":
+                    print("\tkey={0}".format(mapkey))
+                elif cprops[0] == "maptype":
                     maptype = cprops[1]
-                    print("mapType={0}".format(maptype))
-                else:
-                    print ("    {}".format(cprops))
+                    print("\tmaptype={0}".format(maptype))
         elif property[0] == "data":
             data = pickle.loads(property[1])
-            print("data={0}".format(data)) 
+            print("\tdata={0}".format(data)) 
     
     if(maptype == 'guidance'):
         if(len(mapkey) > 1):
@@ -50,12 +46,10 @@ async def main():
         exit
 
     conn_str = sys.argv[1]
-    print ("Starting the Python IoT Hub C2D Messaging device sample...")
 
-    # Instantiate the client
     client = IoTHubDeviceClient.create_from_connection_string(conn_str)
 
-    print ("Waiting for C2D messages, press Ctrl-C to exit")
+    print ("...waiting for C2D messages, press Ctrl-C to exit.")
     try:
         # Attach the handler to the client
         client.on_message_received = message_handler

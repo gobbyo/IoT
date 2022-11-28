@@ -36,13 +36,12 @@ def printRouteOfLatLon(mapkey,route,filepath):
     leg = 0
 
     if(os.path.exists(filepath)):
-        fp = open(filepath,"w")
-
-        while leg < len(result.routes[0].legs):
-            while pt < len(result.routes[0].legs[leg].points):
-                fp.write("{" + "{0}, {1}".format(str(result.routes[0].legs[0].points[pt].latitude), str(result.routes[0].legs[0].points[pt].longitude)) + "}\n")
-                pt += 1
-            leg += 1
+        with open(filepath,"w") as fp:
+            while leg < len(result.routes[0].legs):
+                while pt < len(result.routes[0].legs[leg].points):
+                    fp.write("{" + "{0}, {1}".format(str(result.routes[0].legs[0].points[pt].latitude), str(result.routes[0].legs[0].points[pt].longitude)) + "}\n")
+                    pt += 1
+                leg += 1
 
         fp.close()
     else:
@@ -57,16 +56,24 @@ def printRouteOfLatLon(mapkey,route,filepath):
 #total: total guidance.instructions
 def guidanceInstructions(guidance, i, total):
     s = ''
+    count = ''
+    if(i==0):
+        count = 'START'
+    elif (i==total-1):
+        count = 'END'
+    else:
+        count = i
+
     if(guidance.instructions[i].message == 'None'):
         if(i < total-1):
-            s = "{0}, then drive for {1} meters".format(guidance.instructions[i].combined_message, guidance.instructions[i+1].route_offset_in_meters - guidance.instructions[i].route_offset_in_meters)
+            s = "{0}. {1}, then drive for {2} meters".format(count, guidance.instructions[i].combined_message, guidance.instructions[i+1].route_offset_in_meters - guidance.instructions[i].route_offset_in_meters)
         else:
-            s = guidance.instructions[i].combined_message
+            s = "{0}. {1}".format(count, guidance.instructions[i].combined_message)
     else:
         if(i < total-1):
-            s = "{0}, then drive for {1} meters".format(guidance.instructions[i].message, guidance.instructions[i+1].route_offset_in_meters - guidance.instructions[i].route_offset_in_meters)
+            s = "{0}. {1}, then drive for {2} meters".format(count, guidance.instructions[i].message, guidance.instructions[i+1].route_offset_in_meters - guidance.instructions[i].route_offset_in_meters)
         else:
-            s = guidance.instructions[i].message
+            s = "{0}. {1}".format(count, guidance.instructions[i].message)
     return s
 
 #mapkey: Azure Maps authentication primary key
@@ -90,10 +97,11 @@ def printRouteGuidanceLatLon(mapkey,route,filepath):
     total = len(result.routes[0].guidance.instructions)
 
     if(os.path.exists(filepath)):
-        fp = open(filepath, 'w')
-        while i < total:
-            fp.write(guidanceInstructions(result.routes[0].guidance, i, total) + "\n")
-            i += 1
+        with open(filepath, 'w') as fp:
+            while i < total:
+                fp.write(guidanceInstructions(result.routes[0].guidance, i, total) + "\n")
+                i += 1
+        fp.close()
     else:
         while i < total:
             print(guidanceInstructions(result.routes[0].guidance, i, total))

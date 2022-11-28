@@ -10,20 +10,20 @@ async def main():
 
     conn_str = sys.argv[1]
     deviceId = sys.argv[2]
-    route = []
     
     try:
-        uniqueuserId = input("your user ID:")
+        # Create IoTHubRegistryManager
+        registry_manager = IoTHubRegistryManager(conn_str)
+
         mapkey = input("subscription key to map service:")
         maptype = input("'guidance' or 'route' map type:")
         waypoints = input("number of waypoints (2 or more): ")
+        
+        route = []
         i = 0
         while i < int(waypoints):
             route.append(input("waypoint {0}:".format(str(i))).replace(" ",""))
             i += 1
-
-        # Create IoTHubRegistryManager
-        registry_manager = IoTHubRegistryManager(conn_str)
 
         data = (pickle.dumps(route))
 
@@ -34,8 +34,7 @@ async def main():
         props.update(contentType = "application/json")
 
         props.update(key = str(mapkey))
-        props.update(userId = str(uniqueuserId))
-        props.update(mapType = maptype)
+        props.update(maptype = maptype)
 
         registry_manager.send_c2d_message(deviceId, data, properties=props)
 

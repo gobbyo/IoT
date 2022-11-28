@@ -26,11 +26,12 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "HUB DEVICE CONNECTION STRING"
+                "HUB DEVICE CONNECTION STRING",
+                "FILE PATH TO MESSAGES"
             ]
         },
         {
-            "name": "iothubc2d",
+            "name": "iothubmaproutec2d",
             "type": "python",
             "request": "launch",
             "program": "${file}",
