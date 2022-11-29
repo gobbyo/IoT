@@ -40,7 +40,7 @@ def message_handler(message):
     elif(maptype == 'route'):
         if(len(mapkey) > 1):
             if(len(data) > 1):
-                printRouteOfLatLon(mapkey,createRouteList(data),'')
+                printRouteOfLatLon(mapkey,createRouteList(data),'',currentChargePercent,maxChargekWh)
     else:
         print('unknown map type, choose \"route\" or \"guidance\"')
 

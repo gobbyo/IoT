@@ -16,7 +16,7 @@ def createRouteList(listOfLatLon):
 #mapkey: Azure Maps authentication primary key
 #route: list of LatLon
 #filepath: writes json snippets to file if exists
-def printRouteOfLatLon(mapkey,route,filepath):
+def printRouteOfLatLon(mapkey,route,filepath,currentChargePercent,maxChargekWh):
     credential = AzureKeyCredential(mapkey)
 
     client = MapsRouteClient(
@@ -24,8 +24,8 @@ def printRouteOfLatLon(mapkey,route,filepath):
     )
 
     result = client.get_route_directions(route_points=route, 
-    travel_mode="car", instructions_type="text", route_type="shortest", vehicle_engine_type="electric", compute_travel_time="all",
-    constant_speed_consumption_in_kw_h_per_hundred_km="50,8.2:130,21.3", current_charge_in_kw_h=80, max_charge_in_kw_h=80)
+    travel_mode="car", instructions_type="text", route_type="eco", vehicle_engine_type="electric", compute_travel_time="all",
+    constant_speed_consumption_in_kw_h_per_hundred_km="50,8.2:130,21.3", current_charge_in_kw_h=currentChargePercent*maxChargekWh, max_charge_in_kw_h=maxChargekWh)
 
     print("--Route LatLon List--")
 
