@@ -14,8 +14,8 @@
 
     ```powershell
     Add-AzIotHubDevice `
-    -ResourceGroupName "HubMsgFreeRG" `
-    -IotHubName "HubMsgFreeHubcv5xo2lejevg6" `
+    -ResourceGroupName "HubMsgRG" `
+    -IotHubName "HubMsgHubw2lu5yeop2qwy" `
     -DeviceId "myMapRoutingDevice" `
     -AuthMethod "shared_private_key"
     ```

@@ -66,7 +66,7 @@
     For example,
 
     ```powershell
-    PS > $templateFile = "C:\repos\various\utilities\mapARMtemplate.json"
+    PS > $templateFile = "C:\\repos\\various\\arm\\map.json"
     ```
 
 1. Deploy the Map ARM template
