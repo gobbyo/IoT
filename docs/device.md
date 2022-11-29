@@ -14,9 +14,9 @@
 
     ```powershell
     Add-AzIotHubDevice `
-    -ResourceGroupName "HubMsgRG" `
-    -IotHubName "HubMsgHubd5ylcnrzccppq" `
-    -DeviceId "myDevice1" `
+    -ResourceGroupName "HubMsgFreeRG" `
+    -IotHubName "HubMsgFreeHubcv5xo2lejevg6" `
+    -DeviceId "myMapRoutingDevice" `
     -AuthMethod "shared_private_key"
     ```
 
@@ -24,7 +24,7 @@
 
     ```powershell
     Remove-AzIotHubDevice `
-    -ResourceGroupName "HubMsgRG" `
+    -ResourceGroupName "{name of your IoTHub's resource group}" `
     -IotHubName "{name of your IoTHub}" `
     -DeviceId "{device name}"
     ```
@@ -33,7 +33,7 @@
 
     ```powershell
     Remove-AzIotHubDevice `
-    -ResourceGroupName "HubMsgRG" `
-    -IotHubName "HubMsgHubd5ylcnrzccppq" `
+    -ResourceGroupName "HubMsgFreeRG" `
+    -IotHubName "HubMsgFreeHubcv5xo2lejevg6" `
     -DeviceId "myDevice1"
     ```

@@ -66,7 +66,7 @@
     For example,
 
     ```powershell
-    PS > $templateFile = "C:\\repos\\various\\scripts\\ARMtemplate.json"
+    PS > $templateFile = "C:\\repos\\various\\scripts\\hub.json"
     ```
 
 1. Deploy the hub ARM template
