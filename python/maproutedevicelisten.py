@@ -4,7 +4,7 @@ import time
 import pickle
 from azure.core.credentials import AzureKeyCredential
 from azure.maps.route import MapsRouteClient
-from maproute import createRouteList, printRouteOfLatLon, printEVRouteGuidanceLatLon
+from maproute import createRouteList, printEVRoute, printEVRouteGuidance
 
 from azure.iot.device.aio import IoTHubDeviceClient
 
@@ -36,11 +36,11 @@ def message_handler(message):
     if(maptype == 'guidance'):
         if(len(mapkey) > 1):
             if(len(data) > 1):
-                printEVRouteGuidanceLatLon(mapkey,createRouteList(data),'',currentChargePercent,maxChargekWh)
+                printEVRouteGuidance(mapkey,createRouteList(data),'',currentChargePercent,maxChargekWh)
     elif(maptype == 'route'):
         if(len(mapkey) > 1):
             if(len(data) > 1):
-                printRouteOfLatLon(mapkey,createRouteList(data),'',currentChargePercent,maxChargekWh)
+                printEVRoute(mapkey,createRouteList(data),'',currentChargePercent,maxChargekWh)
     else:
         print('unknown map type, choose \"route\" or \"guidance\"')
 

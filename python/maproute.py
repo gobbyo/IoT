@@ -16,7 +16,7 @@ def createRouteList(listOfLatLon):
 #mapkey: Azure Maps authentication primary key
 #route: list of LatLon
 #filepath: writes json snippets to file if exists
-def printRouteOfLatLon(mapkey,route,filepath,currentChargePercent,maxChargekWh):
+def printEVRoute(mapkey,route,filepath,currentChargePercent,maxChargekWh):
     credential = AzureKeyCredential(mapkey)
 
     client = MapsRouteClient(
@@ -77,7 +77,7 @@ def guidanceInstructions(guidance, i, total):
 #mapkey: Azure Maps authentication primary key
 #route: list of LatLon
 #filepath: writes to file if exists
-def printEVRouteGuidanceLatLon(mapkey,route,filepath,currentChargePercent,maxChargekWh):
+def printEVRouteGuidance(mapkey,route,filepath,currentChargePercent,maxChargekWh):
     
     credential = AzureKeyCredential(mapkey)
 
