@@ -17,6 +17,8 @@ async def main():
 
         mapkey = input("subscription key to map service:")
         maptype = input("'guidance' or 'route' map type:")
+        maxChargekWh = input("vehicle max charge in kWH (e.g. Tesla Model Y = 75):")
+        currentChargePercent = input("current charge %:")
         waypoints = input("number of waypoints (2 or more): ")
         
         route = []
@@ -33,8 +35,10 @@ async def main():
         props.update(correlationId = str(uuid.uuid4().hex))
         props.update(contentType = "application/json")
 
-        props.update(key = str(mapkey))
+        props.update(key = mapkey)
         props.update(maptype = maptype)
+        props.update(maxChargekWh = maxChargekWh)
+        props.update(currentChargePercent = currentChargePercent)
 
         registry_manager.send_c2d_message(deviceId, data, properties=props)
 

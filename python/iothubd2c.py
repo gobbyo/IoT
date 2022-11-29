@@ -1,6 +1,5 @@
 import asyncio
 import sys
-import os
 import datetime
 
 from azure.iot.device.aio import IoTHubDeviceClient
@@ -29,7 +28,7 @@ async def main():
             # Send a single message
             await device_client.send_message(list[i])
             await asyncio.sleep(1)
-            print("[{0}] msg sent: \"{1}\"".format(datetime.datetime.utcnow(), list[i]))
+            print("[{0}] msg sent: {1}".format(datetime.datetime.utcnow(), list[i]))
             i += 1
         
         data.close()

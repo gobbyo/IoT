@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "iothublisten",
+            "name": "iothubeventhublisten",
             "type": "python",
             "request": "launch",
             "program": "${file}",
@@ -31,7 +31,18 @@
             ]
         },
         {
-            "name": "iothubmaproutec2d",
+            "name": "maproutedevicelisten",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "HUB DEVICE CONNECTION STRING"
+            ]
+        },
+        {
+            "name": "maprouteiothubc2d",
             "type": "python",
             "request": "launch",
             "program": "${file}",

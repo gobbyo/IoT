@@ -1,7 +1,5 @@
 import paho.mqtt.client as mqtt
 import sys
-import asyncio
-import io
 import os
 import datetime
 from base64 import b64encode, b64decode

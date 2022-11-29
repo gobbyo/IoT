@@ -1,12 +1,10 @@
 import asyncio
 import sys
-import os
 import time
 import pickle
-import azure.maps.route.models
 from azure.core.credentials import AzureKeyCredential
 from azure.maps.route import MapsRouteClient
-from maproute import createRouteList, printRouteOfLatLon, printRouteGuidanceLatLon
+from maproute import createRouteList, printRouteOfLatLon, printEVRouteGuidanceLatLon
 
 from azure.iot.device.aio import IoTHubDeviceClient
 
@@ -14,16 +12,21 @@ def message_handler(message):
     print("Message Received")
     mapkey = ''
     maptype = ''
+    currentChargePercent = 0.0
     data = []
 
     # print data from both system and application (custom) properties
     for property in vars(message).items():
         if property[0] == 'custom_properties':
             for cprops in property[1].items():
-                if cprops[0] == "key":
+                if cprops[0] == 'key':
                     mapkey = cprops[1]
                     print("\tkey={0}".format(mapkey))
-                elif cprops[0] == "maptype":
+                elif cprops[0] == 'currentChargePercent':
+                    currentChargePercent = float(cprops[0]) * 0.01
+                elif cprops[0] == 'maxChargekWh':
+                    maxChargekWh = float(maxChargekWh)
+                elif cprops[0] == 'maptype':
                     maptype = cprops[1]
                     print("\tmaptype={0}".format(maptype))
         elif property[0] == "data":
@@ -33,7 +36,7 @@ def message_handler(message):
     if(maptype == 'guidance'):
         if(len(mapkey) > 1):
             if(len(data) > 1):
-                printRouteGuidanceLatLon(mapkey,createRouteList(data),'')
+                printEVRouteGuidanceLatLon(mapkey,createRouteList(data),'',currentChargePercent,maxChargekWh)
     elif(maptype == 'route'):
         if(len(mapkey) > 1):
             if(len(data) > 1):
