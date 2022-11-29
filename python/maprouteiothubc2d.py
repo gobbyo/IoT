@@ -37,8 +37,8 @@ async def main():
 
         props.update(key = mapkey)
         props.update(maptype = maptype)
-        props.update(maxChargekWh = maxChargekWh)
-        props.update(currentChargePercent = currentChargePercent)
+        props.update(maxChargekWh = str(maxChargekWh))
+        props.update(currentChargePercent = str(currentChargePercent))
 
         registry_manager.send_c2d_message(deviceId, data, properties=props)
 

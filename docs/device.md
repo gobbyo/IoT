@@ -35,5 +35,5 @@
     Remove-AzIotHubDevice `
     -ResourceGroupName "HubMsgFreeRG" `
     -IotHubName "HubMsgFreeHubcv5xo2lejevg6" `
-    -DeviceId "myDevice1"
+    -DeviceId "myMapRoutingDevice"
     ```

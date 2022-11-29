@@ -23,9 +23,11 @@ def message_handler(message):
                     mapkey = cprops[1]
                     print("\tkey={0}".format(mapkey))
                 elif cprops[0] == 'currentChargePercent':
-                    currentChargePercent = float(cprops[0]) * 0.01
+                    currentChargePercent = float(cprops[1]) * 0.01
+                    print("\tcurrentChargePercent={0}".format(currentChargePercent*100))
                 elif cprops[0] == 'maxChargekWh':
-                    maxChargekWh = float(maxChargekWh)
+                    maxChargekWh = float(cprops[1])
+                    print("\tmaxChargekWh={0}".format(maxChargekWh))
                 elif cprops[0] == 'maptype':
                     maptype = cprops[1]
                     print("\tmaptype={0}".format(maptype))
