@@ -61,60 +61,49 @@ In this section you'll install Visual Studio Code, a few extensions, and Git for
 
 1. From a browser open [install python](https://code.visualstudio.com/docs/languages/python#_install-python-and-the-python-extension). Follow the Visual Studio Code tutorial to [install python](https://code.visualstudio.com/docs/languages/python#_install-python-and-the-python-extension). Be sure to check the box `Add python.exe to PATH` at the start of the install.  At the end of the install be sure to select the `disable the maximum allowable path length`. Stop at the section [Run Python Code](https://code.visualstudio.com/docs/languages/python#_run-python-code) until you have finished the next two steps to install the Azure client libraries.
 1. [Install the Visual Studio Code python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-1. Install the [Azure Maps Route Package client library](https://learn.microsoft.com/en-us/python/api/overview/azure/maps-route-readme?view=azure-python-preview)
+1. From Visual Studio Code, select the `View > Command Pallette..` menu, type the following in the command pallette text box:
+
+    |#  |Item  | Comment   |
+    |:--------|:---------|:---------|
+    |1     | `Python: Create Environment` | Creates a Python virtual environment  |
+    |2     | `Venv` to create a virtual environment | See [https://docs.python.org/3/tutorial/venv.html](https://docs.python.org/3/tutorial/venv.html) |
+    |3     |  Select the recommended Python interpreter | There may be multiple interpreters if you are not installing on a clean machine |
+
+### Install Azure Client Libraries
+
+1. From Visual Studio Code, select the `Terminal > New Terminal...` menu.
+1. Install the [Azure Maps Route Package client library](https://learn.microsoft.com/en-us/python/api/overview/azure/maps-route-readme?view=azure-python-preview) by running the following python script in your terminal session:
 
     ```python
     pip install azure-maps-route
     ```
 
-1. Install the [Azure Identity client library](https://learn.microsoft.com/en-us/python/api/overview/azure/identity-readme?view=azure-python). For example,
+1. Install the [Azure Identity client library](https://learn.microsoft.com/en-us/python/api/overview/azure/identity-readme?view=azure-python) by running the following python script in your terminal session:
 
     ```python
     pip install azure-identity
     ```
 
-1. Close Visual Studio Code.
-
 ### Test Your Python Installation
 
-1. Open a command prompt, change the directory to the GitHub `various` repo, type `code .`, then hit the enter key. Note the `code .` command automatically starts Visual Studio Code and prepares the Python interpreter, see selecting the [Python Interpreter](https://code.visualstudio.com/docs/languages/python#_run-python-code).
-
-    ```azurecli
-    C:\repos>cd various
-    C:\repos\various>code .
-    ```
-
-    Example command window,
-
-    ```azurecli
-    C:\repos>cd various
-    C:\repos\various>code .
-    ```
-
-    Example terminal session in Visual Studio Code,
-
-    ```python
-    PS C:\repos\various> & c:/repos/various/.venv/Scripts/Activate.ps1
-    (.venv) PS C:\repos\various> cd python
-    (.venv) PS C:\repos\various\python>
-    ```
-
-1. From the `\various\python` directory, type `python` and hit the return key.
+1. From your Visual Studio Code terminal session, change to the `\various\python` directory, type `python` and hit the return key.
 
     ```powershell
-    (.venv) PS C:\repos\various\python> python
+    PS C:\repos\various> cd python
+    PS C:\repos\various\python> python
     ```
 
     For example,
 
-    ```python
-    (.venv) PS C:\repos\various\python> python
+    ```powershell
+    PS C:\repos\various> cd python
+    PS C:\repos\various\python> python
     Python 3.xx.xx (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)] on win32       
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
     ```
 
-1. The following python scripts, run the `createRouteList` in the `maproute` module.
+1. The following python scripts, run the `createRouteList` in the `maproute` module, and hit the enter key.
 
     ```python
     from maproute import createRouteList
@@ -135,8 +124,6 @@ In this section you'll install Visual Studio Code, a few extensions, and Git for
     [LatLon(lat='48.5015559212639', lon='-122.6753872337671'), LatLon(lat='48.42566904524409', lon='-122.60848502024562')]
     >>>
     ```
-
-1. Restart your machine
 
 ## Next Steps
 
