@@ -86,7 +86,7 @@ In this section you'll install Visual Studio Code, a few extensions, and Git for
 
 ### Test Your Python Installation
 
-1. From your Visual Studio Code terminal session, change to the `\various\python` directory, type `python` and hit the return key.
+1. From your Visual Studio Code terminal session, change the GitHub cloned directory from `various` to `python` directory. Type `python` and hit the return key.
 
     ```powershell
     PS C:\repos\various> cd python
@@ -124,6 +124,8 @@ In this section you'll install Visual Studio Code, a few extensions, and Git for
     [LatLon(lat='48.5015559212639', lon='-122.6753872337671'), LatLon(lat='48.42566904524409', lon='-122.60848502024562')]
     >>>
     ```
+
+1. Type `exit()` to exit the python scrip environment.
 
 ## Next Steps
 
