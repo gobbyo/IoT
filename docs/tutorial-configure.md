@@ -60,7 +60,7 @@ In this section you'll install Visual Studio Code, a few extensions, and Git for
 ### Install Python
 
 1. From a browser open [install python](https://code.visualstudio.com/docs/languages/python#_install-python-and-the-python-extension). Follow the Visual Studio Code tutorial to [install python](https://code.visualstudio.com/docs/languages/python#_install-python-and-the-python-extension). Be sure to check the box `Add python.exe to PATH` at the start of the install.  At the end of the install be sure to select the `disable the maximum allowable path length`. Stop at the section [Run Python Code](https://code.visualstudio.com/docs/languages/python#_run-python-code) until you have finished the next two steps to install the Azure client libraries.
-1. [Install the Visual Studio Code python extension](https://code.visualstudio.com/docs/languages/python#_install-python-and-the-python-extension)
+1. [Install the Visual Studio Code python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 1. Install the [Azure Maps Route Package client library](https://learn.microsoft.com/en-us/python/api/overview/azure/maps-route-readme?view=azure-python-preview)
 
     ```python
