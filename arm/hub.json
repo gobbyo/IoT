@@ -26,6 +26,15 @@
     },
     "skuName": {
       "type": "string",
+      "allowedValues": [
+        "F1",
+        "B1",
+        "B2",
+        "B3",
+        "S1",
+        "S2",
+        "S3"
+      ],
       "defaultValue": "F1",
       "metadata": {
         "description": "The SKU to use for the IoT Hub."
