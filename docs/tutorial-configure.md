@@ -4,8 +4,8 @@ In this section you'll install Visual Studio Code, a few extensions, and Git for
 
 ### Install Visual Studio Code and Extensions
 
-1. Install [Visual Studio Code](https://code.visualstudio.com/Download) for Windows.
-1. Open a [PowerShell terminal session][lnk_ps_session] in administrative mode and run the following commands:
+1. Install [Visual Studio Code](https://code.visualstudio.com/Download) for Windows. Allow Visual Studio Code to launch.
+1. Within Visual Studio Code, open a [PowerShell terminal session][lnk_ps_session] in administrative mode and run the following commands:
 
     ```powershell
     Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted -Force
@@ -23,14 +23,10 @@ In this section you'll install Visual Studio Code, a few extensions, and Git for
     - `Do you want PowerShellGet to install and import the NuGet provider now?` Type **Y**.
     - `Are you sure you want to install the modules from the 'MSGallery'?` Type **A**.
 
-1. Close Visual Studio Code.
-
 ### Install Git for Windows
 
 1. Open a browser session in your Windows 10 machine and download the [git for windows](https://git-scm.com/download/win) installer.
 1. Run the installer, accepting the default settings. When you arrive at the screen **Choosing the default editor used by Git**, choose **Use Visual Studio Code as Git's default editor** from the dropdown selection, then continue accepting the default settings until finished.
-1. Open [https://github.com/gobbyo/various](https://github.com/gobbyo/various) from a browser.
-1. Login to your GitHub account or create a new account if you don't have one.
 1. Open Visual Studio Code. Select `Terminal > New Terminal` from the menu.
 1. Create a directory for cloned sample code and change to your new directory,
 
@@ -59,10 +55,12 @@ In this section you'll install Visual Studio Code, a few extensions, and Git for
     PS C:\repos> git clone https://github.com/gobbyo/various.git
     ```
 
+1. Select `File > Open Folder...` from the menu in Visual Studio Code and select the cloned directory `various`.
+
 ### Install Python
 
-1. Select `File > Open Folder...` from the menu in Visual Studio Code and select the cloned directory `various`.
-1. Follow the Visual Studio Code tutorial to [install python](https://code.visualstudio.com/docs/languages/python#_install-python-and-the-python-extension). Stop at the section [Run Python Code](https://code.visualstudio.com/docs/languages/python#_run-python-code) until you have finished the next two steps to install the Azure client libraries.
+1. From a browser open [install python](https://code.visualstudio.com/docs/languages/python#_install-python-and-the-python-extension). Follow the Visual Studio Code tutorial to [install python](https://code.visualstudio.com/docs/languages/python#_install-python-and-the-python-extension). Be sure to check the box `Add python.exe to PATH` at the start of the install.  At the end of the install be sure to select the `disable the maximum allowable path length`. Stop at the section [Run Python Code](https://code.visualstudio.com/docs/languages/python#_run-python-code) until you have finished the next two steps to install the Azure client libraries.
+1. [Install the Visual Studio Code python extension](https://code.visualstudio.com/docs/languages/python#_install-python-and-the-python-extension)
 1. Install the [Azure Maps Route Package client library](https://learn.microsoft.com/en-us/python/api/overview/azure/maps-route-readme?view=azure-python-preview)
 
     ```python
