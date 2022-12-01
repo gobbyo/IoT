@@ -1,4 +1,4 @@
-# Deploy a Messaging Hub
+# Deploy an Azure IoT Hub
 
 1. Run the following script to connect to your Azure subscription. Replace `{your subscription ID}` with the identifier to your Azure subscription.
 

@@ -1,11 +1,11 @@
-# Tutorial: Create A Machine for Cloud Tutorials
+# Create A Virtual Machine
 
 In this tutorial, you learn how to:
 > [!div class="checklist"]
 >
 > - Create a [Windows 10 Virtual Machine](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal)
 
-This tutorial must be completed before any other tutorials to successfully deploy and interact with the remaining tutorials. In this tutorial, you'll create a Windows 10 virtual machine on the [Azure portal](http://portal.azure.com) to run and manage the cloud portion of the tutorials. If you're trying out our tutorials for the first time, then we recommend using a clean install of a virtual machine to avoid issues. Otherwise, you can skip creating a virtual machine and install the prerequisites onto your own machine.
+In this tutorial, you'll create a Windows 10 virtual machine on the [Azure portal](http://portal.azure.com) to run and manage the cloud portion of the tutorials. If you're trying out our tutorials for the first time, then we recommend using a clean install of a virtual machine to avoid issues. Otherwise, you can skip creating a virtual machine and install the prerequisites onto your own machine.
 
 The following diagram provides you the context to create a Windows 10 cloud VM.
 

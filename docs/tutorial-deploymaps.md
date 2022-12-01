@@ -1,4 +1,4 @@
-# Create Maps Service
+# Deploy a Maps Service
 
 1. Run the following script to connect to your Azure subscription. Replace `{your subscription ID}` with the identifier to your Azure subscription.
 

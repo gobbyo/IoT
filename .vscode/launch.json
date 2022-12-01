@@ -12,10 +12,10 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "STORAGE ACCOUNT CONNECTION STRING",
-                "BLOB CONTAINER NAME",
-                "EVENT HUB CONNECTION STRING",
-                "EVENT HUB NAME"
+                "DefaultEndpointsProtocol=https;AccountName=hubmsgw2lu5yeop2qwy;AccountKey=P2X22Ii+5FXub3zv5kwhTUWViiVML+jWavwvs7mVRq14ULLoSolMSF/RHSYY6YE88jV7N0/7EJ8B+AStJYBgSg==;EndpointSuffix=core.windows.net",
+                "hubmsgresults",
+                "Endpoint=sb://ihsuproddmres006dednamespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=W+tlRDmHRSYGqfCttIfKo8CPbWxfg+UCW3LDyzHqQXM=;EntityPath=iothub-ehub-hubmsghubw-23135425-309430d575",
+                "iothub-ehub-hubmsghubw-23135425-309430d575"
             ]
         },
         {
@@ -49,8 +49,8 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "HUB CONNECTION STRING",
-                "DEVICE ID"
+                "HostName=HubMsgHubw2lu5yeop2qwy.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=92/VHr+94MgD5hOKqvDaUVy/1DGMAQ4aa2l+F7q7mW4=",
+                "myMapRoutingDevice"
             ]
         },
         {

@@ -1,6 +1,6 @@
 ## Configure your Windows Machine
 
-In this section you'll install Visual Studio Code, a few extensions, and Git for windows. Finally, you'll install Python, Azure Maps and Identity Python client libraries. Upon completion, you'll need to reboot your machine before starting the next tutorial.
+This tutorial must be completed before any other tutorials: you'll install Visual Studio Code, a few extensions, and Git for windows. Finally, you'll install Python, Azure Maps and Identity Python client libraries.
 
 ### Install Visual Studio Code and Extensions
 
