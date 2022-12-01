@@ -5,17 +5,17 @@ import pickle
 from azure.iot.hub import IoTHubRegistryManager
 
 async def main():
-    if len(sys.argv) != 3:
+    if len(sys.argv) != 4:
         exit
 
     conn_str = sys.argv[1]
     deviceId = sys.argv[2]
+    mapkey = sys.argv[3]
     
     try:
         # Create IoTHubRegistryManager
         registry_manager = IoTHubRegistryManager(conn_str)
 
-        mapkey = input("subscription key to map service:")
         maptype = input("'guidance' or 'route' map type:")
         maxChargekWh = input("vehicle max charge in kWH (e.g. Tesla Model Y = 75):")
         currentChargePercent = input("current charge %:")

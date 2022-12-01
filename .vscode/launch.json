@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "iothubeventhublisten",
+            "name": "d2ceventhublisten",
             "type": "python",
             "request": "launch",
             "program": "${file}",
@@ -27,7 +27,8 @@
             "justMyCode": true,
             "args": [
                 "IOT HUB CONNECTION",
-                "DEVICE ID"
+                "DEVICE ID",
+                "MAP KEY"
             ]
         },
         {
@@ -38,9 +39,9 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "IOT_HUB_HOSTNAME",
-                "IOT_HUB_DEVICE_ID",
-                "IOT_HUB_PRIMARY_KEY"
+                "IOT HUB HOSTNAME",
+                "DEVICE ID",
+                "IOT HUB CONNECTION"
             ]
         }
     ]
