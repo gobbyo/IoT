@@ -18,7 +18,7 @@ Creating an IoT device with a symmetric key is the easiest way to create a devic
     Add-AzIotHubDevice `
     -ResourceGroupName "HubMsgRG" `
     -IotHubName "HubMsgHubw2lu5yeop2qwy" `
-    -DeviceId "myMapRoutingDevice" `
+    -DeviceId "myDevice" `
     -AuthMethod "shared_private_key"
     ```
 
@@ -37,5 +37,5 @@ Creating an IoT device with a symmetric key is the easiest way to create a devic
     Remove-AzIotHubDevice `
     -ResourceGroupName "HubMsgFreeRG" `
     -IotHubName "HubMsgFreeHubcv5xo2lejevg6" `
-    -DeviceId "myMapRoutingDevice"
+    -DeviceId "myDevice"
     ```

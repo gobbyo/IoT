@@ -149,7 +149,13 @@ This tutorial must be completed before any other tutorials: you'll install Visua
     >>>
     ```
 
-1. Type `exit()` to exit the python scrip environment.
+1. Type `exit()` to exit the python script environment. For example,
+
+    ```python
+    >>> exit()
+    (.venv) PS C:\repos\various\python>
+    ```
+
 
 ## Next Steps
 

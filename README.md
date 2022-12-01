@@ -1,7 +1,7 @@
 # Table Of Contents
 
 ## Tutorials
-### Get Started
+### Fundamentals
 1. [Create a Windows VM](docs/tutorial-prerequisites.md)
 1. [Configure your Windows machine](docs/tutorial-configure.md)
 1. [Create an IoT Hub and Storage Account](docs/tutorial-deployiothub.md)
