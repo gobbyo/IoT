@@ -15,18 +15,6 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
 1. Open Visual Studio Code, select File > Open Folder... and select your `various` GitHub cloned directory.
 1. From your Visual Studio Code terminal session, change the GitHub cloned directory from `various` to `python` directory.
 1. Create a file in the `python` directory and name it `c2dlistener.py`.  This file is the python code on your device that listens for messages from your instance IoT Hub.
-1. Install the Azure IoT device client package
-
-    ```powershell
-    pip install azure-iot-device
-    ```
-
-    for example,
-
-    ```powershell
-    PS C:\repos\various\python> pip install azure-iot-device
-    ```
-
 1. Copy and paste the following import statements into your `c2dlistener.py` file.
 
     ```python
@@ -35,7 +23,7 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
     from azure.iot.device.aio import IoTHubDeviceClient
     ```
 
-    Table of details
+    Table of code details
     |Import  |Comment  |
     |---------|---------|
     |`asyncio` | Needed to asyncronously `await` for messages from your IoT Hub instance |
@@ -52,11 +40,10 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
 
 1. Copy and paste the main function below the message handler function. This function creates the client, registers the message handler to receive incoming messages, and gracefully shuts down the client.  It is important to call the shutdown function on the client to gracefully disconnect it from IoT Hub.
 
-    - `IoTHubDeviceClient.create_from_connection_string` calls the Azure client library to create a client using the IoT Hub connection string.
-
     ```python
     async def main():
-        client = IoTHubDeviceClient.create_from_connection_string(input("IoT Hub *Device* Connection String:"))
+        conn_str = input("IoT Hub Device Connection String:")
+        client = IoTHubDeviceClient.create_from_connection_string(conn_str)
         print("--Waiting for Messages--") 
         
         try:
@@ -75,7 +62,28 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
         asyncio.run(main())
     ```
 
-1. Run the listener. [todo] describe steps.
+    Table of code details
+    |IoT Hub Client Call  |Comment  |
+    |---------|---------|
+    | client = IoTHubDeviceClient.create_from_connection_string(conn_str) | Creates a client from the IoT Hub device connection string. The client is used to make calls to IoT Hub. |
+    | client.on_message_received = message_handler | Registers the message event handler for IoT Hub to call to the client. |
+    | client.shutdown() | Gracefully disconnect the client from IoT Hub. |
+
+1. Open a command prompt and change to the `python` directory in your GitHub cloned `various` repo.
+1. [todo] How to get the device connection string
+1. Run the following script to start the listener.
+
+    ```python
+    python c2dlistener.py
+    ```
+
+    For example,
+
+    ```python
+    C:\repos\various\python>python c2dlistener.py
+    IoT Hub *Device* Connection String:HostName=HubMsgHubw2lu5yeop2qwy.azure-devices.net;DeviceId=myDevice;SharedAccessKey=8IrOf5TrNmo17wv7upTAHllOVVIaL4tkq65E3YtZUkg=
+    --Waiting for Messages--
+    ```
 
 ## Send a message to your device
 
@@ -94,4 +102,19 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
     registry_manager.send_c2d_message(deviceId, input("Message to send: "), properties={})
     ```
 
-1. Run the send message code. [todo] describe steps.
+1. Get your deviceId.
+1. Get the connection string to IoT Hub.
+1. Run debug in Visual Studio Code.
+
+    ```powershell
+    Device id: myDevice
+    IoT Hub Connection String: HostName=[IOT HUB NAME].azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=[SHARED ACCESS KEY]
+    Message to send: Hello World!
+    ```
+
+    Note the following should appear in you `command prompt - python` running `c2dlistener.py`,
+
+    ```powershell
+    --Message Received--
+    b'Hello World!'
+    ```

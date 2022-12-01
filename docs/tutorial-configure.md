@@ -27,19 +27,20 @@ This tutorial must be completed before any other tutorials: you'll install Visua
 
 1. Open a browser session in your Windows 10 machine and download the [git for windows](https://git-scm.com/download/win) installer.
 1. Run the installer, accepting the default settings. When you arrive at the screen **Choosing the default editor used by Git**, choose **Use Visual Studio Code as Git's default editor** from the dropdown selection, then continue accepting the default settings until finished.
+1. Close and open Visual Studio Code.
 1. Open Visual Studio Code. Select `Terminal > New Terminal` from the menu.
 1. Create a directory for cloned sample code and change to your new directory,
 
     ```powershell
-    mkdir repos
-    cd repos
+    mkdir c:\repos
+    cd c:\repos
     ```
 
     For example,
 
     ```powershell
-    PS C:\> mkdir repos
-    PS C:\> cd repos
+    PS C:\> mkdir c:\repos
+    PS C:\> cd c:\repos
     PS C:\repos>
     ```
 
@@ -53,13 +54,19 @@ This tutorial must be completed before any other tutorials: you'll install Visua
 
     ```powershell
     PS C:\repos> git clone https://github.com/gobbyo/various.git
+    Cloning into 'various'...
+    remote: Enumerating objects: 250, done.
+    remote: Counting objects: 100% (250/250), done.
+    remote: Compressing objects: 100% (160/160), done.
+    Receiving objects: 100% (250/250), 5.95 MiB | 20.18 MiB/s, done.
+    Resolving deltas: 100% (105/105), done.13 (delta 72), pack-reused 0
     ```
 
 1. Select `File > Open Folder...` from the menu in Visual Studio Code and select the cloned directory `various`.
 
 ### Install Python
 
-1. From a browser open [install python](https://www.python.org/downloads/). Be sure to check the box `Add python.exe to PATH` at the start of the install.  At the end of the install be sure to select the `disable the maximum allowable path length`.
+1. From a browser open [install python](https://www.python.org/downloads/). Be sure to check the box `Use admin privileges when installing py.exe` and  `Add python.exe to PATH` at the start of the install, then select `Install Now`.  At the end of the install select the `Disable path length limit`, then select the `close` button.
 1. Install the Visual Studio Code [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 1. From Visual Studio Code, select the `View > Command Pallette..` menu, type the following in the command pallette text box:
 
@@ -71,17 +78,34 @@ This tutorial must be completed before any other tutorials: you'll install Visua
 
 ### Install Azure Client Libraries
 
-1. From Visual Studio Code, select the `Terminal > New Terminal...` menu.
-1. Install the [Azure Maps Route Package client library](https://learn.microsoft.com/en-us/python/api/overview/azure/maps-route-readme?view=azure-python-preview) by running the following python script in your terminal session:
+1. From Visual Studio Code, select the `Terminal > New Terminal...` menu. In the powershell terminal session you should see the following,
 
-    ```python
-    pip install azure-maps-route
+    ```powershell
+    Windows PowerShell
+    Copyright (C) Microsoft Corporation. All rights reserved.
+    
+    Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows        
+    
+    PS C:\repos\various> & c:/repos/various/.venv/Scripts/Activate.ps1
+    (.venv) PS C:\repos\various>
+    ```
+
+1. Install the [Azure IoT device client package](https://pypi.org/project/azure-iot-device/) by running the following python script in your terminal session:
+
+    ```powershell
+    pip install azure-iot-device
     ```
 
 1. Install the [Azure Identity client library](https://learn.microsoft.com/en-us/python/api/overview/azure/identity-readme?view=azure-python) by running the following python script in your terminal session:
 
     ```python
     pip install azure-identity
+    ```
+
+1. Install the [Azure Maps Route Package client library](https://learn.microsoft.com/en-us/python/api/overview/azure/maps-route-readme?view=azure-python-preview) by running the following python script in your terminal session:
+
+    ```python
+    pip install azure-maps-route
     ```
 
 ### Test Your Python Installation
@@ -97,8 +121,8 @@ This tutorial must be completed before any other tutorials: you'll install Visua
 
     ```powershell
     PS C:\repos\various> cd python
-    PS C:\repos\various\python> python
-    Python 3.xx.xx (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)] on win32       
+    (.venv) PS C:\repos\various\python> python
+    Python 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)] on win32
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
     ```
