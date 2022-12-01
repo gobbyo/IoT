@@ -12,33 +12,10 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "DefaultEndpointsProtocol=https;AccountName=hubmsgw2lu5yeop2qwy;AccountKey=P2X22Ii+5FXub3zv5kwhTUWViiVML+jWavwvs7mVRq14ULLoSolMSF/RHSYY6YE88jV7N0/7EJ8B+AStJYBgSg==;EndpointSuffix=core.windows.net",
-                "hubmsgresults",
-                "Endpoint=sb://ihsuproddmres006dednamespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=W+tlRDmHRSYGqfCttIfKo8CPbWxfg+UCW3LDyzHqQXM=;EntityPath=iothub-ehub-hubmsghubw-23135425-309430d575",
-                "iothub-ehub-hubmsghubw-23135425-309430d575"
-            ]
-        },
-        {
-            "name": "iothubd2c",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "justMyCode": true,
-            "args": [
-                "HUB DEVICE CONNECTION STRING",
-                "FILE PATH TO MESSAGES"
-            ]
-        },
-        {
-            "name": "maproutedevicelisten",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "justMyCode": true,
-            "args": [
-                "HUB DEVICE CONNECTION STRING"
+                "STORAGE CONNECTION",
+                "STORAGE CONTAINER",
+                "EVENT HUB CONNECTION",
+                "EVENT HUB NAME"
             ]
         },
         {
@@ -49,8 +26,8 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "HostName=HubMsgHubw2lu5yeop2qwy.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=92/VHr+94MgD5hOKqvDaUVy/1DGMAQ4aa2l+F7q7mW4=",
-                "myMapRoutingDevice"
+                "IOT HUB CONNECTION",
+                "DEVICE ID"
             ]
         },
         {
