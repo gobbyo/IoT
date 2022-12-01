@@ -57,10 +57,10 @@
     
     ```
 
-1. Run the following script to set the path to the ARM template `ARMtemplate.json`
+1. Run the following script to set the path to the ARM template `hub.json`
 
     ```powershell
-    $templateFile = "{path to ARMtemplate.json}"
+    $templateFile = "{path to hub.json}"
     ```
 
     For example,

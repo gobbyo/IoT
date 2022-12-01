@@ -1,6 +1,6 @@
 import asyncio
 import time
-from azure.iot.device import IoTHubDeviceClient
+from azure.iot.device.aio import IoTHubDeviceClient
 
 def message_handler(message):
     print("--Message Received--")
@@ -20,7 +20,7 @@ async def main():
     finally:
         # Graceful exit
         print("Shutting down IoT Hub Client")
-        client.shutdown()
+        await client.shutdown()
 
 if __name__ == "__main__":
     asyncio.run(main())

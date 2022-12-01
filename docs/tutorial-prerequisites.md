@@ -5,7 +5,7 @@ In this tutorial, you learn how to:
 >
 > - Create a [Windows 10 Virtual Machine](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal)
 
-In this tutorial, you'll create a Windows 10 virtual machine on the [Azure portal](http://portal.azure.com) to run and manage the cloud portion of the tutorials. If you're trying out our tutorials for the first time, then we recommend using a clean install of a virtual machine to avoid issues. Otherwise, you can skip creating a virtual machine and install the prerequisites onto your own machine.
+In this tutorial, you'll create a Windows 10 virtual machine on the [Azure portal](http://portal.azure.com) to run and manage the cloud portion of the tutorials. If you're trying out these tutorials for the first time, then use a clean install of a virtual machine to avoid issues. Otherwise, you can skip creating a virtual machine and install the prerequisites onto your own machine.
 
 The following diagram provides you the context to create a Windows 10 cloud VM.
 
@@ -45,12 +45,12 @@ The following diagram provides you the context to create a Windows 10 cloud VM.
 
     |Form Item  |Action  |
     |---------|---------|
-    |Virtual Machine Name     | Name your VM, for example, CloudVM |
+    |Virtual Machine Name     | Name your VM, for example, myVM |
     |Region     | Select a region that supports the Standard D4s_v3 size, for example, West US 2 |
-    |Availability Options     | No infrastructure redundancy required (default)        |
+    |Availability Options     | No infrastructure redundancy required  |
     |Security Type     | Standard        |
     |Image     | Use the default image, for example, Windows 10 Pro, version xxxx|
-    |Azure spot instance     | Unselected box (default) |
+    |Azure spot instance     | Select the box |
     |Size     |Standard D4s_v3  |
 
     **Administrator account**

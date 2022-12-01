@@ -67,7 +67,7 @@ This tutorial must be completed before any other tutorials: you'll install Visua
     |:--------|:---------|:---------|
     |1     | `Python: Create Environment` | Creates a Python virtual environment  |
     |2     | `Venv` to create a virtual environment | See [https://docs.python.org/3/tutorial/venv.html](https://docs.python.org/3/tutorial/venv.html) |
-    |3     |  Select the recommended Python interpreter | There may be multiple interpreters if you are not installing on a clean machine |
+    |3     |  Select the recommended Python interpreter | There may be multiple interpreters if you are installing on your own machine and have used Python in the past |
 
 ### Install Azure Client Libraries
 
