@@ -28,7 +28,7 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
     Table of code details
     |Import  |Comment  |
     |---------|---------|
-    |`asyncio` | Needed to asyncronously `await` for messages from your IoT Hub instance |
+    |`asyncio` | Needed to asynchronously `await` for messages from your IoT Hub instance |
     |`time` |  Used for the code execution to sleep while awaiting for incoming messages |
     |`os` | Used to get the environment variable containing the connection string to IoT Hub |
     |`Message` | The `Message` class from the `azure.iot.device` is needed to read and print the size and data of the message |
@@ -75,7 +75,7 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
     | client.shutdown() | Gracefully disconnect the client from IoT Hub. |
 
 1. Open a PowerShell session and change to the `python` directory in your GitHub cloned `various` repo.
-1. Run the following script to register your device connection string replacing the {your device connection string}
+1. Run the following script to register your device connection string replacing `{your device connection string}`. See the [blog on different connection strings](https://devblogs.microsoft.com/iotdev/understand-different-connection-strings-in-azure-iot-hub/) to obtain your device connection string.
 
     ```powershell
     $Env:IOTHUB_DEVICE_CONNECTION_STRING="{your device connection string}"
@@ -91,7 +91,7 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
 
     ```python
     C:\repos\various\python>python c2dlistener.py
-    IoT Hub *Device* Connection String:HostName=HubMsgHubw2lu5yeop2qwy.azure-devices.net;DeviceId=myDevice;SharedAccessKey=8IrOxxxxxxxxxxxxxxxxxxxxxxxxxtZUkg=
+    IoT Hub *Device* Connection String:HostName=HubMs*************p2qwy.azure-devices.net;DeviceId=myDevice;SharedAccessKey=8Ir*************tZUkg=
     --Waiting for Messages--
     ```
 
@@ -116,15 +116,13 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
             print ( "Unexpected error {0}" % ex )
     ```
 
-1. From Visual Studio Code terminal session, set your `IOTHUB_CONNECTION_STRING` environment variable.
+1. From Visual Studio Code terminal session, set your `IOTHUB_CONNECTION_STRING` environment variable. See the [blog on different connection strings](https://devblogs.microsoft.com/iotdev/understand-different-connection-strings-in-azure-iot-hub/) to obtain your IoT Hub connection string.
 
     ```powershell
     $Env:IOTHUB_CONNECTION_STRING="{your IoT hub connection string}"
     ```
 
-1. Get your deviceId.
-1. Get the connection string to IoT Hub.
-1. Run debug in Visual Studio Code.
+1. Run the debugger in Visual Studio Code and provide your deviceId you created from the tutorial [Create a Symmetric Key Device](tutorial-symmetrickeydevice.md). For example,
 
     ```powershell
     Device id: myDevice
