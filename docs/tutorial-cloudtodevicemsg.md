@@ -72,7 +72,7 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
     |---------|---------|
     | client = IoTHubDeviceClient.create_from_connection_string(conn_str) | Creates a client from the IoT Hub device connection string. The client is used to make calls to IoT Hub. |
     | client.on_message_received = message_handler | Registers the message event handler for IoT Hub to call to the client. |
-    | client.shutdown() | Gracefully disconnect the client from IoT Hub. |
+    | client.shutdown() | Gracefully disconnects the client from IoT Hub. |
 
 1. Open a PowerShell session and change to the `python` directory in your GitHub cloned `various` repo.
 1. Run the following script to register your device connection string replacing `{your device connection string}`. See the [blog on different connection strings](https://devblogs.microsoft.com/iotdev/understand-different-connection-strings-in-azure-iot-hub/) to obtain your device connection string.
@@ -95,7 +95,7 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
     --Waiting for Messages--
     ```
 
-## Send a message to your device
+## Send message
 
 1. Create a file in the `python` directory and name it `c2dsendmsg.py`.  This file is the python code to send a message to your device via your IoT Hub instance.
 1. Copy and paste the import statement.
@@ -139,4 +139,4 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
 
 ## Reference
 
-IoT Hub message [system and user-defined properties](https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages).
+IoT Hub message [system and user-defined properties](https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)
