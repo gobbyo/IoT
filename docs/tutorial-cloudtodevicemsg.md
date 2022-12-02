@@ -118,3 +118,7 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
     --Message Received--
     b'Hello World!'
     ```
+
+## Reference
+
+IoT Hub message [system and user-defined properties](https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages).
