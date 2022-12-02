@@ -5,20 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "d2ceventhublisten",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "justMyCode": true,
-            "args": [
-                "STORAGE CONNECTION",
-                "STORAGE CONTAINER",
-                "EVENT HUB CONNECTION",
-                "EVENT HUB NAME"
-            ]
-        },
-        {
             "name": "maprouteiothubc2d",
             "type": "python",
             "request": "launch",
