@@ -20,6 +20,8 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
     ```python
     import asyncio
     import time
+    import os
+    from azure.iot.device import Message
     from azure.iot.device.aio import IoTHubDeviceClient
     ```
 
@@ -28,21 +30,24 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
     |---------|---------|
     |`asyncio` | Needed to asyncronously `await` for messages from your IoT Hub instance |
     |`time` |  Used for the code execution to sleep while awaiting for incoming messages |
+    |`os` | Used to get the environment variable containing the connection string to IoT Hub |
+    |`Message` | The `Message` class from the `azure.iot.device` is needed to read and print the size and data of the message |
     |`IoTHubDeviceClient` | The `IoTHubDeviceClient` from the `azure.iot.device.aio` is needed to communicate to your IoT Hub |
 
-1. Copy and paste below the import statements the following function to receive incoming messages from IoT Hub. Note this function prints the entire incoming message.
+1. Copy and paste below the import statements the following function to receive incoming messages from IoT Hub. Note this function prints only the size of the message and payload.
 
     ```python
     def message_handler(message):
         print("--Message Received--")
-        print(message)
+        print("size={size}kb".format(size=(Message(message).get_size()/1000)))
+        print("payload={data}".format(data=Message(message).data))
     ```
 
 1. Copy and paste the main function below the message handler function. This function creates the client, registers the message handler to receive incoming messages, and gracefully shuts down the client.  It is important to call the shutdown function on the client to gracefully disconnect it from IoT Hub.
 
     ```python
     async def main():
-        conn_str = input("Device Connection String:")
+        conn_str = os.getenv("IOTHUB_DEVICE_CONNECTION_STRING")
         client = IoTHubDeviceClient.create_from_connection_string(conn_str)
         print("--Waiting for Messages--") 
         
@@ -69,8 +74,13 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
     | client.on_message_received = message_handler | Registers the message event handler for IoT Hub to call to the client. |
     | client.shutdown() | Gracefully disconnect the client from IoT Hub. |
 
-1. Open a command prompt and change to the `python` directory in your GitHub cloned `various` repo.
-1. [todo] How to get the device connection string
+1. Open a PowerShell session and change to the `python` directory in your GitHub cloned `various` repo.
+1. Run the following script to register your device connection string replacing the {your device connection string}
+
+    ```powershell
+    $Env:IOTHUB_DEVICE_CONNECTION_STRING="{your device connection string}"
+    ```
+
 1. Run the following script to start the listener.
 
     ```python
@@ -81,7 +91,7 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
 
     ```python
     C:\repos\various\python>python c2dlistener.py
-    IoT Hub *Device* Connection String:HostName=HubMsgHubw2lu5yeop2qwy.azure-devices.net;DeviceId=myDevice;SharedAccessKey=8IrOf5TrNmo17wv7upTAHllOVVIaL4tkq65E3YtZUkg=
+    IoT Hub *Device* Connection String:HostName=HubMsgHubw2lu5yeop2qwy.azure-devices.net;DeviceId=myDevice;SharedAccessKey=8IrOxxxxxxxxxxxxxxxxxxxxxxxxxtZUkg=
     --Waiting for Messages--
     ```
 
@@ -91,15 +101,25 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
 1. Copy and paste the import statement.
 
     ```python
+    import os
     from azure.iot.hub import IoTHubRegistryManager
     ```
 
 1. Copy and past the following code.
 
     ```python
-    deviceId = input("Device id: ")
-    registry_manager = IoTHubRegistryManager(input("IoT Hub Connection String: "))
-    registry_manager.send_c2d_message(deviceId, input("Message to send: "), properties={})
+    registry_manager = IoTHubRegistryManager(os.getenv("IOTHUB_CONNECTION_STRING"))
+    
+    try:
+        registry_manager.send_c2d_message(input("Device id: "), input("Message to send: "), {})
+    except Exception as ex:
+            print ( "Unexpected error {0}" % ex )
+    ```
+
+1. From Visual Studio Code terminal session, set your `IOTHUB_CONNECTION_STRING` environment variable.
+
+    ```powershell
+    $Env:IOTHUB_CONNECTION_STRING="{your IoT hub connection string}"
     ```
 
 1. Get your deviceId.
