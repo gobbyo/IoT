@@ -59,6 +59,32 @@ In this tutorial you'll create device code that sends a message to IoT Hub.
 
 ## Device sends a message to IoT Hub
 
+1. Create a new file called `d2csendmsg.py`.
+1. Copy and paste the following import statements into your `d2csendmsg.py` file
+
+    ```python
+    from azure.iot.device import IoTHubDeviceClient, Message
+    ```
+
+1. Copy and paste the following code to create the device client
+
+    ```python
+    client = IoTHubDeviceClient.create_from_connection_string(input("Device Connection String: "))
+    ```
+
+1. Copy and paste the following code to create a message
+
+    ```python
+    msg = Message('{{ "payload":"{0}" }}'.format(input("message to send: ")))
+    msg.content_type = 'application/json;charset=utf-8'
+    ```
+
+1. Copy and paste the following code to send the message to IoT Hub
+
+    ```python
+    client.send_message(msg)
+    ```
+
 ## Reference
 
-IoT Hub message [system and user-defined properties](https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages).
+- IoT Hub message [system and user-defined properties](https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)

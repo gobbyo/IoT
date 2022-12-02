@@ -42,7 +42,7 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
 
     ```python
     async def main():
-        conn_str = input("IoT Hub Device Connection String:")
+        conn_str = input("Device Connection String:")
         client = IoTHubDeviceClient.create_from_connection_string(conn_str)
         print("--Waiting for Messages--") 
         
@@ -52,7 +52,7 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
                 #ctrl-c to exit
                 await time.sleep(1000)
         except KeyboardInterrupt:
-            print("IoT Hub C2D Messaging device sample stopped")
+            print("Messaging device sample stopped")
         finally:
             # Graceful exit
             print("Shutting down IoT Hub Client")

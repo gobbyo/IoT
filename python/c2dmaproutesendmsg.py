@@ -2,6 +2,7 @@ import uuid
 import sys
 import asyncio
 import pickle
+from azure.iot.device import Message
 from azure.iot.hub import IoTHubRegistryManager
 
 async def main():
@@ -27,13 +28,13 @@ async def main():
             route.append(input("waypoint {0}:".format(str(i))).replace(" ",""))
             i += 1
 
-        data = (pickle.dumps(route))
+        data = Message(route)
+        data.content_type = 'application/json;charset=utf-8'
 
         props={}
         # optional: assign system properties
         props.update(messageId = str(uuid.uuid4().hex))
         props.update(correlationId = str(uuid.uuid4().hex))
-        props.update(contentType = "application/json")
 
         props.update(key = mapkey)
         props.update(maptype = maptype)
