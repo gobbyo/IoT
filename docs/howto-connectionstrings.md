@@ -49,12 +49,12 @@ You'll need to set all but the MAP_KEY environment variables in order to success
 1. Copy and paste the following script into the file and replace the `{Value}`
 
     ```powershell
-    [System.Environment]::SetEnvironmentVariable("IOTHUB_CONNECTION_STRING","{Value}")
-    [System.Environment]::SetEnvironmentVariable("IOTHUB_DEVICE_CONNECTION_STRING","{Value}")
-    [System.Environment]::SetEnvironmentVariable("STORAGE_CONNECTION_STRING","{Value}")
-    [System.Environment]::SetEnvironmentVariable("STORAGE_CONTAINER_NAME","{Value}")
-    [System.Environment]::SetEnvironmentVariable("EVENTHUB_CONNECTION_STRING","{Value}")
-    [System.Environment]::SetEnvironmentVariable("EVENTHUB_NAME","{Value}")
+    [System.Environment]::SetEnvironmentVariable("IOTHUB_CONNECTION_STRING","{Value}","Machine")
+    [System.Environment]::SetEnvironmentVariable("IOTHUB_DEVICE_CONNECTION_STRING","{Value}","Machine")
+    [System.Environment]::SetEnvironmentVariable("STORAGE_CONNECTION_STRING","{Value}","Machine")
+    [System.Environment]::SetEnvironmentVariable("STORAGE_CONTAINER_NAME","{Value}","Machine")
+    [System.Environment]::SetEnvironmentVariable("EVENTHUB_CONNECTION_STRING","{Value}","Machine")
+    [System.Environment]::SetEnvironmentVariable("EVENTHUB_NAME","{Value}","Machine")
     ```
 
 1. Open a [PowerShell session from Windows as an administrator](https://www.howtogeek.com/742916/how-to-open-windows-powershell-as-an-admin-in-windows-10/#:~:text=You%20can%20open%20Windows%20PowerShell%20with%20administrator%20privileges,and%20then%20type%20%E2%80%9Cpowershell%E2%80%9D%20in%20the%20text%20box.).
