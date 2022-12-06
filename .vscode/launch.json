@@ -5,16 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "maprouteiothubc2d",
+            "name": "c2dmaproutelistener",
             "type": "python",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "IOT HUB CONNECTION",
-                "DEVICE ID",
-                "MAP KEY"
+                "IOT HUB DEVICE CONNECTION"
             ]
         },
         {

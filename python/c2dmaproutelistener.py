@@ -1,7 +1,7 @@
 import asyncio
 import sys
 import time
-import pickle
+import json
 from azure.core.credentials import AzureKeyCredential
 from azure.maps.route import MapsRouteClient
 from maproute import createRouteList, printEVRoute, printEVRouteGuidance
@@ -32,7 +32,7 @@ def message_handler(message):
                     maptype = cprops[1]
                     print("\tmaptype={0}".format(maptype))
         elif property[0] == "data":
-            data = pickle.loads(property[1])
+            data = json.loads(property[1])
             print("\tdata={0}".format(data)) 
     
     if(maptype == 'guidance'):
@@ -47,10 +47,7 @@ def message_handler(message):
         print('unknown map type, choose \"route\" or \"guidance\"')
 
 async def main():
-    if len(sys.argv) != 2:
-        exit
-
-    conn_str = sys.argv[1]
+    conn_str = os.getenv("IOTHUB_DEVICE_CONNECTION_STRING")
 
     client = IoTHubDeviceClient.create_from_connection_string(conn_str)
 

@@ -1,25 +1,22 @@
+import os
+import json
 import uuid
-import sys
 import asyncio
-import pickle
 from azure.iot.device import Message
 from azure.iot.hub import IoTHubRegistryManager
 
 async def main():
-    if len(sys.argv) != 4:
-        exit
-
-    conn_str = sys.argv[1]
-    deviceId = sys.argv[2]
-    mapkey = sys.argv[3]
+    conn_str = os.getenv("IOTHUB_CONNECTION_STRING")
+    mapkey = os.getenv("MAP_KEY")
     
     try:
         # Create IoTHubRegistryManager
         registry_manager = IoTHubRegistryManager(conn_str)
 
-        maptype = input("'guidance' or 'route' map type:")
-        maxChargekWh = input("vehicle max charge in kWH (e.g. Tesla Model Y = 75):")
-        currentChargePercent = input("current charge %:")
+        deviceId = input("Device Id to process map request: ")
+        maptype = input("'guidance' or 'route' map type: ")
+        maxChargekWh = input("vehicle max charge in kWH (e.g. Tesla Model Y = 75): ")
+        currentChargePercent = input("current charge %: ")
         waypoints = input("number of waypoints (2 or more): ")
         
         route = []
@@ -27,9 +24,6 @@ async def main():
         while i < int(waypoints):
             route.append(input("waypoint {0}:".format(str(i))).replace(" ",""))
             i += 1
-
-        data = Message(route)
-        data.content_type = 'application/json;charset=utf-8'
 
         props={}
         # optional: assign system properties
@@ -41,7 +35,8 @@ async def main():
         props.update(maxChargekWh = str(maxChargekWh))
         props.update(currentChargePercent = str(currentChargePercent))
 
-        registry_manager.send_c2d_message(deviceId, data, properties=props)
+        print(json.dumps(route)) 
+        registry_manager.send_c2d_message(deviceId, json.dumps(route), props)
 
         input("Message sent, press Enter to continue...\n")
 
