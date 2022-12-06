@@ -50,23 +50,6 @@ In this tutorial you'll create device code that sends a message to IoT Hub.
         loop.run_until_complete(main())
     ```
 
-1. Open a separate PowerShell session and run the following scripts to set your machine environment variables in a terminal session in Visual Studio Code.  Replace the `{Storage Account > Access Keys > Connection String}` and `{Storage Account > Containers > Name}` using the storage account you created with your IoT Hub. See the article to [Manage storage account access keys](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/storage/common/storage-account-keys-manage.md#manage-storage-account-access-keys) for details. Replace the `{IoT Hub > Built-in endpoints > Event Hub-compatible endpoint}` and `{IoT Hub > Built-in endpoints > Event Hub-compatible name}` using the IoT Hub instance you created, see the article [Read from the built-in endpoint](https://learn.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messages-read-builtin#read-from-the-built-in-endpoint) for details.
-
-    ```powershell
-    $Env:STORAGE_CONTAINER_NAME="{Storage Account > Containers > Name}"    $Env:STORAGE_CONNECTION_STRING="{Storage Account > Access Keys > Connection String}"
-    $Env:EVENTHUB_NAME="{IoT Hub > Built-in endpoints > Event Hub-compatible name}"
-    $Env:EVENTHUB_CONNECTION_STRING="{IoT Hub > Built-in endpoints > endpoint}"
-    ```
-
-    For example,
-
-    ```powershell
-    $Env:STORAGE_CONTAINER_NAME="hubmsgresults"
-    $Env:STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=https;AccountName=hubmsgw2lu5yeop2qwy;AccountKey=P2X2******g==;EndpointSuffix=core.windows.net"
-    $Env:EVENTHUB_NAME="iothub-ehub-hubmsghubw-23135425-309430d575"
-    $Env:EVENTHUB_CONNECTION_STRING="Endpoint=sb://ihsuproddmres006dednamespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=W+tl*******QXM=;EntityPath=iothub-ehub-hubmsghubw-23135425-309430d575"
-    ```
-
 1. Change to your cloned GitHub directory `various\python` and run the event hub listener.
 
     ```powershell
@@ -87,13 +70,14 @@ In this tutorial you'll create device code that sends a message to IoT Hub.
 1. Copy and paste the following import statements into your `d2csendmsg.py` file
 
     ```python
+    import os
     from azure.iot.device import IoTHubDeviceClient, Message
     ```
 
 1. Copy and paste the following code to create the device client
 
     ```python
-    client = IoTHubDeviceClient.create_from_connection_string(input("Device Connection String: "))
+    client = IoTHubDeviceClient.create_from_connection_string(os.getenv("IOTHUB_DEVICE_CONNECTION_STRING"))
     ```
 
 1. Copy and paste the following code to create a message
@@ -122,7 +106,6 @@ In this tutorial you'll create device code that sends a message to IoT Hub.
     ```python
     [2022-12-05 00:11:10.230220] msg received: "{ "payload":"test me!" }"
     ```
-
 
 ## Reference
 
