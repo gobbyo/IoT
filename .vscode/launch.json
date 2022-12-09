@@ -5,17 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "c2dmaproutelistener",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "justMyCode": true,
-            "args": [
-                "IOT HUB DEVICE CONNECTION"
-            ]
-        },
-        {
             "name": "mqttconnect",
             "type": "python",
             "request": "launch",
