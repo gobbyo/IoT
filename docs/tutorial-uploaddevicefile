@@ -5,13 +5,13 @@
 1. Use the resource group for your IoT Hub
 
     ```powershell
-    $resourceGroupName = "HubMsgRG"
+    $resourceGroupName = "{your IoT Hub resource group name"
     ```
 
 1. Set the storage account name after creating it
 
     ```powershell
-    $storename = "storew2lu5yeop2qwy"
+    $storename = "{your storage account name}"
     ```
 
 1. Create a new storage account
@@ -21,6 +21,15 @@
     ```
 
 1. Find the storage account key and create a new "mydevicefiles" container
+
+    ```powershell
+    Connect-AzAccount -SubscriptionId "{your subscription id}"
+    
+    $ctx = New-AzStorageContext -StorageAccountName $storename -StorageAccountKey "{primary storage key}"
+    New-AzStorageContainer -Name "{your file container name}" -Context $ctx
+    ```
+
+    For example,
 
     ```powershell
     Connect-AzAccount -SubscriptionId "3286xxxx-xxxx-xxxx-xxxx-xxxxxxxx46e1"

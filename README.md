@@ -14,7 +14,7 @@ You don't need to know much about Azure and only be familiar with the basics of 
 1. [Set Your Connection Strings](docs/howto-connectionstrings.md)
 1. [Send a Cloud to Device Message](docs/tutorial-cloudtodevicemsg.md)
 1. [Send a Device To Cloud Message](docs/tutorial-devicetocloudmsg.md)
-1. [Upload a file to the Cloud from your Device](docs/tutorial-uploaddevicefile.md))
+1. [Upload a file to the Cloud from your Device](docs/tutorial-uploaddevicefile.md)
 
 ### Map Route Messaging Scenarios
 1. [Deploy Map Routing](docs/tutorial-deploymaps.md)
