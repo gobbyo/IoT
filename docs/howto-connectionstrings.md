@@ -28,6 +28,21 @@
     HostName=HubMxxxxxxxx2qwy.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=92/VxxxxxxxxmW4=
     ```
 
+## Set an Environment Variable with Python
+
+1. Using a python shell session
+
+    ```python
+    import os
+    os.environ['ENVIRONMENT_VARIABLE_NAME'] = 'ENVIRONMENT_VARIABLE_VALUE'
+    ```
+
+1. Run the following in a python shell session to verify
+
+    ```python
+    os.environ['ENVIRONMENT_VARIABLE_NAME']
+    ```
+
 Table of Environment Variables
 
 | **Environment Variable Name**  | **Value Found in portal.azure.com**  | **Details about finding the value**  | **File Referencing Environment Variable** |
@@ -70,6 +85,36 @@ You'll need to set all but the MAP_KEY environment variables in order to success
     ```powershell
     PS C:\repos\various> .\environementVars.ps1
     ```
+
+## Set all your environment variables with a python file
+
+You'll need to set all but the MAP_KEY environment variables in order to successfully use the tutorials. You'll get to setting the MAP_KEY later when you work on the Map Routing tutorials.
+
+1. Create a file named `environmentVariables.py`.
+1. Copy and paste the following script into the file and replace the `VALUE` with the appropriate value found in the table above.
+
+    ```python
+    os.environ['IOTHUB_CONNECTION_STRING'] = 'VALUE'
+    os.environ['IOTHUB_DEVICE_CONNECTION_STRING'] = 'VALUE'
+    os.environ['STORAGE_CONNECTION_STRING'] = 'VALUE'
+    os.environ['STORAGE_CONTAINER_NAME'] = 'VALUE'
+    os.environ['EVENTHUB_CONNECTION_STRING'] = 'VALUE'
+    os.environ['EVENTHUB_NAME'] = 'VALUE'
+    ```
+
+1. Change the directory to your GitHub cloned directory, for example `PS > cd "C:\repos\various"`
+1. Run the file in a python shell environment: 
+
+    ```powershell
+    .\environementVars.ps1
+    ```
+
+    For example,
+
+    ```powershell
+    PS C:\repos\various> .\environementVars.ps1
+    ```
+
 
 ## Clean up your Environment Variables
 
