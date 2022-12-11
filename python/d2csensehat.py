@@ -15,19 +15,19 @@ def get_stats(sense, client):
     sense.clear()
 
     f = (sense.temperature * 9/5) + 32
-    t = "temp: %f3.1"%f
+    t = "temp: %f3.0"%f
     print(t)
     sense.show_message(t,0.05,color,background)
 
-    u = "humidity: %3f"%sense.humidity
+    u = "humidity: %3.0f"%sense.humidity
     print(u)
     sense.show_message(u,0.05,color,background)
 
-    p = "pressure: %2f"%sense.pressure
+    p = "pressure: %2.0f"%sense.pressure
     print(p)
     sense.show_message(p,0.05,color,background)
 
-    msg = '{{ "sent_utc":"%s", "fahrenheit":"%3.1f", "humidity":"%3f", "pressure":"%2f" }}'%(datetime.utcnow().isoformat(),sense.temperature,sense.humidity,sense.pressure)
+    msg = '{{ "sent_utc":"%s", "fahrenheit":"%3.0f", "humidity":"%3.0f", "pressure":"%2.0f" }}'%(datetime.utcnow().isoformat(),sense.temperature,sense.humidity,sense.pressure)
     client.send_message(msg)
 
 def main():
