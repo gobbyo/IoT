@@ -27,7 +27,7 @@ def get_stats(sense, client):
     print(p)
     sense.show_message(p,0.05,color,background)
 
-    msg = '{{ "sent_utc":"%s", "fahrenheit":"%3.0f", "humidity":"%3.0f", "pressure":"%2.0f" }}'%(datetime.utcnow().isoformat(),f,sense.humidity,sense.pressure)
+    msg = str('{{ "sent_utc":"%s", "fahrenheit":"%3.0f", "humidity":"%3.0f", "pressure":"%2.0f" }}'%(datetime.utcnow().isoformat(),f,sense.humidity,sense.pressure))
     print("msg: %s"%msg)
     client.send_message(msg)
 
