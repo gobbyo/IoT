@@ -15,7 +15,7 @@ def get_stats(sense, client):
     sense.clear()
 
     f = (sense.temperature * 9/5) + 32
-    t = "temp: %f3.0"%f
+    t = "temp: %3.0f"%f
     print(t)
     sense.show_message(t,0.05,color,background)
 
@@ -27,7 +27,7 @@ def get_stats(sense, client):
     print(p)
     sense.show_message(p,0.05,color,background)
 
-    msg = Message('{{ "sent_utc":"%s", "fahrenheit":"%3.0f", "humidity":"%3.0f", "pressure":"%2.0f" }}'%(datetime.utcnow().isoformat(),f,sense.humidity,sense.pressure))
+    msg = Message(json.dumps('{{ "sent_utc":"%s", "fahrenheit":"%3.0f", "humidity":"%3.0f", "pressure":"%2.0f" }}'%(datetime.utcnow().isoformat(),f,sense.humidity,sense.pressure)))
     msg.content_encoding = 'utf-8'
     msg.content_type = 'application/json'
     client.send_message(msg)
