@@ -1,7 +1,6 @@
 import time
 import json
-import os
-import datetime
+from datetime import datetime
 from decouple import config
 from azure.iot.device import IoTHubDeviceClient, Message
 from sense_hat import SenseHat
