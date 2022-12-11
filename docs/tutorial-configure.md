@@ -102,10 +102,16 @@ This tutorial must be completed before any other tutorials: you'll install Visua
     pip install azure-identity
     ```
 
-1. Install the [Azure Maps Route Package client library](https://learn.microsoft.com/en-us/python/api/overview/azure/maps-route-readme?view=azure-python-preview) by running the following python script in your terminal session:
+1. Install the [Python Decouple](https://pypi.org/project/python-decouple/) by running the following python script in your terminal session:
 
     ```python
     pip install azure-maps-route
+    ```
+
+1. Install the [Azure IoT device client package](https://pypi.org/project/azure-iot-device/) by running the following python script in your terminal session:
+
+    ```powershell
+    pip install python-decouple
     ```
 
 ### Test Your Python Installation

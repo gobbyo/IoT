@@ -71,13 +71,14 @@ In this tutorial you'll create device code that sends a message to IoT Hub.
 
     ```python
     import os
+    from decouple import config
     from azure.iot.device import IoTHubDeviceClient, Message
     ```
 
 1. Copy and paste the following code to create the device client
 
     ```python
-    client = IoTHubDeviceClient.create_from_connection_string(os.getenv("IOTHUB_DEVICE_CONNECTION_STRING"))
+    client = IoTHubDeviceClient.create_from_connection_string(config("IOTHUB_DEVICE_CONNECTION_STRING"))
     ```
 
 1. Copy and paste the following code to create a message
