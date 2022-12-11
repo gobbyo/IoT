@@ -30,7 +30,9 @@ def get_stats(sense, client):
     print(b)
     sense.show_message(b,0.05,color,background)
 
-    msg = json.dumps('{ "msgsent_utc":"{0}", "fahrenheit":"{1}", "humdity":"{2}", "pressure":"{3}" }'.format(datetime.utcnow().isoformat(),t,h,b))
+    msg = Message(json.dumps('{ "msgsent_utc":"{0}", "fahrenheit":"{1}", "humdity":"{2}", "pressure":"{3}" }'.format(datetime.utcnow().isoformat(),t,h,b)))
+    msg.content_type = 'application/json'
+    msg.content_encoding = 'utf-8'
     client.send_message(msg)
 
 def main():
