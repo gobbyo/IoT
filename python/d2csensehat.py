@@ -41,7 +41,7 @@ def main():
 
         while True:
             get_stats(sense, client)
-            time.sleep(60.0)
+            time.sleep(300.0)
 
     except KeyboardInterrupt:
         print("Device sample stopped")
