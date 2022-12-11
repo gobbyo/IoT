@@ -21,7 +21,7 @@ def get_stats(sense, client):
     sense.show_message(t,0.05,color,background)
 
     u = round(sense.humidity)
-    h = "humdity: {0}".format(str(u))
+    h = "humidity: {0}".format(str(u))
     print(h)
     sense.show_message(h,0.05,color,background)
 
