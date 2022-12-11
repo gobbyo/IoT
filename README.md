@@ -20,6 +20,3 @@ You don't need to know much about Azure and only be familiar with the basics of 
 1. [Deploy Map Routing](docs/tutorial-deploymaps.md)
 1. [Create a Turn-by-turn Route Device](docs/tutorial-maproutelistener.md)
 1. [Send a Route of Coordinates](docs/tutorial-maproutecommand.md)
-
-### Messaging with Files
-1. Send a file to your Device
