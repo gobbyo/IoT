@@ -20,7 +20,7 @@ async def main():
         client.on_message_received = message_handler
         while True:
             #ctrl-c to exit
-            await time.sleep(5)
+            await time.sleep(1000)
     except KeyboardInterrupt:
         print("Messaging device sample stopped")
     finally:
