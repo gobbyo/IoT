@@ -15,8 +15,15 @@ You don't need to know much about Azure and only be familiar with the basics of 
 1. [Send a Cloud to Device Message](docs/tutorial-cloudtodevicemsg.md)
 1. [Send a Device To Cloud Message](docs/tutorial-devicetocloudmsg.md)
 1. [Upload a file to the Cloud from your Device](docs/tutorial-uploaddevicefile.md)
+1. Create a Stream Analytics Job
 
-### Map Route Messaging Scenarios
+### Map Routing
 1. [Deploy Map Routing](docs/tutorial-deploymaps.md)
 1. [Create a Turn-by-turn Route Device](docs/tutorial-maproutelistener.md)
 1. [Send a Route of Coordinates](docs/tutorial-maproutecommand.md)
+
+### Raspberry Pi Sensors and Actuators
+1. Set up and configure your Raspberry Pi
+1. Install and Code your Sensor
+1. Send Sensor Data to the Cloud
+1. Send a Command to your Raspberry Pi
