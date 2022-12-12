@@ -1,13 +1,10 @@
 import time
-import json
 from datetime import datetime
 from decouple import config
 from azure.iot.device import IoTHubDeviceClient, Message
 from sense_hat import SenseHat
 
-def get_stats(sense, client):
-    background = (0,0,0)
-    color = (145, 141, 10)
+def show_stats(sense,color,background):
     s = time.strftime('%I:%M %p')
     print(s)
     sense.show_message(s,0.05,color,background)
@@ -27,18 +24,30 @@ def get_stats(sense, client):
     print(p)
     sense.show_message(p,0.05,color,background)
 
+def send_stats(sense, client, color,background):
+    f = (sense.temperature * 9/5) + 32
     msg = '{ "sent_utc":"%sZ", "fahrenheit":"%3.0f", "humidity":"%3.0f", "pressure":"%3.0f" }'%(datetime.utcnow().isoformat(),f,sense.humidity,sense.pressure)
     #print("msg: %s"%msg)
     client.send_message(msg)
 
 def main():
+    background = (0,0,0)
+    color = (255, 255, 255)
+    i = 0
+
     try:
         sense = SenseHat()
         client = IoTHubDeviceClient.create_from_connection_string(config("IOTHUB_DEVICE_CONNECTION_STRING"))
 
         while True:
-            get_stats(sense, client)
-            time.sleep(300.0)
+            if i == 10:
+                send_stats(sense, client)
+                i = 0
+            else:
+                show_stats(sense,color,background)
+
+            i += 1      
+            time.sleep(30.0)
 
     except KeyboardInterrupt:
         print("Device sample stopped")

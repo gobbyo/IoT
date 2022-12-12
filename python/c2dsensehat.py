@@ -1,18 +1,23 @@
 import asyncio
 import time
-import json
-from decouple import config
+#from decouple import config
+import os
 from azure.iot.device import Message
 from azure.iot.device.aio import IoTHubDeviceClient
 
 def message_handler(message):
     print("--Message Received--")
-    print("payload={data}".format(data=Message(message).data))
-    json.loads(Message(message).data)
-    print("payload (json)={data}".format(data=json.dumps()))
+    try:
+        d = str(Message(message).data)
+        print("payload={data}".format(data=d))
+    finally:
+        print("--Message Processed--")
+
 
 async def main():
-    conn_str = config("IOTHUB_DEVICE_CONNECTION_STRING")
+    #conn_str = config("IOTHUB_DEVICE_CONNECTION_STRING")
+    conn_str = os.getenv("IOTHUB_DEVICE_CONNECTION_STRING")
+
     client = IoTHubDeviceClient.create_from_connection_string(conn_str)
     print("--Waiting for Messages--") 
     
