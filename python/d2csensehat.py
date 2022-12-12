@@ -24,7 +24,7 @@ def show_stats(sense,color,background):
     print(p)
     sense.show_message(p,0.05,color,background)
 
-def send_stats(sense, client, color,background):
+def send_stats(sense, client):
     f = (sense.temperature * 9/5) + 32
     msg = '{ "sent_utc":"%sZ", "fahrenheit":"%3.0f", "humidity":"%3.0f", "pressure":"%3.0f" }'%(datetime.utcnow().isoformat(),f,sense.humidity,sense.pressure)
     #print("msg: %s"%msg)
