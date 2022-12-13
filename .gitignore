@@ -1,0 +1,16 @@
+# Secrets
+.env
+
+# Compiler outputs #
+*.a
+*.bat
+*.exe
+
+# Directories #
+API_Parser_Output
+Obj
+
+# Packages #
+*.gz
+*.iso
+*.jar
