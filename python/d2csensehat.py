@@ -31,12 +31,11 @@ def send_stats(sense, client):
     client.send_message(msg)
 
 def main():
-
+    background = (0,0,0)
+    color = (50,50,100)
+    i = 0
 
     try:
-        background = (0,0,0)
-        color = (50, 50, 100)
-        i = 0       
         sense = SenseHat()
         client = IoTHubDeviceClient.create_from_connection_string(config("IOTHUB_DEVICE_CONNECTION_STRING"))
 
