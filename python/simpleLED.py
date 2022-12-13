@@ -23,7 +23,7 @@ while True:
         red.value = 0
         green.value = 0
         blue.value = k
-    time.sleep(0.25)
+    time.sleep(0.125)
 
     j += 1
     if j > 2:
