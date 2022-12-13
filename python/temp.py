@@ -2,6 +2,10 @@ import time
 
 class LED:
     value = 0
+    def off():
+        value = 0
+    def on():
+        value = 1
 
 red = LED()
 green = LED()

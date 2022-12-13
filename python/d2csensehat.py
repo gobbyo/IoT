@@ -35,7 +35,7 @@ def main():
 
     try:
         background = (0,0,0)
-        color = (255, 255, 255)
+        color = (210, 210, 210)
         i = 0       
         sense = SenseHat()
         client = IoTHubDeviceClient.create_from_connection_string(config("IOTHUB_DEVICE_CONNECTION_STRING"))
