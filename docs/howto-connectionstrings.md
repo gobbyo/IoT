@@ -32,8 +32,7 @@ Table of Environment Variables
 1. Obtain the secret by opening a python session in the same directory as the '.env' file where you'll run your scripts.
 
     ```python
-    cd {github clone root}/python
-    python
+    cd {github clone root}/python python
     from decouple import config
     config('IOTHUB_DEVICE_CONNECTION_STRING')
     ```
