@@ -28,3 +28,21 @@ Table of Environment Variables
 | `EVENTHUB_CONNECTION_STRING` | IoT Hub > Built-in endpoints > Event Hub-compatible endpoint | [Read from the built-in endpoint](https://learn.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messages-read-builtin#read-from-the-built-in-endpoint) | `d2ceventhublistener.py, c2dmaproutelistener.py` |
 | `EVENTHUB_NAME` | IoT Hub > Built-in endpoints > Event Hub-compatible name | [Read from the built-in endpoint](https://learn.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messages-read-builtin#read-from-the-built-in-endpoint) | `d2ceventhublistener.py, c2dmaproutelistener.py` |
 | `MAP_KEY` | Azure Maps > Authentication > Primary Key | [Get the primary key for your account](https://learn.microsoft.com/en-us/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account) | c2devent |
+
+1. Obtain the secret by opening a python session in the same directory as the '.env' file where you'll run your scripts.
+
+    ```python
+    cd {github clone root}/python
+    python
+    from decouple import config
+    config('IOTHUB_DEVICE_CONNECTION_STRING')
+    ```
+
+    for example,
+
+    ```python
+    cd c:/repos/various/python python
+    >>> from decouple import config
+    >>> config('IOTHUB_DEVICE_CONNECTION_STRING')
+    >>> 'HostName=HubMsg********p2qwy.azure-devices.net;DeviceId=myDevice;SharedAccessKey=8IrO********ZUkg='
+    ```
