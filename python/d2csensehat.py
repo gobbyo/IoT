@@ -5,10 +5,6 @@ from azure.iot.device import IoTHubDeviceClient, Message
 from sense_hat import SenseHat
 
 def show_stats(sense,color,background):
-    s = time.strftime('%I:%M %p')
-    print(s)
-    sense.show_message(s,0.05,color,background)
-
     sense.clear()
 
     f = (sense.temperature * 9/5) + 32
@@ -24,6 +20,10 @@ def show_stats(sense,color,background):
     print(p)
     sense.show_message(p,0.05,color,background)
 
+    s = time.strftime('%I:%M %p')
+    print(s)
+    sense.show_message(s,0.05,color,background)
+
 def send_stats(sense, client):
     f = (sense.temperature * 9/5) + 32
     msg = '{ "sent_utc":"%sZ", "fahrenheit":"%3.0f", "humidity":"%3.0f", "pressure":"%3.0f" }'%(datetime.utcnow().isoformat(),f,sense.humidity,sense.pressure)
@@ -31,12 +31,11 @@ def send_stats(sense, client):
     client.send_message(msg)
 
 def main():
-
+    background = (0,0,0)
+    color = (50,50,100)
+    i = 0
 
     try:
-        background = (0,0,0)
-        color = (210, 210, 210)
-        i = 0       
         sense = SenseHat()
         client = IoTHubDeviceClient.create_from_connection_string(config("IOTHUB_DEVICE_CONNECTION_STRING"))
 
