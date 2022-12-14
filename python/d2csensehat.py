@@ -41,7 +41,7 @@ def main():
         client = IoTHubDeviceClient.create_from_connection_string(config("IOTHUB_DEVICE_CONNECTION_STRING"))
 
         while True:
-            if i >= 10:
+            if i >= 3:
                 send_stats(sense, client)
                 i = 0
             else:

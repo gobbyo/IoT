@@ -26,4 +26,4 @@ You don't need to know much about Azure and only be familiar with the basics of 
 1. Set up and configure your Raspberry Pi
 1. Install and Code your Sensor
 1. Send Sensor Data to the Cloud
-1. Send a Command to your Raspberry Pi
+1. Send a Command to your Raspberry Pi from the Cloud
