@@ -32,7 +32,7 @@ def send_stats(sense, client):
 
 def main():
     background = (0,0,0)
-    color = (50,50,100)
+    color = (150,150,150)
     i = 0
 
     try:
