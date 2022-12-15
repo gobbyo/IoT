@@ -1,7 +1,7 @@
 import time
 from datetime import datetime
 from decouple import config
-from azure.iot.device import IoTHubDeviceClient, Message
+from azure.iot.device import IoTHubDeviceClient, IotHubClientException
 from sense_hat import SenseHat
 
 def show_stats(sense,color,background):
@@ -25,10 +25,19 @@ def show_stats(sense,color,background):
     sense.show_message(s,0.05,color,background)
 
 def send_stats(sense, client):
+    success = True
     f = (sense.temperature * 9/5) + 32
     msg = '{ "sent_utc":"%sZ", "fahrenheit":"%3.0f", "humidity":"%3.0f", "pressure":"%3.0f" }'%(datetime.utcnow().isoformat(),f,sense.humidity,sense.pressure)
     #print("msg: %s"%msg)
-    client.send_message(msg)
+
+    try:
+        client.send_message(msg)
+    except IotHubClientException as e:
+        print("Exception: {0}".format(e))
+        success = False
+    finally:
+        if success:
+            print("Message sent to IoT Hub")
 
 def main():
     background = (0,0,0)
