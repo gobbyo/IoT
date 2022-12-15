@@ -1,7 +1,8 @@
 import time
 from datetime import datetime
 from decouple import config
-from azure.iot.device import IoTHubDeviceClient, IotHubClientException
+from azure.iot.device import IoTHubDeviceClient
+from azure.iot.device import exceptions
 from sense_hat import SenseHat
 
 def show_stats(sense,color,background):
@@ -32,7 +33,7 @@ def send_stats(sense, client):
 
     try:
         client.send_message(msg)
-    except IotHubClientException as e:
+    except exceptions as e:
         print("Exception: {0}".format(e))
         success = False
     finally:
