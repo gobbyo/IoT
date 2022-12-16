@@ -5,6 +5,7 @@ from azure.iot.device import exceptions
 from sense_hat import SenseHat
 import os
 import logging
+import datetime
 
 def main():
     try:
@@ -15,13 +16,12 @@ def main():
         msg = '{ "sent_utc":"%sZ", "fahrenheit":"%3.0f", "humidity":"%3.0f", "pressure":"%3.0f" }'%(datetime.utcnow().isoformat(),f,sense.humidity,sense.pressure)
         client.send_message(msg)
         
-        logger = logging.getLogger()
-        handler = logging.FileHandler(os.getcwd() + '/logfile.txt')
-        logger.addHandler(handler)
-        logger.info(msg)
+        path = os.getcwd() + '/log{0}.txt'.format(datetime.datetime.utcnow().strftime("%Y%m%d"))
+        logging.basicConfig(filename=path, filemode='a', level=logging.DEBUG)
+        logging.info(msg)
 
     except exceptions as e:
-        logger.error(e)
+        logging.error(e)
     finally:
         # Graceful exit
         sense.clear()
