@@ -17,7 +17,7 @@ def main():
         msg = '{ "sent_utc":"%sZ", "fahrenheit":"%3.0f", "humidity":"%3.0f", "pressure":"%3.0f" }'%(datetime.utcnow().isoformat(),f,sense.humidity,sense.pressure)
         client.send_message(msg)
         
-        path = os.getcwd() + '/log{0}.txt'.format(datetime.now(timezone.utc).strftime("%Y%m%d"))
+        path = os.getcwd() + '//log{0}.txt'.format(datetime.now(timezone.utc).strftime("%Y%m%d"))
         logging.basicConfig(filename=path, filemode='a', level=logging.DEBUG)
         logging.info(msg)
     finally:
