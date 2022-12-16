@@ -19,9 +19,6 @@ def main():
         path = os.getcwd() + '/log{0}.txt'.format(datetime.datetime.utcnow().strftime("%Y%m%d"))
         logging.basicConfig(filename=path, filemode='a', level=logging.DEBUG)
         logging.info(msg)
-
-    except exceptions as e:
-        logging.error(e)
     finally:
         # Graceful exit
         sense.clear()
