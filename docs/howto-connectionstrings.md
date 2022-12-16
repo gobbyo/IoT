@@ -17,9 +17,9 @@
     EVENTHUB_NAME="{Built-in Endpoint Event Hub Name}"
     ```
 
-Table of Environment Variables
+Table of Connection Variables
 
-| **Environment Variable Name**  | **Value Found in portal.azure.com**  | **Details about finding the value**  | **File Referencing Environment Variable** |
+| **Connection Variable Name**  | **Value Found in portal.azure.com**  | **Details about finding the value**  | **File Referencing Environment Variable** |
 |:---------|:---------|:---------|:---------|
 | `IOTHUB_CONNECTION_STRING`  | IoT Hub > Shared Access Policies > service (policy) > Primary Connection String |         | `c2dsendmsg.py` |
 | `IOTHUB_DEVICE_CONNECTION_STRING` | IoT Hub > Devices > {your device} > Primary Connection String |         | `d2ceventhublistener.py, c2dlistener.py, d2csendmsg.py, c2dmaproutelistener` |
