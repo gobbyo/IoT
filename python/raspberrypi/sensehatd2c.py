@@ -3,6 +3,7 @@ from decouple import config
 from azure.iot.device import IoTHubDeviceClient
 from azure.iot.device import exceptions
 from sense_hat import SenseHat
+import os
 import logging
 
 def main():
@@ -15,11 +16,10 @@ def main():
         client.send_message(msg)
         
         logger = logging.getLogger()
-        handler = logging.FileHandler('logfile.log')
+        handler = logging.FileHandler(os.getcwd() + '/logfile.txt')
         logger.addHandler(handler)
         logger.info(msg)
 
-#Testing our Logge
     except exceptions as e:
         logger.error(e)
     finally:
