@@ -14,6 +14,9 @@ def main():
         f = (sense.temperature * 9/5) + 32
         msg = '{ "sent_utc":"%sZ", "fahrenheit":"%3.0f", "humidity":"%3.0f", "pressure":"%3.0f" }'%(datetime.utcnow().isoformat(),f,sense.humidity,sense.pressure)
         client.send_message(msg)
+    except Exception as e:
+        print(e)
+        print("-------")
     finally:
         # Graceful exit
         print(msg)
