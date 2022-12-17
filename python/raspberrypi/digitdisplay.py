@@ -39,7 +39,7 @@ def loop():
         for val in segnum:
             paintnumbers(val)
             i += 1
-            time.sleep(0.25)
+            time.sleep(0.5)
 
 def end():
     for pin in pins:
