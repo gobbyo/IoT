@@ -94,7 +94,7 @@ def loop():
         while i < 10:
             paintnumbers(i)
             i += 1
-            time.sleep(0.25)
+            time.sleep(0.5)
         i = 9
         while i >= 0:
             paintnumbers(i)
