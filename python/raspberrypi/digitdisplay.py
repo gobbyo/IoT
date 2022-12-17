@@ -38,7 +38,6 @@ def loop():
     while True:
         for val in segnum:
             paintnumbers(val)
-            i += 1
             time.sleep(0.5)
 
 def end():
