@@ -1,18 +1,22 @@
 import socket
+import time
 from decouple import config
 from azure.iot.device import IoTHubDeviceClient, exceptions
 
 def get_ip_address():
-    print("enter get_ip_address()")
     ip_address = '';
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(("8.8.8.8",80))
-    ip_address = s.getsockname()[0]
-    s.close()
-    print("returning ip_address()")
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8",80))
+        ip_address = s.getsockname()[0]
+        s.close()
+    except socket.error as msg:
+        print("Error: {0}".format(msg))
     return ip_address
 
 def main():
+    #wait 30 seconds for the system to get up and running after reboot
+    time.sleep(30)
     try:
         hostname = socket.gethostname()
         ip_address = get_ip_address()
