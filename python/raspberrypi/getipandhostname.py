@@ -21,8 +21,10 @@ def main():
         print(msg)
         client = IoTHubDeviceClient.create_from_connection_string(config("IOTHUB_DEVICE_CONNECTION_STRING"))
         client.send_message(msg)
+    except exceptions as e:
+        print(e)
     finally:
-        print("complete getipandhostname.py")
+        print("Completed getipandhostname.py")
 
 if __name__ == "__main__":
     main()
