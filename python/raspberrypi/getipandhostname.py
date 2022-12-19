@@ -1,7 +1,7 @@
 import socket
 import time
 from decouple import config
-from azure.iot.device import IoTHubDeviceClient, exceptions
+from azure.iot.device import IoTHubDeviceClient
 
 def get_ip_address():
     ip_address = '';
@@ -21,12 +21,10 @@ def main():
         hostname = socket.gethostname()
         ip_address = get_ip_address()
 
-        msg = '{{ "Hostname:{0}", "IPAddress:{1}" }}'.format(hostname, ip_address)
+        msg = '{{ "Hostname":"{0}", "IPAddress":"{1}" }}'.format(hostname, ip_address)
         print(msg)
         client = IoTHubDeviceClient.create_from_connection_string(config("IOTHUB_DEVICE_CONNECTION_STRING"))
         client.send_message(msg)
-    except exceptions as e:
-        print(e)
     finally:
         print("Completed getipandhostname.py")
 
