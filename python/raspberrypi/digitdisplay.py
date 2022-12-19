@@ -31,7 +31,7 @@ def setup():
 def paintnumbers(val):
     i = 0
     for pin in pins:
-        GPIO.output(pin,val & (0x01 << i))
+        GPIO.output(pin,(val & (0x01 << i)) >> i)
         i += 1
 
 def loop():
