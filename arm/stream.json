@@ -13,7 +13,7 @@
         "defaultValue": "null",
         "type": "String"
     },
-    "streamAnalyticsJobName": {
+    "streamJobName": {
       "type": "string",
       "maxLength": 63,
       "minLength": 3,
@@ -46,7 +46,7 @@
     {
       "type": "Microsoft.StreamAnalytics/streamingjobs",
       "apiVersion": "2021-10-01-preview",
-      "name": "[parameters('streamAnalyticsJobName')]",
+      "name": "[parameters('streamJobName')]",
       "location": "[parameters('location')]",
       "properties": {
         "sku": {
@@ -61,7 +61,7 @@
           "name": "Transformation",
           "properties": {
             "streamingUnits": "[parameters('numberOfStreamingUnits')]",
-            "query": "SELECT\r\n    *\r\nINTO\r\n    [YourOutputAlias]\r\nFROM\r\n    [YourInputAlias]"
+            "query": "SELECT\r\n    *\r\nINTO\r\n    [YourStorageAccount]\r\nFROM\r\n    [YourIoTHub]"
           }
         }
       }
