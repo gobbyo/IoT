@@ -2,6 +2,14 @@ import RPi.GPIO as GPIO
 import time
 
 #      segment LED
+#
+#         a
+#        ___
+#   f   |   |   b
+#       |___|        g
+#   e   |   |   c
+#       |___|   _    h
+#         d
 # num   hgfe dcba   hex
 
 # 0 = 	0011 1111   0x3F
@@ -18,7 +26,8 @@ import time
 # b =   1111 1100   0xFC
 # C =   1011 1001   0xB9
 # d =   1101 1110   0xDE
-# F =   1111 0001   0xF1
+# E =   1111 0001   0xF1
+# F =   1011 1001   0XB9
 
 pins = [4,5,6,12,13,16,17,18]
 segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67,0xF7,0xFC,0xB9,0xDE,0xF1]

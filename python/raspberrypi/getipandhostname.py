@@ -4,7 +4,7 @@ from decouple import config
 from azure.iot.device import IoTHubDeviceClient
 
 def get_ip_address():
-    ip_address = '';
+    ip_address = ''
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         s.connect(("8.8.8.8",80))
