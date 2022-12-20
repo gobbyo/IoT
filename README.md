@@ -15,7 +15,7 @@ You don't need to know much about Azure and only be familiar with the basics of 
 1. [Send a Cloud to Device Message](docs/tutorial-cloudtodevicemsg.md)
 1. [Send a Device To Cloud Message](docs/tutorial-devicetocloudmsg.md)
 1. [Upload a file to the Cloud from your Device](docs/tutorial-uploaddevicefile.md)
-1. Create a Stream Analytics Job
+1. [Create a Stream Analytics Job](docs/tutorial-deploystreamtostorage.md)
 
 ### Map Routing
 1. [Deploy Map Routing](docs/tutorial-deploymaps.md)

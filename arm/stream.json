@@ -9,10 +9,6 @@
         "description": "Location for the resources."
       }
     },
-    "storageAccountName": {
-        "defaultValue": "null",
-        "type": "String"
-    },
     "streamJobName": {
       "type": "string",
       "maxLength": 63,
@@ -42,6 +38,9 @@
       }
     }
   },
+  "variables": {
+    "storageAccountName": "[format('{0}{1}', 'stor', uniqueString(resourceGroup().id))]"
+  },
   "resources": [
     {
       "type": "Microsoft.StreamAnalytics/streamingjobs",
@@ -69,7 +68,7 @@
     {
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2022-05-01",
-      "name": "[parameters('storageAccountName')]",
+      "name": "[variables('storageAccountName')]",
       "location": "[parameters('location')]",
       "sku": {
         "name": "Standard_LRS",
@@ -111,9 +110,9 @@
     {
       "type": "Microsoft.Storage/storageAccounts/blobServices",
       "apiVersion": "2022-05-01",
-      "name": "[concat(parameters('storageAccountName'), '/default')]",
+      "name": "[concat(variables('storageAccountName'), '/default')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
       ],
       "sku": {
         "name": "Standard_LRS",
@@ -144,9 +143,9 @@
     {
       "type": "Microsoft.Storage/storageAccounts/queueServices",
       "apiVersion": "2022-05-01",
-      "name": "[concat(parameters('storageAccountName'), '/default')]",
+      "name": "[concat(variables('storageAccountName'), '/default')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
       ],
       "properties": {
         "cors": {
@@ -157,9 +156,9 @@
     {
       "type": "Microsoft.Storage/storageAccounts/tableServices",
       "apiVersion": "2022-05-01",
-      "name": "[concat(parameters('storageAccountName'), '/default')]",
+      "name": "[concat(variables('storageAccountName'), '/default')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
       ],
       "properties": {
         "cors": {
@@ -170,10 +169,10 @@
     {
       "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
       "apiVersion": "2022-05-01",
-      "name": "[concat(parameters('storageAccountName'), '/default/raspberrypi')]",
+      "name": "[concat(variables('storageAccountName'), '/default/raspberrypi')]",
       "dependsOn": [
-          "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccountName'), 'default')]",
-          "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+          "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storageAccountName'), 'default')]",
+          "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
       ],
       "properties": {
           "immutableStorageWithVersioning": {
