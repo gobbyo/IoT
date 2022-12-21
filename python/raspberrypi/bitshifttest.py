@@ -30,7 +30,7 @@ pins = [4,5,6,12,13,16,17,18]
 p = ['a','b', 'c', 'd', 'e', 'f', 'g', 'h']
 segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67,0xF7,0xFC,0xB9,0xDE,0xF1,0XB9]
 
-def paintnumbers(val):
+def displaynumber(val):
     i = 0
     char = 97
     seg = []
@@ -47,7 +47,7 @@ def main():
         else:
             print("--{0}--".format(chr(65 + (num - 10))))
 
-        paintnumbers(segnum[num])
+        displaynumber(segnum[num])
         num += 1
 
 if __name__ == '__main__':     # Program start from here
