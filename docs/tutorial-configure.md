@@ -5,7 +5,13 @@ This tutorial must be completed before any other tutorials: you'll install Visua
 ### Install Visual Studio Code and Extensions
 
 1. Install [Visual Studio Code](https://code.visualstudio.com/Download) for Windows. Allow Visual Studio Code to launch.
-1. Within Visual Studio Code, open a [PowerShell terminal session][lnk_ps_session] in administrative mode and run the following commands:
+
+1. From Visual Studio Code type **ctrl-shift-x** and install the following using the textbox to `Search Extensions in Marketplace`:
+
+- `Remote Explorer`, published by Microsoft
+- `Python`, published by Microsoft
+
+1. Within Visual Studio Code, open a [PowerShell terminal session](https://learn.microsoft.com/en-us/visualstudio/ide/reference/command-prompt-powershell?view=vs-2022) in administrative mode and run the following commands:
 
     ```powershell
     Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted -Force
@@ -67,13 +73,12 @@ This tutorial must be completed before any other tutorials: you'll install Visua
 ### Install Python
 
 1. From a browser open [install python](https://www.python.org/downloads/). Be sure to check the box `Use admin privileges when installing py.exe` and  `Add python.exe to PATH` at the start of the install, then select `Install Now`.  At the end of the install select the `Disable path length limit`, then select the `close` button.
-1. Install the Visual Studio Code [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 1. From Visual Studio Code, select the `View > Command Pallette..` menu, type the following in the command pallette text box:
 
     |#  |Item  | Comment   |
     |:--------|:---------|:---------|
     |1     | `Python: Create Environment` | Creates a Python virtual environment  |
-    |2     | `Venv` to create a virtual environment | See [https://docs.python.org/3/tutorial/venv.html](https://docs.python.org/3/tutorial/venv.html) |
+    |2     | `venv` to create a virtual environment | See [https://docs.python.org/3/tutorial/venv.html](https://docs.python.org/3/tutorial/venv.html) |
     |3     |  Select the recommended Python interpreter | There may be multiple interpreters if you are installing on your own machine and have used Python in the past |
 
 ### Install Azure Client Libraries
@@ -108,50 +113,35 @@ This tutorial must be completed before any other tutorials: you'll install Visua
     pip install azure-maps-route
     ```
 
-1. Install the [Azure IoT device client package](https://pypi.org/project/azure-iot-device/) by running the following python script in your terminal session:
-
-    ```powershell
-    pip install python-decouple
-    ```
-
 ### Test Your Python Installation
 
 1. From your Visual Studio Code terminal session, change the GitHub cloned directory from `various` to `python` directory. Type `python` and hit the return key.
 
     ```powershell
-    PS C:\repos\various> cd python
-    PS C:\repos\various\python> python
+    PS C:\repos\various> python
     ```
 
     For example,
 
     ```powershell
     PS C:\repos\various> cd python
-    (.venv) PS C:\repos\various\python> python
+    (.venv) PS C:\repos\various> python
     Python 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)] on win32
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
     ```
 
-1. The following python scripts, run the `createRouteList` in the `maproute` module, and hit the enter key.
+1. Verify your python terminal session
 
     ```python
-    from maproute import createRouteList
-    listOfLatLon=[]
-    listOfLatLon.append('48.5015559212639, -122.6753872337671')
-    listOfLatLon.append('48.42566904524409, -122.60848502024562')
-    createRouteList(listOfLatLon)
+    print("Hello World!")
     ```
 
     For example,
 
     ```python
-    >>> from maproute import createRouteList
-    >>> listOfLatLon=[]
-    >>> listOfLatLon.append('48.5015559212639, -122.6753872337671')
-    >>> listOfLatLon.append('48.42566904524409, -122.60848502024562')       
-    >>> createRouteList(listOfLatLon)
-    [LatLon(lat='48.5015559212639', lon='-122.6753872337671'), LatLon(lat='48.42566904524409', lon='-122.60848502024562')]
+    >>> print("Hello World")
+    >>> Hello World
     >>>
     ```
 
@@ -162,7 +152,16 @@ This tutorial must be completed before any other tutorials: you'll install Visua
     (.venv) PS C:\repos\various\python>
     ```
 
+## Resources
+
+Be sure to read more about the following code and concept references you used in this tutorial.
+
+- [Set-ExecutionPolicy](https://learn.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.3)
+- [Install-Module](https://learn.microsoft.com/powershell/module/powershellget/install-module?view=powershell-7.3)
+- [Git Clone](https://github.com/git-guides/git-clone)
+- [Download Visual Studio Code](https://code.visualstudio.com/Download)
+- [Visual Studio Developer Command Prompt and Developer PowerShell](https://learn.microsoft.com/visualstudio/ide/reference/command-prompt-powershell?view=vs-2022)
 
 ## Next Steps
 
-[todo]
+[Create an IoT Hub and Storage Account](docs/tutorial-deployiothub.md)
