@@ -1,12 +1,11 @@
 # Deploy an Azure IoT Hub
 
-IoT Hub is the simplest an most efficient way for devices to send and receive messages from the cloud. In this tutorial you'll create an IoT Hub and an associated storage account using an [Azure Resource Manager (ARM) template](https://learn.microsoft.com/azure/azure-resource-manager/templates/overview). Following the diagram below using the machine you configured in the previous tutorial:
+IoT Hub is the simplest an most effective way for devices to send and receive messages from the cloud. In this tutorial you'll create an IoT Hub and an associated storage account using an [Azure Resource Manager (ARM) template](https://learn.microsoft.com/azure/azure-resource-manager/templates/overview). Following the diagram below using the machine you configured in the previous tutorial:
 
 1. Create an Azure Resource Group for your IoT Hub
 1. Deploy IoT Hub and a Storage Account
 
 ![deploy_iothub]
-*Figure of the main steps in this tutorial*
 
 Using an ARM template rather than the [Azure portal user interface](https://portal.azure.com) has several benefits:
 
