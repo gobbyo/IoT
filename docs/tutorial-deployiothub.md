@@ -136,7 +136,7 @@ You can optionally explore and learn more about deploying Azure services by doin
 
 ## Next Steps
 
-[Create a device for your IoT Hub](docs/tutorial-symmetrickeydevice.md)
+[Create a device for your IoT Hub](tutorial-symmetrickeydevice.md)
 
 <!-- images -->
 
