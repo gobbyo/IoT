@@ -6,7 +6,7 @@ In this tutorial you'll create device code that sends a message to IoT Hub. Know
 
 ## Prerequisites
 
-[todo]
+[Deploy and Configure StreamAnalytics](tutorial-deploystreamtostorage.md)
 
 ## Code a Message with your Device Hostname and IP Address to the Cloud
 
@@ -90,10 +90,35 @@ In this tutorial you'll create device code that sends a message to IoT Hub. Know
 
 ## Set up a Cron job to Send the Message when your Raspberry Pi Boots
 
-[todo]
+1. Run the following command in your Raspberry Pi,
 
-## Verify the Message is Written to Blob Storage
+    ```azurecli
+    $ sudo crontab -e
+    ```
 
+1. Add the following entry to cron,
+
+    ```azurecli
+    @reboot python ~/repos/various/python/raspberrypi/d2cipandhostname.py
+    ```
+
+1. Type ctrl-o and hit the enter key, for example,
+
+    ```azurecli
+    $ ctrl-o
+    $ File Name to Write: /tmp/crontab.4SQV5b/crontab
+    ```
+
+1. Type `ctrl-x` to exit `crontab`, then run the following command,
+
+    ```azurecli
+    sudo shutdown -r
+    ```
+
+## Verify the Message from your Stream Analytics Jobs Service
+
+1. Open your stream analytics jobs service using the [Azure portal](https://portal.azure.com).
+1. Select `Job topology > <> Query` in the left pane and verify the message exists in the `Input preview` pane.
 [todo]
 
 ## Reference

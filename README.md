@@ -18,11 +18,12 @@ You don't need to know much about Azure and only be familiar with the basics of 
 1. [Create a Stream Analytics Job](docs/tutorial-deploystreamtostorage.md)
 
 ### Raspberry Pi Sensors and Cloud Messaging
+1. Connect to your Raspberry Pi with Visual Studio Code
+1. [Send Hostname and IP Address to the Cloud](docs/tutorial-rasp-d2cipandhostname.md)
 1. Send a Command from the Cloud to turn on/off an LED
 1. Send morse code message
 1. Send a Command from the Cloud to display a digit in a 7 segment digit display
-1. [Send Hostname and IP Address to the Cloud](docs/tutorial-d2cipandhostname.md)
-1. [Send Sensor Data to the Cloud](docs/tutorial-d2csensorhat.md)
+1. [Send Sensor Data to the Cloud](docs/tutorial-rasp-d2csensorhat.md)
 1. Send a Command from the Cloud to display a message on the Sensor Hat
 
 ### Map Routing
