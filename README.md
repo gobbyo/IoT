@@ -36,5 +36,5 @@ You don't need to know much about Azure and only be familiar with the basics of 
 
 ## How to guides
 
-[How to Use Your Azure Subscription](docs/howto-connecttoazure.md)
-[How to Find and Set Your Connection Strings](docs/howto-connectionstrings.md)
+1. [How to Use Your Azure Subscription](docs/howto-connecttoazure.md)
+1. [How to Find and Set Your Connection Strings](docs/howto-connectionstrings.md)
