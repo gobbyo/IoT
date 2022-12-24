@@ -1,6 +1,6 @@
 import asyncio
 import time
-#from decouple import config
+from decouple import config
 import os
 from azure.iot.device import Message
 from azure.iot.device.aio import IoTHubDeviceClient
@@ -15,8 +15,8 @@ def message_handler(message):
 
 
 async def main():
-    #conn_str = config("IOTHUB_DEVICE_CONNECTION_STRING")
-    conn_str = os.getenv("IOTHUB_DEVICE_CONNECTION_STRING")
+    conn_str = config("IOTHUB_DEVICE_CONNECTION_STRING")
+    #conn_str = os.getenv("IOTHUB_DEVICE_CONNECTION_STRING")
 
     client = IoTHubDeviceClient.create_from_connection_string(conn_str)
     print("--Waiting for Messages--") 
