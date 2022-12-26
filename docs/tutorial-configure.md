@@ -23,6 +23,7 @@ This tutorial must be completed before any other tutorials: you'll install Visua
 
     ```azurepowershell
     Install-Module Az.Accounts
+    Install-Module Az.DeviceProvisioningServices
     ```
 
     For each module, reply **Y** or **A** when asked either question below:

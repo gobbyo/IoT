@@ -82,7 +82,6 @@ PS> $location
 Central US
 ```
 
-
 1. Run the following script to set the path to the ARM template `hub.json`
 
     ```powershell

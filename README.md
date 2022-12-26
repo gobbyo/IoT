@@ -6,22 +6,23 @@ These tutorials were compiled as a way to understand Azure and how to use the in
 
 You don't need to know much about Azure and only be familiar with the basics of coding to successfully get through this program. These tutorials focus on minimizing the cost of using Azure. You'll use PowerShell for cloud service management and Python for device coding to easily transfer to a Raspberry pi device.
 
-### IoT Hub
+### IoT Hub, Storage, and Stream Analytics
 
 1. [Create a Windows VM](docs/tutorial-prerequisites.md)
 1. [Configure your Windows machine](docs/tutorial-configure.md)
 1. [Create an IoT Hub and Storage Account](docs/tutorial-deployiothub.md)
-1. [Create a device for your IoT Hub](docs/tutorial-symmetrickeydevice.md)
+1. [Create a simulated device for your IoT Hub](docs/tutorial-symmetrickeydevice.md)
 1. [Set Your Connection Strings](docs/howto-connectionstrings.md)
 1. [Send a Cloud to Device Message](docs/tutorial-cloudtodevicemsg.md)
-1. [Send a Device To Cloud Message](docs/tutorial-devicetocloudmsg.md)
+1. [Send a Simulated Device To Cloud Message](docs/tutorial-devicetocloudmsg.md)
 1. [Upload a file to the Cloud from your Device](docs/tutorial-uploaddevicefile.md)
 1. [Create a Stream Analytics Job](docs/tutorial-deploystreamtostorage.md)
 
 ### IoT Device Provisioning Service
 
-1. Create Device Provisioning Service
-1. Provision a device with a certificate
+1. [Create a Device Provisioning Service](docs/tutorial-deploydps.md)
+1. Provision a Simulated Device using an x509 Certificate
+1. Send a Simulated x509 Device to Cloud Message
 
 ### Raspberry Pi Sensors and Cloud Messaging
 

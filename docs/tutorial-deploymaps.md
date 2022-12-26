@@ -1,29 +1,17 @@
 # Deploy a Maps Service
 
-1. Run the following script to connect to your Azure subscription. Replace `{your subscription ID}` with the identifier to your Azure subscription.
-
-    ```powershell
-    Connect-AzAccount -SubscriptionId "{your subscription ID}"
-    ```
-
-    For example,
-
-    ```powershell
-    PS > Connect-AzAccount -SubscriptionId "d330xxxx-xxxx-xxxx-xxxx-xxxxxxxxabda"
-    ```
+Before starting this section be sure to open Visual Studio (VS) Code, select the `Terminal > New Terminal...` menu and [Authenticate your Azure Subscription](howto-connecttoazure.md) using the PowerShell (PS) session.
 
 1. Run the following script to set a new resource group name to the `$rg` powershell variable. Replace `{new resource group name}` with the new name of your resource group.
 
     ```powershell
-    $projectName = "{new maps project name}"
-    $rg = ($projectName + "RG")
+    $rg = "{resource group name}"
     ```
 
     For example,
 
     ```powershell
-    PS > $projectName = "Map"
-    PS > $rg = ($projectName + "RG")
+    PS > $rg = "myMapRG"
     ```
 
 1. Run the following script to set the PowerShell variable to a region location for your resource group.  Replace `{region location}` with the location of your resource group.
@@ -49,7 +37,7 @@
     ```powershell
     PS > New-AzResourceGroup -Name $rg -Location $location
 
-    ResourceGroupName : MapRG
+    ResourceGroupName : myMapRG
     Location          : centralus
     ProvisioningState : Succeeded
     Tags              : 
@@ -57,24 +45,12 @@
     
     ```
 
-1. Run the following script to set the path to the ARM template `ARMtemplate.json`
-
-    ```powershell
-    $templateFile = "{path to Map ARMtemplate.json}"
-    ```
-
-    For example,
-
-    ```powershell
-    PS > $templateFile = "C:\\repos\\various\\arm\\map.json"
-    ```
-
 1. Deploy the Map ARM template
 
     ```powershell
     New-AzResourceGroupDeployment `
     -ResourceGroupName $rg `
-    -TemplateFile $templateFile
+    -TemplateFile "C:\repos\various\arm\map.json"
     ```
 
     For example,
@@ -85,7 +61,7 @@
     -TemplateFile $templateFile
 
     DeploymentName          : mapARMtemplate
-    ResourceGroupName       : MapRG
+    ResourceGroupName       : myMapRG
     ProvisioningState       : Succeeded
     Timestamp               : 11/21/2022 7:39:29 PM
     Mode                    : Incremental
