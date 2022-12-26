@@ -107,6 +107,14 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
     ConnectionString      : HostName=HubMsgHubw2lu5yeop2qwy.azure-devices.net;SharedAccessKeyName=iothubowner;Shared                         AccessKey=****
     AllocationWeight      : ApplyAllocationPolicy : False
     Location              : centralus
-```
+    ```
+
+1. Verify you have successfully deployed a new resource group and DPS by opening the [Azure Portal](https://portal.azure.com).
+
+![verify_dps]
+
+<!-- images -->
+
+[verify_dps]: media/tutorial-deploydps/verifydpsdeployment.png
 
 `openssl req -outform PEM -x509 -sha256 -newkey rsa:4096 -keyout device.key -out device.pem -days 30 -extensions usr_cert -addext extendedKeyUsage=clientAuth -subj "/CN={device registration id, a-z,A-Z,- or _, only}"`
