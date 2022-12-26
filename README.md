@@ -6,7 +6,7 @@ These tutorials were compiled as a way to understand Azure and how to use the in
 
 You don't need to know much about Azure and only be familiar with the basics of coding to successfully get through this program. These tutorials focus on minimizing the cost of using Azure. You'll use PowerShell for cloud service management and Python for device coding to easily transfer to a Raspberry pi device.
 
-### IoT Fundamentals
+### IoT Hub
 
 1. [Create a Windows VM](docs/tutorial-prerequisites.md)
 1. [Configure your Windows machine](docs/tutorial-configure.md)
@@ -17,6 +17,11 @@ You don't need to know much about Azure and only be familiar with the basics of 
 1. [Send a Device To Cloud Message](docs/tutorial-devicetocloudmsg.md)
 1. [Upload a file to the Cloud from your Device](docs/tutorial-uploaddevicefile.md)
 1. [Create a Stream Analytics Job](docs/tutorial-deploystreamtostorage.md)
+
+### IoT Device Provisioning Service
+
+1. Create Device Provisioning Service
+1. Provision a device with a certificate
 
 ### Raspberry Pi Sensors and Cloud Messaging
 
