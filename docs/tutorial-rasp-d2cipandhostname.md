@@ -10,20 +10,14 @@ In this tutorial you'll create device code that sends a message to IoT Hub. Know
 
 ## Code a Message with your Device Hostname and IP Address to the Cloud
 
-1. Create a new file called `d2cipandhostname.py`.
-1. Copy and paste the following import statements into your `d2cipandhostname.py` file
+
+1. Create a new directory called `modules` under the `\various\python\raspberrypi\`, e.g. `\various\python\raspberrypi\modules`.
+1. Create a new file called `raspipaddress.py` in the `\various\python\raspberrypi\modules` directory path you created in the previous step.
+1. Copy and paste the following code into your `raspipaddress.py` file
 
     ```python
     import socket
-    import time
-    from datetime import datetime
-    from decouple import config
-    from azure.iot.device import IoTHubDeviceClient, exceptions
-    ```
-
-1. Copy and paste the following code after the import statements to get the IP address of your device
-
-    ```python
+    
     def get_ip_address():
         ip_address = ''
         try:
@@ -32,10 +26,51 @@ In this tutorial you'll create device code that sends a message to IoT Hub. Know
             ip_address = s.getsockname()[0]
             s.close()
         except socket.error as e:
-            print("Error: {0}. CodeID = 2e798e2d-0802-4b1d-9860-a83e3e35b599".format(e))
+            print("Error: {0}. CodeID = {new-guid}".format(e))
         return ip_address
     ```
 
+    This code uses a local socket connection to figure out your raspberry pi's public facing IP address.
+
+1. Replace the `{new-guid}` by typing the following script in a PowerShell terminal from your Visual Studio Code.
+
+    ```powershell
+    new-guid
+    ```
+
+    For example,
+
+    ```powershell
+    PS> new-guid
+    
+    Guid
+    ----
+    afd02cb8-8984-496d-ad3f-151165cf8eaf
+    ```
+
+    Having a unique identifier in code helps you to troubleshoot should something go wrong in your code. Simply capture your print output into a file and search for the error that occurred by its unique code identifier.
+
+1. Create a new file called `d2cipandhostname.py` and save it into your cloned github path `\various\python\raspberrypi\`.
+1. Copy and paste the following import statements into your `d2cipandhostname.py` file
+
+    ```python
+    import asyncio
+    import socket
+    import uuid
+    from decouple import config
+    from azure.iot.device import Message,X509
+    from azure.iot.device.aio import ProvisioningDeviceClient, IoTHubDeviceClient
+    import modules.raspipaddress as raspipaddress
+    ```
+
+1. Copy and paste the following variables you obtain from your .env file.
+
+    ```python
+    provisioning_host = config("DPS_HOST")
+    id_scope = config("DPS_SCOPEID")
+    registration_id = config("DPS_REGISTRATIONID")
+    ```
+    
 1. Copy and paste the following code to create a message
 
     ```python

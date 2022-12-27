@@ -9,6 +9,7 @@
 # Directories #
 API_Parser_Output
 Obj
+__pycache__
 
 # Packages #
 *.gz

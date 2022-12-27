@@ -1,32 +1,20 @@
-from decouple import config
 import asyncio
-from azure.iot.device import X509
-from azure.iot.device.aio import ProvisioningDeviceClient
-from azure.iot.device.aio import IoTHubDeviceClient
-from azure.iot.device import Message
 import socket
 import uuid
+from decouple import config
+from azure.iot.device import Message,X509
+from azure.iot.device.aio import ProvisioningDeviceClient, IoTHubDeviceClient
+import modules.raspipaddress as raspipaddress
 
 provisioning_host = config("DPS_HOST")
 id_scope = config("DPS_SCOPEID")
 registration_id = config("DPS_REGISTRATIONID")
-messages_to_send = 1
-
-def get_ip_address():
-    ip_address = ''
-    try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.connect(("1.1.1.1",80))
-        ip_address = s.getsockname()[0]
-        s.close()
-    except socket.error as e:
-        print("Error: {0}. CodeID = 0e17c4b7-106f-430a-9b9d-ef3bf77168d4".format(e))
-    return ip_address
+#messages_to_send = 1
 
 async def send_message(device_client):
     print("sending message")
     hostname = socket.gethostname()
-    ip_address = get_ip_address()
+    ip_address = raspipaddress.get_ip_address()
     
     msg = Message('{{ "Hostname":"{0}", "IPAddress":"{1}" }}'.format(hostname, ip_address) )
     msg.message_id = uuid.uuid4()
@@ -60,7 +48,8 @@ async def main():
         await device_client.connect()
 
         # send `messages_to_send` messages in parallel
-        await asyncio.gather(send_message(device_client))
+        #await asyncio.gather(send_message(device_client))
+        send_message(device_client)
 
         # finally, disconnect
         await device_client.disconnect()
