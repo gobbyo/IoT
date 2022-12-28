@@ -60,20 +60,58 @@ Required. Give each H2 a heading that sets expectations for the content that fol
 Follow the H2 headings with a sentence about how the section contributes to the whole.
 -->
 
-## [Section 1 heading]
+## Wire Your Raspberry Pi with an LED
+
+Use the following diagram.
+
+1. From the Raspberry Pi, connect GPIO17 (BCM), PIN 13 (BOARD), to a lead on the 220Ω resistor.  GPIO17 used in this example isn't special, as you can use any GPIO pin, e.g. GPIO2, GPIO12, etc.
+1. Connect the positive lead on the LED (the longest lead) to the 220Ω resistor.
+1. Connect the negative lead on the LED (the shorter lead) to Ground on the Raspberry Pi
+
+    ![lnk_raspled]
+
+## Create Code to Turn the LED on and off
 <!-- Introduction paragraph -->
+1. Create a file `led.py` in your github directory.
+1. Copy and paste the following import statement
 
-1. Sign in to the [<service> portal](url).
-1. <!-- Step 2 -->
-1. <!-- Step n -->
+    ```python
+    import RPi.GPIO as GPIO
+    ```
 
-![lnk_raspled]
+1. Copy and paste the following method to obtain basic information about your Raspberry Pi. [todo] explain this!
 
-## [Section 2 heading]
-<!-- Introduction paragraph -->
-1. <!-- Step 1 -->
-1. <!-- Step 2 -->
-1. <!-- Step n -->
+    ```python
+    def main():
+        LED_channel = 17
+    
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(LED_channel, GPIO.OUT)
+        GPIO.output(LED_channel, GPIO.LOW)
+    
+        print("Press Ctrl-C to quit'")
+    
+        try:
+            while True:
+                s = input("Type 'On', 'Off', or 'Info': ")
+                if s == 'On':
+                    GPIO.output(LED_channel, GPIO.HIGH)
+                    print("On")
+                else:
+                    GPIO.output(LED_channel, GPIO.LOW)
+                    print("Off")
+                print("-----")
+        except KeyboardInterrupt:
+            print("Program shut down by user")
+        finally:
+            GPIO.cleanup()
+            print("Cleaning up and shutting down")
+    
+    if __name__ == "__main__":
+        main()
+    ```
+
+
 
 ## [Section n heading]
 <!-- Introduction paragraph -->
