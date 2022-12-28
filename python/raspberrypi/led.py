@@ -4,8 +4,8 @@ except RuntimeError:
     print("Error importing RPi.GPIO!  This is probably because you need superuser privileges.  You can achieve this by using 'sudo' to run your script")
 
 def printInfo():
-    print("MANUFACTURER = %s"%GPIO.RPI_INFO['MANUFACTURER'])
-    print("PROCESSOR = %s"%GPIO.RPI_INFO['PROCESSOR'])
+    print("Manufacturer = %s"%GPIO.RPI_INFO['MANUFACTURER'])
+    print("Processor = %s"%GPIO.RPI_INFO['PROCESSOR'])
     print("-------")
 
 def main():
