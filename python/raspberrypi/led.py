@@ -8,32 +8,25 @@ def printInfo():
     print("PROCESSOR = %s"%GPIO.RPI_INFO['PROCESSOR'])
     print("-------")
 
-def on(channel):
-    GPIO.output(channel, GPIO.HIGH)
-    print("On")
-
-def off(channel):
-    GPIO.output(channel, GPIO.LOW)
-    print("Off")
-
 def main():
     LED_channel = 17
 
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(LED_channel, GPIO.OUT)
+    GPIO.output(LED_channel, GPIO.LOW)
 
     print("Press Ctrl-C to quit'")
 
     try:
         while True:
-            s = input("Type 'On', 'Off', or 'Info'")
+            s = input("Type 'On', 'Off', or 'Info': ")
             if s == 'On':
-                GPIO.output(channel, GPIO.HIGH)
+                GPIO.output(LED_channel, GPIO.HIGH)
                 print("On")
             elif s == 'Info':
                 printInfo()
             else:
-                GPIO.output(channel, GPIO.LOW)
+                GPIO.output(LED_channel, GPIO.LOW)
                 print("Off")
             print("-----")
     except KeyboardInterrupt:
