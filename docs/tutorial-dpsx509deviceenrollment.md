@@ -124,6 +124,18 @@ Follow the H2 headings with a sentence about how the section contributes to the 
 Required. If resources were created during the tutorial. If no resources were created, 
 state that there are no resources to clean up in this section.
 -->
+## Enroll your device
+
+1. Create a file named [todo].
+1. Add the following import statements to your 
+
+import asyncio
+import socket
+import uuid
+from decouple import config
+from azure.iot.device import Message,X509
+from azure.iot.device.aio import ProvisioningDeviceClient, IoTHubDeviceClient
+import modules.raspipaddress as raspipaddress
 
 ## Clean up resources
 
