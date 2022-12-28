@@ -8,12 +8,6 @@ def printInfo():
     print("PROCESSOR = %s"%GPIO.RPI_INFO['PROCESSOR'])
     print("-------")
 
-def checkChannel(channel):
-    if GPIO.HIGH == GPIO.input(channel):
-        print("LED channel says ON")
-    else:
-        print("LED channel says OFF")
-
 def on(channel):
     GPIO.output(channel, GPIO.HIGH)
     print("On")
@@ -22,38 +16,31 @@ def off(channel):
     GPIO.output(channel, GPIO.LOW)
     print("Off")
 
-def loop(channels):
-    if "N" == input("Continue? Y/N: "):
-        return False
-    channel = int(input("Select channel to turn on or off {0}: ".format(channels)))
-    if "On" == input("Choose a command (On, Off): "):
-        on(channel)
-    else:
-        off(channel)
-    
-    return True
-
 def main():
-
-    i = 0
-    LEDs = []
+    LED_channel = 17
 
     GPIO.setmode(GPIO.BCM)
-    total = int(input("Number of LEDs: "))
-    if total < 1:
+    GPIO.setup(LED_channel, GPIO.OUT)
+
+    print("Press Ctrl-C to quit'")
+
+    try:
+        while True:
+            s = input("Type 'On', 'Off', or 'Info'")
+            if s == 'On':
+                GPIO.output(channel, GPIO.HIGH)
+                print("On")
+            elif s == 'Info':
+                printInfo()
+            else:
+                GPIO.output(channel, GPIO.LOW)
+                print("Off")
+            print("-----")
+    except KeyboardInterrupt:
+        print("Program shut down by user")
+    finally:
         GPIO.cleanup()
-        exit()
-
-    while i < total:
-        LEDs.append(int(input("Channel for {0}: ".format(i+1))))
-        i += 1
-
-    GPIO.setup(LEDs, GPIO.OUT)
-
-    while loop(LEDs):
-        print("-----")
-    
-    GPIO.cleanup()
+        print("Cleaning up and shutting down")
 
 if __name__ == "__main__":
     main()

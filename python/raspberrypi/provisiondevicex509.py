@@ -44,17 +44,11 @@ async def main():
             device_id=registration_result.registration_state.device_id,
         )
 
-        # Connect the client.
         await device_client.connect()
-
-        # send `messages_to_send` messages in parallel
         await send_message(device_client)
-
-        # finally, disconnect
         await device_client.disconnect()
     else:
         print("Error: Can not send telemetry from the provisioned device. CodeID = f586eb27-5b36-46fa-ae25-5ffb3ad19efc")
-
 
 if __name__ == "__main__":
     asyncio.run(main())

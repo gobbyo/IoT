@@ -21,7 +21,7 @@ You don't need to know much about Azure and only be familiar with the basics of 
 ### IoT Device Provisioning Service
 
 1. [Create a Device Provisioning Service](docs/tutorial-deploydps.md)
-1. Provision a Simulated Device using an x509 Certificate
+1. [Provision and Test a Simulated Device using an x509 Certificate](docs/tutorial-dpsx509deviceenrollment.md)
 1. Send a Simulated x509 Device to Cloud Message
 
 ### Raspberry Pi Sensors and Cloud Messaging
