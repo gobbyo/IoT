@@ -25,7 +25,7 @@ def off(channel):
 def loop(channels):
     if "N" == input("Continue? Y/N: "):
         return False
-    channel = int(input("Channel (%s): "%channels))
+    channel = int(input("Select channel to turn on or off {0}: ".format(channels)))
     if "On" == input("Choose a command (On, Off): "):
         on(channel)
     else:

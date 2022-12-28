@@ -111,26 +111,6 @@ Follow the H2 headings with a sentence about how the section contributes to the 
                                    }
     ```
 
-<<<<<<< HEAD
-## Verify your device enrollment
-
-1. Open the [Azure portal](https://portal.azure.com)
-1. Verify your device has enrolled by following the diagram below. 1️⃣ Open your your Device Provisioning Service, 2️⃣ from the left pane select **Settings > Manage enrollments**, from the right pane select **Individual Enrollments**, finally 4️⃣ verify your device registration ID is present.
-
-    ![lnk_verifyenrollment]
-
-## Add variables to your environment file
-
-    ```python
-    DPS_HOST="dpsztputik7h47qi.azure-devices-provisioning.net"
-    DPS_REGISTRATIONID="raspberrypi-b"
-    DPS_SCOPEID="0ne008D45AC"
-    X509_CERT_FILE="/home/jbeman/certs/raspberrypi2.pem"
-    X509_KEY_FILE="/home/jbeman/certs/raspberrypi2.key"
-    X509_PASS_PHRASE="1234"
-    ```
-    
-=======
 <!-- 6. Clean up resources
 Required. If resources were created during the tutorial. If no resources were created, 
 state that there are no resources to clean up in this section.
@@ -147,7 +127,6 @@ from decouple import config
 from azure.iot.device import Message,X509
 from azure.iot.device.aio import ProvisioningDeviceClient, IoTHubDeviceClient
 import modules.raspipaddress as raspipaddress
->>>>>>> dc479b47a977ef826e24cafb1cf46f4a5e857bd0
 
 ## Clean up resources
 
