@@ -11,7 +11,7 @@ id_scope = config("DPS_SCOPEID")
 registration_id = config("DPS_REGISTRATIONID")
 
 async def send_message(device_client):
-    print("sending message")
+    print("sending message. Code ID = f461ee5e-d7e4-4bea-8953-d0c7b113d522")
     hostname = socket.gethostname()
     ip_address = raspipaddress.get_ip_address()
     
@@ -27,6 +27,7 @@ async def main():
         pass_phrase=config("X509_PASS_PHRASE"),
     )
 
+    print("Creating provisioning client. Code Id = f1973054-24af-4a6b-9a79-409abcd7d27f")
     provisioning_device_client = ProvisioningDeviceClient.create_from_x509_certificate(
         provisioning_host=provisioning_host,
         registration_id=registration_id,
