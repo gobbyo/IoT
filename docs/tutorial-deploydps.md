@@ -116,5 +116,3 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
 <!-- images -->
 
 [verify_dps]: media/tutorial-deploydps/verifydpsdeployment.png
-
-`openssl req -outform PEM -x509 -sha256 -newkey rsa:4096 -keyout device.key -out device.pem -days 30 -extensions usr_cert -addext extendedKeyUsage=clientAuth -subj "/CN={device registration id, a-z,A-Z,- or _, only}"`

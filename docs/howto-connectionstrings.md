@@ -32,7 +32,7 @@ Table of Connection Variables
 1. Obtain the secret by opening a python session in the same directory as the '.env' file where you'll run your scripts.
 
     ```python
-    cd {github clone root}/python python
+    cd {github clone root}
     from decouple import config
     config('IOTHUB_DEVICE_CONNECTION_STRING')
     ```
@@ -40,7 +40,7 @@ Table of Connection Variables
     for example,
 
     ```python
-    cd c:/repos/various/python python
+    cd c:/repos/various python
     >>> from decouple import config
     >>> config('IOTHUB_DEVICE_CONNECTION_STRING')
     >>> 'HostName=HubMsg********p2qwy.azure-devices.net;DeviceId=myDevice;SharedAccessKey=8IrO********ZUkg='

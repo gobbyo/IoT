@@ -1,33 +1,10 @@
 ---
-title: #Required; page title is displayed in search results. Include the brand.
+title: Create a x509 Certificate and Enroll Your Device
 description: #Required; article description that is displayed in search results. 
-author: #Required; your GitHub user alias, with correct capitalization.
-ms.author: #Required; microsoft alias of author; optional team alias.
-ms.service: #Required; service per approved list. slug assigned by ACOM.
-ms.topic: tutorial #Required; leave this attribute/value as-is.
-ms.date: #Required; mm/dd/yyyy format.
-ms.custom: template-tutorial #Required; leave this attribute/value as-is.
+author: jbeman@hotmail.com
 ---
 
-<!--
-Remove all the comments in this template before you sign-off or merge to the 
-main branch.
--->
-
-<!--
-This template provides the basic structure of a tutorial article.
-See the [tutorial guidance](contribute-how-to-mvc-tutorial.md) in the contributor guide.
-
-To provide feedback on this template contact 
-[the templates workgroup](mailto:templateswg@microsoft.com).
--->
-
-<!-- 1. H1 
-Required. Start with "Tutorial: ". Make the first word following "Tutorial: " a 
-verb.
--->
-
-# Tutorial: Create a x509 Certificate and Enroll Your Device 
+# Tutorial: Create a x509 Certificate and Enroll Your Device
 
 <!-- 2. Introductory paragraph 
 Required. Lead with a light intro that describes, in customer-friendly language, 
@@ -69,6 +46,14 @@ Follow the H2 headings with a sentence about how the section contributes to the 
 <!-- Introduction paragraph -->
 
 1. Remotely connect to your device from Visual Studio Code
+1. Create a directory to hold your certs then change to the new directory.
+
+    ```azurecli
+    cd ~
+    mkdir certs
+    cd certs
+    ```
+
 1. Create a certificate using the following openssl script in a Visual Studio Code terminal session.
 
     ```azurecli
@@ -77,14 +62,24 @@ Follow the H2 headings with a sentence about how the section contributes to the 
 
     For example,
 
+    ```azurecli
+    $ openssl req -outform PEM -x509 -sha256 -newkey rsa:4096 -keyout raspberrypi2.key -out raspberrypi2.pem -days 365 -extensions usr_cert -addext extendedKeyUsage=clientAuth -subj "/CN=raspberrypi-b"
+    Generating a RSA private key
+    ............................................++++
+    ................................................................................++++
+    writing new private key to 'raspberrypi2.key'
+    Enter PEM pass phrase:
+    Verifying - Enter PEM pass phrase:
+    -----
+    ```
+
+1. Copy the .pem file down to your local drive. Following the diagram below, 1️⃣ select the `File > Open Folder...` menu item, 2️⃣ right-click the `.pem` file you created to show the submenu, and 3️⃣ select the `Download...` menu item.
+
+    ![lnk_deviceenrollment]
+
 ## Enroll Your Device
 <!-- Introduction paragraph -->
-
-1. Install the DPS module by running the following PowerShell script.
-
-    ```azurepowershell
-    Install-Module Az.DeviceProvisioningServices
-    ```
+1. Open a terminal session from Visual Studio Code on your Windows machine.
 
 1. Run the following PowerShell script
 
@@ -100,18 +95,14 @@ Follow the H2 headings with a sentence about how the section contributes to the 
     For example,
 
     ```powershell
-    PS > Add-AzIoTDeviceProvisioningServiceEnrollment `
+    PS C:\repos\various> Add-AzIoTDeviceProvisioningServiceEnrollment `
     >> -ResourceGroupName "myDpsRG" `
     >> -DpsName "dpsztputik7h47qi" `
-    >> -RegistrationId "raspberrypi-edcd" `
+    >> -RegistrationId "raspberrypi-b" `
     >> -AttestationType X509 `
-    >> -PrimaryCertificate "C:\temp\Certs\raspberrypied2288cd-cert.pem"
-    
-    RegistrationId               : raspberrypi-edcd
-    DeviceId                     : 
-    Created                      : 12/27/2022 11:12
-    Last Updated                 : 12/27/2022 11:12
-    ETag                         : IjIyMDAzNzg3LTAwMDAtMDMwMC0wMDAwLTYzYWI0OWJhMDAwMCI=
+    Created                      : 12/27/2022 15:12
+    Last Updated                 : 12/27/2022 15:12
+    ETag                         : IjE3MDFjNmVlLTAwMDAtMDMwMC0wMDAwLTYzYWI4MDZiMDAwMCI=
     Initial Twin State           : {
                                      "properties": {
                                        "desired": {}
@@ -120,10 +111,24 @@ Follow the H2 headings with a sentence about how the section contributes to the 
                                    }
     ```
 
-<!-- 6. Clean up resources
-Required. If resources were created during the tutorial. If no resources were created, 
-state that there are no resources to clean up in this section.
--->
+## Verify your device enrollment
+
+1. Open the [Azure portal](https://portal.azure.com)
+1. Verify your device has enrolled by following the diagram below. 1️⃣ Open your your Device Provisioning Service, 2️⃣ from the left pane select **Settings > Manage enrollments**, from the right pane select **Individual Enrollments**, finally 4️⃣ verify your device registration ID is present.
+
+    ![lnk_verifyenrollment]
+
+## Add variables to your environment file
+
+    ```python
+    DPS_HOST="dpsztputik7h47qi.azure-devices-provisioning.net"
+    DPS_REGISTRATIONID="raspberrypi-b"
+    DPS_SCOPEID="0ne008D45AC"
+    X509_CERT_FILE="/home/jbeman/certs/raspberrypi2.pem"
+    X509_KEY_FILE="/home/jbeman/certs/raspberrypi2.key"
+    X509_PASS_PHRASE="1234"
+    ```
+    
 
 ## Clean up resources
 
@@ -145,7 +150,7 @@ Advance to the next article to learn how to create...
 > [!div class="nextstepaction"]
 > [Next steps button](contribute-how-to-mvc-tutorial.md)
 
-<!--
-Remove all the comments in this template before you sign-off or merge to the 
-main branch.
--->
+<!--images-->
+
+[lnk_deviceenrollment]: media/tutorial-dpsx509deviceenrollment/downloadpemfile.png
+[lnk_verifyenrollment]: media/tutorial-dpsx509deviceenrollment/verifyenrollment.png
