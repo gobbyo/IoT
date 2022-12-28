@@ -1,7 +1,7 @@
 ---
-title: Light up an LED
+title: #Required; page title is displayed in search results. Include the brand.
 description: #Required; article description that is displayed in search results. 
-author: jbeman@hotmail.com
+author: #Required; your GitHub user alias, with correct capitalization.
 ---
 
 <!--
@@ -43,26 +43,15 @@ In this tutorial, you learn how to:
 > * Each of these bullet points align to a key H2
 > * Use these green checkboxes in a tutorial
 
-<!-- 4. Prerequisites 
-Required. First prerequisite is a link to a free trial account if one exists. If there 
-are no prerequisites, state that no prerequisites are needed for this tutorial.
--->
-
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free]
-  (https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Completed the tutorial to Configure your Windows Machine
-- <!-- prerequisite n -->
-
-<!-- 5. H2s
-Required. Give each H2 a heading that sets expectations for the content that follows. 
-Follow the H2 headings with a sentence about how the section contributes to the whole.
--->
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Completed the tutorial to [Configure your Windows Machine](tutorial-configure.md)
+- Completed the tutorial to [Connect and configure your Raspberry Pi with Visual Studio Code](tutorial-rasp-connect.md)
 
 ## Wire Your Raspberry Pi with an LED
 
-Use the following diagram.
+In this section you'll wire up your Raspberry Pi to light up a Light Emitting Diode (LED). Use the following diagram.
 
 1. From the Raspberry Pi, connect GPIO17 (BCM), PIN 13 (BOARD), to a lead on the 220Ω resistor.  GPIO17 used in this example isn't special, as you can use any GPIO pin, e.g. GPIO2, GPIO12, etc.
 1. Connect the positive lead on the LED (the longest lead) to the 220Ω resistor.
@@ -72,8 +61,8 @@ Use the following diagram.
 
 ## Create Code to Turn the LED on and off
 <!-- Introduction paragraph -->
-1. Connect Visual Studio Code to your Raspberry Pi.
-1. Create a file `led.py` in your github directory.
+1. Connect to your Raspberry Pi using Visual Studio Code.
+1. Create a file `led.py` in your cloned GitHub under the `python/raspberrypi` directory, for example `~/repos/various/python/raspberrypi/led.py`
 1. Copy and paste the following import statement
 
     ```python
@@ -112,24 +101,12 @@ Use the following diagram.
         main()
     ```
 
-## Run It!
+## Run It
 <!-- Introduction paragraph -->
-1. <!-- Step 1 -->
-1. <!-- Step 2 -->
-1. <!-- Step n -->
+1. Start the debugger in Visual Studio Code
+1. Type 'On' or 'Off' when prompted in the `DEBUG CONSOLE`
+1. Verify your LED turns on and off when prompted
 
-<!-- 6. Clean up resources
-Required. If resources were created during the tutorial. If no resources were created, 
-state that there are no resources to clean up in this section.
--->
-
-## Clean up resources
-
-If you're not going to continue to use this application, delete
-<resources> with the following steps:
-
-1. From the left-hand menu...
-1. ...click Delete, type...and then click Delete
 
 <!-- 7. Next steps
 Required: A single link in the blue box format. Point to the next logical tutorial 
