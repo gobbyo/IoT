@@ -133,7 +133,6 @@ Follow the H2 headings with a sentence about how the section contributes to the 
     X509_PASS_PHRASE="{pass phrase created earlier in this tutorial}"
     ```
 
-
     For example,
 
     ```python
@@ -160,7 +159,6 @@ Follow the H2 headings with a sentence about how the section contributes to the 
     >>> print(config("DPS_HOST"))
     dpsztputik7h47qi.azure-devices-provisioning.net
     ```
-    
 
 1. Create a file called `provisiondevicex509.py` in the `python/raspberrypi/` directory of your git hub clone, for example `$ ~/repos/various/python/raspberrypi/provisiondevicex509.py`
 1. Copy and paste the following code to your `provisiondevicex509.py` file.

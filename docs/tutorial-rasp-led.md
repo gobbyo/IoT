@@ -1,7 +1,7 @@
 ---
-title: #Required; page title is displayed in search results. Include the brand.
+title: Light up an LED
 description: #Required; article description that is displayed in search results. 
-author: #Required; your GitHub user alias, with correct capitalization.
+author: jbeman@hotmail.com
 ---
 
 <!--
@@ -50,9 +50,9 @@ are no prerequisites, state that no prerequisites are needed for this tutorial.
 
 ## Prerequisites
 
-- <!-- An Azure account with an active subscription. [Create an account for free]
-  (https://azure.microsoft.com/free/?WT.mc_id=A261C142F). -->
-- <!-- prerequisite 2 -->
+- An Azure account with an active subscription. [Create an account for free]
+  (https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Completed the tutorial to Configure your Windows Machine
 - <!-- prerequisite n -->
 
 <!-- 5. H2s
@@ -72,6 +72,7 @@ Use the following diagram.
 
 ## Create Code to Turn the LED on and off
 <!-- Introduction paragraph -->
+1. Connect Visual Studio Code to your Raspberry Pi.
 1. Create a file `led.py` in your github directory.
 1. Copy and paste the following import statement
 
@@ -111,9 +112,7 @@ Use the following diagram.
         main()
     ```
 
-
-
-## [Section n heading]
+## Run It!
 <!-- Introduction paragraph -->
 1. <!-- Step 1 -->
 1. <!-- Step 2 -->
