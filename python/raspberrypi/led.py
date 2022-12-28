@@ -1,12 +1,4 @@
-try:
-    import RPi.GPIO as GPIO
-except RuntimeError:
-    print("Error importing RPi.GPIO!  This is probably because you need superuser privileges.  You can achieve this by using 'sudo' to run your script")
-
-def printInfo():
-    print("Manufacturer = %s"%GPIO.RPI_INFO['MANUFACTURER'])
-    print("Processor = %s"%GPIO.RPI_INFO['PROCESSOR'])
-    print("-------")
+import RPi.GPIO as GPIO
 
 def main():
     LED_channel = 17
@@ -19,12 +11,10 @@ def main():
 
     try:
         while True:
-            s = input("Type 'On', 'Off', or 'Info': ")
+            s = input("Type 'On' or 'Off': ")
             if s == 'On':
                 GPIO.output(LED_channel, GPIO.HIGH)
                 print("On")
-            elif s == 'Info':
-                printInfo()
             else:
                 GPIO.output(LED_channel, GPIO.LOW)
                 print("Off")
