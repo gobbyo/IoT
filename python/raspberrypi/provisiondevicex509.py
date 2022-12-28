@@ -9,7 +9,6 @@ import modules.raspipaddress as raspipaddress
 provisioning_host = config("DPS_HOST")
 id_scope = config("DPS_SCOPEID")
 registration_id = config("DPS_REGISTRATIONID")
-#messages_to_send = 1
 
 async def send_message(device_client):
     print("sending message")
@@ -48,8 +47,7 @@ async def main():
         await device_client.connect()
 
         # send `messages_to_send` messages in parallel
-        #await asyncio.gather(send_message(device_client))
-        send_message(device_client)
+        await send_message(device_client)
 
         # finally, disconnect
         await device_client.disconnect()

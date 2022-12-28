@@ -111,6 +111,7 @@ Follow the H2 headings with a sentence about how the section contributes to the 
                                    }
     ```
 
+<<<<<<< HEAD
 ## Verify your device enrollment
 
 1. Open the [Azure portal](https://portal.azure.com)
@@ -129,6 +130,24 @@ Follow the H2 headings with a sentence about how the section contributes to the 
     X509_PASS_PHRASE="1234"
     ```
     
+=======
+<!-- 6. Clean up resources
+Required. If resources were created during the tutorial. If no resources were created, 
+state that there are no resources to clean up in this section.
+-->
+## Enroll your device
+
+1. Create a file named [todo].
+1. Add the following import statements to your 
+
+import asyncio
+import socket
+import uuid
+from decouple import config
+from azure.iot.device import Message,X509
+from azure.iot.device.aio import ProvisioningDeviceClient, IoTHubDeviceClient
+import modules.raspipaddress as raspipaddress
+>>>>>>> dc479b47a977ef826e24cafb1cf46f4a5e857bd0
 
 ## Clean up resources
 
