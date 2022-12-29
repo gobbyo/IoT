@@ -127,7 +127,7 @@ In this section we'll build a simple application that sends a message to your si
             print ( "Unexpected error {0}" % ex )
     ```
 
-1. Replace the `IOTHUB_CONNECTION_STRING` in the code you copy and pasted above by opening the Azure Portal and following the diagram below. 1️⃣ In the left pane, select your IoT Hub service portal page, then 2️⃣ select **Security Settings > Shared access policies**. 3️⃣ In the center pane, select **iothubowner** in the Manage shared access policies section. 4️⃣ Copy the **Primary Connection String** and replace the `IOTHUB_CONNECTION_STRING` in your code you pasted from the previous step.
+1. Replace the `IOTHUB_CONNECTION_STRING` by opening the Azure Portal and following the diagram below. 1️⃣ In the left pane, select your IoT Hub service portal page, then 2️⃣ select **Security Settings > Shared access policies**. 3️⃣ In the center pane, select **iothubowner** in the Manage shared access policies section. 4️⃣ Copy the **Primary Connection String** and replace the `IOTHUB_CONNECTION_STRING` in your code you pasted from the previous step.
 
 ![lnk_iothubconnection]
 
@@ -151,6 +151,9 @@ In this section we'll build a simple application that sends a message to your si
     --Message Received--
     b'Hello World!'
     ```
+
+## Next Steps
+[Send a Message from a Simulated Device To the Cloud](tutorial-devicetocloudmsg.md)
 
 ## Reference
 

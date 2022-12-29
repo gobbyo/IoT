@@ -13,7 +13,7 @@ You don't need to know much about Azure and only be familiar with the basics of 
 1. [Create an IoT Hub and Storage Account](docs/tutorial-deployiothub.md)
 1. [Create a Simulated Device](docs/tutorial-symmetrickeydevice.md)
 1. [Send a Message from the Cloud to a Simulated Device](docs/tutorial-cloudtodevicemsg.md)
-1. [Send a Simulated Device To Cloud Message](docs/tutorial-devicetocloudmsg.md)
+1. [Send a Message from a Simulated Device To the Cloud](docs/tutorial-devicetocloudmsg.md)
 1. [Upload a file to the Cloud from your Device](docs/tutorial-uploaddevicefile.md)
 1. [Create a Stream Analytics Job](docs/tutorial-deploystreamtostorage.md)
 1. [Deploy Map Routing](docs/tutorial-deploymaps.md)
