@@ -153,6 +153,7 @@ In this section we'll build a simple application that sends a message to your si
     ```
 
 ## Next Steps
+
 [Send a Message from a Simulated Device To the Cloud](tutorial-devicetocloudmsg.md)
 
 ## Reference
