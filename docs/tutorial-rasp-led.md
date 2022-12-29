@@ -4,25 +4,7 @@ description: #Required; article description that is displayed in search results.
 author: jbeman@hotmail.com
 ---
 
-<!--
-Remove all the comments in this template before you sign-off or merge to the 
-main branch.
--->
-
-<!--
-This template provides the basic structure of a tutorial article.
-See the [tutorial guidance](contribute-how-to-mvc-tutorial.md) in the contributor guide.
-
-To provide feedback on this template contact 
-[the templates workgroup](mailto:templateswg@microsoft.com).
--->
-
-<!-- 1. H1 
-Required. Start with "Tutorial: ". Make the first word following "Tutorial: " a 
-verb.
--->
-
-# Tutorial: Light up an LED 
+# Tutorial: Light up an LED
 
 <!-- 2. Introductory paragraph 
 Required. Lead with a light intro that describes, in customer-friendly language, 
@@ -30,7 +12,7 @@ what the customer will learn, or do, or accomplish. Answer the fundamental “wh
 would I want to do this?” question. Keep it short.
 -->
 
-[Add your introductory paragraph]
+Lighting an LED is the starting point for electronic projects. Once connected properly the LED will be controlled by an application that is local on the Raspberry Pi. This project prepares you for the next tutorial to remotely control your LED.
 
 <!-- 3. Tutorial outline 
 Required. Use the format provided in the list below.
@@ -38,9 +20,8 @@ Required. Use the format provided in the list below.
 
 In this tutorial, you learn how to:
 
-- All tutorials include a list summarizing the steps to completion
-- Each of these bullet points align to a key H2
-- Use these green checkboxes in a tutorial
+- Connect an LED to your Raspberry Pi
+- Test the LED connection
 
 ## Prerequisites
 
@@ -48,9 +29,9 @@ In this tutorial, you learn how to:
 - Completed the tutorial to [Configure your Windows Machine](tutorial-configure.md)
 - Completed the tutorial to [Connect and configure your Raspberry Pi with Visual Studio Code](tutorial-rasp-connect.md)
 
-## Wire Your Raspberry Pi with an LED
+## Connect an LED to your Raspberry Pi
 
-In this section you'll wire up your Raspberry Pi to light up a Light Emitting Diode (LED). Use the following diagram.
+In this section you'll wire your Raspberry Pi to light up a Light Emitting Diode (LED) by using the following diagram.
 
 1. From the Raspberry Pi, connect GPIO17 (BCM), PIN 13 (BOARD), to a lead on the 220Ω resistor.  GPIO17 used in this example isn't special, as you can use any GPIO pin, e.g. GPIO2, GPIO12, etc.
 1. Connect the positive lead on the LED (the longest lead) to the 220Ω resistor.
@@ -58,9 +39,20 @@ In this section you'll wire up your Raspberry Pi to light up a Light Emitting Di
 
     ![lnk_raspled]
 
+Supplies:
+
+|#  |Item  |
+|:---|:---|
+|1     | [Breadboard](https://www.circuitbread.com/ee-faq/what-is-a-breadboard) |
+|2     | [Male to male jumper wires](https://store.robotechvalley.com/product/male-to-male-jumper-wires/#:~:text=Description%3A%20male%20to%20male%20jumper%20wires%20These%20superior,arrangement%20of%20every%20one%20of%20ten%20rainbow%20tone.) |
+|1     | LED |
+|1     | 220Ω Resistor |
+|1     | (optional) GPIO Extension Board |
+|1     | (optional) 40 pin GPIO cable |
+
 ## Create Code to Turn the LED on and off
 <!-- Introduction paragraph -->
-1. Connect to your Raspberry Pi using Visual Studio Code.
+1. [Connect to your Raspberry Pi](https://code.visualstudio.com/docs/remote/ssh#_connect-to-a-remote-host) using Visual Studio Code.
 1. Create a file `led.py` in your cloned GitHub under the `python/raspberrypi` directory, for example `~/repos/various/python/raspberrypi/led.py`
 1. Copy and paste the following import statement
 

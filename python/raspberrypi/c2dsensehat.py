@@ -1,7 +1,7 @@
 import asyncio
 import time
 from decouple import config
-import os
+#import os
 from azure.iot.device import Message
 from azure.iot.device.aio import IoTHubDeviceClient
 
