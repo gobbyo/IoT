@@ -6,38 +6,57 @@ These tutorials were compiled as a way to understand Azure and how to use the in
 
 You don't need to know much about Azure and only be familiar with the basics of coding to successfully get through this program. These tutorials focus on minimizing the cost of using Azure. You'll use PowerShell for cloud service management and Python for device coding to easily transfer to a Raspberry pi device.
 
-### IoT Hub, Storage, and Stream Analytics
+### Internet of Things (IoT) Fundamentals with a Simulated Device
 
-1. [Create a Windows VM](docs/tutorial-prerequisites.md)
-1. [Configure your Windows machine](docs/tutorial-configure.md)
+1. [Create a Windows Virtual Machine](docs/tutorial-prerequisites.md)
+1. [Configure your Windows Machine](docs/tutorial-configure.md)
 1. [Create an IoT Hub and Storage Account](docs/tutorial-deployiothub.md)
-1. [Create a simulated device for your IoT Hub](docs/tutorial-symmetrickeydevice.md)
-1. [Set Your Connection Strings](docs/howto-connectionstrings.md)
+1. [Create a Simulated Device for your IoT Hub](docs/tutorial-symmetrickeydevice.md)
+1. [Environment Variables](docs/howto-connectionstrings.md)
 1. [Send a Cloud to Device Message](docs/tutorial-cloudtodevicemsg.md)
 1. [Send a Simulated Device To Cloud Message](docs/tutorial-devicetocloudmsg.md)
 1. [Upload a file to the Cloud from your Device](docs/tutorial-uploaddevicefile.md)
 1. [Create a Stream Analytics Job](docs/tutorial-deploystreamtostorage.md)
-
-### IoT Device Provisioning Service
-
-1. [Create a Device Provisioning Service](docs/tutorial-deploydps.md)
-1. [Connect Visual Studio Code to your Raspberry Pi](docs/tutorial-rasp-connect.md)
-1. [Provision and Test a Device using an x509 Certificate](docs/tutorial-dpsx509deviceenrollment.md)
-
-### Raspberry Pi Sensors and Cloud Messaging
-
-1. [Send Hostname and IP Address to the Cloud](docs/tutorial-rasp-d2cipandhostname.md)
-1. Send a message to the Cloud when switching LEDs on or off
-1. Send a morse code message from the Cloud
-1. Send a Command from the Cloud to display a digit in a 7 segment digit display
-1. [Send Sensor Data to the Cloud](docs/tutorial-rasp-d2csensorhat.md)
-1. Send a Command from the Cloud to display a message on the Sensor Hat
-
-### Map Routing
-
 1. [Deploy Map Routing](docs/tutorial-deploymaps.md)
 1. [Create a Turn-by-turn Route Device](docs/tutorial-maproutelistener.md)
 1. [Send a Route of Coordinates](docs/tutorial-maproutecommand.md)
+1. Create a Digital Twins Service
+1. Configure your Digital Twins Service
+
+### Raspberry Pi and Cloud Starter
+
+1. Set up your Raspberry Pi
+1. [Connect Visual Studio Code to your Raspberry Pi](docs/tutorial-rasp-connect.md)
+1. [Create a Device Provisioning Service](docs/tutorial-deploydps.md)
+1. [Provision and Test a Device using an x509 Certificate](docs/tutorial-dpsx509deviceenrollment.md)
+1. [Send Hostname, IP Address, and Device Information to the Cloud](docs/tutorial-rasp-d2cipandhostname.md)
+
+### Raspberry Pi and Cloud IoT Building Blocks
+
+1. Light Emitting Diodes (LEDs)
+1. Remotely Control LEDs
+1. Active Buzzer
+1. Remotely Control an Active Buzzer with Morse Code
+1. Seven Segment Digit Display
+1. Remotely Control a Seven Segment Digit Display
+1. Liquid Crystal Display
+1. Remotely Control a Liquid Crystal Display
+1. Ultrasonic Distance Sensor
+1. Send Ultrasonic Distance Sensor Data to the Cloud
+1. Temperature and Humidity Sensor
+1. Send Temperature and Humidity Sensor Data to the Cloud
+1. Light Emitting Display Bar Graph
+1. Remotely Control a Light Emitting Display Bar Graph
+1. Photoresistor
+1. Send Light Measurements to the Cloud
+1. DC Motor
+1. Remotely Control a DC Motor
+1. Step Motor
+1. Remotely Control a Step Motor
+1. Sensor Hat
+1. [Remotely Control a Sensor Hat](docs/tutorial-rasp-d2csensorhat.md)
+1. Camera
+1. Remotely Control a Camera
 
 ## How to guides
 

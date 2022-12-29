@@ -1,7 +1,7 @@
 ---
-title: #Required; page title is displayed in search results. Include the brand.
+title: Light up an LED 
 description: #Required; article description that is displayed in search results. 
-author: #Required; your GitHub user alias, with correct capitalization.
+author: jbeman@hotmail.com
 ---
 
 <!--
@@ -106,7 +106,6 @@ In this section you'll wire up your Raspberry Pi to light up a Light Emitting Di
 1. Start the debugger in Visual Studio Code
 1. Type 'On' or 'Off' when prompted in the `DEBUG CONSOLE`
 1. Verify your LED turns on and off when prompted
-
 
 <!-- 7. Next steps
 Required: A single link in the blue box format. Point to the next logical tutorial 

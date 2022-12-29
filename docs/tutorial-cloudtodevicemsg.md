@@ -1,12 +1,53 @@
-# Send a message to your device
+---
+title: Light up an LED 
+description: #Required; article description that is displayed in search results. 
+author: jbeman@hotmail.com
+---
 
-In this tutorial you'll send a message to your device from the cloud.
+<!--
+Remove all the comments in this template before you sign-off or merge to the 
+main branch.
+-->
 
-[todo] image needed
+<!--
+This template provides the basic structure of a tutorial article.
+See the [tutorial guidance](contribute-how-to-mvc-tutorial.md) in the contributor guide.
+
+To provide feedback on this template contact 
+[the templates workgroup](mailto:templateswg@microsoft.com).
+-->
+
+<!-- 1. H1 
+Required. Start with "Tutorial: ". Make the first word following "Tutorial: " a 
+verb.
+-->
+
+# Tutorial: Light up an LED 
+
+<!-- 2. Introductory paragraph 
+Required. Lead with a light intro that describes, in customer-friendly language, 
+what the customer will learn, or do, or accomplish. Answer the fundamental “why 
+would I want to do this?” question. Keep it short.
+-->
+
+In this tutorial you'll create a message listener, send a message to the cloud, and verify the message appears in your listener.
+
+<!-- 3. Tutorial outline 
+Required. Use the format provided in the list below.
+-->
+
+In this tutorial, you learn how to:
+
+> [!div class="checklist"]
+> * All tutorials include a list summarizing the steps to completion
+> * Each of these bullet points align to a key H2
+> * Use these green checkboxes in a tutorial
 
 ## Prerequisites
 
-[todo]
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Completed the tutorial to [Configure your Windows Machine](tutorial-configure.md)
+- Completed the tutorial to [Connect and configure your Raspberry Pi with Visual Studio Code](tutorial-rasp-connect.md)
 
 ## Create a message listener for your device
 
@@ -20,7 +61,7 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
     ```python
     import asyncio
     import time
-    import os
+    from decouple import config
     from azure.iot.device import Message
     from azure.iot.device.aio import IoTHubDeviceClient
     ```
@@ -47,7 +88,7 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
 
     ```python
     async def main():
-        conn_str = os.getenv("IOTHUB_DEVICE_CONNECTION_STRING")
+        conn_str = config("IOTHUB_DEVICE_CONNECTION_STRING")
         client = IoTHubDeviceClient.create_from_connection_string(conn_str)
         print("--Waiting for Messages--") 
         
@@ -78,7 +119,7 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
 1. Run the following script to register your device connection string replacing `{your device connection string}`. See the [blog on different connection strings](https://devblogs.microsoft.com/iotdev/understand-different-connection-strings-in-azure-iot-hub/) to obtain your device connection string.
 
     ```powershell
-    $Env:IOTHUB_DEVICE_CONNECTION_STRING="{your device connection string}"
+    IOTHUB_DEVICE_CONNECTION_STRING="{your device connection string}"
     ```
 
 1. Run the following script to start the listener.
@@ -101,14 +142,14 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
 1. Copy and paste the import statement.
 
     ```python
-    import os
+    from decouple import config
     from azure.iot.hub import IoTHubRegistryManager
     ```
 
 1. Copy and past the following code.
 
     ```python
-    registry_manager = IoTHubRegistryManager(os.getenv("IOTHUB_CONNECTION_STRING"))
+    registry_manager = IoTHubRegistryManager(config("IOTHUB_CONNECTION_STRING"))
     
     try:
         registry_manager.send_c2d_message(input("Device id: "), input("Message to send: "), {})
@@ -119,7 +160,7 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
 1. From Visual Studio Code terminal session, set your `IOTHUB_CONNECTION_STRING` environment variable. See the [blog on different connection strings](https://devblogs.microsoft.com/iotdev/understand-different-connection-strings-in-azure-iot-hub/) to obtain your IoT Hub connection string.
 
     ```powershell
-    $Env:IOTHUB_CONNECTION_STRING="{your IoT hub connection string}"
+    IOTHUB_CONNECTION_STRING="{your IoT hub connection string}"
     ```
 
 1. Run the debugger in Visual Studio Code and provide your deviceId you created from the tutorial [Create a Symmetric Key Device](tutorial-symmetrickeydevice.md). For example,
