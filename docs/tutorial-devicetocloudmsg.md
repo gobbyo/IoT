@@ -117,3 +117,6 @@ In this tutorial you'll create device code that sends a message to IoT Hub.
 ## Reference
 
 - IoT Hub message [system and user-defined properties](https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)
+
+## Next Steps
+[todo]

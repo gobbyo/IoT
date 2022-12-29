@@ -171,4 +171,4 @@ Be sure to read more about the following code and concept references you used in
 
 ## Next Steps
 
-[Create an IoT Hub and Storage Account](docs/tutorial-deployiothub.md)
+[Create an IoT Hub and Storage Account](tutorial-deployiothub.md)
