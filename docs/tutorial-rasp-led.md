@@ -38,10 +38,9 @@ Required. Use the format provided in the list below.
 
 In this tutorial, you learn how to:
 
-> [!div class="checklist"]
-> * All tutorials include a list summarizing the steps to completion
-> * Each of these bullet points align to a key H2
-> * Use these green checkboxes in a tutorial
+- All tutorials include a list summarizing the steps to completion
+- Each of these bullet points align to a key H2
+- Use these green checkboxes in a tutorial
 
 ## Prerequisites
 

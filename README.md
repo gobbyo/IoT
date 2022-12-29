@@ -32,7 +32,7 @@ You don't need to know much about Azure and only be familiar with the basics of 
 
 ### Raspberry Pi and Cloud IoT Building Blocks
 
-1. Light Emitting Diodes (LEDs)
+1. [Light Emitting Diodes (LEDs)](docs/tutorial-rasp-led.md)
 1. Remotely Control LEDs
 1. Active Buzzer
 1. Remotely Control an Active Buzzer with Morse Code
