@@ -1,4 +1,4 @@
-# Create a Symmetric Key Device
+# Create a Simulated Device
 
 Creating an IoT device with a symmetric key is the easiest way to create a device.  This is best only for testing and proof of concept. The preferred way to create a device for production is with an x509 certificate which we will cover in a later tutorial.
 

@@ -1,28 +1,24 @@
 ---
-title: Light up an LED 
-description: #Required; article description that is displayed in search results. 
+title: Send a Message from the Cloud to a Simulated Device
+description: Create a simulated device message listener, send a message to your device from the cloud, then verify the message appears in your listener. 
 author: jbeman@hotmail.com
 ---
 
-# Tutorial: Send a Message to a Simulated Device
+# Tutorial: Send a Message from the Cloud to a Simulated Device
 
-In this tutorial you'll create a simulated device message listener, send a message to your device from the cloud, then verify the message appears in your listener.  Following the diagram below:
+Remotely controlling your device from anywhere in the world is a major feature of using the Internet of Things services. In this tutorial you'll create a simulated device message listener, send a message to your device from the cloud, then verify the message appears in your listener.  Following the diagram below:
 
-1. Create and run a simulated device listener in a command prompt.  Your listener will use its Device Connection string from the IoT Hub `Device Management > Devices` to connect your application directly to your IoT hub.
-1. Send a message from the cloud to your simulated device. Your cloud application will use the IoT Hub Connection string and the device identifier to send the message.
+1. Create and run a simulated device listener in a command prompt.  Your listener uses its Device Connection string from the IoT Hub to connect your application directly to your IoT hub.
+1. Send a message from the cloud to your simulated device. Your cloud application uses the IoT Hub Connection string and the device identifier to send the message.
 1. Verify the message was received by your simulated device listener.
 
 ![lnk_sendmessage]
-<!-- 3. Tutorial outline 
-Required. Use the format provided in the list below.
--->
 
 In this tutorial, you learn how to:
 
 > [!div class="checklist"]
-> * All tutorials include a list summarizing the steps to completion
-> * Each of these bullet points align to a key H2
-> * Use these green checkboxes in a tutorial
+> * Create a Message Listener for your Simulated Device
+> * Send a Message to your Simulated Device from the Cloud
 
 ## Prerequisites
 
@@ -30,7 +26,7 @@ In this tutorial, you learn how to:
 - Completed the tutorial to [Configure your Windows Machine](tutorial-configure.md)
 - Completed the tutorial to [Create a Symmetric Key Device](tutorial-symmetrickeydevice.md)
 
-## Create a message listener for your device
+## Create a Message Listener for your Simulated Device
 
 See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/azure-iot-device/azure.iot.device?view=azure-python)
 
@@ -110,7 +106,7 @@ See the [Azure IoT device library](https://learn.microsoft.com/en-us/python/api/
 
     If your listener doesn't start due to an error, then troubleshoot it by [running the debugger](https://code.visualstudio.com/docs/python/python-tutorial#_configure-and-run-the-debugger) in Visual Studio Code.
 
-## Send message
+## Send a Message to your Simulated Device from the Cloud
 
 1. Create a file in the `python` directory and name it `c2dsendmsg.py`.  This file is the python code to send a message to your device via your IoT Hub instance.
 1. Copy and paste the import statement.
