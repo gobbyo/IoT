@@ -1,8 +1,14 @@
-## Configure your Windows Machine
+---
+title: Configure your Windows Machine
+description: Install Visual Studio Code, a few extensions, and Git for windows, Python, Azure Maps and Identity Python client libraries 
+author: jbeman@hotmail.com
+---
+
+# Tutorial: Configure your Windows Machine
 
 This tutorial must be completed before any other tutorials: you'll install Visual Studio Code, a few extensions, and Git for windows. Finally, you'll install Python, Azure Maps and Identity Python client libraries.
 
-### Install Visual Studio Code and Extensions
+## Install Visual Studio Code and Extensions
 
 1. Install [Visual Studio Code](https://code.visualstudio.com/Download) for Windows. Allow Visual Studio Code to launch.
 
@@ -30,7 +36,7 @@ This tutorial must be completed before any other tutorials: you'll install Visua
     - `Do you want PowerShellGet to install and import the NuGet provider now?` Type **Y**.
     - `Are you sure you want to install the modules from the 'MSGallery'?` Type **A**.
 
-### Install Git for Windows
+## Install Git for Windows
 
 1. Open a browser session in your Windows 10 machine and download the [git for windows](https://git-scm.com/download/win) installer.
 1. Run the installer, accepting the default settings. When you arrive at the screen **Choosing the default editor used by Git**, choose **Use Visual Studio Code as Git's default editor** from the dropdown selection, then continue accepting the default settings until finished.
@@ -71,7 +77,7 @@ This tutorial must be completed before any other tutorials: you'll install Visua
 
 1. Select `File > Open Folder...` from the menu in Visual Studio Code and select the cloned directory `various`.
 
-### Install Python
+## Install Python
 
 1. From a browser open [install python](https://www.python.org/downloads/). Be sure to check the box `Use admin privileges when installing py.exe` and  `Add python.exe to PATH` at the start of the install, then select `Install Now`.  At the end of the install select the `Disable path length limit`, then select the `close` button.
 1. From Visual Studio Code, select the `View > Command Pallette..` menu, type the following in the command pallette text box:
@@ -82,7 +88,7 @@ This tutorial must be completed before any other tutorials: you'll install Visua
     |2     | `venv` to create a virtual environment | See [https://docs.python.org/3/tutorial/venv.html](https://docs.python.org/3/tutorial/venv.html) |
     |3     |  Select the recommended Python interpreter | There may be multiple interpreters if you are installing on your own machine and have used Python in the past |
 
-### Install Azure Client Libraries
+## Install Azure Client Libraries
 
 1. From Visual Studio Code, select the `Terminal > New Terminal...` menu. In the powershell terminal session you should see the following,
 
@@ -114,7 +120,7 @@ This tutorial must be completed before any other tutorials: you'll install Visua
     pip install azure-maps-route
     ```
 
-### Test Your Python Installation
+## Test Your Python Installation
 
 1. From your Visual Studio Code terminal session, change the GitHub cloned directory from `various` to `python` directory. Type `python` and hit the return key.
 
