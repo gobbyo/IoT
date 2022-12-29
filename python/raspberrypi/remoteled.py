@@ -32,9 +32,9 @@ async def main():
     print("Press Ctrl-C to quit'")
 
     x509 = X509(
-        cert_file=os.getenv("X509_CERT_FILE"),
-        key_file=os.getenv("X509_KEY_FILE"),
-        pass_phrase=os.getenv("X509_PASS_PHRASE"),
+        cert_file=config("X509_CERT_FILE"),
+        key_file=config("X509_KEY_FILE"),
+        pass_phrase=config("X509_PASS_PHRASE"),
     )
 
     provisioning_device_client = ProvisioningDeviceClient.create_from_x509_certificate(
