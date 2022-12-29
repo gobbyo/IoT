@@ -14,7 +14,7 @@ registration_id = config("DPS_REGISTRATIONID")
 def message_handler(message):
     print("--Message Received--")
     try:
-        s = str(Message(message).data)
+        s = message.custom_properties['LED']
         if s == 'On':
             GPIO.output(LED_channel, GPIO.HIGH)
             print("On")
@@ -29,7 +29,7 @@ async def main():
     GPIO.setup(LED_channel, GPIO.OUT)
     GPIO.output(LED_channel, GPIO.LOW)
 
-    print("Press Ctrl-C to quit'")
+    print("Ctrl-C to quit'")
 
     x509 = X509(
         cert_file=config("X509_CERT_FILE"),
@@ -69,7 +69,7 @@ async def main():
         print("Program shut down by user")
     finally:
         GPIO.cleanup()
-        await client.shutdown()
+        await device_client.shutdown()
         print("Cleaning up and shutting down")
 
 if __name__ == "__main__":
