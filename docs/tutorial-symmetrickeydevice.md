@@ -1,6 +1,6 @@
 # Create a Symmetric Key Device
 
-Creating an IoT device with a symmetric key is the easiest way to create a device.  This is best only for testing and proof of concept. The preferred way to create a device for production is with an x509 certificate.
+Creating an IoT device with a symmetric key is the easiest way to create a device.  This is best only for testing and proof of concept. The preferred way to create a device for production is with an x509 certificate which we will cover in a later tutorial.
 
 1. Create a device in the [Azure Portal for IoT Hub](https://learn.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub).  Note this tutorial shows you where to obtain the device connection string.
 1. Create a device using PowerShell.
