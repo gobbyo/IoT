@@ -29,8 +29,8 @@ In this tutorial, you learn how to:
 
 This section takes you through the steps to create a listener for your simulated device. The code will be slightly different when we use an actual device, because we'll using the Device Provisioning Service with an x509 certificate rather than use the IoT Hub Connection string.
 
-1. Open Visual Studio Code, select **File > Open Folder...** and select your `various` GitHub cloned directory.
-1. From your Visual Studio Code terminal session, change the GitHub cloned directory from `various` to `python` directory, for example `cd c:\repos\various\python`.
+1. Open Visual Studio Code, select **File > Open Folder...** and select your `various` GitHub forked cloned directory.
+1. From your Visual Studio Code terminal session, change the GitHub forked cloned directory from `various` to `python` directory, for example `cd c:\repos\various\python`.
 1. Create a file in the `python` directory and name it `c2dlistener.py`.  This file is the python code in your device that listens for messages from your instance IoT Hub.
 1. Copy and paste the following import statements into your `c2dlistener.py` file.
 
@@ -87,7 +87,7 @@ This section takes you through the steps to create a listener for your simulated
     | client.on_message_received = message_handler | Registers the message event handler for IoT Hub to call to the client. |
     | client.shutdown() | Gracefully disconnects the client from IoT Hub. |
 
-1. Open a PowerShell session and change to the `python` directory in your GitHub cloned `various` repo.
+1. Open a PowerShell session and change to the `python` directory in your GitHub forked clone `various` repo.
 
 1. Run the following script to start the listener.
 
@@ -131,7 +131,7 @@ In this section we'll build a simple application that sends a message to your si
 
 ![lnk_iothubconnection]
 
-1. Open a command prompt, change to your `{github clone}/python` directory, then run the following script:
+1. Open a command prompt, change to your `{github forked clone}/python` directory, then run the following script:
 
     ```python
     python c2dsendmsg.py

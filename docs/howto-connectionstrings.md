@@ -8,7 +8,7 @@
     pip install python-decouple
     ```
 
-1. Create an '.env' file and save it to the various/python directory from your GitHub clone.
+1. Create an '.env' file and save it to the various/python directory from your GitHub forked clone.
 
     ```python
     IOTHUB_CONNECTION_STRING="{IoT hub Primary Connection String}"
@@ -36,7 +36,7 @@ Table of Connection Variables
 1. Obtain the secret by opening a python session in the same directory as the '.env' file where you'll run your scripts.
 
     ```python
-    cd {github clone root}
+    cd {github forked clone root}
     from decouple import config
     config('IOTHUB_DEVICE_CONNECTION_STRING')
     ```

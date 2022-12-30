@@ -30,7 +30,7 @@ Following the diagram below.
 ## Code your Raspberry Pi to Receive Messages to Light the LED
 
 1. [Connect to your Raspberry Pi](https://code.visualstudio.com/docs/remote/ssh#_connect-to-a-remote-host) using Visual Studio Code.
-1. Create a file `remoteled.py` and save it in the `python/rasberrypi` directory from your GitHub clone, for example `~/repos/various/python/raspberrypi/remoteled.py`. This is a message listener program that runs on your Raspberry Pi.
+1. Create a file `remoteled.py` and save it in the `python/rasberrypi` directory from your GitHub forked clone, for example `~/repos/various/python/raspberrypi/remoteled.py`. This is a message listener program that runs on your Raspberry Pi.
 1. Copy and paste the following import statements into your `remoteled.py` file.
 
     ```python

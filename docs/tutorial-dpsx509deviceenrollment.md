@@ -120,7 +120,7 @@ Follow the H2 headings with a sentence about how the section contributes to the 
 
 ## Add Variables to your Environment (`.env`) File
 
-1. Open your `.env` file in the root of your github clone directory `various`.
+1. Open your `.env` file in the root of your github forked clone directory `various`.
 1. Add the following entries to your `.env` file
 
 

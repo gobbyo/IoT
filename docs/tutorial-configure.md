@@ -123,7 +123,7 @@ You'll need a cloud developer set up in order to deploy Azure services and remot
 
 ## Test Your Python Installation
 
-1. From your Visual Studio Code terminal session, change the GitHub cloned directory from `various` to `python` directory. Type `python` and hit the return key.
+1. From your Visual Studio Code terminal session, change the GitHub forked clone directory from `various` to `python` directory. Type `python` and hit the return key.
 
     ```powershell
     PS C:\repos\various> python
