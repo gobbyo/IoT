@@ -2,11 +2,11 @@ import RPi.GPIO as GPIO
 import asyncio
 import time
 from decouple import config
+#import os
 from azure.iot.device import Message, X509
 from azure.iot.device.aio import ProvisioningDeviceClient, IoTHubDeviceClient
 
 LED_channel = 17
-
 provisioning_host = config("DPS_HOST")
 id_scope = config("DPS_SCOPEID")
 registration_id = config("DPS_REGISTRATIONID")
@@ -29,16 +29,14 @@ async def main():
     GPIO.setup(LED_channel, GPIO.OUT)
     GPIO.output(LED_channel, GPIO.LOW)
 
-    print("Ctrl-C to quit")
+    print("Ctrl-C to quit'")
 
-    print("Creating x509 object. Code id = 93f0b0da-2420-42ce-880f-2c14313275c8")
     x509 = X509(
         cert_file=config("X509_CERT_FILE"),
         key_file=config("X509_KEY_FILE"),
         pass_phrase=config("X509_PASS_PHRASE"),
     )
 
-    print("Creating client from certificate. Code id = 93f0b0da-2420-42ce-880f-2c14313275c8")
     provisioning_device_client = ProvisioningDeviceClient.create_from_x509_certificate(
         provisioning_host=provisioning_host,
         registration_id=registration_id,
@@ -46,10 +44,7 @@ async def main():
         x509=x509,
     )
 
-    print("Registering client with provisioning service. Code id = e6ce0f4a-665b-42c9-9724-53a9e5d5c174")
     registration_result = await provisioning_device_client.register()
-
-    print(registration_result.registration_state)
 
     if registration_result.status == "assigned":
         device_client = IoTHubDeviceClient.create_from_x509_certificate(
@@ -73,5 +68,7 @@ async def main():
         await device_client.shutdown()
         print("Cleaning up and shutting down")
 
+if __name__ == "__main__":
+    asyncio.run(main())
 if __name__ == "__main__":
     asyncio.run(main())
