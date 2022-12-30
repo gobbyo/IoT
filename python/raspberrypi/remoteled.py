@@ -2,11 +2,12 @@ import RPi.GPIO as GPIO
 import asyncio
 import time
 from decouple import config
-#import os
+
 from azure.iot.device import Message, X509
 from azure.iot.device.aio import ProvisioningDeviceClient, IoTHubDeviceClient
 
 LED_channel = 17
+
 provisioning_host = config("DPS_HOST")
 id_scope = config("DPS_SCOPEID")
 registration_id = config("DPS_REGISTRATIONID")
@@ -29,7 +30,7 @@ async def main():
     GPIO.setup(LED_channel, GPIO.OUT)
     GPIO.output(LED_channel, GPIO.LOW)
 
-    print("Ctrl-C to quit'")
+    print("Ctrl-C to quit")
 
     x509 = X509(
         cert_file=config("X509_CERT_FILE"),

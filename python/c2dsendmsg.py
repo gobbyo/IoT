@@ -1,15 +1,18 @@
 from uuid import uuid4
-from azure.iot.hub import IoTHubRegistryManager, Message
+from azure.iot.hub import IoTHubRegistryManager
+import os
 
-registry_manager = IoTHubRegistryManager("HostName=HubMsgHubw2lu5yeop2qwy.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=92/VHr+94MgD5hOKqvDaUVy/1DGMAQ4aa2l+F7q7mW4=")
+registry_manager = IoTHubRegistryManager(os.getenv("IOTHUB_CONNECTION_STRING"))
 
 try:
-    msg = Message()
-    msg.message_id = uuid4()
-    msg.correlation_id = "correlation-1234"
-    msg.custom_properties["LED"] = input("On or Off? ")
-    msg.content_encoding = "utf-8"
-    msg.content_type = "application/json"
-    registry_manager.send_c2d_message(input("Device id: "), msg, {})
+    props={}
+    # optional: assign system properties
+    props.update(messageId = "{0}".format(uuid4()))
+    props.update(contentType = "application/json")
+
+    # optional: assign application properties
+    props.update(LED = input("On or Off: "))
+
+    registry_manager.send_c2d_message(input("Device id: "), "Update LED", props)
 except Exception as ex:
     print ( "Unexpected error {0}" % ex )
