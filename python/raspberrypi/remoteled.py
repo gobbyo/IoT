@@ -2,7 +2,6 @@ import RPi.GPIO as GPIO
 import asyncio
 import time
 from decouple import config
-
 from azure.iot.device import Message, X509
 from azure.iot.device.aio import ProvisioningDeviceClient, IoTHubDeviceClient
 
@@ -32,12 +31,14 @@ async def main():
 
     print("Ctrl-C to quit")
 
+    print("Creating x509 object. Code id = 93f0b0da-2420-42ce-880f-2c14313275c8")
     x509 = X509(
         cert_file=config("X509_CERT_FILE"),
         key_file=config("X509_KEY_FILE"),
         pass_phrase=config("X509_PASS_PHRASE"),
     )
 
+    print("Creating client from certificate. Code id = 93f0b0da-2420-42ce-880f-2c14313275c8")
     provisioning_device_client = ProvisioningDeviceClient.create_from_x509_certificate(
         provisioning_host=provisioning_host,
         registration_id=registration_id,
@@ -45,13 +46,12 @@ async def main():
         x509=x509,
     )
 
+    print("Registering client with provisioning service. Code id = e6ce0f4a-665b-42c9-9724-53a9e5d5c174")
     registration_result = await provisioning_device_client.register()
 
-    print("The complete registration result is")
     print(registration_result.registration_state)
 
     if registration_result.status == "assigned":
-        print("Will send telemetry from the provisioned device")
         device_client = IoTHubDeviceClient.create_from_x509_certificate(
             x509=x509,
             hostname=registration_result.registration_state.assigned_hub,
