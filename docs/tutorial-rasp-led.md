@@ -98,11 +98,10 @@ Supplies:
 1. Type 'On' or 'Off' when prompted in the `DEBUG CONSOLE`
 1. Verify your LED turns on and off when prompted
 
-<!-- 7. Next steps
-Required: A single link in the blue box format. Point to the next logical tutorial 
-in a series, or, if there are no other tutorials, to some other cool thing the 
-customer can do. 
--->
+## More to Explore
+
+1. Have your LED flash to represent the time in hours and minutes in military time. For example, 2:30 would be 2 flashes, a few second pause, then 3 flashes (one flash for every 10 minute)
+1. Add multiple LEDs like Green, Yellow, and Red
 
 ## Next steps
 

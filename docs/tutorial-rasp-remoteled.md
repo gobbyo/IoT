@@ -25,14 +25,12 @@ Following the diagram below.
 
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Completed the tutorial to [Configure your Windows Machine](tutorial-configure.md)
-- Completed the tutorial to [Connect and configure your Raspberry Pi with Visual Studio Code](tutorial-rasp-connect.md)
+- Completed the tutorial to [Light up an LED](tutorial-rasp-led.md)
 
 ## Code your Raspberry Pi to Receive Messages to Light the LED
 
 1. [Connect to your Raspberry Pi](https://code.visualstudio.com/docs/remote/ssh#_connect-to-a-remote-host) using Visual Studio Code.
-1. Create a file `remoteled.py` and save it in the `python/rasberrypi` directory from your GitHub clone, for example `~/repos/various/python/raspberrypi/remoteled.py`
+1. Create a file `remoteled.py` and save it in the `python/rasberrypi` directory from your GitHub clone, for example `~/repos/various/python/raspberrypi/remoteled.py`. This is a message listener program that runs on your Raspberry Pi.
 1. Copy and paste the following import statements into your `remoteled.py` file.
 
     ```python
@@ -129,7 +127,7 @@ Following the diagram below.
         asyncio.run(main())
     ```
 
-1. Run the program on your Raspberry Pi from Visual Studio Code.
+1. Run the message listener on your Raspberry Pi from Visual Studio Code.
 
     ```python
     $ ~/repos/various $ /bin/python /home/me/repos/various/python/raspberrypi/remoteled.py
@@ -142,10 +140,11 @@ Following the diagram below.
     Connecting client to IoT hub. Code id = 6893e706-291e-44f5-8623-fea84046866a
     ```
 
-## Send a Remote Command to Turn the LED on and off
-<!-- Introduction paragraph -->
+## Send a Remote Command to Turn the LED On or Off
 
-1. From your windows machine, create a file `c2dsendmsg.py` in your cloned GitHub under the `python/raspberrypi` directory, for example `c:\repos\various\python\c2dsendmsg.py`
+In this section you'll create a program that runs locally to send a command to IoT Hub. Note the command to turn the LED on or off is sent as a custom property and not using the payload.
+
+1. From your windows machine, create a file `c2dsendmsg.py` in your cloned GitHub under the `python\raspberrypi` directory, for example `c:\repos\various\python\c2dsendmsg.py`
 1. Copy and paste the following import statement
 
     ```python
@@ -197,6 +196,12 @@ Following the diagram below.
         On
     --Message Processed--
     ```
+
+## More to Explore
+
+1. Change the message listener and sender code so the LED state is passed using the message payload instead of a custom property.
+1. Set up the listener as a cron job that starts when your Raspberry Pi starts up or is rebooted.
+1. Add Green, Yellow, and Red LEDs to your Raspberry Pi and remotely control them by color
 
 ## Next steps
 
