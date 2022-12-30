@@ -14,7 +14,14 @@ In this tutorial, you learn how to:
 
 Following the diagram below.
 
-![lnk_ledremotemsg]
+1. You'll use Visual Studio Code to remotely connect to your Raspberry Pi and create listener code to receive messages and change the state of the LED.
+1. When you start the code, your Raspberry Pi will use the Device Provisioning Service to create an IoT device client.
+1. You'll use the IoT device client to connect to IoT Hub and await for incoming messages.
+1. You'll use a local instance of Visual Studio Code to send a message to your Raspberry Pi.
+1. The listener program receives the incoming message.
+1. The listener program reads the custom LED property (on or off) then changes the state of the LED accordingly.
+
+    ![lnk_ledremotemsg]
 
 ## Prerequisites
 
