@@ -33,9 +33,11 @@ You don't need to know much about Azure and only be familiar with the basics of 
 ### Raspberry Pi and Cloud IoT Building Blocks
 
 1. [Light Emitting Diodes (LEDs)](docs/tutorial-rasp-led.md)
-1. Remotely Control LEDs
-1. Active Buzzer
-1. Remotely Control an Active Buzzer with Morse Code
+1. [Remotely Control LEDs](docs/tutorial-rasp-remoteled.md)
+1. Light Emitting Display Bar Graph
+1. Remotely Control a Light Emitting Display Bar Graph
+1. Passive Buzzer
+1. Remotely Control a Passive Buzzer with Morse Code
 1. Seven Segment Digit Display
 1. Remotely Control a Seven Segment Digit Display
 1. Liquid Crystal Display
@@ -44,8 +46,6 @@ You don't need to know much about Azure and only be familiar with the basics of 
 1. Send Ultrasonic Distance Sensor Data to the Cloud
 1. Temperature and Humidity Sensor
 1. Send Temperature and Humidity Sensor Data to the Cloud
-1. Light Emitting Display Bar Graph
-1. Remotely Control a Light Emitting Display Bar Graph
 1. Photoresistor
 1. Send Light Measurements to the Cloud
 1. DC Motor
