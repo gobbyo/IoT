@@ -82,9 +82,7 @@ The following diagram provides you the context to create a Windows 10 cloud VM.
 
 ## Next Steps
 
-Advance to the next article to learn how to configure your machine
-> [!div class="nextstepaction"]
-> [Next steps button][lnk_next_steps]
+[Tutorial: Configure your Windows Machine](tutorial-configure.md)
 
 <!-- link -->
 
@@ -99,7 +97,7 @@ Advance to the next article to learn how to configure your machine
 [lnk_deploy_bastion]: https://docs.microsoft.com/en-us/azure/bastion/quickstart-host-portal
 [lnk_connect_your_VM]: https://docs.microsoft.com/en-us/azure/bastion/quickstart-host-portal#createvmset
 [lnk_remove_publicIP_address]: https://docs.microsoft.com/azure/bastion/quickstart-host-portal#remove
-[lnk_next_steps]: tutorial-claimsprovider.md
+
 
 <!-- images -->
 

@@ -1,4 +1,18 @@
-# Upload a file to the Cloud from your Device
+---
+title: Upload a file to the Cloud from your Device
+description: [todo] 
+author: jbeman@hotmail.com
+---
+
+# Tutorial: Upload a file to the Cloud from your Device
+
+In this tutorial you'll...
+
+[todo] image needed
+
+## Prerequisites
+
+[todo]
 
 ## Create a new storage account and container
 
@@ -133,3 +147,7 @@ See [Configure IoT Hub file uploads](https://learn.microsoft.com/en-us/azure/iot
     ```
 
 1. Run the Visual Studio Code debugger and [todo: complete this section]
+
+## Next Steps
+
+[Deploy and Configure StreamAnalytics](tutorial-deploystreamtostorage.md)

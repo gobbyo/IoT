@@ -1,4 +1,18 @@
-# Deploy and Configure StreamAnalytics
+---
+title: Deploy and Configure StreamAnalytics
+description: [todo] 
+author: jbeman@hotmail.com
+---
+
+# Tutorial: Deploy and Configure StreamAnalytics
+
+In this tutorial you'll...
+
+[todo] image needed
+
+## Prerequisites
+
+[todo]
 
 ## Deploy
 
@@ -128,3 +142,9 @@
     |Minimum rows Text Box| Leave empty| |
     |Minimum Time| Leave empty| Hours, Minutes, Seconds|
 1. Select the "Save" button. This action enables the stream analytics service to save messages to Blob storage.
+
+## Next Steps
+
+Congratulations, you've completed the basics of IoT Cloud development and have a solid understanding of Azure! You are ready for the next section on setting up your Raspberry Pi with an easy way to remotely code it.
+
+[Tutorial: Connect and configure your Raspberry Pi with Visual Studio Code](tutorial-rasp-connect.md)

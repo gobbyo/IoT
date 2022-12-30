@@ -234,9 +234,7 @@ Follow the H2 headings with a sentence about how the section contributes to the 
 
 ## Next steps
 
-Advance to the next article to learn how to create...
-> [!div class="nextstepaction"]
-> [Next steps button](contribute-how-to-mvc-tutorial.md)
+[Tutorial: Send Hostname and IP address to the Cloud](tutorial-rasp-d2cipandhostname.md)
 
 <!--images-->
 

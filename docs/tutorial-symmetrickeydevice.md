@@ -1,4 +1,4 @@
-# Create a Simulated Device
+# Tutorial: Create a Simulated Device
 
 Creating an IoT device with a symmetric key is the easiest way to create a device.  This is best only for testing and proof of concept. The preferred way to create a device for production is with an x509 certificate which we will cover in a later tutorial.
 
@@ -40,3 +40,7 @@ Creating an IoT device with a symmetric key is the easiest way to create a devic
     -IotHubName "HubMsgFreeHubcv5xo2lejevg6" `
     -DeviceId "myDevice"
     ```
+
+## Next Steps
+
+[Tutorial: Send a Message from the Cloud to a Simulated Device](tutorial-cloudtodevicemsg.md)

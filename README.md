@@ -30,7 +30,7 @@ This section of tutorials starts you on the basics of IoT cloud development. Wit
 
 ### Raspberry Pi and Cloud Starter
 
-This section of tutorials covers setting up your Raspberry Pi with an easy way to remotely code on it. Upon completion, and whenever your Raspberry Pi boots up, your device will send essential information to the cloud services you set up in the previous section. Once you've completed this section you'll have a solid understanding of how to scale and securely use IoT device on the public internet.
+This section of tutorials covers setting up your Raspberry Pi with an easy way to remotely code on it. Upon completion, and whenever your Raspberry Pi boots up, your device will send essential information to the cloud services you set up in the previous section. Once you've completed this section you'll have a solid understanding of how to scale and securely use IoT devices on the public internet.
 
 1. [Set up your Raspberry Pi and Remotely Connect Visual Studio Code](docs/tutorial-rasp-connect.md)
 1. [Create a Device Provisioning Service](docs/tutorial-deploydps.md)

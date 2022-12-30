@@ -1,4 +1,12 @@
-# Deploy and Configure a Device Provisioning Service (DPS)
+---
+title: Deploy and Configure a Device Provisioning Service (DPS)
+description: [todo] 
+author: jbeman@hotmail.com
+---
+
+# Tutorial: Deploy and Configure a Device Provisioning Service (DPS)
+
+In this tutorial you'll...
 
 ## Prerequisites
 
@@ -112,6 +120,10 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
 1. Verify you have successfully deployed a new resource group and DPS by opening the [Azure Portal](https://portal.azure.com).
 
 ![verify_dps]
+
+## Next Steps
+
+[Tutorial: Create a x509 Certificate and Enroll Your Device](tutorial-dpsx509deviceenrollment.md)
 
 <!-- images -->
 

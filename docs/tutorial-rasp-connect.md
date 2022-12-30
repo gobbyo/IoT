@@ -1,4 +1,10 @@
-# Connect and configure your Raspberry Pi with Visual Studio Code
+---
+title: Connect and configure your Raspberry Pi with Visual Studio Code
+description: [todo] 
+author: jbeman@hotmail.com
+---
+
+# Tutorial: Connect and configure your Raspberry Pi with Visual Studio Code
 
 In this tutorial you'll connect to your Raspberry pi with Visual Studio Code and write some python code.
 
@@ -22,11 +28,11 @@ In this tutorial you'll connect to your Raspberry pi with Visual Studio Code and
     mkdir repos
     ```
 
-1. Change to the repos directory and run `git clone https://github.com/gobbyo/various.git`
+1. Change to the repos directory and clone your github fork, `git clone https://github.com/{your-fork}/various.git`
 
     ```azurecli
     cd repos
-    git clone https://github.com/gobbyo/various.git
+    git clone https://github.com/{your-fork}/various.git
     ```
 
 ## Reference
@@ -34,3 +40,5 @@ In this tutorial you'll connect to your Raspberry pi with Visual Studio Code and
 - IoT Hub message [system and user-defined properties](https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)
 
 ## Next Steps
+
+[Tutorial: Deploy and Configure a Device Provisioning Service (DPS)](tutorial-deploydps.md)

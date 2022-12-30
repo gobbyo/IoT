@@ -1,12 +1,12 @@
 ---
-title: Configure your Windows Machine
+title: Configure your Windows Cloud Machine
 description: Install Visual Studio Code, a few extensions, and Git for windows, Python, Azure Maps and Identity Python client libraries 
 author: jbeman@hotmail.com
 ---
 
-# Tutorial: Configure your Windows Machine
+# Tutorial: Configure your Windows Cloud Machine
 
-This tutorial must be completed before any other tutorials: you'll install Visual Studio Code, a few extensions, and Git for windows. Finally, you'll install Python, Azure Maps and Identity Python client libraries.
+You'll need a cloud developer set up in order to deploy Azure services and remotely code your device. This tutorial must be completed before any other tutorials: you'll install Visual Studio Code, a few extensions, and Git for windows. Finally, you'll install Python, Azure Maps and Identity Python client libraries.
 
 ## Install Visual Studio Code and Extensions
 
@@ -57,16 +57,17 @@ This tutorial must be completed before any other tutorials: you'll install Visua
     PS C:\repos>
     ```
 
+1. [Fork the repo](https://www.freecodecamp.org/news/how-to-fork-a-github-repository/#:~:text=How%20to%20Fork%20a%20Repo%20in%20GitHub%20Forking,forked%20repository%20gets%20created%20under%20your%20GitHub%20account.) from [https://github.com/gobbyo](https://github.com/gobbyo).
 1. Run the following script from your terminal session in Visual Studio Code:
 
     ```powershell
-    git clone https://github.com/gobbyo/various.git
+    git clone https://github.com/{your-fork}/various.git
     ```
 
-    for example,
+    For example,
 
     ```powershell
-    PS C:\repos> git clone https://github.com/gobbyo/various.git
+    PS > git clone https://github.com/{your-fork}/various.git
     Cloning into 'various'...
     remote: Enumerating objects: 250, done.
     remote: Counting objects: 100% (250/250), done.
@@ -171,4 +172,4 @@ Be sure to read more about the following code and concept references you used in
 
 ## Next Steps
 
-[Create an IoT Hub and Storage Account](tutorial-deployiothub.md)
+[Tutorial: Deploy an Azure IoT Hub](tutorial-deployiothub.md)

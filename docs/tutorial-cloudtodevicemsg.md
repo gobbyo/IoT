@@ -152,13 +152,13 @@ In this section we'll build a simple application that sends a message to your si
     b'Hello World!'
     ```
 
-## Next Steps
-
-[Send a Message from a Simulated Device To the Cloud](tutorial-devicetocloudmsg.md)
-
 ## Reference
 
 IoT Hub message [system and user-defined properties](https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)
+
+## Next Steps
+
+[Tutorial: Send a Message from a Simulated Device To the Cloud](tutorial-devicetocloudmsg.md)
 
 <!--images-->
 

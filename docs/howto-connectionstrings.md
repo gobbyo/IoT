@@ -1,5 +1,7 @@
 # How to Find and Set Your Connection Strings
 
+## On your Raspberry Pi
+
 1. Install decouple, see https://pypi.org/project/python-decouple/ for details.
 
     ```python
@@ -16,6 +18,8 @@
     EVENTHUB_CONNECTION_STRING="{Built-in Endpoint Event Hub Connection String}"
     EVENTHUB_NAME="{Built-in Endpoint Event Hub Name}"
     ```
+
+## On your Windows Cloud Machine
 
 Table of Connection Variables
 

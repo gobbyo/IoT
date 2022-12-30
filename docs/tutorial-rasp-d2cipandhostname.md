@@ -1,4 +1,4 @@
-# Send Hostname and IP address to the Cloud
+# Tutorial: Send Hostname and IP address to the Cloud
 
 In this tutorial you'll create device code that sends a message to IoT Hub. Knowing your Raspberry Pi's hostname and IP address is needed to connect via ssh or from Visual Studio Code.
 
@@ -9,7 +9,6 @@ In this tutorial you'll create device code that sends a message to IoT Hub. Know
 [Deploy and Configure StreamAnalytics](tutorial-deploystreamtostorage.md)
 
 ## Code a Message with your Device Hostname and IP Address to the Cloud
-
 
 1. Create a new directory called `modules` under the `\various\python\raspberrypi\`, e.g. `\various\python\raspberrypi\modules`.
 1. Create a new file called `raspipaddress.py` in the `\various\python\raspberrypi\modules` directory path you created in the previous step.
@@ -70,7 +69,7 @@ In this tutorial you'll create device code that sends a message to IoT Hub. Know
     id_scope = config("DPS_SCOPEID")
     registration_id = config("DPS_REGISTRATIONID")
     ```
-    
+
 1. Copy and paste the following code to create a message
 
     ```python
@@ -159,3 +158,9 @@ In this tutorial you'll create device code that sends a message to IoT Hub. Know
 ## Reference
 
 - IoT Hub message [system and user-defined properties](https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)
+
+## Next Steps
+
+Congratulations, you've successfully remotely coded a real device and connected it to Azure! You are ready to continue your journey and learn to wire various electronics to your Raspberry Pi and remotely controlling it.
+
+[Tutorial: Light up an LED](tutorial-rasp-led.md)
