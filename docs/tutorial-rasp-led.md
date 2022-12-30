@@ -101,7 +101,7 @@ Supplies:
 ## More to Explore
 
 1. Have your LED flash to represent the time in hours and minutes in military time. For example, 2:30 would be 2 flashes, a few second pause, then 3 flashes (one flash for every 10 minute)
-1. Add multiple LEDs like Green, Yellow, and Red
+1. Add multiple LEDs like Green, Yellow, and Red.
 
 ## Next steps
 
