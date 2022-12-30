@@ -2,7 +2,6 @@ import RPi.GPIO as GPIO
 import asyncio
 import time
 from decouple import config
-#import os
 from azure.iot.device import Message, X509
 from azure.iot.device.aio import ProvisioningDeviceClient, IoTHubDeviceClient
 
@@ -30,13 +29,14 @@ async def main():
     GPIO.output(LED_channel, GPIO.LOW)
 
     print("Ctrl-C to quit'")
-
+    print("Creating x509 cert object from file. Code id = e28c4236-60bb-4d45-adad-2a1b5cd0302e")
     x509 = X509(
         cert_file=config("X509_CERT_FILE"),
         key_file=config("X509_KEY_FILE"),
         pass_phrase=config("X509_PASS_PHRASE"),
     )
 
+    print("Creating provisioning client from certificate. Code id = 7dc43b15-f17b-4f17-9446-8d26b1e188d2")
     provisioning_device_client = ProvisioningDeviceClient.create_from_x509_certificate(
         provisioning_host=provisioning_host,
         registration_id=registration_id,
@@ -44,6 +44,7 @@ async def main():
         x509=x509,
     )
 
+    print("Registering provisioning client. Code id = 4d906cc4-61a9-4fe2-ab6e-4e397f63a702")
     registration_result = await provisioning_device_client.register()
 
     if registration_result.status == "assigned":
@@ -53,7 +54,7 @@ async def main():
             device_id=registration_result.registration_state.device_id,
         )
 
-    # Connect the client.
+    print("Connecting client to IoT hub. Code id = 6893e706-291e-44f5-8623-fea84046866a")
     await device_client.connect()
 
     device_client.on_message_received = message_handler
