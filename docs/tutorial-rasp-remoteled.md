@@ -12,6 +12,10 @@ In this tutorial, you learn how to:
 - Use custom properties to set the LED
 - Receive a remote command and use the message custom properties to set the LED state
 
+Following the diagram below.
+
+![lnk_ledremotemsg]
+
 ## Prerequisites
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -195,4 +199,4 @@ Advance to the next article to learn how to create...
 
 <!--images-->
 
-[lnk_raspled]: media/tutorial-rasp-led/rasp-led.png
+[lnk_ledremotemsg]: media/tutorial-rasp-remoteled/ledremotemsg.png

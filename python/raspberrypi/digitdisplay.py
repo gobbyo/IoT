@@ -1,17 +1,14 @@
 import RPi.GPIO as GPIO
 import time
 
-#      segment LED
+#   7 segmented LED
 #
-#         a
-#        ___
-#   f   |   |   b
-#       |___|        g
-#   e   |   |   c
-#       |___|   _    h
+#        _a_
+#     f |_g_| b
+#     e |___| c _h
 #         d
 # num   hgfe dcba   hex
-
+#
 # 0 = 	0011 1111   0x3F
 # 1 =	0000 0110   0x06
 # 2 =	0101 1011   0x5B
