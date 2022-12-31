@@ -27,8 +27,6 @@ All tutorials involving deploying or creating an Azure service focus on using an
 - **Automation**. ARM templates can be used to automate the deployment of resources, which can save time and reduce the risk of errors.
 - **Consistency**. ARM templates can help ensure that resources are deployed consistently across environments, which can be especially important for maintaining compliance with corporate standards or regulatory requirements.
 
-Overall, using an ARM template to deploy services can provide a number of benefits, including increased efficiency, reliability, and consistency in the deployment process.
-
 No need to avoid using the [Azure portal user interfaces](https://portal.azure.com) entirely as it is a great way to visualize any Azure service and all its settings.
 
 ## Prerequisites
@@ -43,8 +41,6 @@ In this section you'll create a resource group for your IoT Hub and Storage Acco
 - **Cost management**. Resource groups can be used to manage costs associated with your Azure resources. For example, you can use a resource group to monitor and track the costs of your resources, and apply tags to your resources to help you better understand how your costs are being incurred.
 - **Resource management**. Resource groups provide a convenient way to manage the lifecycle of your Azure resources. For example, you can use a resource group to deploy, update, and delete resources as a group, rather than managing them individually.
 - **Access control**. Resource groups can be used to control access to your Azure resources. For example, you can use resource policies or role-based access control to grant or restrict access to specific resource groups or resources within them.
-
-Overall, creating a resource group for your Azure services can provide a number of benefits, including improved organization, cost management, resource management, and access control.
 
 Before starting this section be sure to open Visual Studio (VS) Code, select the `Terminal > New Terminal...` menu and [Authenticate your Azure Subscription](howto-connecttoazure.md) using the PowerShell (PS) session.
 
@@ -102,8 +98,6 @@ In this section you'll deploy an Azure IoT Hub and a Storage Account. Azure IoT 
 - **Scalability**. IoT Hub is designed to handle large volumes of device data and traffic, making it suitable for use in large-scale IoT deployments.
 - **Integration with Azure services**. IoT Hub can be easily integrated with other Azure services, such as Azure Stream Analytics, Azure Functions, and Azure Machine Learning, which can be useful for building more complex IoT solutions.
 - **Customizable routing**. IoT Hub allows you to configure custom routes to send device data to different endpoints, such as storage or event hubs.
-
-Overall, Azure IoT Hub is a powerful and flexible service that can be useful for a wide range of IoT applications, due to its ability to manage devices, provide secure communication, scale to handle large volumes of data, and integrate with other Azure services.
 
 Before starting, verify your PowerShell variables are set in your PS session:
 - `$rg`

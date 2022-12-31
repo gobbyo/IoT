@@ -126,9 +126,7 @@ In this section you'll install Python into your Windows Cloud Machine. You'll us
 
 ## Install Azure Client Libraries
 
-In this section you'll install the Azure Client Libraries. Azure client libraries are needed to create IoT applications because they provide a set of APIs (Application Programming Interfaces) that allow you to interact with the Azure IoT services. These libraries make it easy to integrate Azure IoT functionality into an application, such as sending data to the cloud, receiving commands from the cloud, and authenticating devices.
-
-Some of the benefits of using Azure client libraries to create IoT applications include:
+In this section you'll install the Azure Client Libraries. Azure client libraries are needed to create IoT applications because they provide a set of APIs (Application Programming Interfaces) that allow you to interact with the Azure IoT services. These libraries make it easy to integrate Azure IoT functionality into an application, such as sending data to the cloud, receiving commands from the cloud, and authenticating devices. Some of the benefits of using Azure client libraries to create IoT applications include:
 
 - **Simplicity**. Azure client libraries provide a simple and easy-to-use interface for interacting with Azure IoT services, which can save time and effort when developing IoT applications.
 - **Consistency**. Azure client libraries are designed to be consistent across different platforms and languages, which can make it easier to develop IoT applications that run on multiple platforms or that use different programming languages.
@@ -206,8 +204,6 @@ Be sure to read more about the following code and concept references you used in
 
 - [Set-ExecutionPolicy](https://learn.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.3)
 - [Install-Module](https://learn.microsoft.com/powershell/module/powershellget/install-module?view=powershell-7.3)
-- [Git Clone](https://github.com/git-guides/git-clone)
-- [Download Visual Studio Code](https://code.visualstudio.com/Download)
 - [Visual Studio Developer Command Prompt and Developer PowerShell](https://learn.microsoft.com/visualstudio/ide/reference/command-prompt-powershell?view=vs-2022)
 
 ## Next Steps

@@ -20,7 +20,7 @@ An x509 certificate is a digital certificate that is used to authenticate the id
 - **Ease of use**. Certificates are easily managed and installed on IoT devices, which can make them easy to use and maintain.
 - **Scalability**. Certificates can be easily issued and revoked, which can make them well-suited for use in large-scale IoT deployments.
 
-Overall, x509 certificates are a useful tool for securing IoT devices and ensuring the authenticity and integrity of communications between devices.
+Overall, x509 certificates are a useful tool for securing IoT devices and ensuring the authenticity and integrity of communications between the cloud and IoT devices.
 
 [todo] Diagram needed.
 

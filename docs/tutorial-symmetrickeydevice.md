@@ -17,9 +17,7 @@ Security is important for IoT devices for a number of reasons:
 - **Availability**. Ensuring the availability of IoT devices is important to ensure that they can perform their intended functions and provide the expected level of service.
 - **Safety**. In some cases, IoT devices are used in safety-critical applications, such as in healthcare or transportation. Ensuring the security of these devices is important to prevent accidents or other adverse outcomes.
 
-Overall, security is an important consideration for IoT devices, as it helps protect the confidentiality, integrity, availability, and safety of the data and systems involved.
-
-As you progress through these tutorials you'll use the best practices to securely code your IoT device.
+Overall, security is an important consideration for IoT devices, as it helps protect the confidentiality, integrity, availability, and safety of the data and systems involved. As you progress through these tutorials you'll use the best practices to securely code your IoT device.
 
 ## Prerequisites
 
