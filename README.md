@@ -1,6 +1,14 @@
 # Internet of Things
 
-These tutorials were compiled as a way to understand Azure and how to use the Internet of Things (IoT) cloud services. When you complete these tutorials you will be able to build your own remotely controlled devices and solutions as presented in Azure's reference architectures.
+Coding devices to use the Internet of Things (IoT) can provide a number of benefits, including:
+
+- **Improved efficiency**. By using IoT devices, businesses and individuals can automate tasks and processes, which can lead to increased efficiency and productivity. For example, a company might use IoT sensors to monitor the temperature and humidity in a warehouse, and use this data to optimize the climate control system.
+- **Enhanced security**. IoT devices can be used to monitor and secure physical assets and infrastructure. For example, a smart security system might use IoT sensors to detect unusual activity and send alerts to the owner or security personnel.
+- **Increased connectivity**. IoT devices can be used to connect people, devices, and systems in ways that were previously not possible. For example, a smart home might use IoT devices to control the lighting, heating, and appliances, allowing the homeowner to control these systems remotely.
+- **Improved decision-making**. IoT devices can generate large amounts of data, which can be used to inform decision-making and improve business operations. For example, a retailer might use IoT sensors to track customer foot traffic and use this data to optimize store layouts and product placements.
+- **Enhanced customer experience**. IoT devices can be used to improve the customer experience in a variety of ways. For example, a hotel might use IoT devices to allow guests to control the temperature and lighting in their rooms, or a retailer might use IoT devices to personalize the shopping experience for individual customers.
+
+These tutorials were compiled as a way to understand Azure and how to use the Internet of Things (IoT) cloud services. When you complete these tutorials you will be able to build your own remotely controlled devices and solutions.
 
 You don't need to know much about Azure and only be familiar with the basics of coding to successfully get through this program. These tutorials focus on minimizing the cost of using Azure. You'll use PowerShell for cloud service management and Python for device coding on a Raspberry Pi.
 
