@@ -1,14 +1,12 @@
 # Internet of Things
 
-Coding devices to use the Internet of Things (IoT) can provide a number of benefits, including:
+These tutorials were compiled as a way to understand Azure and how to use the Internet of Things (IoT) cloud services. When you complete these tutorials you will be able to build your own remotely controlled devices and solutions. Coding devices to use the IoT can provide a number of benefits, including:
 
 - **Improved efficiency**. By using IoT devices, businesses and individuals can automate tasks and processes, which can lead to increased efficiency and productivity. For example, a company might use IoT sensors to monitor the temperature and humidity in a warehouse, and use this data to optimize the climate control system.
 - **Enhanced security**. IoT devices can be used to monitor and secure physical assets and infrastructure. For example, a smart security system might use IoT sensors to detect unusual activity and send alerts to the owner or security personnel.
 - **Increased connectivity**. IoT devices can be used to connect people, devices, and systems in ways that were previously not possible. For example, a smart home might use IoT devices to control the lighting, heating, and appliances, allowing the homeowner to control these systems remotely.
 - **Improved decision-making**. IoT devices can generate large amounts of data, which can be used to inform decision-making and improve business operations. For example, a retailer might use IoT sensors to track customer foot traffic and use this data to optimize store layouts and product placements.
 - **Enhanced customer experience**. IoT devices can be used to improve the customer experience in a variety of ways. For example, a hotel might use IoT devices to allow guests to control the temperature and lighting in their rooms, or a retailer might use IoT devices to personalize the shopping experience for individual customers.
-
-These tutorials were compiled as a way to understand Azure and how to use the Internet of Things (IoT) cloud services. When you complete these tutorials you will be able to build your own remotely controlled devices and solutions.
 
 You don't need to know much about Azure and only be familiar with the basics of coding to successfully get through this program. These tutorials focus on minimizing the cost of using Azure. You'll use PowerShell for cloud service management and Python for device coding on a Raspberry Pi.
 
@@ -25,7 +23,14 @@ These tutorials are intended to be completed in the order they are listed. The t
 
 ### IoT Fundamentals with a Simulated Device
 
-This section of tutorials starts you on the basics of IoT cloud development. With the exception on the first tutorial to [Create a Cloud Virtual Machine](docs/tutorial-prerequisites.md), the remaining tutorials focus on setting up and using IoT Cloud services. No need for a Raspberry Pi in this section of tutorials because you'll simulate the device with code. Once you've completed this section you'll have a solid understanding of the Azure Cloud.
+This section of tutorials starts you on the basics of IoT cloud development. With the exception on the first tutorial to [Create a Cloud Virtual Machine](docs/tutorial-prerequisites.md), the remaining tutorials focus on setting up and using IoT Cloud services and using a simulated device to interact with them. No need for a Raspberry Pi in this section. There are several reasons you'll start with a simulated IoT device rather than a real one:
+
+- **Cost**. Simulated IoT devices are typically less expensive than real ones, which can make them a more affordable option for learning and experimentation.
+- **Convenience**. Simulated IoT devices can be more convenient to use than real ones, as they do not require physical setup or maintenance. This can be especially useful if you do not have access to a real IoT device or if you are learning remotely.
+- **Safety**. Simulated IoT devices can be safer to use than real ones, as they do not involve any physical components or connections. This can be especially important if you are working with potentially hazardous devices or if you are learning to code with a limited understanding of the underlying hardware.
+- **Reproducibility**. Simulated IoT devices can be easier to reproduce and share than real ones, which can be useful for collaborative learning or for sharing code examples.
+
+However, it is also important to note that learning to code with a real IoT device can provide a more realistic and hands-on experience, which is covered in the tutorials that follow this section. Once you've completed this section you'll have a solid understanding of how IoT devices interact with the Cloud.
 
 1. [Create a Cloud Virtual Machine](docs/tutorial-prerequisites.md)
 1. [Configure your Cloud Machine](docs/tutorial-configure.md)
@@ -38,16 +43,15 @@ This section of tutorials starts you on the basics of IoT cloud development. Wit
 
 ### Raspberry Pi and Cloud Starter
 
-This section of tutorials covers setting up your Raspberry Pi with an easy way to remotely code on it. Upon completion, and whenever your Raspberry Pi boots up, your device will send essential information to the cloud services you set up in the previous section. Once you've completed this section you'll have a solid understanding of how to scale and securely use IoT devices on the public internet.
+This section of tutorials covers setting up your Raspberry Pi with an easy way to remotely code it. Once you've completed this section you'll have a solid understanding of how to scale and securely use IoT devices on the public internet.
 
 1. [Set up your Raspberry Pi and Remotely Connect Visual Studio Code](docs/tutorial-rasp-connect.md)
 1. [Create a Device Provisioning Service](docs/tutorial-deploydps.md)
-1. [Provision and Test a Device using an x509 Certificate](docs/tutorial-dpsx509deviceenrollment.md)
-1. [Send Hostname, IP Address, and Device Information to the Cloud](docs/tutorial-rasp-d2cipandhostname.md)
+1. [Provision an x509 Device and Information to the Cloud](docs/tutorial-dpsx509deviceenrollment.md)
 
 ### Raspberry Pi and Cloud IoT Building Blocks
 
-This section of tutorials are sequentially paired where the first tutorial focuses on wiring a sensor or device (LED, Sensor, Motor, Buzzer, or Display) to your Raspberry Pi followed by the next tutorial showing you how to remotely control the device. For example, the first tutorial [Light Emitting Diode (LEDs)](docs/tutorial-rasp-led.md) has you connect an LED to your Raspberry Pi and write code to switch on or off your LED. The subsequent tutorial, [Remotely Control an LED](docs/tutorial-rasp-remoteled.md), has you code your Raspberry Pi to receive Cloud messages to remotely switch on or off the LED. Once you've completed this section you'll have the essential building blocks to build a variety of projects and enough coding experience to remotely control and manage them.
+This section of tutorials you'll dive into the the Raspberry Pi GPIO enabled sensors and peripherals and its communication with Cloud services. Note the tutorials are sequentially paired where the first tutorial focuses on wiring an electronic component (LED, Sensor, Motor, Buzzer, or Display) to your Raspberry Pi followed by the next tutorial showing you how to remotely control the component. For example, the first tutorial [Light Emitting Diode (LEDs)](docs/tutorial-rasp-led.md) has you connect an LED to your Raspberry Pi and write code to switch on or off your LED. The subsequent tutorial, [Remotely Control an LED](docs/tutorial-rasp-remoteled.md), has you code your Raspberry Pi to receive Cloud messages to remotely switch on or off the LED. Once you've completed this section you'll have the essential building blocks to build a variety of projects and enough coding experience to remotely control and manage them.
 
 1. [Light Emitting Diode (LEDs)](docs/tutorial-rasp-led.md)
 1. [Remotely Control an LED](docs/tutorial-rasp-remoteled.md)

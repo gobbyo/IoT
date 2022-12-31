@@ -1,13 +1,23 @@
 # Create A Virtual Machine
 
-In this tutorial, you learn how to:
-> [!div class="checklist"]
->
-> - Create a [Windows 10 Virtual Machine](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal)
+In this tutorial, you'll:
 
-In this tutorial, you'll create a Windows 10 virtual machine on the [Azure portal](http://portal.azure.com) to run and manage the cloud portion of the tutorials. If you're trying out these tutorials for the first time, then use a clean install of a virtual machine to avoid issues. Otherwise, you can skip creating a virtual machine and install the prerequisites onto your own machine.
+- Create a [Windows 10 Virtual Machine](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal)
+- Install and use [Bastion](https://learn.microsoft.com/azure/bastion/bastion-overview) to connect to your VM
+
+In this tutorial, you'll create a Windows virtual machine on the [Azure portal](http://portal.azure.com) to run and manage the cloud portion of the tutorials. You'll need to complete this tutorial if you do not have access to a Windows machine. If you're trying out these tutorials for the first time, then use a clean install of a virtual machine to avoid issues. Be aware there is cost involved in creating a Virtual Machine and using [Bastion](https://learn.microsoft.com/azure/bastion/bastion-overview) to remotely access it. Otherwise, you can skip this tutorial and go directly to the [Tutorial: Configure your Windows Cloud Machine](tutorial-configure.md). Bastion is a remote access service in Azure that allows you to remotely connect to Windows virtual machines (VMs). There are several benefits to using Bastion to access your Windows VM over RDP:
+
+- **Security**. Bastion is far more secure than using Remote Desktop or other mechanisms to remotely connect. Bastion uses Azure AD authentication and multi-factor authentication (MFA) to ensure that only authorized users can access the VM.
+- **Convenience**. Bastion allows you to access your VM from any device with a modern web browser, without the need to install additional software or configure VPN connections.
+- **Ease of use**. Bastion includes a user-friendly interface that makes it easy to connect to and manage your VMs.
+- **Scalability**. Bastion can scale to support a large number of users and VMs, making it suitable for use in large organizations.
+- **Integration with Azure**. Bastion is fully integrated with Azure, allowing you to manage your VMs and other resources from the same interface.
+
+Overall, Bastion provides a secure and convenient way to remotely access Windows VMs over RDP, and can be especially useful for organizations looking to simplify their remote access infrastructure.
 
 The following diagram provides you the context to create a Windows 10 cloud VM.
+1. Create a Windows Cloud Virtual machine
+1. Deploy Bastion and connect to your Windows Machine
 
 ![diagram of the VMs used for setting up the CVP environment]
 

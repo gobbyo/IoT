@@ -12,7 +12,7 @@ In this tutorial, you learn how to:
 - Deploy an Azure IoT Hub using an ARM template
 - Deploy an Azure Storage Account using an ARM template
 
-IoT Hub is the simplest an most effective way for devices to send and receive messages from the cloud. In this tutorial you'll create an IoT Hub and an associated storage account using an [Azure Resource Manager (ARM) template](https://learn.microsoft.com/azure/azure-resource-manager/templates/overview). Following the diagram below using the machine you configured in the previous tutorial:
+In this tutorial you'll create an IoT Hub and an associated storage account using an [Azure Resource Manager (ARM) template](https://learn.microsoft.com/azure/azure-resource-manager/templates/overview). Following the diagram below using the machine you configured in the previous tutorial:
 
 1. Create an Azure Resource Group for your IoT Hub
 1. Deploy IoT Hub and a Storage Account
@@ -21,11 +21,11 @@ IoT Hub is the simplest an most effective way for devices to send and receive me
 
 All tutorials involving deploying or creating an Azure service focus on using an ARM (Azure Resource Manager) template rather than the [Azure portal user interface](https://portal.azure.com). An ARM template is a JSON file that defines the infrastructure and configuration for an Azure solution. There are several benefits to using an ARM template to deploy services:
 
-**Reusability**. ARM templates can be used to deploy resources consistently and repeatably, which can be especially useful when deploying the same resources to multiple environments (e.g., development, staging, production).
-**Version control**. ARM templates can be stored in a version control system, such as Git, which allows you to track changes to the infrastructure over time and roll back to previous versions if needed.
-**Collaboration**. ARM templates can be shared and collaborated on by multiple team members, which can be useful when working on complex projects with multiple dependencies.
-**Automation**. ARM templates can be used to automate the deployment of resources, which can save time and reduce the risk of errors.
-**Consistency**. ARM templates can help ensure that resources are deployed consistently across environments, which can be especially important for maintaining compliance with corporate standards or regulatory requirements.
+- **Reusability**. ARM templates can be used to deploy resources consistently and repeatably, which can be especially useful when deploying the same resources to multiple environments (e.g., development, staging, production).
+- **Version control**. ARM templates can be stored in a version control system, such as Git, which allows you to track changes to the infrastructure over time and roll back to previous versions if needed.
+- **Collaboration**. ARM templates can be shared and collaborated on by multiple team members, which can be useful when working on complex projects with multiple dependencies.
+- **Automation**. ARM templates can be used to automate the deployment of resources, which can save time and reduce the risk of errors.
+- **Consistency**. ARM templates can help ensure that resources are deployed consistently across environments, which can be especially important for maintaining compliance with corporate standards or regulatory requirements.
 
 Overall, using an ARM template to deploy services can provide a number of benefits, including increased efficiency, reliability, and consistency in the deployment process.
 

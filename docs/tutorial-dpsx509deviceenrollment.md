@@ -6,46 +6,32 @@ author: jbeman@hotmail.com
 
 # Tutorial: Create a x509 Certificate and Enroll Your Device
 
-<!-- 2. Introductory paragraph 
-Required. Lead with a light intro that describes, in customer-friendly language, 
-what the customer will learn, or do, or accomplish. Answer the fundamental “why 
-would I want to do this?” question. Keep it short.
--->
-
-[Add your introductory paragraph]
-
-<!-- 3. Tutorial outline 
-Required. Use the format provided in the list below.
--->
-
 In this tutorial, you learn how to:
 
-> [!div class="checklist"]
-> * All tutorials include a list summarizing the steps to completion
-> * Each of these bullet points align to a key H2
-> * Use these green checkboxes in a tutorial
+- Create an x509 Certificate
+- Enroll your device into the Device Provisioning Service
+- Add environment variables to your Raspberry Pi
+- Send Device Information to the Cloud when Booting Up your Raspberry Pi
 
-<!-- 4. Prerequisites 
-Required. First prerequisite is a link to a free trial account if one exists. If there 
-are no prerequisites, state that no prerequisites are needed for this tutorial.
--->
+An x509 certificate is a digital certificate that is used to authenticate the identity of a device or a user on a network. x509 certificates are based on the x509 standard, which is a widely used standard for public key infrastructure (PKI). There are several reasons to use x509 certificates for IoT devices:
+
+- **Security**. Certificates provide a secure and reliable way to authenticate the identity of IoT devices, which can help protect against unauthorized access and tampering.
+- **Compatibility**. Certificates are widely supported and recognized, which makes them a convenient choice for use with IoT devices that may need to communicate with a variety of other devices and systems.
+- **Ease of use**. Certificates are easily managed and installed on IoT devices, which can make them easy to use and maintain.
+- **Scalability**. Certificates can be easily issued and revoked, which can make them well-suited for use in large-scale IoT deployments.
+
+Overall, x509 certificates are a useful tool for securing IoT devices and ensuring the authenticity and integrity of communications between devices.
+
+[todo] Diagram needed.
 
 ## Prerequisites
 
-- <!-- An Azure account with an active subscription. [Create an account for free]
-  (https://azure.microsoft.com/free/?WT.mc_id=A261C142F). -->
-- <!-- prerequisite 2 -->
-- <!-- prerequisite n -->
-
-<!-- 5. H2s
-Required. Give each H2 a heading that sets expectations for the content that follows. 
-Follow the H2 headings with a sentence about how the section contributes to the whole.
--->
+- Completed the [Tutorial: Deploy and Configure a Device Provisioning Service (DPS)](tutorial-deploydps.md)
 
 ## Create a Certificate
 <!-- Introduction paragraph -->
 
-1. Remotely connect to your device from Visual Studio Code
+1. Remotely connect to your Raspberry Pi from Visual Studio Code
 1. Create a directory to hold your certs then change to the new directory.
 
     ```azurecli
@@ -159,6 +145,8 @@ Follow the H2 headings with a sentence about how the section contributes to the 
     >>> print(config("DPS_HOST"))
     dpsztputik7h47qi.azure-devices-provisioning.net
     ```
+
+## Send Device Information to the Cloud when Booting Up your Raspberry Pi
 
 1. Create a file called `provisiondevicex509.py` in the `python/raspberrypi/` directory of your git hub clone, for example `$ ~/repos/various/python/raspberrypi/provisiondevicex509.py`
 1. Copy and paste the following code to your `provisiondevicex509.py` file.
