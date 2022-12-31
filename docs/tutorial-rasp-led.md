@@ -15,9 +15,7 @@ Lighting an LED is the starting point for electronic projects. Once connected pr
 
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Completed the tutorial to [Configure your Windows Machine](tutorial-configure.md)
-- Completed the tutorial to [Connect and configure your Raspberry Pi with Visual Studio Code](tutorial-rasp-connect.md)
+- Completed the [Tutorial: Send Hostname and IP address to the Cloud](tutorial-rasp-d2cipandhostname.md)
 
 ## Connect an LED to your Raspberry Pi
 
