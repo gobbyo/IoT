@@ -2,22 +2,22 @@ import RPi.GPIO as GPIO
 import time
 
 def main():
-    LED_pins = [8,12,14,16,18,20,22,26,28]
+    LED_pins = [8,12,16,18,22,24,26,32,36,38]
 
     GPIO.setmode(GPIO.BOARD)
 
     for p in LED_pins:
         GPIO.setup(p, GPIO.OUT)
-        GPIO.output(p, GPIO.LOW)
+        GPIO.output(p, GPIO.HIGH)
 
     try:
         on = True
         while True:
             for p in LED_pins:
                 if on:
-                    GPIO.output(LED_channel, GPIO.HIGH)
+                    GPIO.output(p, GPIO.LOW)
                 else:
-                    GPIO.output(LED_channel, GPIO.LOW)
+                    GPIO.output(p, GPIO.HIGH)
                 time.sleep(0.25)
             if(on):
                 on = False
