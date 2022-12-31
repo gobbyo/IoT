@@ -8,16 +8,16 @@ def main():
 
     for p in LED_pins:
         GPIO.setup(p, GPIO.OUT)
-        GPIO.output(p, GPIO.HIGH)
+        GPIO.output(p, GPIO.LOW)
 
     try:
         on = True
         while True:
             for p in LED_pins:
                 if on:
-                    GPIO.output(p, GPIO.LOW)
-                else:
                     GPIO.output(p, GPIO.HIGH)
+                else:
+                    GPIO.output(p, GPIO.LOW)
                 time.sleep(0.25)
             if(on):
                 on = False
