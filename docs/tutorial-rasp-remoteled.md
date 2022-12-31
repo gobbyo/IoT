@@ -42,7 +42,7 @@ Following the diagram below.
     from azure.iot.device.aio import ProvisioningDeviceClient, IoTHubDeviceClient
     ```
 
-1. Copy and paste the following environment variables to access the Device Provisioning Service. Note the `DPS_HOST`, `DPS_SCOPEID`, and `DPS_REGISTRATIONID` will need to be added to the .env file, see the following table for details.
+1. Copy and paste the following variables following your import statements from the previous step. Note the `DPS_HOST`, `DPS_SCOPEID`, and `DPS_REGISTRATIONID` will need to be added to your [`.env` file](howto-connectionstrings.md), see the following table for details.
 
     ```python
     LED_channel = 17
