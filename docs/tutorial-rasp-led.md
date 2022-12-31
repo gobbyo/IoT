@@ -6,22 +6,12 @@ author: jbeman@hotmail.com
 
 # Tutorial: Light up an LED
 
-<!-- 2. Introductory paragraph 
-Required. Lead with a light intro that describes, in customer-friendly language, 
-what the customer will learn, or do, or accomplish. Answer the fundamental “why 
-would I want to do this?” question. Keep it short.
--->
-
-Lighting an LED is the starting point for electronic projects. Once connected properly the LED will be controlled by an application that is local on the Raspberry Pi. This project prepares you for the next tutorial to remotely control your LED.
-
-<!-- 3. Tutorial outline 
-Required. Use the format provided in the list below.
--->
-
 In this tutorial, you learn how to:
 
 - Connect an LED to your Raspberry Pi
 - Test the LED connection
+
+Lighting an LED is the starting point for electronic projects. Once connected properly the LED will be controlled by an application that is local on the Raspberry Pi. This project prepares you for the next tutorial to remotely control your LED.
 
 ## Prerequisites
 
@@ -74,7 +64,7 @@ Supplies:
     
         try:
             while True:
-                s = input("Type 'On', 'Off', or 'Info': ")
+                s = input("Type 'On' or 'Off': ")
                 if s == 'On':
                     GPIO.output(LED_channel, GPIO.HIGH)
                     print("On")
