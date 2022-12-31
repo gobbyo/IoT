@@ -11,7 +11,7 @@ In this tutorial, you learn how to:
 - Create a Message Listener for your Simulated Device
 - Send a Message to your Simulated Device from the Cloud
 
-Remotely controlling your device from anywhere in the world is a major feature of using the Internet of Things services. In this tutorial you'll create a simulated device message listener, send a message to your device from the cloud, then verify the message appears in your listener.  Following the diagram below:
+Remotely controlling your device from anywhere in the world is a major feature of using the Internet of Things services. In this tutorial you'll create a simulated device message listener, send a message to your device from the cloud, then verify the message appears in your listener. Following the diagram below:
 
 1. Create and run a simulated device listener in a command prompt.  Your listener uses its Device Connection string from the IoT Hub to connect your application directly to your IoT hub.
 1. Send a message from the cloud to your simulated device. Your cloud application uses the IoT Hub Connection string and the device identifier to send the message.
