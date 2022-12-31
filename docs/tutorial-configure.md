@@ -115,12 +115,6 @@ You'll need a cloud developer set up in order to deploy Azure services and remot
     pip install azure-identity
     ```
 
-1. Install the [Python Decouple](https://pypi.org/project/python-decouple/) by running the following python script in your terminal session:
-
-    ```python
-    pip install azure-maps-route
-    ```
-
 ## Test Your Python Installation
 
 1. From your Visual Studio Code terminal session, change the GitHub forked clone directory from `various` to `python` directory. Type `python` and hit the return key.

@@ -1,11 +1,23 @@
+---
+title: Deploy an Azure IoT Hub
+description: Deploy an Azure IoT Hub using an ARM template 
+author: jbeman@hotmail.com
+---
+
 # Tutorial: Deploy an Azure IoT Hub
+
+In this tutorial, you learn how to:
+
+- Deploy an Azure Resource Group using PowerShell
+- Deploy an Azure IoT Hub using an ARM template
+- Deploy an Azure Storage Account using an ARM template
 
 IoT Hub is the simplest an most effective way for devices to send and receive messages from the cloud. In this tutorial you'll create an IoT Hub and an associated storage account using an [Azure Resource Manager (ARM) template](https://learn.microsoft.com/azure/azure-resource-manager/templates/overview). Following the diagram below using the machine you configured in the previous tutorial:
 
 1. Create an Azure Resource Group for your IoT Hub
 1. Deploy IoT Hub and a Storage Account
 
-![deploy_iothub]
+![lnk_deployiothub]
 
 Using an ARM template rather than the [Azure portal user interface](https://portal.azure.com) has several benefits:
 
@@ -114,6 +126,10 @@ Central US
     -location $location
     ```
 
+1. Check the status of your deployment by opening the [Azure Portal](https://portal.azure.com) and following the diagram below. 1️⃣ Open the resource group you created earlier in this tutorial. 2️⃣ Select **Settings > Deployments** in the left pane, then 3️⃣ select your hyperlinked deployment name.
+
+    ![lnk_checkdeployment]
+
 ## Resources
 
 Be sure to read more about the following code and concept references you used in this tutorial.
@@ -138,3 +154,5 @@ You can optionally explore and learn more about deploying Azure services by doin
 [Tutorial: Create a Simulated Device](tutorial-symmetrickeydevice.md)
 
 <!-- images -->
+[lnk_deployiothub]: media/tutorial-deployiothub/deployiothub.png
+[lnk_checkdeployment]: media/tutorial-deployiothub/checkdeployment.png
