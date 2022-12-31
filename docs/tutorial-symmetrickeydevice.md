@@ -12,6 +12,10 @@ In this tutorial, you learn how to:
 
 Security is essential for any device on the public internet. When you create a device for Azure IoT, you MUST have a secure way to encrypt/decrypt the calls between the device and the cloud service. The simplest way to quickly create a device is with [symmetric key encryption](https://www.ibm.com/docs/en/ztpf/2020?topic=concepts-symmetric-cryptography). A symmetric key is a password that is stored in the device and in the cloud service. Managing devices with symmetric keys becomes increasingly difficult as you add more devices to your IoT Hub. Therefore, the preferred way to create a device for production is to use an asymmetric key, or x509 certificate, which we will cover in a later tutorial.
 
+## Prerequisites
+
+- Completed the [Tutorial: Deploy an Azure IoT Hub](tutorial-deployiothub.md)
+
 ## Create a Device with a Symmetric Key
 
 1. Create a device in the [Azure Portal for IoT Hub](https://learn.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub).  Note this tutorial shows you where to obtain the device connection string.

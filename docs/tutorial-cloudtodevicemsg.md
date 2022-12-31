@@ -21,9 +21,7 @@ Remotely controlling your device from anywhere in the world is a major feature o
 
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Completed the tutorial to [Configure your Windows Machine](tutorial-configure.md)
-- Completed the tutorial to [Create a Symmetric Key Device](tutorial-symmetrickeydevice.md)
+- Completed the [Tutorial: Create a Simulated Device](tutorial-symmetrickeydevice.md)
 
 ## Create a Message Listener for your Simulated Device
 

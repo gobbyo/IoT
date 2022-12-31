@@ -8,6 +8,10 @@ author: jbeman@hotmail.com
 
 You'll need a cloud developer set up in order to deploy Azure services and remotely code your device. This tutorial must be completed before any other tutorials: you'll install Visual Studio Code, a few extensions, and Git for windows. Finally, you'll install Python, Azure Maps and Identity Python client libraries.
 
+## Prerequisites
+
+- Your own Windows machine or having completed the tutorial to [Configure your Windows Machine](tutorial-configure.md)
+
 ## Install Visual Studio Code and Extensions
 
 1. Install [Visual Studio Code](https://code.visualstudio.com/Download) for Windows. Allow Visual Studio Code to launch.

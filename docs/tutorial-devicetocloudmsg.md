@@ -6,7 +6,12 @@ author: jbeman@hotmail.com
 
 # Tutorial: Send a Message from a Simulated Device To the Cloud
 
-In this tutorial you'll create device code that sends a message to IoT Hub.
+In this tutorial, you learn how to:
+
+- Create device code that sends a message to the Cloud
+- Send a Message to your Simulated Device from the Cloud
+
+Remotely collect telemetry from a device is a major benefit of IoT. In this tutorial you'll create a message listener for IoT Hub and send messages from your device to the cloud. The following diagram details the message routing:
 
 [todo] image needed
 

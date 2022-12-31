@@ -29,7 +29,7 @@ No need to avoid using the [Azure portal user interfaces](https://portal.azure.c
 
 ## Prerequisites
 
-- [Configure your Windows Machine](tutorial-configure.md)
+- Completed the [Tutorial: Configure your Windows Cloud Machine](tutorial-configure.md)
 
 ## Create an Azure Resource Group for your IoT Hub
 
