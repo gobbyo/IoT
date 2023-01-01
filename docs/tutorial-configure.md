@@ -115,7 +115,7 @@ In this section you'll install Python into your Windows Cloud Machine. You'll us
 - **Compatibility with Raspberry Pi hardware**. Python is well-suited for interacting with the hardware on the Raspberry Pi, including the GPIO pins and sensors. There are also a number of libraries available that make it easy to control the hardware on the Raspberry Pi using Python.
 - **Community support**. There is a large and active community of Python developers, which can be a useful resource for getting help or finding solutions to problems when developing applications for the Raspberry Pi.
 
-1. From a browser open [install python](https://www.python.org/downloads/). Be sure to check the box `Use admin privileges when installing py.exe` and  `Add python.exe to PATH` at the start of the install, then select `Install Now`.  At the end of the install select the `Disable path length limit`, then select the `close` button.
+1. Open a browser window and [install python](https://www.python.org/downloads/). Be sure to check the box `Use admin privileges when installing py.exe` and  `Add python.exe to PATH` at the start of the install, then select `Install Now`.  At the end of the install select the `Disable path length limit`, then select the `close` button.
 1. From Visual Studio Code, select the `View > Command Pallette..` menu, type the following in the command pallette text box:
 
     |#  |Item  | Comment   |
