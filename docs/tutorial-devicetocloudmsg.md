@@ -18,7 +18,7 @@ In this tutorial you'll send messages from your device to the cloud.  There are 
 - **Scalability**. Cloud infrastructure is highly scalable, meaning it can handle a large number of IoT devices and a large volume of data without requiring additional hardware or maintenance.
 - **Reliability**. Cloud providers typically have robust infrastructure and support, which can make it easier to ensure that IoT devices are always connected and working properly.
 
-You'll explore several ways to route or process messages in the cloud. In this tutorial, you'll use IoT Hub's built-in Event Hub endpoint to read the message from your device as detailed in the following diagram:
+You'll explore several ways to route or process messages in the cloud. In this tutorial, you'll start with IoT Hub's built-in Event Hub endpoint to read the message from your device as detailed in the following diagram:
 
 1. You start your event hub listener console application `d2ceventhublistener` and let it run in the background.
 1. You start your `d2csendmsg` console application and send a message to the cloud.
