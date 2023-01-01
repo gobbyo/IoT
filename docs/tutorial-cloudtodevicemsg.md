@@ -118,13 +118,14 @@ In this section we'll build a simple application that sends a message to your si
 1. Copy and paste the import statement.
 
     ```python
+    import os
     from azure.iot.hub import IoTHubRegistryManager
     ```
 
-1. Copy and past the following code, then replace `IOTHUB_CONNECTION_STRING` with the actual 
+1. Copy and past the following code.
 
     ```python
-    registry_manager = IoTHubRegistryManager("IOTHUB_CONNECTION_STRING")
+    registry_manager = IoTHubRegistryManager(os.getenv("IOTHUB_CONNECTION_STRING"))
     
     try:
         registry_manager.send_c2d_message(input("Device id: "), input("Message to send: "), {})
@@ -132,11 +133,13 @@ In this section we'll build a simple application that sends a message to your si
             print ( "Unexpected error {0}" % ex )
     ```
 
-1. Replace the `IOTHUB_CONNECTION_STRING` by opening the Azure Portal and following the diagram below. 1️⃣ In the left pane, select your IoT Hub service portal page, then 2️⃣ select **Security Settings > Shared access policies**. 3️⃣ In the center pane, select **iothubowner** in the Manage shared access policies section. 4️⃣ Copy the **Primary Connection String** and replace the `IOTHUB_CONNECTION_STRING` in your code you pasted from the previous step.
+1. Copy the `IOTHUB_CONNECTION_STRING` by following the diagram below. 1️⃣ In the left pane, select your IoT Hub service portal page, then 2️⃣ select **Security Settings > Shared access policies**. 3️⃣ In the center pane, select **iothubowner** in the Manage shared access policies section. 4️⃣ Copy the **Primary Connection String** and add `IOTHUB_CONNECTION_STRING` to your Windows system environment variable.
 
 ![lnk_iothubconnection]
 
-1. Open a command prompt, change to your `{github forked clone}/python` directory, then run the following script:
+1. Add the `IOTHUB_CONNECTION_STRING` to your system environment variables by following the guide to set your system environment variable [On your Windows Cloud Machine](howto-connectionstrings.md#on-your-windows-cloud-machine)
+
+1. Using the command prompt in the previous step, change to your `{github forked clone}/python` directory, then run the following script:
 
     ```python
     python c2dsendmsg.py
@@ -150,7 +153,7 @@ In this section we'll build a simple application that sends a message to your si
     Message to send: Hello World!
     ```
 
-1. Verify your messsage listener receives your message in the command prompt running `c2dlistener.py`, for example,
+1. Verify your message listener receives your message in the command prompt running `c2dlistener.py`, for example,
 
     ```powershell
     --Message Received--

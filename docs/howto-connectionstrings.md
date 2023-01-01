@@ -8,35 +8,18 @@
     pip install python-decouple
     ```
 
-1. Create an '.env' file and save it to the various/python directory from your GitHub forked clone.
+1. Create an '.env' file and save it to GitHub root (e.g. `c:/repos/various`) directory from your GitHub forked clone, then add your entries as follows:
 
     ```python
     IOTHUB_CONNECTION_STRING="{IoT hub Primary Connection String}"
     IOTHUB_DEVICE_CONNECTION_STRING="{Your Device Connection String}"
-    STORAGE_CONNECTION_STRING="{Storage Connection String}"
-    STORAGE_CONTAINER_NAME="{Name of Your Storage Container}"
-    EVENTHUB_CONNECTION_STRING="{Built-in Endpoint Event Hub Connection String}"
-    EVENTHUB_NAME="{Built-in Endpoint Event Hub Name}"
     ```
 
-## On your Windows Cloud Machine
-
-Table of Connection Variables
-
-| **Connection Variable Name**  | **Value Found in portal.azure.com**  | **Details about finding the value**  | **File Referencing Environment Variable** |
-|:---------|:---------|:---------|:---------|
-| `IOTHUB_CONNECTION_STRING`  | IoT Hub > Shared Access Policies > service (policy) > Primary Connection String |         | `c2dsendmsg.py` |
-| `IOTHUB_DEVICE_CONNECTION_STRING` | IoT Hub > Devices > {your device} > Primary Connection String |         | `d2ceventhublistener.py, c2dlistener.py, d2csendmsg.py, c2dmaproutelistener` |
-| `STORAGE_CONNECTION_STRING` | Storage Account > Access Keys > Connection String | [Manage storage account access keys](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/storage/common/storage-account-keys-manage.md#manage-storage-account-access-keys) | `d2ceventhublistener.py, c2dmaproutelistener.py` |
-| `STORAGE_CONTAINER_NAME` | Storage Account > Containers > Name | [Manage storage account access keys](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/storage/common/storage-account-keys-manage.md#manage-storage-account-access-keys) | `d2ceventhublistener.py, c2dmaproutelistener.py` |
-| `EVENTHUB_CONNECTION_STRING` | IoT Hub > Built-in endpoints > Event Hub-compatible endpoint | [Read from the built-in endpoint](https://learn.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messages-read-builtin#read-from-the-built-in-endpoint) | `d2ceventhublistener.py, c2dmaproutelistener.py` |
-| `EVENTHUB_NAME` | IoT Hub > Built-in endpoints > Event Hub-compatible name | [Read from the built-in endpoint](https://learn.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messages-read-builtin#read-from-the-built-in-endpoint) | `d2ceventhublistener.py, c2dmaproutelistener.py` |
-| `MAP_KEY` | Azure Maps > Authentication > Primary Key | [Get the primary key for your account](https://learn.microsoft.com/en-us/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account) | c2devent |
-
-1. Obtain the secret by opening a python session in the same directory as the '.env' file where you'll run your scripts.
+1. Obtain the environment variable by opening a python session and run the following script
 
     ```python
     cd {github forked clone root}
+    python
     from decouple import config
     config('IOTHUB_DEVICE_CONNECTION_STRING')
     ```
@@ -44,8 +27,50 @@ Table of Connection Variables
     for example,
 
     ```python
-    cd c:/repos/various python
+    cd c:/repos/various 
+    c:/repos/various> python
     >>> from decouple import config
     >>> config('IOTHUB_DEVICE_CONNECTION_STRING')
     >>> 'HostName=HubMsg********p2qwy.azure-devices.net;DeviceId=myDevice;SharedAccessKey=8IrO********ZUkg='
     ```
+
+## On your Windows Cloud Machine
+
+1. Add system environment variables by opening a PowerShell command prompt in [Administrative mode](https://learn.microsoft.com/powershell/scripting/learn/ps101/01-getting-started?view=powershell-7.3#how-do-i-launch-powershell) and run the following script.
+
+    ```powershell
+    [Environment]::SetEnvironmentVariable('IOTHUB_CONNECTION_STRING','{connection string from previous step}','Machine')
+    ```
+
+1. Obtain the environment variable by opening a python session in the same directory as the '.env' file where you'll run your scripts.
+
+    ```python
+    import os
+    os.getenv('IOTHUB_DEVICE_CONNECTION_STRING')
+    ```
+
+    for example,
+
+    ```python
+    c:/repos/various python
+    >>> import os
+    >>> os.getenv('IOTHUB_DEVICE_CONNECTION_STRING')
+    >>> 'HostName=HubMsg********p2qwy.azure-devices.net;DeviceId=myDevice;SharedAccessKey=8IrO********ZUkg='
+    ```
+
+1. Delete your system variable from a PowerShell command prompt in Administrative mode by changing the `{your environment variable}` name and running following script:
+
+    ```powershell
+    [Environment]::SetEnvironmentVariable('{your environment variable}',$Null,'Machine')
+    ```
+
+    For example
+
+    ```powershell
+    [Environment]::SetEnvironmentVariable('IOTHUB_CONNECTION_STRING',$Null,'Machine')
+    ```    
+
+## Resources
+
+- [Python Decouple](https://pypi.org/project/python-decouple/)
+- [PowerShell Administrative mode](https://learn.microsoft.com/powershell/scripting/learn/ps101/01-getting-started?view=powershell-7.3#how-do-i-launch-powershell)
