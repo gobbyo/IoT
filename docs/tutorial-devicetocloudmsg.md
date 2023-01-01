@@ -11,15 +11,30 @@ In this tutorial, you learn how to:
 - Create device code that sends a message to the Cloud
 - Send a Message to your Simulated Device from the Cloud
 
-Remotely collect telemetry from a device is a major benefit of IoT. In this tutorial you'll create a message listener for IoT Hub and send messages from your device to the cloud. The following diagram details the message routing:
+In this tutorial you'll send messages from your device to the cloud.  There are several reasons why you would have a device send messages to the cloud:
 
-[todo] image needed
+- **Data storage**. The cloud can provide a centralized location to store data collected by IoT devices. This data can then be used for a variety of purposes, such as analytics, machine learning, and more.
+- **Remote access**. By sending data to the cloud, IoT devices can allow users to access and control them from anywhere with an internet connection.
+- **Scalability**. Cloud infrastructure is highly scalable, meaning it can handle a large number of IoT devices and a large volume of data without requiring additional hardware or maintenance.
+- **Reliability**. Cloud providers typically have robust infrastructure and support, which can make it easier to ensure that IoT devices are always connected and working properly.
+
+You'll explore several ways to route or process messages in the cloud. In this tutorial, you'll use IoT Hub's built-in Event Hub endpoint to read the message from your device as detailed in the following diagram:
+
+1. You start your event hub listener console application `d2ceventhublistener` and let it run in the background.
+1. You start your `d2csendmsg` console application and send a message to the cloud.
+1. Your `d2csendmsg` console application sends a message to IoT Hub.
+1. Iot Hub queues the message into its built-in event hub.
+1. Your `d2ceventhublistener` event hub client is notified that a new message is in the queue.
+1. Your `d2ceventhublistener` retrieves the message queue position from storage.
+1. Your `d2ceventhublistener` event hub client retrieves the message from the event hub queue and prints the message in your console application.
+
+![lnk_sendmessage]
 
 ## Prerequisites
 
-[todo]
+Completed the [Tutorial: Send a Message from the Cloud to a Simulated Device](tutorial-cloudtodevicemsg.md)
 
-## Create a message listener for IoT Hub
+## Create a Message Listener for IoT Hub's Built-in Event Hub Endpoint
 
 1. From Visual Studio Code, create a new file called `d2ceventhublistener.py`.
 1. Copy and paste the following import statements into your `d2ceventhublistener.py` file
@@ -121,8 +136,12 @@ Remotely collect telemetry from a device is a major benefit of IoT. In this tuto
 
 ## Reference
 
-- IoT Hub message [system and user-defined properties](https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)
+[Read device-to-cloud messages from the built-in endpoint](https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin)
 
 ## Next Steps
 
 [Tutorial: Upload a file to the Cloud from your Device](tutorial-uploaddevicefile.md)
+
+<!--Images-->
+
+[lnk_sendmessage]: media/tutorial-devicetocloudmsg/sendmessage.png
