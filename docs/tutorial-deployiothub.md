@@ -51,7 +51,7 @@ An Azure Storage Account provides a unique namespace to store and access your da
 - *Integration*. It integrates with other Azure services, making it easy to build end-to-end solutions that span multiple Azure services.
 - *Security*. It provides various security features to protect your data, including encryption, access control, and network security.
 
-All tutorials involving deploying or creating an Azure service focus on using an ARM (Azure Resource Manager) template rather than the [Azure portal user interface](https://portal.azure.com). An ARM template is a JSON file that defines the infrastructure and configuration for an Azure solution. There are several benefits to using an ARM template to deploy services:
+All tutorials involving deploying or creating an Azure service focus on using an **ARM (Azure Resource Manager) template** rather than the [Azure portal user interface](https://portal.azure.com). An ARM template is a JSON file that defines the infrastructure and configuration for an Azure solution. You'll find all ARM templates referenced throughout all tutorials at `{GitHub root directory}\arm`, for example `c:\repos\various\arm`. There are several benefits to using an ARM template to deploy services:
 
 - *Reusability*. An ARM template is used to deploy resources consistently and repeatably, which is especially useful when deploying the same resources to multiple environments (e.g., development, staging, production).
 - *Version control*. It can be stored in a version control system, such as Git, which allows you to track changes to the infrastructure over time and roll back to previous versions if needed.
