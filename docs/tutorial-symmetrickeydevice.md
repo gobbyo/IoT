@@ -6,7 +6,7 @@ author: jbeman@hotmail.com
 
 # Tutorial: Create a Simulated Device
 
-In this tutorial, you learn how to:
+In this tutorial, you'll learn how to:
 
 - Create a secure, simulated IoT device
 

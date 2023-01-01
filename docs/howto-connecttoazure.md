@@ -2,7 +2,15 @@
 
 You'll need to authenticate your subscription to use any service in Azure. This guide provides you the basics and simplest way to authenticate to your subscription.
 
-All Azure subcriptions are associated with an active directory "tenant" as `tenant -> subscription`. When you create a free subscription, a default active directory tenant is automatically created for your account. If you have already been working with multiple subcriptions through school or work organization, then you'll need to log into the right tenant to find your subscription.
+An **Azure tenant** represents a single organization. It is a dedicated instance of Azure Active Directory (Azure AD) that an organization receives and owns when it signs up for a Microsoft cloud service such as Azure. An Azure tenant is associated with a subscription, which represents a billing relationship between the tenant and Microsoft.
+
+An **Azure subscription** is a logical container used to track the resources that an organization consumes. Subscriptions are associated with an Azure tenant and are used to manage access to Azure resources, enforce quotas and limits, and manage billing.
+
+Each Azure tenant has at least one subscription, and an organization can have multiple subscriptions associated with a single tenant. Subscriptions can be used to isolate resources for different purposes, such as production and development, or to allocate resources to different departments within an organization.
+
+In summary, an Azure tenant represents an organization and is associated with a subscription, which represents a billing relationship with Microsoft and is used to manage access to Azure resources.
+
+When you create a free subscription, a default active directory tenant is automatically created for your account. If you have already been working with multiple subcriptions through school or work organization, then you'll need to log into the right tenant to find your subscription.
 
 ## Find and Authenticate Your Subscription
 

@@ -19,13 +19,45 @@ In this tutorial you'll create an IoT Hub and an associated storage account usin
 
 ![lnk_deployiothub]
 
+**A resource group** is a logical container in Azure that allows you to group related resources that you want to manage as a single unit. Resource groups provide a way to manage, deploy, monitor, and delete resources in Azure. There are several reasons to use a resource group:
+
+- *Organization*. A resource group help you organize your Azure resources in a logical and meaningful way, which can make it easier to manage and understand your Azure infrastructure.
+- *Cost management*. It is used to manage costs associated with your Azure resources. For example, you can use a resource group to monitor and track the costs of your resources, and apply tags to your resources to help you better understand how your costs are being incurred.
+- *Resource management*. Resource groups provide a convenient way to manage the lifecycle of your Azure resources. For example, you can use a resource group to deploy, update, and delete resources as a group, rather than managing them individually.
+- *Access control*. It is used to control access to your Azure resources. For example, you can use resource policies or role-based access control to grant or restrict access to specific resource groups or resources within them.
+
+**IoT hub** is a service that acts as a communication bridge between devices on an IoT network and a cloud-based server. It enables devices to send and receive data, and facilitates communication between devices and other systems. There are several reasons to use an IoT hub:
+
+- *Device management*. IoT Hub enables you to manage and monitor your IoT devices, including provisioning, updating, and de-provisioning devices.
+- *Scalability*. It can handle a large number of connected devices, making it easy to scale up as the number of devices increases.
+- *Security*. It provides a secure connection between devices and the cloud, which is important for protecting sensitive data and maintaining the integrity of the system.
+- *Integration with Azure services*. IoT Hub can be easily integrated with other Azure services, such as Azure Stream Analytics, Azure Functions, and Azure Machine Learning, which can be useful for building more complex IoT solutions.
+- *Customizable routing*. It allows you to configure custom routes to send device data to different endpoints, such as storage or event hubs.
+- *Ease of use*. An IoT hub makes it easy to manage and communicate with a large number of devices, as it provides a single point of access and a standardized communication protocol.
+- *Reliability*. It can provide a reliable and robust communication channel between devices and the cloud, which is important for maintaining the continuity of the system.
+
+**Azure Storage** is a cloud-based service that provides access to various types of storage services:
+
+- *Blob storage*. Used to store unstructured data such as images, videos, and documents.
+- *File storage*. Used to store files and enables file-based workloads using the standard SMB 3.0 protocol.
+- *Table storage*. Used to store structured NoSQL data.
+- *Queue storage*. Used to store and retrieve large numbers of messages to enable communication between web services.
+
+An Azure Storage Account provides a unique namespace to store and access your data. It also provides a set of keys to access the data and implements security measures to control access to your data. The benefits of using an Azure Storage Account:
+
+- *Scalability*. Azure Storage can scale to meet the needs of your application, making it easy to store and access large amounts of data.
+- *Durability*. It is designed to provide high availability and durability for your data, with multiple copies of your data stored in multiple locations to protect against data loss.
+- *Cost-effectiveness*. It provides a cost-effective solution for storing and accessing data, with flexible pricing options and the ability to pay only for what you use.
+- *Integration*. It integrates with other Azure services, making it easy to build end-to-end solutions that span multiple Azure services.
+- *Security*. It provides various security features to protect your data, including encryption, access control, and network security.
+
 All tutorials involving deploying or creating an Azure service focus on using an ARM (Azure Resource Manager) template rather than the [Azure portal user interface](https://portal.azure.com). An ARM template is a JSON file that defines the infrastructure and configuration for an Azure solution. There are several benefits to using an ARM template to deploy services:
 
-- **Reusability**. ARM templates can be used to deploy resources consistently and repeatably, which can be especially useful when deploying the same resources to multiple environments (e.g., development, staging, production).
-- **Version control**. ARM templates can be stored in a version control system, such as Git, which allows you to track changes to the infrastructure over time and roll back to previous versions if needed.
-- **Collaboration**. ARM templates can be shared and collaborated on by multiple team members, which can be useful when working on complex projects with multiple dependencies.
-- **Automation**. ARM templates can be used to automate the deployment of resources, which can save time and reduce the risk of errors.
-- **Consistency**. ARM templates can help ensure that resources are deployed consistently across environments, which can be especially important for maintaining compliance with corporate standards or regulatory requirements.
+- *Reusability*. An ARM template is used to deploy resources consistently and repeatably, which is especially useful when deploying the same resources to multiple environments (e.g., development, staging, production).
+- *Version control*. It can be stored in a version control system, such as Git, which allows you to track changes to the infrastructure over time and roll back to previous versions if needed.
+- *Collaboration*. It can be shared and collaborated on by multiple team members, which can be useful when working on complex projects with multiple dependencies.
+- *Automation*. ARM templates are used to automate the deployment of resources, which can save time and reduce the risk of errors.
+- *Consistency*. It can help ensure that resources are deployed consistently across environments, which can be especially important for maintaining compliance with corporate standards or regulatory requirements.
 
 No need to avoid using the [Azure portal user interfaces](https://portal.azure.com) entirely as it is a great way to visualize any Azure service and all its settings.
 
@@ -35,14 +67,7 @@ No need to avoid using the [Azure portal user interfaces](https://portal.azure.c
 
 ## Create an Azure Resource Group for your IoT Hub
 
-In this section you'll create a resource group for your IoT Hub and Storage Account. A resource group is a logical container in Azure that holds related resources for an Azure solution. There are several benefits to creating a resource group for your Azure services:
-
-- **Organization**. Resource groups can help you organize your Azure resources in a logical and meaningful way, which can make it easier to manage and understand your Azure infrastructure.
-- **Cost management**. Resource groups can be used to manage costs associated with your Azure resources. For example, you can use a resource group to monitor and track the costs of your resources, and apply tags to your resources to help you better understand how your costs are being incurred.
-- **Resource management**. Resource groups provide a convenient way to manage the lifecycle of your Azure resources. For example, you can use a resource group to deploy, update, and delete resources as a group, rather than managing them individually.
-- **Access control**. Resource groups can be used to control access to your Azure resources. For example, you can use resource policies or role-based access control to grant or restrict access to specific resource groups or resources within them.
-
-Before starting this section be sure to open Visual Studio (VS) Code, select the `Terminal > New Terminal...` menu and [Authenticate your Azure Subscription](howto-connecttoazure.md) using the PowerShell (PS) session.
+In this section you'll create a resource group for your IoT Hub and Storage Account. Before starting all tutorials, be sure to open Visual Studio (VS) Code, select the `Terminal > New Terminal...` menu and [Authenticate your Azure Subscription](howto-connecttoazure.md) using the PowerShell (PS) session.
 
 1. From your VS code PS terminal session, run the following script to set a new resource group name to the `$rg` powershell variable. Replace `{new resource group name}` with the new name of your resource group.
 
@@ -91,15 +116,7 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
 
 ## Deploy IoT Hub and a Storage Account
 
-In this section you'll deploy an Azure IoT Hub and a Storage Account. Azure IoT Hub is a cloud-based service that enables secure and reliable communication between IoT devices and the cloud. It provides a range of features that make it well-suited for use in IoT applications, including:
-
-- **Device management**. IoT Hub enables you to manage and monitor your IoT devices, including provisioning, updating, and de-provisioning devices.
-- **Secure communication**. IoT Hub provides secure communication between devices and the cloud using industry-standard protocols, such as MQTT and HTTPS.
-- **Scalability**. IoT Hub is designed to handle large volumes of device data and traffic, making it suitable for use in large-scale IoT deployments.
-- **Integration with Azure services**. IoT Hub can be easily integrated with other Azure services, such as Azure Stream Analytics, Azure Functions, and Azure Machine Learning, which can be useful for building more complex IoT solutions.
-- **Customizable routing**. IoT Hub allows you to configure custom routes to send device data to different endpoints, such as storage or event hubs.
-
-Before starting, verify your PowerShell variables are set in your PS session:
+In this section you'll deploy an Azure IoT Hub and a Storage Account. Before starting, verify your PowerShell variables are set in your PS session:
 - `$rg`
 - `$projectName`
 - `$location`
