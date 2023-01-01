@@ -58,7 +58,7 @@ Completed the [Tutorial: Send a Message from the Cloud to a Simulated Device](tu
         await partition_context.update_checkpoint(event)
     ```
 
-1. Copy and paste the following main function after your event handler.
+1. Copy and paste the following main function after your event handler. [todo] how to guide to obtain the connection strings.
 
     ```python
     async def main():
@@ -97,14 +97,13 @@ Completed the [Tutorial: Send a Message from the Cloud to a Simulated Device](tu
 
     ```python
     import os
-    from decouple import config
     from azure.iot.device import IoTHubDeviceClient, Message
     ```
 
 1. Copy and paste the following code to create the device client
 
     ```python
-    client = IoTHubDeviceClient.create_from_connection_string(config("IOTHUB_DEVICE_CONNECTION_STRING"))
+    client = IoTHubDeviceClient.create_from_connection_string(os.getenv("IOTHUB_DEVICE_CONNECTION_STRING"))
     ```
 
 1. Copy and paste the following code to create a message
