@@ -120,7 +120,7 @@ Central US
     For example,
 
     ```powershell
-    PS > $templateFile = "C:\\repos\\various\\arm\\hub.json"
+    PS > $templateFile = "C:\repos\various\arm\hub.json"
     ```
 
 1. Deploy the hub ARM template
