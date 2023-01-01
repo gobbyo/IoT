@@ -18,7 +18,7 @@ There are several reasons why you would have an IoT device send messages to the 
 - **Scalability**. Cloud infrastructure is highly scalable, meaning it can handle a large number of IoT devices and a large volume of data without requiring additional hardware or maintenance.
 - **Reliability**. Cloud providers typically have robust infrastructure and support, which can make it easier to ensure that IoT devices are always connected and working properly.
 
-You'll explore several ways to route or process messages in the cloud. In this tutorial, you'll start with IoT Hub's **built-in Event Hub endpoint** to read the message from your device as detailed in the following diagram:
+In subsequent tutorials, you'll explore several ways to route or process messages in the cloud. In this tutorial, you'll start with IoT Hub's **built-in Event Hub endpoint** to read the message from your device as detailed in the following diagram:
 
 1. You'll code and start your event hub listener console application `d2ceventhublistener` and let it run in the background.
 1. You'll code and create a `d2csendmsg` console application.
@@ -29,6 +29,20 @@ You'll explore several ways to route or process messages in the cloud. In this t
 1. Your `d2ceventhublistener` event hub client retrieves the message from the event hub queue and prints the message in your console application.
 
 ![lnk_sendmessage]
+
+An event hub is a real-time, distributed data streaming platform. It is designed to process and transmit large volumes of data from multiple sources simultaneously. There are several reasons to use an event hub:
+
+- **Scalability**. An event hub is highly scalable and can handle millions of events per second, making it a good choice for handling large volumes of data from IoT (Internet of Things) devices or other sources.
+- **Real-time processing**. An event hub allows you to process data in real-time, as it is generated. This can be useful for scenarios where you need to take action based on the data as soon as it is available.
+- **Integration with other Azure services**. An event hub can be easily integrated with other Azure services, such as Azure Stream Analytics, Azure Functions, and Azure Machine Learning, which can be useful for processing and analyzing data in real-time.
+- **Decoupling**. An event hub can help to decouple the producer of data from the consumer, allowing them to operate independently of each other. This can make it easier to scale and manage the overall system.
+
+The communication across services like between the listener you'll create in this tutorial and the Event hub, rely on queues to process incoming messages. There are several reasons to use a queue to store messages for processing.
+
+- **Load balancing**. A queue can act as a buffer between a producer of data (such as an IoT device) and a consumer of data (such as a backend system). This can help to balance the load between the producer and consumer, ensuring that the producer is not overwhelmed by the consumer.
+- **Asynchrony**. A queue allows the producer and consumer of data to operate asynchronously, meaning they do not need to be running at the same time. This can be useful for scenarios where the consumer may not always be available to process data, or where the producer generates data at a faster rate than the consumer can handle.
+- **Resilience**. A queue can store messages persistently, which means they are not lost if the consumer is unavailable or if there is a failure. This can help to make the overall system more resilient and robust.
+- **Scaling**. A queue can scale horizontally, which means it can easily handle a large volume of messages without requiring additional infrastructure. This can be useful for scenarios where the volume of data from the producer varies over time.
 
 ## Prerequisites
 
