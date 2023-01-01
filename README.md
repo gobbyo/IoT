@@ -57,6 +57,8 @@ This section of tutorials you'll dive into the the Raspberry Pi GPIO enabled sen
 1. [Remotely Control an LED](docs/tutorial-rasp-remoteled.md)
 1. [Light Emitting Display Bar Graph](docs/tutorial-rasp-ledbar.md)
 1. Remotely Control a Light Emitting Display Bar Graph
+1. Connect a Potentiometer to your LED Bar Graph
+1. Send Potentiometer activity to the Cloud and replay it
 1. Passive Buzzer
 1. Remotely Control a Passive Buzzer with Morse Code
 1. Seven Segment Digit Display
