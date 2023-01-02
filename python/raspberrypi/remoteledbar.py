@@ -12,19 +12,29 @@ id_scope = config("DPS_SCOPEID")
 registration_id = config("DPS_REGISTRATIONID")
 
 def message_handler(message):
-        print("--Message Received--")
-        try:
-            p = {}
-            p = json.dump(message.payload())
-        finally:
-            print("--Message Processed--")
+    print("--Message Received--")
+    try:
+        payload = json.loads(message.data)
+        seq = list(payload['order'])
+        pause = float(payload['pause'])
+
+        for s in seq:
+            print("pin = {0}".format(LED_pins[int(s)]))
+            if payload['state'] == 'on':
+                GPIO.output(LED_pins[int(s)], GPIO.HIGH)
+            else:
+                GPIO.output(LED_pins[int(s)], GPIO.LOW)
+            time.sleep(pause)
+
+    finally:
+        print("--Message Processed--")
 
 async def main():
     GPIO.setmode(GPIO.BOARD)
 
     for p in LED_pins:
         GPIO.setup(p, GPIO.OUT)
-        GPIO.output(p, GPIO.HIGH)
+        GPIO.output(p, GPIO.LOW)
 
     print("Ctrl-C to quit'")
     print("Creating x509 cert object from file. Code id = e28c4236-60bb-4d45-adad-2a1b5cd0302e")
