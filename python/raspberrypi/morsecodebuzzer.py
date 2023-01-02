@@ -1,13 +1,17 @@
+import RPi.GPIO as GPIO
 import time
-import winsound
 
 morse = dict(A='.-',B='-...',C='-.-.',D='-..',E='.',F='..-.',G='--.',H='....',I='..',J='.---',K='-.-',L='.-..',M='--',N='-.',O='---',P='.--.',Q='--.-',R='.-.',S='...',T='-',U='..-',V='...-',W='.--',X='-..-',Y='-.--',Z='--..')
-frequency = 440
-dotlength = 150
-dashlength = 500
-wordpause = 1
-letterpause = 0.3
+dotlength = 0.15
+dashlength = 0.5
+wordpause = .75
+letterpause = 0.25
 morsepause = 0.15
+pin = 37
+
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(pin, GPIO.OUT)
+GPIO.output(pin, GPIO.HIGH)
 
 def play(word):
     for c in word:
@@ -15,10 +19,12 @@ def play(word):
             m = morse[c]
             print("{0}:{1}".format(c,m))
             for i in m:
+                GPIO.output(pin, GPIO.LOW)
                 if i == '.':
-                    winsound.Beep(frequency,dotlength)
+                    time.sleep(dotlength)
                 else:
-                    winsound.Beep(frequency,dashlength)
+                    time.sleep(dashlength)
+                GPIO.output(pin, GPIO.HIGH)
                 time.sleep(morsepause)
         else:
             print("{0} not in dictionary".format(c))
@@ -41,6 +47,7 @@ def main():
     except KeyboardInterrupt:
         print("ctrl-c command.")
     finally:
+        GPIO.cleanup()
         print("Exiting program.")
 
 if __name__ == "__main__":

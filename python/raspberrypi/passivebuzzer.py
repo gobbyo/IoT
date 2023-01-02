@@ -11,7 +11,7 @@ def main():
     print("Press Ctrl-C to quit'")
 
     try:
-        GPIO.PWM(pin, GPIO.HIGH)
+        GPIO.output(pin, GPIO.HIGH)
         time.sleep(1)
         GPIO.output(pin, GPIO.LOW)
     except KeyboardInterrupt:
