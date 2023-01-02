@@ -4,16 +4,16 @@ import time
 def main():
     pin = 37
 
-    GPIO.setmode(GPIO.Board)
-    GPIO.setup(LED_channel, GPIO.OUT)
-    GPIO.output(LED_channel, GPIO.LOW)
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(pin, GPIO.OUT)
+    GPIO.output(pin, GPIO.LOW)
 
     print("Press Ctrl-C to quit'")
 
     try:
-        GPIO.PWM(LED_channel, 440)
+        GPIO.PWM(pin, GPIO.HIGH)
         time.sleep(1)
-        GPIO.output(LED_channel, GPIO.LOW)
+        GPIO.output(pin, GPIO.LOW)
     except KeyboardInterrupt:
         print("Program shut down by user")
     finally:
