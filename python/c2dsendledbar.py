@@ -17,7 +17,7 @@ def main():
         payload = '{ "state":"on","order":["0","1","2","3","4","5","6","7","8","9"],"pause":".25" }'
         registry_manager.send_c2d_message(deviceId, payload, props)
         
-        time.sleep(.25)
+        time.sleep(2.5)
 
         props.update(messageId = "{0}".format(uuid4()))
         payload = '{ "state":"off","order":["0","1","2","3","4","5","6","7","8","9"],"pause":".25" }'
