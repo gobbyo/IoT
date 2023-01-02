@@ -19,11 +19,12 @@ def message_handler(message):
         pause = float(payload['pause'])
 
         for s in seq:
-            print("pin = {0}".format(LED_pins[int(s)]))
+            print("pin:{0}, state:{1}".format(LED_pins[int(s)], payload['state']))
+
             if payload['state'] == 'on':
                 GPIO.output(LED_pins[int(s)], GPIO.HIGH)
             else:
-                GPIO.output(LED_pins[int(s)], GPIO.LOW)
+                GPIO.output(LED_pins[int(s)], GPIO.LOW)   
             time.sleep(pause)
 
     finally:
