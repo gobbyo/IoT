@@ -7,6 +7,7 @@ from azure.iot.device import Message, X509
 from azure.iot.device.aio import ProvisioningDeviceClient, IoTHubDeviceClient
 
 LED_pins = [8,12,16,18,22,24,26,32,36,38]
+print()
 provisioning_host = config("DPS_HOST")
 id_scope = config("DPS_SCOPEID")
 registration_id = config("DPS_REGISTRATIONID")
@@ -38,14 +39,14 @@ async def main():
         GPIO.output(p, GPIO.LOW)
 
     print("Ctrl-C to quit'")
-    print("Creating x509 cert object from file. Code id = e28c4236-60bb-4d45-adad-2a1b5cd0302e")
+    print("Creating x509 cert object from file. Code id = 3a931dc7-9028-409f-be9f-7065fe6de8eb")
     x509 = X509(
         cert_file=config("X509_CERT_FILE"),
         key_file=config("X509_KEY_FILE"),
         pass_phrase=config("X509_PASS_PHRASE"),
     )
 
-    print("Creating provisioning client from certificate. Code id = 7dc43b15-f17b-4f17-9446-8d26b1e188d2")
+    print("Creating provisioning client from certificate. Code id = 53503ead-4f5a-4b8c-b129-9d95120db1b5")
     provisioning_device_client = ProvisioningDeviceClient.create_from_x509_certificate(
         provisioning_host=provisioning_host,
         registration_id=registration_id,
@@ -53,7 +54,7 @@ async def main():
         x509=x509,
     )
 
-    print("Registering provisioning client. Code id = 4d906cc4-61a9-4fe2-ab6e-4e397f63a702")
+    print("Registering provisioning client. Code id = 334527c8-5958-4915-b5f6-e24753d275c4")
     registration_result = await provisioning_device_client.register()
 
     if registration_result.status == "assigned":
@@ -63,12 +64,13 @@ async def main():
             device_id=registration_result.registration_state.device_id,
         )
 
-    print("Connecting client to IoT hub. Code id = 6893e706-291e-44f5-8623-fea84046866a")
+    print("Connecting client to IoT hub. Code id = dace1ead-91dd-4f3e-bbc9-a74d6b08bc1a")
     await device_client.connect()
 
     device_client.on_message_received = message_handler
 
     try:
+        print("--Waiting for message--")
         while True:
             time.sleep(5)
     except KeyboardInterrupt:
