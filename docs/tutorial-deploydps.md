@@ -65,7 +65,7 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
     New-AzResourceGroupDeployment `
     -ResourceGroupName $rg `
     -location $location `
-    -TemplateFile "C:\repos\various\arm\dps.json"
+    -TemplateFile "C:\repos\IoT\arm\dps.json"
     ```
 
     For example,
@@ -74,7 +74,7 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
     New-AzResourceGroupDeployment `
     -ResourceGroupName $rg `
     -location $location `
-    -TemplateFile "C:\repos\various\arm\dps.json"
+    -TemplateFile "C:\repos\IoT\arm\dps.json"
     ```
 
 1. Set the variable `$hubConnectionString` by replacing the `{your iothubowner primary connection string}` with your iot hub owner primary connection string.
@@ -102,8 +102,8 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
     For example,
 
     ```powershell
-    PS C:\repos\various> $hubConnectionString = "HostName=HubMsgHubw2lu5yeop2qwy.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=92/Vxxxxxxxxxxxx7mW4="
-    PS C:\repos\various> Add-AzIoTDeviceProvisioningServiceLinkedHub `
+    PS C:\repos\IoT> $hubConnectionString = "HostName=HubMsgHubw2lu5yeop2qwy.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=92/Vxxxxxxxxxxxx7mW4="
+    PS C:\repos\IoT> Add-AzIoTDeviceProvisioningServiceLinkedHub `
     >> -ResourceGroupName $rg `
     >> -Name "dpsztputik7h47qi" `
     >> -IotHubConnectionString $hubConnectionString `

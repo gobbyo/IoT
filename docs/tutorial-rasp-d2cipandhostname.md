@@ -10,8 +10,8 @@ In this tutorial you'll create device code that sends a message to IoT Hub. Know
 
 ## Code a Message with your Device Hostname and IP Address to the Cloud
 
-1. Create a new directory called `modules` under the `\various\python\raspberrypi\`, e.g. `\various\python\raspberrypi\modules`.
-1. Create a new file called `raspipaddress.py` in the `\various\python\raspberrypi\modules` directory path you created in the previous step.
+1. Create a new directory called `modules` under the `\IoT\python\raspberrypi\`, e.g. `\IoT\python\raspberrypi\modules`.
+1. Create a new file called `raspipaddress.py` in the `\IoT\python\raspberrypi\modules` directory path you created in the previous step.
 1. Copy and paste the following code into your `raspipaddress.py` file
 
     ```python
@@ -49,7 +49,7 @@ In this tutorial you'll create device code that sends a message to IoT Hub. Know
 
     Having a unique identifier in code helps you to troubleshoot should something go wrong in your code. Simply capture your print output into a file and search for the error that occurred by its unique code identifier.
 
-1. Create a new file called `d2cipandhostname.py` and save it into your cloned github path `\various\python\raspberrypi\`.
+1. Create a new file called `d2cipandhostname.py` and save it into your cloned github path `\IoT\python\raspberrypi\`.
 1. Copy and paste the following import statements into your `d2cipandhostname.py` file
 
     ```python
@@ -116,7 +116,7 @@ In this tutorial you'll create device code that sends a message to IoT Hub. Know
     For example,
 
     ```python
-    PS C:\repos\various\python\raspberrypi>  python d2cipandhostname.py
+    PS C:\repos\IoT\python\raspberrypi>  python d2cipandhostname.py
     [2022-12-21T05:06:51.616476] Get IP and Host Name. codeID = b5faac72-eee4-43fe-9af1-33b489c51add
     [2022-12-21T05:06:52.532383] Connection string: HostName=HubMsgHubw2lu5yeop2qwy.azure-devices.net;DeviceId=myDevice;SharedAccessKey=8IrOxxxxxxxxxxZUkg=. codeID = 2b700d52-b1d2-41ad-8a78-90d59c9d083a
     [2022-12-21T05:06:52.543905] Message sent: { "Hostname":"HJB34C6", "IPAddress":"192.168.86.86" }
@@ -133,7 +133,7 @@ In this tutorial you'll create device code that sends a message to IoT Hub. Know
 1. Add the following entry to cron,
 
     ```azurecli
-    @reboot python ~/repos/various/python/raspberrypi/d2cipandhostname.py
+    @reboot python ~/repos/IoT/python/raspberrypi/d2cipandhostname.py
     ```
 
 1. Type ctrl-o and hit the enter key, for example,
@@ -161,6 +161,6 @@ In this tutorial you'll create device code that sends a message to IoT Hub. Know
 
 ## Next Steps
 
-Congratulations, you've successfully remotely coded a real device and connected it to Azure! You are ready to continue your journey and learn to wire various electronics to your Raspberry Pi and remotely controlling it.
+Congratulations, you've successfully remotely coded a real device and connected it to Azure! You are ready to continue your journey and learn to wire IoT electronics to your Raspberry Pi and remotely controlling it.
 
 [Tutorial: Light up an LED](tutorial-rasp-led.md)

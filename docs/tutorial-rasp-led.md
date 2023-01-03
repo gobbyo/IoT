@@ -41,7 +41,7 @@ Supplies:
 ## Create Code to Turn the LED on and off
 <!-- Introduction paragraph -->
 1. [Connect to your Raspberry Pi](https://code.visualstudio.com/docs/remote/ssh#_connect-to-a-remote-host) using Visual Studio Code.
-1. Create a file `led.py` in your cloned GitHub under the `python/raspberrypi` directory, for example `~/repos/various/python/raspberrypi/led.py`
+1. Create a file `led.py` in your cloned GitHub under the `python/raspberrypi` directory, for example `~/repos/IoT/python/raspberrypi/led.py`
 1. Copy and paste the following import statement
 
     ```python

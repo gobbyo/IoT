@@ -8,7 +8,7 @@
     pip install python-decouple
     ```
 
-1. Create an '.env' file and save it to GitHub root (e.g. `c:/repos/various`) directory from your GitHub forked clone, then add your entries as follows:
+1. Create an '.env' file and save it to GitHub root (e.g. `c:/repos/IoT`) directory from your GitHub forked clone, then add your entries as follows:
 
     ```python
     IOTHUB_CONNECTION_STRING="{IoT hub Primary Connection String}"
@@ -27,8 +27,8 @@
     for example,
 
     ```python
-    cd c:/repos/various 
-    c:/repos/various> python
+    cd c:/repos/IoT 
+    c:/repos/IoT> python
     >>> from decouple import config
     >>> config('IOTHUB_DEVICE_CONNECTION_STRING')
     >>> 'HostName=HubMsg********p2qwy.azure-devices.net;DeviceId=myDevice;SharedAccessKey=8IrO********ZUkg='
@@ -52,7 +52,7 @@
     for example,
 
     ```python
-    c:/repos/various python
+    c:/repos/IoT python
     >>> import os
     >>> os.getenv('IOTHUB_DEVICE_CONNECTION_STRING')
     >>> 'HostName=HubMsg********p2qwy.azure-devices.net;DeviceId=myDevice;SharedAccessKey=8IrO********ZUkg='

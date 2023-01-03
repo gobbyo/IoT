@@ -88,14 +88,14 @@ In this section you'll [install GitHub](https://git-scm.com/download/win) and [f
 1. Run the following script from your terminal session in Visual Studio Code:
 
     ```powershell
-    git clone https://github.com/{your-fork}/various.git
+    git clone https://github.com/{your-fork}/IoT.git
     ```
 
     For example,
 
     ```powershell
-    PS > git clone https://github.com/{your-fork}/various.git
-    Cloning into 'various'...
+    PS > git clone https://github.com/{your-fork}/IoT.git
+    Cloning into 'IoT'...
     remote: Enumerating objects: 250, done.
     remote: Counting objects: 100% (250/250), done.
     remote: Compressing objects: 100% (160/160), done.
@@ -103,14 +103,14 @@ In this section you'll [install GitHub](https://git-scm.com/download/win) and [f
     Resolving deltas: 100% (105/105), done.13 (delta 72), pack-reused 0
     ```
 
-1. Select `File > Open Folder...` from the menu in Visual Studio Code and select the cloned directory `various`.
+1. Select `File > Open Folder...` from the menu in Visual Studio Code and select the cloned directory `IoT`.
 
 ## Install Python
 
 In this section you'll install Python into your Windows Cloud Machine. You'll use your Windows Cloud Machine to develop and code applications for your Raspberry Pi. There are several benefits to using Python to code for the Raspberry Pi:
 
 - **Ease of use**. Python is known for being easy to read and write, which can make it an ideal choice for beginners or for projects where simplicity is a priority.
-- **Wide range of libraries**. Python has a large and active community, which has developed a wide range of libraries for various purposes. These libraries can be easily imported and used in Python programs, which can save time and effort when developing applications for the Raspberry Pi.
+- **Wide range of libraries**. Python has a large and active community, which has developed a wide range of libraries for IoT purposes. These libraries can be easily imported and used in Python programs, which can save time and effort when developing applications for the Raspberry Pi.
 - **Extensive documentation**. Python has extensive documentation, including tutorials and examples, which can be helpful for learning the language and for developing applications for the Raspberry Pi.
 - **Compatibility with Raspberry Pi hardware**. Python is well-suited for interacting with the hardware on the Raspberry Pi, including the GPIO pins and sensors. There are also a number of libraries available that make it easy to control the hardware on the Raspberry Pi using Python.
 - **Community support**. There is a large and active community of Python developers, which can be a useful resource for getting help or finding solutions to problems when developing applications for the Raspberry Pi.
@@ -143,8 +143,8 @@ Overall, Azure client libraries are an essential tool for developers who want to
     
     Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows        
     
-    PS C:\repos\various> & c:/repos/various/.venv/Scripts/Activate.ps1
-    (.venv) PS C:\repos\various>
+    PS C:\repos\IoT> & c:/repos/IoT/.venv/Scripts/Activate.ps1
+    (.venv) PS C:\repos\IoT>
     ```
 
 1. Install the [Azure IoT device client package](https://pypi.org/project/azure-iot-device/) by running the following python script in your terminal session:
@@ -161,17 +161,17 @@ Overall, Azure client libraries are an essential tool for developers who want to
 
 ## Test Your Python Installation
 
-1. From your Visual Studio Code terminal session, change the GitHub forked clone directory from `various` to `python` directory. Type `python` and hit the return key.
+1. From your Visual Studio Code terminal session, change the GitHub forked clone directory from `IoT` to `python` directory. Type `python` and hit the return key.
 
     ```powershell
-    PS C:\repos\various> python
+    PS C:\repos\IoT> python
     ```
 
     For example,
 
     ```powershell
-    PS C:\repos\various> cd python
-    (.venv) PS C:\repos\various> python
+    PS C:\repos\IoT> cd python
+    (.venv) PS C:\repos\IoT> python
     Python 3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)] on win32
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
@@ -195,7 +195,7 @@ Overall, Azure client libraries are an essential tool for developers who want to
 
     ```python
     >>> exit()
-    (.venv) PS C:\repos\various\python>
+    (.venv) PS C:\repos\IoT\python>
     ```
 
 ## Resources

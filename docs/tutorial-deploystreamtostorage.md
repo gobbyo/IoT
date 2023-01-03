@@ -8,25 +8,35 @@ author: jbeman@hotmail.com
 
 In this tutorial you'll...
 
-[todo] image needed
+- Create a new resource group
+- Deploy a Stream Analytics Service into your new resource group
+- Create a query to move messages to storage
+
+**Azure Stream Analytics** is a fully managed service provided by Microsoft that enables users to analyze and process high volumes of streaming data in real-time. It can be used to build solutions that analyze data streams from devices, sensors, social media, applications, websites, and more. Some benefits of using Azure Stream Analytics include:
+
+- *Real-time processing*. Stream Analytics enables users to analyze and process data as it is generated, in real-time. This allows organizations to react to events and make decisions quickly.
+- *Scalability*. Stream Analytics is designed to handle high volumes of data with low latency. It can scale up or down as needed to meet the demands of the workload.
+- *Integration with other Azure services*. Stream Analytics integrates with other Azure services such as Azure Functions, Azure Machine Learning, and Azure Storage, which allows users to build more sophisticated and powerful solutions.
+- *Ease of use*. Stream Analytics has a simple, intuitive query language that enables users to analyze and process data streams without the need for complex programming. It also has a visual interface that allows users to build and monitor stream analytics jobs without writing code.
+- *Cost-effective*. Stream Analytics is a fully managed service that charges users based on the number of events processed and the duration of the job. This means users only pay for what they use and can scale up or down as needed to meet the demands of their workload.
+
+The following the diagram below details what you'll do in this tutorial:
+
+1. Deploy a new resource group to contain your Stream Analytics Jobs
+1. Deploy the Stream Analytics service into your new resource group
+1. Send a message using the simulated device you created in the [Tutorial: Send a Message from a Simulated Device To the Cloud](tutorial-devicetocloudmsg.md)
+1. Configure the input of your stream analytics job to and see the preview of your message
+1. Configure the output of your stream anayltics job and start the job to send your message to storage.
+
+![lnk_processedmessage]
 
 ## Prerequisites
 
-[todo]
+Completed the [Tutorial: Send a Message from a Simulated Device To the Cloud](tutorial-devicetocloudmsg.md)
 
 ## Deploy
 
-1. Run the following script to connect to your Azure subscription. Replace `{your subscription ID}` with the identifier to your Azure subscription.
-
-    ```powershell
-    Connect-AzAccount -SubscriptionId "{your subscription ID}"
-    ```
-
-    For example,
-
-    ```powershell
-    PS > Connect-AzAccount -SubscriptionId "d330xxxx-xxxx-xxxx-xxxx-xxxxxxxxabda"
-    ```
+In this section you'll create a resource group and deploy a stream analytics service into it.
 
 1. Run the following script to set a new resource group name to the `$rg` powershell variable. Replace `{new resource group name}` with the new name of your resource group.
 
@@ -82,7 +92,7 @@ In this tutorial you'll...
     For example,
 
     ```powershell
-    PS > $templateFile = "C:\\repos\\various\\arm\\stream.json"
+    PS > $templateFile = "C:\repos\IoT\arm\stream.json"
     ```
 
 1. Deploy the stream analytics ARM template
@@ -106,6 +116,10 @@ In this tutorial you'll...
     -streamJobName $streamJobName `
     -numberOfStreamingUnits 1
     ```
+
+## Queue a Message
+
+
 
 ## Configure
 
@@ -143,8 +157,15 @@ In this tutorial you'll...
     |Minimum Time| Leave empty| Hours, Minutes, Seconds|
 1. Select the "Save" button. This action enables the stream analytics service to save messages to Blob storage.
 
+## Verify
+
+In this section you'll use the building blocks from the previous tutorials to send a message from a simulated device to IoT Hub, view the contents of the incoming message in your Stream Analytics query, then run a Stream Analytics job to save the messages to storage.
+
 ## Next Steps
 
 Congratulations, you've completed the basics of IoT Cloud development and have a solid understanding of Azure! You are ready for the next section on setting up your Raspberry Pi with an easy way to remotely code it.
 
 [Tutorial: Connect and configure your Raspberry Pi with Visual Studio Code](tutorial-rasp-connect.md)
+
+<!--images-->
+[lnk_processedmessage]: media\tutorial-deploystreamtostorage\processedmessage.png

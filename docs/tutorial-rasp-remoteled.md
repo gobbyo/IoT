@@ -30,7 +30,7 @@ Following the diagram below.
 ## Code your Raspberry Pi to Receive Messages to Light the LED
 
 1. [Connect to your Raspberry Pi](https://code.visualstudio.com/docs/remote/ssh#_connect-to-a-remote-host) using Visual Studio Code.
-1. Create a file `remoteled.py` and save it in the `python/rasberrypi` directory from your GitHub forked clone, for example `~/repos/various/python/raspberrypi/remoteled.py`. This is a message listener program that runs on your Raspberry Pi.
+1. Create a file `remoteled.py` and save it in the `python/rasberrypi` directory from your GitHub forked clone, for example `~/repos/IoT/python/raspberrypi/remoteled.py`. This is a message listener program that runs on your Raspberry Pi.
 1. Copy and paste the following import statements into your `remoteled.py` file.
 
     ```python
@@ -130,8 +130,8 @@ Following the diagram below.
 1. Run the message listener on your Raspberry Pi from Visual Studio Code.
 
     ```python
-    $ ~/repos/various $ /bin/python /home/me/repos/various/python/raspberrypi/remoteled.py
-    /home/me/repos/various/python/raspberrypi/remoteled.py:28: RuntimeWarning: This channel is already in use, continuing anyway.  Use GPIO.setwarnings(False) to disable warnings.
+    $ ~/repos/IoT $ /bin/python /home/me/repos/IoT/python/raspberrypi/remoteled.py
+    /home/me/repos/IoT/python/raspberrypi/remoteled.py:28: RuntimeWarning: This channel is already in use, continuing anyway.  Use GPIO.setwarnings(False) to disable warnings.
       GPIO.setup(LED_channel, GPIO.OUT)
     Ctrl-C to quit'
     Creating x509 cert object from file. Code id = e28c4236-60bb-4d45-adad-2a1b5cd0302e
@@ -144,7 +144,7 @@ Following the diagram below.
 
 In this section you'll create a program that runs locally to send a command to IoT Hub. Note the command to turn the LED on or off is sent as a custom property and not using the payload.
 
-1. From your windows machine, create a file `c2dsendmsg.py` in your cloned GitHub under the `python\raspberrypi` directory, for example `c:\repos\various\python\c2dsendmsg.py`
+1. From your windows machine, create a file `c2dsendmsg.py` in your cloned GitHub under the `python\raspberrypi` directory, for example `c:\repos\IoT\python\c2dsendmsg.py`
 1. Copy and paste the following import statement
 
     ```python
@@ -184,7 +184,7 @@ In this section you'll create a program that runs locally to send a command to I
 1. Run the program from Visual Studio Code, provide your device id, then type 'On' when prompted in the `TERMINAL`. For example,
 
     ```azurecli
-    PS C:\repos\various> & C:/Users/me/AppData/Local/Microsoft/WindowsApps/python3.10.exe c:/repos/various/python/c2dsendmsg.py
+    PS C:\repos\IoT> & C:/Users/me/AppData/Local/Microsoft/WindowsApps/python3.10.exe c:/repos/IoT/python/c2dsendmsg.py
     Device id: raspberrypi2
     On or Off: On
     ```

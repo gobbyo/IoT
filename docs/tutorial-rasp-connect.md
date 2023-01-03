@@ -28,11 +28,11 @@ In this tutorial you'll connect to your Raspberry pi with Visual Studio Code and
     mkdir repos
     ```
 
-1. Change to the repos directory and clone your github fork, `git clone https://github.com/{your-fork}/various.git`
+1. Change to the repos directory and clone your github fork, `git clone https://github.com/{your-fork}/IoT.git`
 
     ```azurecli
     cd repos
-    git clone https://github.com/{your-fork}/various.git
+    git clone https://github.com/{your-fork}/IoT.git
     ```
 
 ## Reference

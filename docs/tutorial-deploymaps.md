@@ -50,7 +50,7 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
     ```powershell
     New-AzResourceGroupDeployment `
     -ResourceGroupName $rg `
-    -TemplateFile "C:\repos\various\arm\map.json"
+    -TemplateFile "C:\repos\IoT\arm\map.json"
     ```
 
     For example,

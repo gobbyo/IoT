@@ -23,7 +23,7 @@ When you create a free subscription, a default active directory tenant is automa
     For example,
 
     ```powershell
-    PS C:\repos\various> Get-AzContext | format-list
+    PS C:\repos\IoT> Get-AzContext | format-list
     
     Name               : Visual Studio Enterprise Subscription (3286xxxx-xxxx-xxxx-xxxx-xxxx72d746e1) - 
                          37f7xxxx-xxxx-xxxx-xxxx-xxxx46a89ca5 - <alias>@mail.com

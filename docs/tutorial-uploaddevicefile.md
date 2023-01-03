@@ -66,7 +66,7 @@ Azure Storage containers are used for storing and managing large amounts of data
     For example,
 
     ```powershell
-    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -storeacctname  $storename -TemplateFile "c:\repos\various\arm\store.json"
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -storeacctname  $storename -TemplateFile "c:\repos\IoT\arm\store.json"
     ```
 
 1. Find the storage account key and create a new "mydevicefiles" container

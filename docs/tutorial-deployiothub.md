@@ -26,7 +26,7 @@ In this tutorial you'll create an IoT Hub and an associated storage account usin
 - *Resource management*. Resource groups provide a convenient way to manage the lifecycle of your Azure resources. For example, you can use a resource group to deploy, update, and delete resources as a group, rather than managing them individually.
 - *Access control*. It is used to control access to your Azure resources. For example, you can use resource policies or role-based access control to grant or restrict access to specific resource groups or resources within them.
 
-**IoT hub** is a service that acts as a communication bridge between devices on an IoT network and a cloud-based server. It enables devices to send and receive data, and facilitates communication between devices and other systems. Below are various reasons to use an IoT hub:
+**IoT hub** is a service that acts as a communication bridge between devices on an IoT network and a cloud-based server. It enables devices to send and receive data, and facilitates communication between devices and other systems. Below are IoT reasons to use an IoT hub:
 
 - *Device management*. IoT Hub enables you to manage and monitor your IoT devices, including provisioning, updating, and de-provisioning devices.
 - *Scalability*. It can handle a large number of connected devices, making it easy to scale up as the number of devices increases.
@@ -36,7 +36,7 @@ In this tutorial you'll create an IoT Hub and an associated storage account usin
 - *Ease of use*. An IoT hub makes it easy to manage and communicate with a large number of devices, as it provides a single point of access and a standardized communication protocol.
 - *Reliability*. It can provide a reliable and robust communication channel between devices and the cloud, which is important for maintaining the continuity of the system.
 
-**Azure Storage** is a cloud-based service that provides access to various types of storage services:
+**Azure Storage** is a cloud-based service that provides access to IoT types of storage services:
 
 - *Blob storage*. Used to store unstructured data such as images, videos, and documents.
 - *File storage*. Used to store files and enables file-based workloads using the standard SMB 3.0 protocol.
@@ -49,9 +49,9 @@ An Azure Storage Account provides a unique namespace to store and access your da
 - *Durability*. It is designed to provide high availability and durability for your data, with multiple copies of your data stored in multiple locations to protect against data loss.
 - *Cost-effectiveness*. It provides a cost-effective solution for storing and accessing data, with flexible pricing options and the ability to pay only for what you use.
 - *Integration*. It integrates with other Azure services, making it easy to build end-to-end solutions that span multiple Azure services.
-- *Security*. It provides various security features to protect your data, including encryption, access control, and network security.
+- *Security*. It provides IoT security features to protect your data, including encryption, access control, and network security.
 
-All tutorials involving deploying or creating an Azure service focus on using an **ARM (Azure Resource Manager) template** rather than the [Azure portal user interface](https://portal.azure.com). An ARM template is a JSON file that defines the infrastructure and configuration for an Azure solution. You'll find tutorial ARM templates in your forked GitHub repo at `{Forked GitHub root directory}\arm`, for example `c:\repos\various\arm`. There are several benefits to using an ARM template to deploy services:
+All tutorials involving deploying or creating an Azure service focus on using an **ARM (Azure Resource Manager) template** rather than the [Azure portal user interface](https://portal.azure.com). An ARM template is a JSON file that defines the infrastructure and configuration for an Azure solution. You'll find tutorial ARM templates in your forked GitHub repo at `{Forked GitHub root directory}\arm`, for example `c:\repos\IoT\arm`. There are several benefits to using an ARM template to deploy services:
 
 - *Reusability*. An ARM template is used to deploy resources consistently and repeatably, which is especially useful when deploying the same resources across multiple environments (e.g., development, staging, production).
 - *Version control*. It can be stored in a version control system, such as Git, which allows you to track changes to the infrastructure over time and roll back to previous versions if needed.
@@ -137,7 +137,7 @@ Central US
     For example,
 
     ```powershell
-    PS > $templateFile = "C:\repos\various\arm\hub.json"
+    PS > $templateFile = "C:\repos\IoT\arm\hub.json"
     ```
 
 1. Deploy the hub ARM template

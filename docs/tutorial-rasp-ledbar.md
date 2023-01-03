@@ -57,7 +57,7 @@ Supplies:
 ## Create Code to Turn Sequentially Switch On or Off the LED Graph
 <!-- Introduction paragraph -->
 1. [Connect to your Raspberry Pi](https://code.visualstudio.com/docs/remote/ssh#_connect-to-a-remote-host) using Visual Studio Code.
-1. Create a file `ledbar.py` in your cloned GitHub under the `python/raspberrypi` directory, for example `~/repos/various/python/raspberrypi/ledbar.py`
+1. Create a file `ledbar.py` in your cloned GitHub under the `python/raspberrypi` directory, for example `~/repos/IoT/python/raspberrypi/ledbar.py`
 1. Copy and paste the following import statement
 
     ```python

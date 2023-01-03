@@ -34,8 +34,8 @@ In this tutorial you'll create a simulated device message listener, send a messa
 
 This section takes you through the steps to create a listener for your simulated device. The code will be slightly different when we use an actual device, because we'll using the Device Provisioning Service with an x509 certificate rather than referencing the IoT Hub Connection string.
 
-1. Open Visual Studio Code, select **File > Open Folder...** and select your `various` GitHub forked cloned directory.
-1. From your Visual Studio Code terminal session, change the GitHub forked cloned directory from `various` to `python` directory, for example `cd c:\repos\various\python`.
+1. Open Visual Studio Code, select **File > Open Folder...** and select your `IoT` GitHub forked cloned directory.
+1. From your Visual Studio Code terminal session, change the GitHub forked cloned directory from `IoT` to `python` directory, for example `cd c:\repos\IoT\python`.
 1. Create a file in the `python` directory and name it `c2dlistener.py`.  This file is the python code in your device that listens for messages from your instance IoT Hub.
 1. Copy and paste the following import statements into your `c2dlistener.py` file.
 
@@ -92,7 +92,7 @@ This section takes you through the steps to create a listener for your simulated
     | client.on_message_received = message_handler | Registers the message event handler for IoT Hub to call to the client. |
     | client.shutdown() | Gracefully disconnects the client from IoT Hub. |
 
-1. Open a PowerShell session and change to the `python` directory in your GitHub forked clone `various` repo.
+1. Open a PowerShell session and change to the `python` directory in your GitHub forked clone `IoT` repo.
 
 1. Run the following script to start the listener.
 
@@ -103,7 +103,7 @@ This section takes you through the steps to create a listener for your simulated
     For example,
 
     ```python
-    C:\repos\various\python>python c2dlistener.py
+    C:\repos\IoT\python>python c2dlistener.py
     IoT Hub *Device* Connection String:HostName=[IOT HUB NAME].azure-devices.net;DeviceId=myDevice;SharedAccessKey=[SHARED ACCESS KEY]
     --Waiting for Messages--
     ```
@@ -148,7 +148,7 @@ In this section we'll build a simple application that sends a message to your si
     For example,
 
     ```powershell
-    c:\repos\various\python> python c2dsendmsg.py
+    c:\repos\IoT\python> python c2dsendmsg.py
     Device id: myDevice
     Message to send: Hello World!
     ```

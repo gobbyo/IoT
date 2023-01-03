@@ -92,7 +92,7 @@ In this section you'll use the Event Hub consumer client to access queued messag
         loop.run_until_complete(main())
     ```
 
-1. Change to your cloned GitHub directory `various\python` and run the event hub listener.
+1. Change to your cloned GitHub directory `IoT\python` and run the event hub listener.
 
     ```powershell
     python d2ceventhublistener.py
@@ -101,8 +101,8 @@ In this section you'll use the Event Hub consumer client to access queued messag
     For example,
 
     ```python
-    PS C:\repos\various\python> python d2ceventhublistener.py
-    C:\repos\various\python\d2ceventhublistener.py:28: DeprecationWarning: There is no current event loop
+    PS C:\repos\vusingarious\python> python d2ceventhublistener.py
+    C:\repos\IoT\python\d2ceventhublistener.py:28: DeprecationWarning: There is no current event loop
       loop = asyncio.get_event_loop()
     ```
 
@@ -110,7 +110,7 @@ In this section you'll use the Event Hub consumer client to access queued messag
 
 In this section you'll create code to send a message from your device directly to IoT Hub using a device connection string. While storing the IoT Hub's connection string on your device is easy and convenient, it is generally not a good practice because your device is connected directly to the IoT Hub instance which doesn't scale and could go offline at any time. In future tutorials we'll use the Device Provisioning Service to connect to IoT Hub rather than storing the IoT Hub connection string on your device.
 
-1. Create a new file called `d2csendmsg.py`.
+1. Create a new file called `d2csendmsg.py` in your `{forked github}\python` directory, e.g. `c:\repos\IoT\python`.
 1. Copy and paste the following import statements into your `d2csendmsg.py` file
 
     ```python

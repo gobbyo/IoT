@@ -81,7 +81,7 @@ Overall, x509 certificates are a useful tool for securing IoT devices and ensuri
     For example,
 
     ```powershell
-    PS C:\repos\various> Add-AzIoTDeviceProvisioningServiceEnrollment `
+    PS C:\repos\IoT> Add-AzIoTDeviceProvisioningServiceEnrollment `
     >> -ResourceGroupName "myDpsRG" `
     >> -DpsName "dpsztputik7h47qi" `
     >> -RegistrationId "raspberrypi-b" `
@@ -106,7 +106,7 @@ Overall, x509 certificates are a useful tool for securing IoT devices and ensuri
 
 ## Add Variables to your Environment (`.env`) File
 
-1. Open your `.env` file in the root of your github forked clone directory `various`.
+1. Open your `.env` file in the root of your github forked clone directory `IoT`.
 1. Add the following entries to your `.env` file
 
 
@@ -140,7 +140,7 @@ Overall, x509 certificates are a useful tool for securing IoT devices and ensuri
     For example,
 
     ```python
-    me@raspberrypi:~/repos/various $ python
+    me@raspberrypi:~/repos/IoT $ python
     >>> from decouple import config
     >>> print(config("DPS_HOST"))
     dpsztputik7h47qi.azure-devices-provisioning.net
@@ -148,7 +148,7 @@ Overall, x509 certificates are a useful tool for securing IoT devices and ensuri
 
 ## Send Device Information to the Cloud when Booting Up your Raspberry Pi
 
-1. Create a file called `provisiondevicex509.py` in the `python/raspberrypi/` directory of your git hub clone, for example `$ ~/repos/various/python/raspberrypi/provisiondevicex509.py`
+1. Create a file called `provisiondevicex509.py` in the `python/raspberrypi/` directory of your git hub clone, for example `$ ~/repos/IoT/python/raspberrypi/provisiondevicex509.py`
 1. Copy and paste the following code to your `provisiondevicex509.py` file.
 
     ```python
