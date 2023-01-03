@@ -42,7 +42,7 @@ In this section you'll create a resource group and deploy a stream analytics ser
 
     ```powershell
     $streamJobName = "{new stream to storage project name}"
-    $rg = ($projectName + "RG")
+    $rg = ($streamJobName + "RG")
     ```
 
     For example,
@@ -119,13 +119,29 @@ In this section you'll create a resource group and deploy a stream analytics ser
 
 ## Queue a Message
 
+1. Run the `d2csendmsg.py` file you created in the [Tutorial: Send a Message from a Simulated Device To the Cloud](tutorial-devicetocloudmsg.md)
+1. Use the json message as formatted in the tutorial or create one yourself. For example, using the following line of code in your `d2csendmsg.py` file:
 
+    ```python
+    msg = Message('{{ "payload":"{0}" }}'.format(input("message to send: ")))
+    ```
 
-## Configure
+    Or hard-code your own message,
 
-1. Open your StreamAnalytics service, named `$streamJobName`, in portal.azure.com
+    ```python
+    msg = Message('{ "sample_message":"Hello World!" }')
+    ```
+
+## Configure a Stream Analytics Job Query
+
+### Configure your Inputs
+
+Following the diagram below.
+
+1. Using the [Azure Portal](https://portal.azure.com), open your StreamAnalytics service, named `$streamJobName` earlier in this tutorial.
 1. In the left pane under `Job topology`, select `Inputs`
-1. Select `+ Add Stream Input > IoT Hub`, and fill in the form as follows,
+1. Select `+ Add Stream Input > IoT Hub`
+1. Fill in the form as follows,
     |Item  |Action  |Description  |
     |:---------|:---------|:---------|
     |Input Alias Text Box|myIoTHub|The name of your IoT Hub, for example, "HubMsgHubw2lu5yeop2qwy"|
@@ -137,10 +153,18 @@ In this section you'll create a resource group and deploy a stream analytics ser
     |Endpoint Dropdown|Select `Messaging`| For devices that message to the cloud |
     |Encoding Dropdown|Select `UTF-8`| Message encoding |
     |Event Compression Type Dropdown|Select `None`| No message compression |
+    |Save button | Save | Be sure to save your work before leaving the pane |
 
-1. Select the "Save" button. This action enables the stream analytics service to pull messages from IoT Hub.
+![lnk_inputs]
+
+### Configure your Outputs
+
+Following the diagram below.
+
+1. Using the [Azure Portal](https://portal.azure.com), open your StreamAnalytics service, named `$streamJobName` earlier in this tutorial
 1. In the left pane under `Job topology`, select `Outputs`
-1. Select `Add > Blob Storage/ADLS Gen2` and fill in the form as follows,
+1. Select `Add > Blob Storage/ADLS Gen2`
+1. Fill in the form as follows,
     |Item  |Action  |Description  |
     |:---------|:---------|:---------|
     |Input Alias Text Box|myDeviceStorage|The name of your IoT Hub, for example, "HubMsgHubw2lu5yeop2qwy"|
@@ -155,11 +179,21 @@ In this section you'll create a resource group and deploy a stream analytics ser
     |Time Format Text Box | Set to `HH` | |
     |Minimum rows Text Box| Leave empty| |
     |Minimum Time| Leave empty| Hours, Minutes, Seconds|
-1. Select the "Save" button. This action enables the stream analytics service to save messages to Blob storage.
+    |Save button | Save | This action enables the stream analytics service to save messages to Blob storage |
 
-## Verify
+![lnk_outputs]
+
+## Run your Stream Analytics Job and Verify the Output
 
 In this section you'll use the building blocks from the previous tutorials to send a message from a simulated device to IoT Hub, view the contents of the incoming message in your Stream Analytics query, then run a Stream Analytics job to save the messages to storage.
+
+1. [Start your Stream Analytics Job](https://learn.microsoft.com/azure/stream-analytics/start-job). Be sure to select a "custom" time to start to include the messages you sent earlier in this tutorial.  
+
+    ⚠️ Note that you'll quickly discover that continuously running Stream Analytics will quickly consume your Azure credits. Therefore, be sure to turn off your Stream Analytics Job when you aren't sending messages to IoT hub.
+
+1. Go to your Storage Account to verify your messages are saved only after your stream analytics job is running. 1️⃣ Select the storage account in your stream analytics job output or go to your storage account. 2️⃣ Select the storage browser, then 3️⃣ "mydevicesfiles" as created from your output definition. 4️⃣ Select the "deviceId" to get to the location where your messages are stored. 5️⃣ You'll need to download the json file to view the message contents.
+
+![lnk_verifymessage]
 
 ## Next Steps
 
@@ -169,3 +203,9 @@ Congratulations, you've completed the basics of IoT Cloud development and have a
 
 <!--images-->
 [lnk_processedmessage]: media\tutorial-deploystreamtostorage\processedmessage.png
+[lnk_inputs]:
+media\tutorial-deploystreamtostorage\inputs.png
+[lnk_outputs]:
+media\tutorial-deploystreamtostorage\outputs.png
+[lnk_verifymessage]:
+media\tutorial-deploystreamtostorage\verifymessage.png
