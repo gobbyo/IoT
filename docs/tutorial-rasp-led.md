@@ -30,17 +30,17 @@ In this section you'll wire your Raspberry Pi to light up a Light Emitting Diode
 |1     | (optional) GPIO Extension Board |
 |1     | (optional) 40 pin GPIO cable |
 
+Below is the circuit we'll construct.
+
 ![lnk_ledschematic]
 
- by using the following diagram.
+Use the following diagram to wire your breadboard components to your Raspberry Pi.
 
 1. From the Raspberry Pi, connect GPIO17 (BCM), PIN 13 (BOARD), to a lead on the 220Ω resistor.  GPIO17 used in this example isn't special, as you can use any GPIO pin, e.g. GPIO2, GPIO12, etc.
 1. Connect the positive lead on the LED (the longest lead) to the 220Ω resistor.
 1. Connect the negative lead on the LED (the shorter lead) to Ground on the Raspberry Pi
 
     ![lnk_raspled]
-
-
 
 ## Create Code to Turn the LED on and off
 <!-- Introduction paragraph -->
