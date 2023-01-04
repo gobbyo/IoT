@@ -29,6 +29,8 @@ When your device communicates to the cloud, its transmission needs to be encrypt
 
 However, symmetric-key cryptography has a number of limitations, including the need to securely share the key between the sender and receiver of the data, and the inability to authenticate the sender of the data. Additionally, managing devices with symmetric keys becomes increasingly difficult as you add more devices to your IoT Hub. Therefore, the preferred way to create a device for production is to use an asymmetric key, or x509 certificate, which we will cover in a later tutorial.
 
+Before starting this section be sure to open Visual Studio (VS) Code, select the `Terminal > New Terminal...` menu and [Authenticate your Azure Subscription](howto-connecttoazure.md) using the PowerShell (PS) session.
+
 1. Create a device in the [Azure Portal for IoT Hub](https://learn.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub).  Note this tutorial shows you where to obtain the device connection string.
 1. Create a device using PowerShell.
 

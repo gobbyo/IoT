@@ -4,9 +4,19 @@ description: [todo]
 author: jbeman@hotmail.com
 ---
 
-# Tutorial: Deploy and Configure a Device Provisioning Service (DPS)
+# Tutorial: Deploy and Configure a Device Provisioning Service
 
 In this tutorial you'll...
+
+**Azure Device Provisioning Service (DPS)** is a cloud service that enables you to automatically register and provision devices to your Azure IoT hub. It simplifies the process of setting up and managing a fleet of devices by allowing you to provision devices to your IoT hub automatically and securely, without manual intervention. There are several benefits to using Azure DPS:
+
+- *Ease of use*. With DPS, you can provision thousands of devices with just a few clicks, saving time and effort.
+- *Secure registration*. DPS uses a secure, decentralized registration process to ensure that only authorized devices can connect to your IoT hub.
+- *Scalability*. DPS can handle a large number of devices and can scale up or down as needed.
+- *Flexibility*. DPS supports multiple device types and can be used with a variety of communication protocols, including HTTP, MQTT, and AMQP.
+- *Cost effectiveness*. DPS can help you save money by eliminating the need for manual provisioning processes and reducing the risk of errors that can lead to lost or damaged devices.
+
+Overall, Azure DPS is a useful tool for anyone looking to set up and manage a fleet of devices connected to Azure IoT hub. It simplifies the process and helps ensure that your devices are securely and efficiently registered and provisioned.
 
 ## Prerequisites
 
@@ -117,7 +127,7 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
     Location              : centralus
     ```
 
-1. Verify you have successfully deployed a new resource group and DPS by opening the [Azure Portal](https://portal.azure.com).
+1. Verify you have successfully deployed a new resource group and DPS by opening the [Azure Portal](https://portal.azure.com). Following the diagram below: 1️⃣ Open the DPS resource group you created earlier in this tutorial. 2️⃣ Verify the deployment succeeded, if not, then click on the `Deployments` hyperlink to troubleshoot the issue. 3️⃣ Verify the presence of your new DPS.
 
 ![verify_dps]
 
