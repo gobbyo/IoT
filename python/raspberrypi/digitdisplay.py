@@ -30,7 +30,7 @@ pins = [4,5,6,12,13,16,17,18]
 segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67,0xF7,0xFC,0xB9,0xDE,0xF1]
 
 def setup():
-    GPIO.setmode(GPIO.BCM)   # Numbers GPIOs by physical location
+    GPIO.setmode(GPIO.BOARD)   # Pins
     for pin in pins:
         GPIO.setup(pin, GPIO.OUT)
 

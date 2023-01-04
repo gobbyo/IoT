@@ -15,9 +15,9 @@ LED_rowpins = [9,14,8,12,1,7,2,5]
 LED_colpins = [13,3,4,10,6,11,15,16]
 
 def main():
-    c = 21
-    while c < 128:
-        display = disp.matrix_in_binary(chr(c))
+    word = "hello world!"
+    for w in word:
+        display = disp.matrix_in_binary(w)
 
         print("+\t\t\t-")
         
@@ -31,8 +31,8 @@ def main():
                     print("{0}\tLOW\t\t{1}\tLOW".format(LED_rowpins[row], LED_colpins[col]))
                 col += 1
             row += 1
+
             print("")
-        c += 1
 
 if __name__ == "__main__":
     main()
