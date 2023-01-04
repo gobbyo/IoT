@@ -4,23 +4,19 @@ description: #Required; article description that is displayed in search results.
 author: jbeman@hotmail.com
 ---
 
-# Tutorial: Create a x509 Certificate and Enroll Your Device
+# Tutorial: Create an x509 Certificate to Enroll Your Device
 
 In this tutorial, you learn how to:
 
 - Create an x509 Certificate
-- Enroll your device into the Device Provisioning Service
-- Add environment variables to your Raspberry Pi
-- Send Device Information to the Cloud when Booting Up your Raspberry Pi
+- Add environment variables to your Raspberry Pi for device enrollment
 
-An x509 certificate is a digital certificate that is used to authenticate the identity of a device or a user on a network. x509 certificates are based on the x509 standard, which is a widely used standard for public key infrastructure (PKI). There are several reasons to use x509 certificates for IoT devices:
+In the previous tutorials we used symmetric keys to manage our device. However, moving forward in our tutorials we'll use x509 certificates. An **x509 certificate** is a digital certificate that is used to authenticate the identity of a device or a user on a network. x509 certificates are based on the x509 standard, which is a widely used standard for public key infrastructure (PKI). There are several advantages to using X509 certificates for device security over symmetric keys:
 
-- **Security**. Certificates provide a secure and reliable way to authenticate the identity of IoT devices, which can help protect against unauthorized access and tampering.
-- **Compatibility**. Certificates are widely supported and recognized, which makes them a convenient choice for use with IoT devices that may need to communicate with a variety of other devices and systems.
-- **Ease of use**. Certificates are easily managed and installed on IoT devices, which can make them easy to use and maintain.
-- **Scalability**. Certificates can be easily issued and revoked, which can make them well-suited for use in large-scale IoT deployments.
-
-Overall, x509 certificates are a useful tool for securing IoT devices and ensuring the authenticity and integrity of communications between the cloud and IoT devices.
+- *Stronger security*. X509 certificates use public key infrastructure (PKI) for authentication, which provides stronger security than symmetric key authentication. In PKI, each device has a unique private key that is used to sign messages, and a corresponding public key that is used to verify the authenticity of the messages. This makes it more difficult for an attacker to impersonate a device or intercept communications.
+- *Ease of use*. X509 certificates can be easily managed using standard tools and processes, such as certificate authorities (CAs) and certificate revocation lists (CRLs). This makes it easier to set up and maintain a secure device network.
+- *Scalability*. X509 certificates can be used to securely authenticate a large number of devices, making them well-suited for use in large-scale deployments.
+- *Interoperability*. X509 certificates are widely used and supported, which makes it easier to integrate devices from different vendors into a single system.
 
 [todo] Diagram needed.
 
@@ -64,8 +60,16 @@ Overall, x509 certificates are a useful tool for securing IoT devices and ensuri
     ![lnk_deviceenrollment]
 
 ## Enroll Your Device
-<!-- Introduction paragraph -->
-1. Open a terminal session from Visual Studio Code on your Windows machine.
+
+Device enrollment refers to the process of registering a device with DPS and assigning it to an Azure IoT hub. This process allows the device to securely connect to your IoT hub and start sending and receiving data.
+
+Device enrollment in Azure DPS is typically used when you have a large number of devices that need to be registered with your IoT hub. With DPS, you can automate the enrollment process, eliminating the need for manual intervention and making it easier to set up and manage a fleet of devices.
+
+To enroll a device in Azure DPS, you first need to create a device registration in the DPS portal. This will create a unique identity for the device, which can then be used to authenticate the device when it connects to your IoT hub. The device will also need to be provisioned with the necessary connectivity information, such as the IoT hub hostname and device-specific credentials.
+
+Once the device is enrolled, it can start sending and receiving data to and from your IoT hub. You can use Azure IoT hub to set up device-to-cloud and cloud-to-device communication, as well as to monitor and manage your devices.
+
+Before starting this section be sure to open Visual Studio (VS) Code, select the `Terminal > New Terminal...` menu and [Authenticate your Azure Subscription](howto-connecttoazure.md) using the PowerShell (PS) session.
 
 1. Run the following PowerShell script
 
@@ -103,122 +107,6 @@ Overall, x509 certificates are a useful tool for securing IoT devices and ensuri
 1. Verify your device has enrolled by following the diagram below. 1️⃣ Open your your Device Provisioning Service, 2️⃣ from the left pane select **Settings > Manage enrollments**, from the right pane select **Individual Enrollments**, finally 4️⃣ verify your device registration ID is present.
 
     ![lnk_verifyenrollment]
-
-## Add Variables to your Environment (`.env`) File
-
-1. Open your `.env` file in the root of your github forked clone directory `IoT`.
-1. Add the following entries to your `.env` file
-
-
-    ```python
-    DPS_HOST="{`service endpoint` from the overview page of your Device Provisioning Service}"
-    DPS_REGISTRATIONID="{created in earlier in this tutorial}"
-    DPS_SCOPEID="{`ID scope` from the overview page of your Device Provisioning Service}"
-    X509_CERT_FILE="{full path to your `.pem` file}"
-    X509_KEY_FILE="{full path to your `.key` file}"
-    X509_PASS_PHRASE="{pass phrase created earlier in this tutorial}"
-    ```
-
-    For example,
-
-    ```python
-    DPS_HOST="dpsztputik7h47qi.azure-devices-provisioning.net"
-    DPS_REGISTRATIONID="raspberrypi-b"
-    DPS_SCOPEID="0ne008D45AC"
-    X509_CERT_FILE="/home/me/certs/raspberrypi2.pem"
-    X509_KEY_FILE="/home/me/certs/raspberrypi2.key"
-    X509_PASS_PHRASE="1234"
-
-1. Verify your environment file variables by opening a Visual Studio Code remote terminal session connected to your raspberry pi and run the following scripts.
-
-    ```python
-    python
-    from decouple import config
-    print(config('DPS_HOST'))
-    ```
-
-    For example,
-
-    ```python
-    me@raspberrypi:~/repos/IoT $ python
-    >>> from decouple import config
-    >>> print(config("DPS_HOST"))
-    dpsztputik7h47qi.azure-devices-provisioning.net
-    ```
-
-## Send Device Information to the Cloud when Booting Up your Raspberry Pi
-
-1. Create a file called `provisiondevicex509.py` in the `python/raspberrypi/` directory of your git hub clone, for example `$ ~/repos/IoT/python/raspberrypi/provisiondevicex509.py`
-1. Copy and paste the following code to your `provisiondevicex509.py` file.
-
-    ```python
-    provisioning_host = config("DPS_HOST")
-    id_scope = config("DPS_SCOPEID")
-    registration_id = config("DPS_REGISTRATIONID")
-    ```
-
-1. Copy and paste the following method to your `provisiondevicex509.py` file.
-
-    ```python
-    async def send_message(device_client):
-        print("sending message. Code ID = f461ee5e-d7e4-4bea-8953-d0c7b113d522")
-        hostname = socket.gethostname()
-        ip_address = raspipaddress.get_ip_address()
-        
-        msg = Message('{{ "Hostname":"{0}", "IPAddress":"{1}" }}'.format(hostname, ip_address) )
-        msg.message_id = uuid.uuid4()
-        await device_client.send_message(msg)
-        print("message sent: {0} ".format(msg))
-    ```
-
-1. Copy and past the main method to your `provisiondevicex509.py` file.
-
-    ```python
-    async def main():
-        x509 = X509(
-            cert_file=config("X509_CERT_FILE"),
-            key_file=config("X509_KEY_FILE"),
-            pass_phrase=config("X509_PASS_PHRASE"),
-        )
-    
-        print("Creating provisioning client. Code Id = f1973054-24af-4a6b-9a79-409abcd7d27f")
-        provisioning_device_client = ProvisioningDeviceClient.create_from_x509_certificate(
-            provisioning_host=provisioning_host,
-            registration_id=registration_id,
-            id_scope=id_scope,
-            x509=x509,
-        )
-    
-        registration_result = await provisioning_device_client.register()
-    
-        if registration_result.status == "assigned":
-            device_client = IoTHubDeviceClient.create_from_x509_certificate(
-                x509=x509,
-                hostname=registration_result.registration_state.assigned_hub,
-                device_id=registration_result.registration_state.device_id,
-            )
-    
-            await device_client.connect()
-            await send_message(device_client)
-            await device_client.disconnect()
-        else:
-            print("Error: Cannot send telemetry from the provisioned device. CodeID = f586eb27-5b36-46fa-ae25-5ffb3ad19efc")
-    
-    if __name__ == "__main__":
-        asyncio.run(main())
-    ```
-
-1. Run the code in your debugger using Visual Studio Code and verify you successfully sent a message as follows:
-
-    ```azurecli
-    Creating provisioning client. Code Id = f1973054-24af-4a6b-9a79-409abcd7d27f
-    sending message. Code ID = f461ee5e-d7e4-4bea-8953-d0c7b113d522
-    message sent: { "Hostname":"raspberrypi2", "IPAddress":"192.168.1.109" }
-    ```
-
-1. Verify your message is in IoT Hub following the diagram below. 1️⃣ Select your Stream Analytics Job from the [Azure Portal](https://portal.azure.com), 2️⃣ select **Settings > Query** in the left pane, and 3️⃣ select your IoT hub in the middle pane. 4️⃣ Select **() Raw** From the Input Preview (right pane), finally 5️⃣ verify your hostname and ipaddress.
-
-    ![lnk_verifymessage]
 
 ## Next steps
 
