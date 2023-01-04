@@ -1,12 +1,15 @@
 ---
 title: Deploy and Configure a Device Provisioning Service (DPS)
-description: [todo] 
+description: This tutorial has you deploy a Device Provisioning Service and add IoT Hub to the Device Provisioning Service
 author: jbeman@hotmail.com
 ---
 
 # Tutorial: Deploy and Configure a Device Provisioning Service
 
 In this tutorial you'll...
+
+- Deploy a Device Provisioning Service
+- Add IoT Hub to the Device Provisioning Service
 
 **Azure Device Provisioning Service (DPS)** is a cloud service that enables you to automatically register and provision devices to your Azure IoT hub. It simplifies the process of setting up and managing a fleet of devices by allowing you to provision devices to your IoT hub automatically and securely, without manual intervention. There are several benefits to using Azure DPS:
 
@@ -16,13 +19,20 @@ In this tutorial you'll...
 - *Flexibility*. DPS supports multiple device types and can be used with a variety of communication protocols, including HTTP, MQTT, and AMQP.
 - *Cost effectiveness*. DPS can help you save money by eliminating the need for manual provisioning processes and reducing the risk of errors that can lead to lost or damaged devices.
 
-Overall, Azure DPS is a useful tool for anyone looking to set up and manage a fleet of devices connected to Azure IoT hub. It simplifies the process and helps ensure that your devices are securely and efficiently registered and provisioned.
+Overall, Azure DPS is a useful tool for anyone looking to set up and manage a fleet of devices connected to Azure IoT hub. It simplifies the process and helps ensure that your devices are securely and efficiently registered and provisioned. As a best practice, we'll use DPS to manage our Raspberry Pi device throughout future tutorials.
 
 ## Prerequisites
 
-- [Configure your Windows Machine](tutorial-configure.md)
+- Completed the [Tutorial: Connect and configure your Raspberry Pi with Visual Studio Code](tutorial-rasp-connect.md)
 
-## Deploy Device Provisioning Service
+## Deploy a Device Provisioning Service
+
+In this section you'll use PowerShell to create a new resource group, then you'll deploy DPS using an ARM template. Following the diagram below,
+
+1. Create a new resource group for DPS
+1. Deploy DPS using an ARM template
+
+![lnk_installdps]
 
 Before starting this section be sure to open Visual Studio (VS) Code, select the `Terminal > New Terminal...` menu and [Authenticate your Azure Subscription](howto-connecttoazure.md) using the PowerShell (PS) session.
 
@@ -87,6 +97,18 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
     -TemplateFile "C:\repos\IoT\arm\dps.json"
     ```
 
+1. Verify your DPS has successfully deployed.
+
+## Add IoT Hub to DPS
+
+In this section you'll use PowerShell to add your IoT hub to DPS per the diagram:
+
+1. From [Azure IoT Hub portal](https://portal.azure.com) copy the `Security Settings > Shared access policies > iothubowner > Primary connection string`
+1. Run a PowerShell script `Add-AzIoTDeviceProvisioningServiceLinkedHub` using the Primary connection string you copied in the previous step
+1. DPS connects to your IoT Hub and retains it in its list of IoT Hubs.
+
+![lnk_addhubtodps]
+
 1. Set the variable `$hubConnectionString` by replacing the `{your iothubowner primary connection string}` with your iot hub owner primary connection string.
 
     ```powershell
@@ -129,7 +151,7 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
 
 1. Verify you have successfully deployed a new resource group and DPS by opening the [Azure Portal](https://portal.azure.com). Following the diagram below: 1️⃣ Open the DPS resource group you created earlier in this tutorial. 2️⃣ Verify the deployment succeeded, if not, then click on the `Deployments` hyperlink to troubleshoot the issue. 3️⃣ Verify the presence of your new DPS.
 
-![verify_dps]
+![lnk_verifydps]
 
 ## Next Steps
 
@@ -137,4 +159,6 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
 
 <!-- images -->
 
-[verify_dps]: media/tutorial-deploydps/verifydpsdeployment.png
+[lnk_installdps]: media/tutorial-deploydps/installdps.png
+[lnk_addhubtodps]: media/tutorial-deploydps/addhubtodps.png
+[lnk_verifydps]: media/tutorial-deploydps/verifydpsdeployment.png
