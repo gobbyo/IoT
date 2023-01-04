@@ -19,15 +19,7 @@ Lighting an LED is the starting point for electronic projects. Once connected pr
 
 ## Connect an LED to your Raspberry Pi
 
-In this section you'll wire your Raspberry Pi to light up a Light Emitting Diode (LED) by using the following diagram.
-
-1. From the Raspberry Pi, connect GPIO17 (BCM), PIN 13 (BOARD), to a lead on the 220Ω resistor.  GPIO17 used in this example isn't special, as you can use any GPIO pin, e.g. GPIO2, GPIO12, etc.
-1. Connect the positive lead on the LED (the longest lead) to the 220Ω resistor.
-1. Connect the negative lead on the LED (the shorter lead) to Ground on the Raspberry Pi
-
-    ![lnk_raspled]
-
-Supplies:
+In this section you'll wire your Raspberry Pi to light up a Light Emitting Diode (LED). Below are the supplies you'll need:
 
 |#  |Item  |
 |:---|:---|
@@ -37,6 +29,18 @@ Supplies:
 |1     | 220Ω Resistor |
 |1     | (optional) GPIO Extension Board |
 |1     | (optional) 40 pin GPIO cable |
+
+![lnk_ledschematic]
+
+ by using the following diagram.
+
+1. From the Raspberry Pi, connect GPIO17 (BCM), PIN 13 (BOARD), to a lead on the 220Ω resistor.  GPIO17 used in this example isn't special, as you can use any GPIO pin, e.g. GPIO2, GPIO12, etc.
+1. Connect the positive lead on the LED (the longest lead) to the 220Ω resistor.
+1. Connect the negative lead on the LED (the shorter lead) to Ground on the Raspberry Pi
+
+    ![lnk_raspled]
+
+
 
 ## Create Code to Turn the LED on and off
 <!-- Introduction paragraph -->
@@ -98,3 +102,4 @@ Supplies:
 <!--images-->
 
 [lnk_raspled]: media/tutorial-rasp-led/rasp-led.png
+[lnk_ledschematic]: media/tutorial-rasp-led/ledschematic.png
