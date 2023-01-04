@@ -48,7 +48,7 @@ This section of tutorials covers setting up your Raspberry Pi with an easy way t
 1. [Set up your Raspberry Pi and Remotely Connect Visual Studio Code](docs/tutorial-rasp-connect.md)
 1. [Create a Device Provisioning Service](docs/tutorial-deploydps.md)
 1. [Create an x509 Certificate to Enroll Your Device](docs/tutorial-dpsx509deviceenrollment.md)
-1. [Send Device Information to the Cloud with DPS](docs/tutorial-dpssenddeviceinfo.md)
+1. [Send Device Information to the Cloud](docs/tutorial-dpssenddeviceinfo.md)
 
 ### Raspberry Pi and Cloud IoT Building Blocks
 
@@ -58,12 +58,14 @@ This section of tutorials you'll dive into the the Raspberry Pi GPIO enabled sen
 1. [Remotely Control an LED](docs/tutorial-rasp-remoteled.md)
 1. [Light Emitting Display Bar Graph](docs/tutorial-rasp-ledbar.md)
 1. Remotely Control a Light Emitting Display Bar Graph
-1. Passive Buzzer
-1. Remotely Control a Passive Buzzer with Morse Code
 1. Seven Segment Digit Display
 1. Remotely Control a Seven Segment Digit Display
+1. 8x8 LED Matrix Display
+1. Remotely Control an 8x8 LED Matrix Display
 1. Liquid Crystal Display
 1. Remotely Control a Liquid Crystal Display
+1. Passive Buzzer
+1. Remotely Control a Passive Buzzer with Morse Code
 1. Ultrasonic Distance Sensor
 1. Send Ultrasonic Distance Sensor Data to the Cloud
 1. Temperature and Humidity Sensor
