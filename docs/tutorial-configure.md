@@ -17,7 +17,7 @@ You'll need a Raspberry Pi and Cloud developer set up in order to easily deploy 
 
 ## Prerequisites
 
-- Your own Windows machine or having completed the tutorial to [Configure your Windows Machine](tutorial-configure.md)
+- Your own Windows machine or have completed the tutorial to [Create A Virtual Machine](tutorial-prerequisites.md)
 
 ## Install Visual Studio Code and Extensions
 

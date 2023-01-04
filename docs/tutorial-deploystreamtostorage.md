@@ -202,10 +202,9 @@ Congratulations, you've completed the basics of IoT Cloud development and have a
 [Tutorial: Connect and configure your Raspberry Pi with Visual Studio Code](tutorial-rasp-connect.md)
 
 <!--images-->
-[lnk_processedmessage]: media\tutorial-deploystreamtostorage\processedmessage.png
-[lnk_inputs]:
-media\tutorial-deploystreamtostorage\inputs.png
+[lnk_processedmessage]: media/tutorial-deploystreamtostorage/processedmessage.png
+[lnk_inputs]: media/tutorial-deploystreamtostorage/inputs.png
 [lnk_outputs]:
-media\tutorial-deploystreamtostorage\outputs.png
+media/tutorial-deploystreamtostorage/outputs.png
 [lnk_verifymessage]:
-media\tutorial-deploystreamtostorage\verifymessage.png
+media/tutorial-deploystreamtostorage/verifymessage.png
