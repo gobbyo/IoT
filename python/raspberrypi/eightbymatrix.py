@@ -10,8 +10,6 @@
 #		5	57	58	59	60	61	62	63	64
 
 import modules.eightbyeight as disp
-import RPi.GPIO as GPIO
-import time
 
 LED_rowpins = [9,14,8,12,1,7,2,5]
 LED_colpins = [13,3,4,10,6,11,15,16]
