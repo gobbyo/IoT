@@ -103,8 +103,8 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
 
 In this section you'll use PowerShell to add your IoT hub to DPS per the diagram:
 
-1. From [Azure IoT Hub portal](https://portal.azure.com) copy the `Security Settings > Shared access policies > iothubowner > Primary connection string`
-1. Run a PowerShell script `Add-AzIoTDeviceProvisioningServiceLinkedHub` using the Primary connection string you copied in the previous step
+1. From [Azure IoT Hub portal](https://portal.azure.com) copy the `Security Settings > Shared access policies > iothubowner > Primary connection string` from your IoT Hub instance.
+1. Run a PowerShell script `Add-AzIoTDeviceProvisioningServiceLinkedHub` using the Primary connection string you copied in the previous step.
 1. DPS connects to your IoT Hub and retains it in its list of IoT Hubs.
 
 ![lnk_addhubtodps]

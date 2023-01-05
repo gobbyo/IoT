@@ -25,9 +25,9 @@ In the previous tutorials we used symmetric keys to manage our device. However, 
 - Completed the [Tutorial: Deploy and Configure a Device Provisioning Service (DPS)](tutorial-deploydps.md)
 
 ## Create a Certificate
-<!-- Introduction paragraph -->
+In this section you'll remotely connect to your Raspberry Pi to create a public and private key for your certificate. The private key remains on your device whereas you'll copy the public certificate for use by your IoT Hub.
 
-1. Remotely connect to your Raspberry Pi from Visual Studio Code
+1. [Remotely connect to your Raspberry Pi](tutorial-rasp-connect.md) from Visual Studio Code
 1. Create a directory to hold your certs then change to the new directory.
 
     ```azurecli
@@ -36,7 +36,7 @@ In the previous tutorials we used symmetric keys to manage our device. However, 
     cd certs
     ```
 
-1. Create a certificate using the following openssl script in a Visual Studio Code terminal session.
+1. Create a certificate using the following openssl script in a Visual Studio Code terminal session.  Enter `1234` for your PEM pass phrase.
 
     ```azurecli
     openssl req -outform PEM -x509 -sha256 -newkey rsa:4096 -keyout {yourDeviceName}.key -out {yourDeviceName}.pem -days {days until expired} -extensions usr_cert -addext extendedKeyUsage=clientAuth -subj "/CN={your device registration id, a-z,A-Z,- or _, only}"

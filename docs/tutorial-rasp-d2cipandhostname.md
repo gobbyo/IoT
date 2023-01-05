@@ -1,6 +1,6 @@
 # Tutorial: Send Hostname and IP address to the Cloud
 
-In this tutorial you'll create device code that sends a message to IoT Hub. Knowing your Raspberry Pi's hostname and IP address is needed to connect via ssh or from Visual Studio Code.
+In this tutorial you'll create device code that sends a message to IoT Hub. Knowing your Raspberry Pi's hostname and IP address is helpful information needed to connect via ssh or from Visual Studio Code.
 
 [todo] image needed
 
@@ -10,6 +10,7 @@ In this tutorial you'll create device code that sends a message to IoT Hub. Know
 
 ## Code a Message with your Device Hostname and IP Address to the Cloud
 
+1. [Remotely connect to your Raspberry Pi](tutorial-rasp-connect.md#set-up-remote-ssh-with-visual-studio-code)
 1. Create a new directory called `modules` under the `\IoT\python\raspberrypi\`, e.g. `\IoT\python\raspberrypi\modules`.
 1. Create a new file called `raspipaddress.py` in the `\IoT\python\raspberrypi\modules` directory path you created in the previous step.
 1. Copy and paste the following code into your `raspipaddress.py` file
@@ -25,29 +26,13 @@ In this tutorial you'll create device code that sends a message to IoT Hub. Know
             ip_address = s.getsockname()[0]
             s.close()
         except socket.error as e:
-            print("Error: {0}. CodeID = {new-guid}".format(e))
+            print("Error: {0}. Code Id = afd02cb8-8984-496d-ad3f-151165cf8eaf".format(e))
         return ip_address
     ```
 
     This code uses a local socket connection to figure out your raspberry pi's public facing IP address.
 
-1. Replace the `{new-guid}` by typing the following script in a PowerShell terminal from your Visual Studio Code.
-
-    ```powershell
-    new-guid
-    ```
-
-    For example,
-
-    ```powershell
-    PS> new-guid
-    
-    Guid
-    ----
-    afd02cb8-8984-496d-ad3f-151165cf8eaf
-    ```
-
-    Having a unique identifier in code helps you to troubleshoot should something go wrong in your code. Simply capture your print output into a file and search for the error that occurred by its unique code identifier.
+    Note in the `socket.error` code that logging a unique identifier in code helps you to troubleshoot should something go wrong. Simply capture your print output into a file and search for the error that occurred by its unique code identifier.
 
 1. Create a new file called `d2cipandhostname.py` and save it into your cloned github path `\IoT\python\raspberrypi\`.
 1. Copy and paste the following import statements into your `d2cipandhostname.py` file

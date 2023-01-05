@@ -44,7 +44,7 @@ Use the following diagram to wire your breadboard components to your Raspberry P
 
 ## Create Code to Turn the LED on and off
 <!-- Introduction paragraph -->
-1. [Connect to your Raspberry Pi](https://code.visualstudio.com/docs/remote/ssh#_connect-to-a-remote-host) using Visual Studio Code.
+1. [Remotely connect to your Raspberry Pi](tutorial-rasp-connect.md#set-up-remote-ssh-with-visual-studio-code).
 1. Create a file `led.py` in your cloned GitHub under the `python/raspberrypi` directory, for example `~/repos/IoT/python/raspberrypi/led.py`
 1. Copy and paste the following import statement
 
