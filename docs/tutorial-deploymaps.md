@@ -45,12 +45,12 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
     
     ```
 
-1. Deploy the Map ARM template
+1. Deploy the Map ARM template. Be sure to replace the text `{path to your Azure Maps ARM template}` in the sample below.
 
     ```powershell
     New-AzResourceGroupDeployment `
     -ResourceGroupName $rg `
-    -TemplateFile "C:\repos\IoT\arm\map.json"
+    -TemplateFile "{path to your Azure Maps ARM template}"
     ```
 
     For example,
@@ -58,7 +58,7 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
     ```powershell
     New-AzResourceGroupDeployment `
     -ResourceGroupName $rg `
-    -TemplateFile $templateFile
+    -TemplateFile "C:\repos\IoT\arm\map.json"
 
     DeploymentName          : mapARMtemplate
     ResourceGroupName       : myMapRG

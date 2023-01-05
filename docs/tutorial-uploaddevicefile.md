@@ -19,8 +19,6 @@ There are several reasons why you might want to **upload files from an IoT devic
 - *Remote access*. By uploading data to the cloud, you can access it from anywhere with an internet connection. This can be useful for monitoring and controlling your IoT devices remotely.
 - *Integration with other systems*. The cloud provides a way to integrate data from your IoT devices with other systems and applications. This can enable a wide range of possibilities, such as triggering automated responses based on data from your devices or integrating with other systems for analysis and decision making.
 
-[todo] image needed
-
 ## Prerequisites
 
 - [Tutorial: Send a Message from a Simulated Device To the Cloud](tutorial-devicetocloudmsg.md)

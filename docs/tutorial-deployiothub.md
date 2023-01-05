@@ -128,10 +128,10 @@ PS> $location
 Central US
 ```
 
-1. Run the following script to set the path to the ARM template `hub.json`
+1. Run the following script to set the path to the ARM template `hub.json`. Be sure to replace the text `{path to your IoT Hub ARM template}` in the sample below.
 
     ```powershell
-    $templateFile = "{path to hub.json}"
+    $templateFile = "{path to your IoT Hub ARM template}"
     ```
 
     For example,

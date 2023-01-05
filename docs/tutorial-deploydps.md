@@ -79,13 +79,13 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
     
     ```
 
-1. Deploy the Device Provisioning Service ARM template
+1. Deploy the Device Provisioning Service ARM template. Be sure to replace the `{path to your Device Provisioning Service ARM template}` in the script sample,
 
     ```powershell
     New-AzResourceGroupDeployment `
     -ResourceGroupName $rg `
     -location $location `
-    -TemplateFile "C:\repos\IoT\arm\dps.json"
+    -TemplateFile "{path to your Device Provisioning Service ARM template}"
     ```
 
     For example,

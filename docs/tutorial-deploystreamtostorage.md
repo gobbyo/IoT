@@ -83,10 +83,10 @@ In this section you'll create a resource group and deploy a stream analytics ser
     
     ```
 
-1. Run the following script to set the path to the ARM template `stream.json`
+1. Run the following script to set the path to the ARM template `stream.json`. Be sure to replace the entire text `{path to your stream analytics ARM template}` with the full path to your ARM template.
 
     ```powershell
-    $templateFile = "{path to stream.json}"
+    $templateFile = "{path to your stream analytics ARM template}"
     ```
 
     For example,

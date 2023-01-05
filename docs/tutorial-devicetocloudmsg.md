@@ -108,7 +108,7 @@ In this section you'll use the Event Hub consumer client to access queued messag
 
 ## Device message
 
-In this section you'll create code to send a message from your device directly to IoT Hub using a device connection string. While storing the IoT Hub's connection string on your device is easy and convenient, it is generally not a good practice because your device is connected directly to the IoT Hub instance which doesn't scale and could go offline at any time. In future tutorials we'll use the Device Provisioning Service to connect to IoT Hub rather than storing the IoT Hub connection string on your device.
+In this section you'll create code to send a message from your device directly to IoT Hub using a device connection string. While storing the IoT Hub's connection string on your device is easy and convenient, it is generally not a good practice because your device is connected directly to the IoT Hub instance which doesn't scale without migrating your device and it could go offline at any time. In future tutorials we'll use the Device Provisioning Service to connect to IoT Hub rather than storing the IoT Hub connection string on your device.
 
 1. Create a new file called `d2csendmsg.py` in your `{forked github}\python` directory, e.g. `c:\repos\IoT\python`.
 1. Copy and paste the following import statements into your `d2csendmsg.py` file

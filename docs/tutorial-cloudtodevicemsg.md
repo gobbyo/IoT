@@ -6,7 +6,7 @@ author: jbeman@hotmail.com
 
 # Tutorial: Send a Message from the Cloud to a Simulated Device
 
-In this tutorial, you learn how to:
+In this tutorial, you'll learn how to:
 
 - Create a Message Listener for your Simulated Device
 - Send a Message to your Simulated Device from the Cloud
@@ -114,7 +114,7 @@ This section takes you through the steps to create a listener for your simulated
 
 In this section we'll build a simple application that sends a message to your simulated device through IoT Hub. This code pattern is used to send commands from an application, like from a phone, directly to your device.
 
-1. Create a file in the `python` directory and name it `c2dsendmsg.py`.  This file is the python code to send a message to your device via your IoT Hub instance.
+1. Create a file in the `python` directory in your forked GitHub and name it `c2dsendmsg.py`.  This file is the python code to send a message to your device via your IoT Hub instance.
 1. Copy and paste the import statement.
 
     ```python

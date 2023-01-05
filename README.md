@@ -1,14 +1,26 @@
 # Internet of Things
 
-These tutorials were compiled as a way to understand Azure and how to use the Internet of Things (IoT) cloud services. When you complete these tutorials you will be able to build your own remotely controlled devices and solutions. Coding devices to use the IoT can provide a number of benefits, including:
+These tutorials were compiled as a way to understand Azure and how to use the Internet of Things (IoT) cloud services with IoT devices.
 
-- **Improved efficiency**. By using IoT devices, businesses and individuals can automate tasks and processes, which can lead to increased efficiency and productivity. For example, a company might use IoT sensors to monitor the temperature and humidity in a warehouse, and use this data to optimize the climate control system.
-- **Enhanced security**. IoT devices can be used to monitor and secure physical assets and infrastructure. For example, a smart security system might use IoT sensors to detect unusual activity and send alerts to the owner or security personnel.
-- **Increased connectivity**. IoT devices can be used to connect people, devices, and systems in ways that were previously not possible. For example, a smart home might use IoT devices to control the lighting, heating, and appliances, allowing the homeowner to control these systems remotely.
-- **Improved decision-making**. IoT devices can generate large amounts of data, which can be used to inform decision-making and improve business operations. For example, a retailer might use IoT sensors to track customer foot traffic and use this data to optimize store layouts and product placements.
-- **Enhanced customer experience**. IoT devices can be used to improve the customer experience in a variety of ways. For example, a hotel might use IoT devices to allow guests to control the temperature and lighting in their rooms, or a retailer might use IoT devices to personalize the shopping experience for individual customers.
+IoT devices are physical devices that are embedded with sensors, software, and network connectivity, allowing them to collect and exchange data. Non-IoT devices are physical devices that do not have these capabilities.
 
-You don't need to know much about Azure and only be familiar with the basics of coding to successfully get through this program. These tutorials focus on minimizing the cost of using Azure. You'll use PowerShell for cloud service management and Python for device coding on a Raspberry Pi.
+One key advantage of IoT devices is their ability to communicate with other devices and systems over the internet, allowing them to send and receive data and be controlled remotely. This can make them more convenient and efficient to use, as they can be accessed and controlled from anywhere with an internet connection. For example, a smart thermostat can be controlled from a smartphone app, and a smart irrigation system can be programmed to turn on and off based on weather data.
+
+Another advantage of IoT devices is their ability to collect and analyze data from their surroundings, which can provide valuable insights and improve decision-making. For example, an IoT-connected manufacturing plant can use sensors to monitor equipment performance and identify problems before they occur, reducing downtime and maintenance costs.
+
+However, there are also some potential drawbacks to using IoT devices. One concern is the potential for security vulnerabilities, as these devices often have access to sensitive data and can be controlled remotely. Ensuring the security of IoT devices is important to prevent unauthorized access and protect sensitive data.
+
+In summary, IoT devices offer the advantages of remote control and data collection, but it is important to carefully consider the security implications when implementing these devices. Non-IoT devices do not have these capabilities, but may be more secure and simpler to use in some cases.
+
+**Coding devices to use the IoT** can provide a number of benefits, including:
+
+- *Improved efficiency*. By using IoT devices, businesses and individuals can automate tasks and processes, which can lead to increased efficiency and productivity. For example, a company might use IoT sensors to monitor the temperature and humidity in a warehouse, and use this data to optimize the climate control system.
+- *Enhanced security*. IoT devices can be used to monitor and secure physical assets and infrastructure. For example, a smart security system might use IoT sensors to detect unusual activity and send alerts to the owner or security personnel.
+- *Increased connectivity*. IoT devices can be used to connect people, devices, and systems in ways that were previously not possible. For example, a smart home might use IoT devices to control the lighting, heating, and appliances, allowing the homeowner to control these systems remotely.
+- *Improved decision-making*. IoT devices can generate large amounts of data, which can be used to inform decision-making and improve business operations. For example, a retailer might use IoT sensors to track customer foot traffic and use this data to optimize store layouts and product placements.
+- *Enhanced customer experience*. IoT devices can be used to improve the customer experience in a variety of ways. For example, a hotel might use IoT devices to allow guests to control the temperature and lighting in their rooms, or a retailer might use IoT devices to personalize the shopping experience for individual customers.
+
+When you complete these tutorials you will be able to build your own secured, remotely controlled devices and solutions. You don't need to know much about Azure and only be familiar with the basics of coding to successfully get through this program. These tutorials focus on minimizing the cost of using Azure. You'll use PowerShell for cloud service management and Python for an IoT capable device--a Raspberry Pi.
 
 ## Tutorials
 
@@ -25,10 +37,10 @@ These tutorials are intended to be completed in the order they are listed. The t
 
 This section of tutorials starts you on the basics of IoT cloud development. With the exception on the first tutorial to [Create a Cloud Virtual Machine](docs/tutorial-prerequisites.md), the remaining tutorials focus on setting up and using IoT Cloud services and using a simulated device to interact with them. No need for a Raspberry Pi in this section. There are several reasons you'll start with a simulated IoT device rather than a real one:
 
-- **Cost**. Simulated IoT devices are typically less expensive than real ones, which can make them a more affordable option for learning and experimentation.
-- **Convenience**. Simulated IoT devices can be more convenient to use than real ones, as they do not require physical setup or maintenance. This can be especially useful if you do not have access to a real IoT device or if you are learning remotely.
-- **Safety**. Simulated IoT devices can be safer to use than real ones, as they do not involve any physical components or connections. This can be especially important if you are working with potentially hazardous devices or if you are learning to code with a limited understanding of the underlying hardware.
-- **Reproducibility**. Simulated IoT devices can be easier to reproduce and share than real ones, which can be useful for collaborative learning or for sharing code examples.
+- *Cost*. Simulated IoT devices are typically less expensive than real ones, which can make them a more affordable option for learning and experimentation.
+- *Convenience*. Simulated IoT devices can be more convenient to use than real ones, as they do not require physical setup or maintenance. This can be especially useful if you do not have access to a real IoT device or if you are learning remotely.
+- *Safety*. Simulated IoT devices can be safer to use than real ones, as they do not involve any physical components or connections. This can be especially important if you are working with potentially hazardous devices or if you are learning to code with a limited understanding of the underlying hardware.
+- *Reproducibility*. Simulated IoT devices can be easier to reproduce and share than real ones, which can be useful for collaborative learning or for sharing code examples.
 
 However, it is also important to note that learning to code with a real IoT device can provide a more realistic and hands-on experience, which is covered in the tutorials that follow this section. Once you've completed this section you'll have a solid understanding of how IoT devices interact with the Cloud.
 

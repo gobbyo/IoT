@@ -21,13 +21,14 @@ You'll need a Raspberry Pi and Cloud developer set up in order to easily deploy 
 
 ## Install Visual Studio Code and Extensions
 
-In this section you'll install Visual Studio (VS) Code and a few extensions. There are several benefits to using VS Code for developing applications for the Raspberry Pi and your Cloud applications:
+In this section you'll install Visual Studio (VS) Code and a few extensions. There are several **benefits to using VS Code** for developing applications for the Raspberry Pi and your Cloud applications:
 
-- **Remote development**. VS Code includes support for remote development, which allows you to develop applications on your local machine while remotely connected to your Raspberry Pi. This can be especially useful if you don't have access to a Raspberry Pi all the time, as you can still develop and test your applications remotely.
-- **Debugging**. VS Code includes a powerful debugger that allows you to set breakpoints, step through code, and inspect variables. This can be especially useful when developing applications for Raspberry Pi, as it can help you identify and fix issues more quickly.
-- **IntelliSense**. VS Code includes a feature called IntelliSense, which provides intelligent code completion and snippets. This can help speed up the development process by providing suggestions for code completion as you type.
-- **Extensibility**. VS Code is highly extensible, with a wide range of extensions available that can add additional functionality to the editor. You'll be adding several extensions to your VS Code environment. Extensions are useful when developing applications because they are tailored for the platform.
-- **Code formatting**. VS Code includes support for code formatting, which can help you keep your code organized and easy to read. This can be especially useful when working on large projects or when collaborating with other developers.
+- *Simple*. VS Code is a single tool that provides a rich, and easily extended set of functionality that replaces several tools.  For example, the terminal session in VS code also serves as a command prompt, a PowerShell scripting environment, a python scripting environment, a debugger, and many other tools.
+- *Remote development*. VS Code includes support for remote development, which allows you to develop applications on your local machine while remotely connected to your Raspberry Pi. This can be especially useful if you don't have access to a Raspberry Pi all the time, as you can still develop and test your applications remotely.
+- *Debugging*. VS Code includes a powerful debugger that allows you to set breakpoints, step through code, and inspect variables. This can be especially useful when developing applications for Raspberry Pi, as it can help you identify and fix issues more quickly.
+- *IntelliSense*. VS Code includes a feature called IntelliSense, which provides intelligent code completion and snippets. This can help speed up the development process by providing suggestions for code completion as you type.
+- *Extensibility*. VS Code is highly extensible, with a wide range of extensions available that can add additional functionality to the editor. You'll be adding several extensions to your VS Code environment. Extensions are useful when developing applications because they are tailored for the platform.
+- *Code formatting*. VS Code includes support for code formatting, which can help you keep your code organized and easy to read. This can be especially useful when working on large projects or when collaborating with other developers.
 
 1. Install [Visual Studio Code](https://code.visualstudio.com/Download) for Windows. Allow Visual Studio Code to launch.
 
@@ -57,13 +58,19 @@ In this section you'll install Visual Studio (VS) Code and a few extensions. The
 
 ## Install Git for Windows
 
-In this section you'll [install GitHub](https://git-scm.com/download/win) and [fork the repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo), https://github.com/gobbyo, for your tutorial projects. Forking code refers to the process of creating a copy of an existing codebase and making changes to it. There are several benefits to forking code:
+In this section you'll [install GitHub](https://git-scm.com/download/win) and [fork the repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo), https://github.com/gobbyo, for your tutorial projects. A code fork is a separate copy of the repository, and any changes made to the fork do not affect the original repository.
 
-- **Customization**. By forking code, you can customize the sample code. For example, in several tutorials there are "Explore More" sections where you explore making changes to add new features or modify the existing features.
-- **Collaboration**. Code works differently across operating systems like Windows and your Raspberry Pi. Forking code facilitates collaborating between your Cloud Machine and your Raspberry Pi while working on the same project. For example, while on the Raspberry Pi, you might make changes to the message listener on your device, while on your Windows Cloud machines you'll make changes to the way the message is being sent. The changes can then be merged back into your own fork.
-- **Experimentation**. Forking code allows you to experiment with different approaches or solutions to a problem, without affecting the main codebase. This can be especially useful for testing new ideas.
-- **Community involvement**. By forking code, you can contribute to our open-source project and become more involved in the community. For example, you can submit a pull request to have your changes merged into the main codebase should you find an error in the code or documentation.
-- **Learning**. Forking code can be a great way for you to learn about IoT and approaches to solving problems. By working on a codebase and making changes, you can gain valuable experience and improve your skills.
+Code branching, on the other hand, is the process of creating a separate branch within a repository to make changes to the code. A branch is a copy of the code at a particular point in time, and changes made to a branch do not affect the main branch until the changes are merged back into the main branch.
+
+In contrast to forking and branching, directly checking code into the main branch means that the code is added to the main branch of the repository without being first tested or reviewed in a separate branch. Do not make a habit of checking code into the main branch, as it can lead to unstable code being deployed to the production environment. It is generally considered best practice to test and review code changes in a separate branch before merging them into the main branch.
+
+In summary, code forking creates a separate copy of a repository, while code branching creates a separate branch within a repository. Directly checking code into the main branch is discouraged and bypasses the review and testing process that is recommended for code changes. There are several **benefits to forking code** in these tutorials:
+
+- *Customization*. By forking code, you can customize the sample code. For example, in several tutorials there are "Explore More" sections where you explore making changes to add new features or modify the existing features.
+- *Collaboration*. Code works differently across operating systems like Windows and your Raspberry Pi. Forking code facilitates collaborating between your Cloud Machine and your Raspberry Pi while working on the same project. For example, while remotely connected to your Raspberry Pi, you might make changes to the message listener on your device, while on your Windows Cloud machines you'll make changes to the way the message is being sent. The changes can then be merged back into your own fork.
+- *Experimentation*. Forking code allows you to experiment with different approaches or solutions to a problem, without affecting the main codebase. This can be especially useful for testing concepts as you move through these tutorials.
+- *Community involvement*. By forking code, you can contribute to our open-source project and become more involved in the community. For example, you can submit a pull request to have your changes merged into the main codebase should you find an error in the code or documentation.
+- *Learning*. Forking code can be a great way for you to learn about IoT and approaches to solving problems. By working on a codebase and making changes, you can gain valuable experience and improve your skills.
 
 1. Open a browser session in your Windows machine and download the [git for windows](https://git-scm.com/download/win) installer.
 1. Run the installer, accepting the default settings. When you arrive at the screen **Choosing the default editor used by Git**, choose **Use Visual Studio Code as Git's default editor** from the dropdown selection, then continue accepting the default settings until finished.
@@ -107,13 +114,13 @@ In this section you'll [install GitHub](https://git-scm.com/download/win) and [f
 
 ## Install Python
 
-In this section you'll install Python into your Windows Cloud Machine. You'll use your Windows Cloud Machine to develop and code applications for your Raspberry Pi. There are several benefits to using Python to code for the Raspberry Pi:
+In this section you'll install Python into your Windows Cloud Machine. You'll use your Windows Cloud Machine to develop and code applications for your Raspberry Pi. There are several **benefits to using Python** to code for the Raspberry Pi:
 
-- **Ease of use**. Python is known for being easy to read and write, which can make it an ideal choice for beginners or for projects where simplicity is a priority.
-- **Wide range of libraries**. Python has a large and active community, which has developed a wide range of libraries for IoT purposes. These libraries can be easily imported and used in Python programs, which can save time and effort when developing applications for the Raspberry Pi.
-- **Extensive documentation**. Python has extensive documentation, including tutorials and examples, which can be helpful for learning the language and for developing applications for the Raspberry Pi.
-- **Compatibility with Raspberry Pi hardware**. Python is well-suited for interacting with the hardware on the Raspberry Pi, including the GPIO pins and sensors. There are also a number of libraries available that make it easy to control the hardware on the Raspberry Pi using Python.
-- **Community support**. There is a large and active community of Python developers, which can be a useful resource for getting help or finding solutions to problems when developing applications for the Raspberry Pi.
+- *Ease of use*. Python is known for being easy to read and write, which can make it an ideal choice for beginners or for projects where simplicity is a priority.
+- *Wide range of libraries*. Python has a large and active community, which has developed a wide range of libraries for IoT purposes. These libraries can be easily imported and used in Python programs, which can save time and effort when developing applications for the Raspberry Pi.
+- *Extensive documentation*. Python has extensive documentation, including tutorials and examples, which can be helpful for learning the language and for developing applications for the Raspberry Pi.
+- *Compatibility with Raspberry Pi hardware*. Python is well-suited for interacting with the hardware on the Raspberry Pi, including the GPIO pins and sensors. There are also a number of libraries available that make it easy to control the hardware on the Raspberry Pi using Python.
+- *Community support*. There is a large and active community of Python developers, which can be a useful resource for getting help or finding solutions to problems when developing applications for the Raspberry Pi.
 
 1. Open a browser window and [install python](https://www.python.org/downloads/). Be sure to check the box `Use admin privileges when installing py.exe` and  `Add python.exe to PATH` at the start of the install, then select `Install Now`.  At the end of the install select the `Disable path length limit`, then select the `close` button.
 1. From Visual Studio Code, select the `View > Command Pallette..` menu, type the following in the command pallette text box:
@@ -126,12 +133,12 @@ In this section you'll install Python into your Windows Cloud Machine. You'll us
 
 ## Install Azure Client Libraries
 
-In this section you'll install the Azure Client Libraries. Azure client libraries are needed to create IoT applications because they provide a set of APIs (Application Programming Interfaces) that allow you to interact with the Azure IoT services. These libraries make it easy to integrate Azure IoT functionality into an application, such as sending data to the cloud, receiving commands from the cloud, and authenticating devices. Some of the benefits of using Azure client libraries to create IoT applications include:
+In this section you'll install the Azure Client Libraries. Azure client libraries are needed to create IoT applications because they provide a set of APIs (Application Programming Interfaces) that allow you to interact with the Azure IoT services. These libraries make it easy to integrate Azure IoT functionality into an application, such as sending data to the cloud, receiving commands from the cloud, and authenticating devices. Some of the **benefits of using Azure client libraries** to create IoT applications include:
 
-- **Simplicity**. Azure client libraries provide a simple and easy-to-use interface for interacting with Azure IoT services, which can save time and effort when developing IoT applications.
-- **Consistency**. Azure client libraries are designed to be consistent across different platforms and languages, which can make it easier to develop IoT applications that run on multiple platforms or that use different programming languages.
-- **Reliability**. Azure client libraries are regularly updated and tested, which can help ensure that they are reliable and robust when used in IoT applications.
-- **Security**. Azure client libraries include support for secure communication between devices and the cloud, which is important for ensuring the security of IoT applications.
+- *Simplicity*. Azure client libraries provide a simple and easy-to-use interface for interacting with Azure IoT services, which can save time and effort when developing IoT applications.
+- *Consistency*. Azure client libraries are designed to be consistent across different platforms and languages, which can make it easier to develop IoT applications that run on multiple platforms or that use different programming languages.
+- *Reliability*. Azure client libraries are regularly updated and tested, which can help ensure that they are reliable and robust when used in IoT applications.
+- *Security*. Azure client libraries include support for secure communication between devices and the cloud, which is important for ensuring the security of IoT applications.
 
 Overall, Azure client libraries are an essential tool for developers who want to create IoT applications using Azure IoT services, as they provide a convenient and reliable way to interact with these services and take advantage of their capabilities.
 

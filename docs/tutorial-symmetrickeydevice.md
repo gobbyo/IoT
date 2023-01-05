@@ -25,7 +25,7 @@ As you progress through these tutorials you'll use the best practices to securel
 
 In this section you'll create a device in IoT Hub that uses a symmetric key. The simplest way to quickly create a device is with [symmetric key encryption](https://www.ibm.com/docs/en/ztpf/2020?topic=concepts-symmetric-cryptography).
 
-When your device communicates to the cloud, its transmission needs to be encrypted in a secure way. A symmetric key is typically a password used for both encryption and decryption of data in transit across the internet or "at rest" when stored. Symmetric keys are typically shorter and easier to generate and manage than keys used in asymmetric (or public-key) cryptography. This makes them well-suited for use in applications where performance is a key concern.
+When your device communicates to the cloud, its transmission and storage needs to be encrypted in a secure way. A symmetric key is typically a password used for both encryption and decryption of data in transit across the internet or "at rest" when stored. Symmetric keys are typically shorter and easier to generate and manage than keys used in asymmetric (or public-key) cryptography. This makes them well-suited for use in applications where performance is a key concern.
 
 However, symmetric-key cryptography has a number of limitations, including the need to securely share the key between the sender and receiver of the data, and the inability to authenticate the sender of the data. Additionally, managing devices with symmetric keys becomes increasingly difficult as you add more devices to your IoT Hub. Therefore, the preferred way to create a device for production is to use an asymmetric key, or x509 certificate, which we will cover in a later tutorial.
 
