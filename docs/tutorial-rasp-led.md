@@ -95,7 +95,7 @@ Use the following diagram to wire your breadboard components to your Raspberry P
 1. Add multiple LEDs like Green, Yellow, and Red.
 1. Try reversing the polarity:
 
-    - Change the ground to a 3.3v pin
+    - Change the jumper lead from ground to a 3.3v pin
     - Flip the LED leads so the anode lead is connected to the 3.3v pin
     - Change all occurrences in the code from GPIO.LOW to GPIO.HIGH and GPIO.HIGH to GPIO.LOW
 
