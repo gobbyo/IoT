@@ -1,121 +1,41 @@
-# Tutorial: Send Hostname and IP address to the Cloud
+# Tutorial: Send Hostname and IP address to the Cloud when Booting Up your Raspberry Pi
 
-In this tutorial you'll create device code that sends a message to IoT Hub. Knowing your Raspberry Pi's hostname and IP address is helpful information needed to connect via ssh or from Visual Studio Code.
-
-[todo] image needed
+In this tutorial you'll create device code that sends a message to IoT Hub when booting up. Knowing your Raspberry Pi's hostname and IP address is helpful information needed to connect via ssh or from Visual Studio Code.
 
 ## Prerequisites
 
 [Deploy and Configure StreamAnalytics](tutorial-deploystreamtostorage.md)
 
-## Code a Message with your Device Hostname and IP Address to the Cloud
+## Set up a Cron job to Send Device Information when your Raspberry Pi Boots Up
 
-1. [Remotely connect to your Raspberry Pi](tutorial-rasp-connect.md#set-up-remote-ssh-with-visual-studio-code)
-1. Create a new directory called `modules` under the `\IoT\python\raspberrypi\`, e.g. `\IoT\python\raspberrypi\modules`.
-1. Create a new file called `raspipaddress.py` in the `\IoT\python\raspberrypi\modules` directory path you created in the previous step.
-1. Copy and paste the following code into your `raspipaddress.py` file
+1. From your Windows Cloud Machine, open a console application and remote SSH into your Raspberry Pi from the command prompt as using {your account}@{hostname}, for example,
 
-    ```python
-    import socket
+    ```azurecli
+    c:\>ssh me@raspberrypi
+    me@raspberrypi's password:
+    Linux raspberrypi 5.15.76-v7+ #1597 SMP Fri Nov 4 12:13:17 GMT 2022 armv7l
     
-    def get_ip_address():
-        ip_address = ''
-        try:
-            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-            s.connect(("1.1.1.1",80))
-            ip_address = s.getsockname()[0]
-            s.close()
-        except socket.error as e:
-            print("Error: {0}. Code Id = afd02cb8-8984-496d-ad3f-151165cf8eaf".format(e))
-        return ip_address
+    The programs included with the Debian GNU/Linux system are free software;
+    the exact distribution terms for each program are described in the
+    individual files in /usr/share/doc/*/copyright.
+    
+    Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+    permitted by applicable law.
+    Last login: Sun Jan  1 20:27:12 2023 from fe80::5a68:8a07:f908:168a%wlan0
+    me@raspberrypi:~ $
     ```
 
-    This code uses a local socket connection to figure out your raspberry pi's public facing IP address.
-
-    Note in the `socket.error` code that logging a unique identifier in code helps you to troubleshoot should something go wrong. Simply capture your print output into a file and search for the error that occurred by its unique code identifier.
-
-1. Create a new file called `d2cipandhostname.py` and save it into your cloned github path `\IoT\python\raspberrypi\`.
-1. Copy and paste the following import statements into your `d2cipandhostname.py` file
-
-    ```python
-    import asyncio
-    import socket
-    import uuid
-    from decouple import config
-    from azure.iot.device import Message,X509
-    from azure.iot.device.aio import ProvisioningDeviceClient, IoTHubDeviceClient
-    import modules.raspipaddress as raspipaddress
-    ```
-
-1. Copy and paste the following variables you obtain from your .env file.
-
-    ```python
-    provisioning_host = config("DPS_HOST")
-    id_scope = config("DPS_SCOPEID")
-    registration_id = config("DPS_REGISTRATIONID")
-    ```
-
-1. Copy and paste the following code to create a message
-
-    ```python
-    def main():
-        print("[{0}] Send IoT Hub this device's Host Name and IP address. CodeID = b5faac72-eee4-43fe-9af1-33b489c51add".format(datetime.utcnow().isoformat()))
-        #wait 30 seconds for the system to get up and running after reboot
-        time.sleep(30)
-        try:
-            hostname = socket.gethostname()
-            ip_address = get_ip_address()
-    ```
-
-1. Copy and paste the following code within the `def main()` function to send the message to IoT Hub
-
-    ```python
-    msg = '{{ "Hostname":"{0}", "IPAddress":"{1}" }}'.format(hostname, ip_address)
-    client = IoTHubDeviceClient.create_from_connection_string(config("IOTHUB_DEVICE_CONNECTION_STRING"))
-    client.send_message(msg)
-    ```
-
-1. Copy and paste the following code within the `def main()` function to handle any exceptions and print activity to the command line
-
-    ```python
-    except exceptions.ClientError as e:
-            print("Error: {0}. CodeID = 2f85db08-398e-4997-ab67-b9105a328e0e".format(e))
-    finally:
-        print("[{0}] Connection string: {1}. CodeID = 2b700d52-b1d2-41ad-8a78-90d59c9d083a".format(datetime.utcnow().isoformat(),config("IOTHUB_DEVICE_CONNECTION_STRING")))
-        print("[{0}] Message sent: {1}".format(datetime.utcnow().isoformat(), msg))
-    ```
-
-1. Add the following code to start code execution with the main() function
-
-    ```python
-    if __name__ == "__main__":
-        main()
-    ```
-
-1. Run the Visual Studio Code debugger or run the script from your command line.
-
-    ```python
-    python d2cipandhostname.py
-    ```
-
-    For example,
-
-    ```python
-    PS C:\repos\IoT\python\raspberrypi>  python d2cipandhostname.py
-    [2022-12-21T05:06:51.616476] Get IP and Host Name. codeID = b5faac72-eee4-43fe-9af1-33b489c51add
-    [2022-12-21T05:06:52.532383] Connection string: HostName=HubMsgHubw2lu5yeop2qwy.azure-devices.net;DeviceId=myDevice;SharedAccessKey=8IrOxxxxxxxxxxZUkg=. codeID = 2b700d52-b1d2-41ad-8a78-90d59c9d083a
-    [2022-12-21T05:06:52.543905] Message sent: { "Hostname":"HJB34C6", "IPAddress":"192.168.86.86" }
-    ```
-
-## Set up a Cron job to Send the Message when your Raspberry Pi Boots
-
-1. Run the following command in your Raspberry Pi,
+1. Using your remote SSH session, open crontab in the GNU nano editor in your Raspberry Pi,
 
     ```azurecli
     $ sudo crontab -e
     ```
 
-1. Add the following entry to cron,
+    For example,
+
+    ![lnk_crontab]
+
+1. Copy and paste the following entry to crontab,
 
     ```azurecli
     @reboot python ~/repos/IoT/python/raspberrypi/d2cipandhostname.py
@@ -134,18 +54,14 @@ In this tutorial you'll create device code that sends a message to IoT Hub. Know
     sudo shutdown -r
     ```
 
-## Verify the Message from your Stream Analytics Jobs Service
-
-1. Open your stream analytics jobs service using the [Azure portal](https://portal.azure.com).
-1. Select `Job topology > <> Query` in the left pane and verify the message exists in the `Input preview` pane.
-[todo]
-
-## Reference
-
-- IoT Hub message [system and user-defined properties](https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)
+1. Verify the message was sent to the cloud and saved in storage using Stream Analytics.
 
 ## Next Steps
 
 Congratulations, you've successfully remotely coded a real device and connected it to Azure! You are ready to continue your journey and learn to wire IoT electronics to your Raspberry Pi and remotely controlling it.
 
 [Tutorial: Light up an LED](tutorial-rasp-led.md)
+
+<!--images-->
+
+[lnk_crontab]: media/tutorial-rasp-d2cipandhostname/crontab.png

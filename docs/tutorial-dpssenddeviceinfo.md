@@ -14,10 +14,9 @@ In this tutorial, you learn how to:
 Following the diagram below.
 
 1. Using VS Code, remote into your Raspberry Pi, update your .env file by adding DPS information
-1. Create a `provisioningdevice.py` console application
-1. Create a cron job to start the `provisioningdevice.py` console application when booting up
-1. When your Raspberry Pi boots up the `provisioningdevice.py` console application creates a device provisioning client using DPS information.  The DPS client calls the Device Provisioning Service to obtain the devices IoT Hub connection information. An IoT Hub client is created and connects to your IoT hub.
-1. The `provisioningdevice.py` console application writes its device information to IoT Hub.
+1. Create a `provisiondevicex509.py` console application.
+1. Run the `provisiondevicex509.py` console application. Note the application creates a device provisioning client using DPS information.  The DPS client calls the Device Provisioning Service to obtain the devices IoT Hub connection information. An IoT Hub client is created and connects to your IoT hub.
+1. The `provisiondevicex509.py` console application writes its device information to IoT Hub.
 1. Your Stream Analytics job pulls any queued messsages from IoT Hub
 1. Your Stream Analytics job writes your device message to blob storage
 1. You verify the device information exists by viewing the preview query results in Stream Analytics or if your stream analytics job is running, view the message in blob storage.
@@ -72,8 +71,62 @@ Following the diagram below.
 
 ## Send Device Information to the Cloud when Booting Up your Raspberry Pi
 
+1. In your forked Git Hub clone, create a new directory `modules` under `raspberrypi`. For example,
+
+    ```azurecli
+    cd ~repos/IoT/python/raspberrypi
+    mkdir modules
+    ```
+
+1. From your VS Code remote session, create a file called `raspipaddress.py` in the `modules` directory, for example `$ ~/repos/IoT/python/raspberrypi/modules/raspipaddress.py`
+1. Copy and paste the following code into the `raspipaddress.py` file and save,
+
+    ```python
+    import socket
+    
+    def get_ip_address():
+        ip_address = ''
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.connect(("1.1.1.1",80))
+            ip_address = s.getsockname()[0]
+            s.close()
+        except socket.error as e:
+            print("Error: {0}. CodeID = 2e798e2d-0802-4b1d-9860-a83e3e35b599".format(e))
+        return ip_address
+    ```
+
+1. Verify the module by running python script in your VS Code terminal session as follows.
+
+    ```python
+    python
+    import raspipaddress 
+    raspipaddress.get_ip_address()
+    ```
+
+    For example,
+
+    ```python
+    PS > python
+    >>> import raspipaddress 
+    >>> raspipaddress.get_ip_address()
+    '192.168.1.197'
+    ```
+
 1. Create a file called `provisiondevicex509.py` in the `python/raspberrypi/` under your github forked clone directory, for example `$ ~/repos/IoT/python/raspberrypi/provisiondevicex509.py`
-1. Copy and paste the following code to your `provisiondevicex509.py` file.
+1. Copy and paste the following import statements into your `provisiondevicex509.py` file and save.
+
+    ```python
+    import asyncio
+    import socket
+    import uuid
+    from decouple import config
+    from azure.iot.device import Message,X509
+    from azure.iot.device.aio import ProvisioningDeviceClient, IoTHubDeviceClient
+    import modules.raspipaddress as raspipaddress
+    ```
+
+1. Copy and paste the following device provisioning service variables to your `provisiondevicex509.py` file and save.
 
     ```python
     provisioning_host = config("DPS_HOST")
@@ -81,7 +134,7 @@ Following the diagram below.
     registration_id = config("DPS_REGISTRATIONID")
     ```
 
-1. Copy and paste the following method to your `provisiondevicex509.py` file.
+1. Copy and paste the following method to your `provisiondevicex509.py` file and save.
 
     ```python
     async def send_message(device_client):
@@ -146,7 +199,7 @@ Following the diagram below.
 
 ## Next steps
 
-[Tutorial: Send Hostname and IP address to the Cloud](tutorial-rasp-d2cipandhostname.md)
+[Tutorial: Send Hostname and IP address to the Cloud when Booting Up your Raspberry Pi ](tutorial-rasp-d2cipandhostname.md)
 
 <!--images-->
 
