@@ -16,7 +16,7 @@ Following the diagram below.
 1. Using VS Code, remote into your Raspberry Pi, update your .env file by adding DPS information
 1. Create a `provisioningdevice.py` console application
 1. Create a cron job to start the `provisioningdevice.py` console application when booting up
-1. When your Raspberry Pi boots up the `provisioningdevice.py` console application a device provisioning client is created using DPS information. The DPS client creates an IoT Hub client that connects to your IoT hub
+1. When your Raspberry Pi boots up the `provisioningdevice.py` console application creates a device provisioning client using DPS information.  The DPS client calls the Device Provisioning Service to obtain the devices IoT Hub connection information. An IoT Hub client is created and connects to your IoT hub.
 1. The `provisioningdevice.py` console application writes its device information to IoT Hub.
 1. Your Stream Analytics job pulls any queued messsages from IoT Hub
 1. Your Stream Analytics job writes your device message to blob storage
