@@ -8,8 +8,8 @@ author: jbeman@hotmail.com
 
 In this tutorial, you learn how to:
 
-- Create device code that sends a message to the Cloud
-- Send a Message to your Simulated Device from the Cloud
+- Create a Message Listener in the Cloud
+- Send a Message to your Simulated Device to the Cloud
 
 There are several reasons to have an **IoT device send messages to the cloud**:
 
@@ -50,9 +50,9 @@ Completed the [Tutorial: Send a Message from the Cloud to a Simulated Device](tu
 
 ## Create a Message Listener for IoT Hub's Built-in Event Hub Endpoint
 
-In this section you'll use the Event Hub consumer client to access queued messages in the IoT Hub's built-in Event Hub.
+In this section you'll use the Event Hub's consumer client to access queued messages in the IoT Hub's built-in Event Hub.
 
-1. From Visual Studio Code, create a new file called `d2ceventhublistener.py`.
+1. From Visual Studio Code, create a new file under your forked GitHub cloned `python` directory called `d2ceventhublistener.py`.
 1. Copy and paste the following import statements into your `d2ceventhublistener.py` file
 
     ```python
