@@ -92,8 +92,12 @@ Use the following diagram to wire your breadboard components to your Raspberry P
 
 ## More to Explore
 
-1. Have your LED flash to represent the time in hours and minutes in military time. For example, 2:30 would be 2 flashes, a few second pause, then 3 flashes (one flash for every 10 minute)
 1. Add multiple LEDs like Green, Yellow, and Red.
+1. Try reversing the polarity:
+
+    - Change the ground to a 3.3v pin
+    - Flip the LED leads so the anode lead is connected to the 3.3v pin
+    - Change all occurrences in the code from GPIO.LOW to GPIO.HIGH and GPIO.HIGH to GPIO.LOW
 
 ## Next steps
 
