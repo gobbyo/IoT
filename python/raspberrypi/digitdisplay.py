@@ -19,20 +19,9 @@ import time
 # 7 =	0000 0111   0x07
 # 8 =   0111 1111   0x7F
 # 9 =   0110 0111   0x67
-# A =   1111 0111   0xF7
-# b =   1111 1100   0xFC
-# C =   1011 1001   0xB9
-# d =   1101 1110   0xDE
-# E =   1111 0001   0xF1
-# F =   1011 1001   0XB9
 
 pins = [4,5,6,12,13,16,17,18]
-segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67,0xF7,0xFC,0xB9,0xDE,0xF1]
-
-def setup():
-    GPIO.setmode(GPIO.BOARD)   # Pins
-    for pin in pins:
-        GPIO.setup(pin, GPIO.OUT)
+segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67]
 
 def paintnumbers(val):
     i = 0
@@ -40,20 +29,23 @@ def paintnumbers(val):
         GPIO.output(pin,(val & (0x01 << i)) >> i)
         i += 1
 
-def loop():
-    while True:
-        for val in segnum:
-            paintnumbers(val)
-            time.sleep(0.5)
-
-def end():
+def main():
+    GPIO.setmode(GPIO.BOARD)   # Pins
     for pin in pins:
-        GPIO.output(pin,0)
-    GPIO.cleanup()
+        GPIO.setup(pin, GPIO.OUT)
 
-if __name__ == '__main__':     # Program start from here
-	setup()
-	try:
-		loop()
-	except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
-		end()
+    try:
+        print("--starting display of digits--")
+        while True:
+            for val in segnum:
+                paintnumbers(val)
+                time.sleep(0.5)
+    except KeyboardInterrupt:
+        print("Program shut down by user")
+    finally:
+        for pin in pins:
+            GPIO.output(pin,0)
+        GPIO.cleanup()
+
+if __name__ == '__main__':
+	main()

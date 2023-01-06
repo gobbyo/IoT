@@ -19,26 +19,26 @@
 # 7 =	0000 0111   0x07
 # 8 =   0111 1111   0x7F
 # 9 =   0110 0111   0x67
-# A =   1111 0111   0xF7
-# b =   1111 1100   0xFC
-# C =   1011 1001   0xB9
-# d =   1101 1110   0xDE
-# E =   1111 0001   0xF1
-# F =   1011 1001   0XB9
+# A =   0111 0111   0x77
+# b =   0111 1100   0x7C
+# C =   0011 1001   0x39
+# d =   0101 1110   0x5E
+# E =   0111 0001   0x71
+# F =   0111 1001   0X79
 
 pins = [4,5,6,12,13,16,17,18]
 p = ['a','b', 'c', 'd', 'e', 'f', 'g', 'h']
-segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67,0xF7,0xFC,0xB9,0xDE,0xF1,0XB9]
+segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67,0x77,0x7C,0x39,0x5E,0x71,0X79]
 
 def displaynumber(val):
     i = 0
-    char = 97
     seg = []
     while i < len(p):
         seg.append(str((val & (0x01 << i)) >> i))
         i += 1
     print(p)
     print(seg)
+
 def main():
     num = 0
     while num < len(segnum):

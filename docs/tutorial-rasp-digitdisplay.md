@@ -1,0 +1,248 @@
+---
+title: One Digit Seven Segment Display 
+description: #Required; article description that is displayed in search results. 
+author: jbeman@hotmail.com
+---
+
+# Tutorial: Seven Segment Display
+
+In this tutorial, you learn how to:
+
+- Wire a single digit seven-segment display
+- Test the segment display connection
+
+A Seven Segment display is a type of electronic device that is used to display decimal numerals and some alphabetical characters. It consists of seven segments, each of which is a LED or LCD display element, arranged in a particular pattern to form the digits and some letters. The segments are labeled with the letters "a" through "g" as shown in the diagram below:
+
+![lnk_segdisplay]
+
+A one-digit Seven Segment display can display any one decimal digit from 0 to 9. It is commonly used in digital clocks, calculators, and other electronic devices where numerical information is displayed. It can also be used to display some alphabetical characters, such as "E" and "H".
+
+One-digit Seven Segment displays are inexpensive, easy to use, and have a relatively low power consumption compared to other types of displays. They are also available in different sizes and colors, making them suitable for a wide range of applications.
+
+For this tutorial, your seven-segment display will be controlled by an application that is local on the Raspberry Pi.
+
+## Prerequisites
+
+Completed the [Tutorial: Light up an LED bar](tutorial-rasp-ledbar.md)
+
+Supplies:
+
+|Quantity  |Item  |
+|:---:|:---|
+|1     | Breadboard |
+|9     | Male to male jumper wires |
+|1     | LED Bar Graph |
+|8     | 220Ω Resistors |
+|1     | (optional) GPIO Extension Board |
+|1     | (optional) 40 pin GPIO cable |
+
+## Wire your seven-segment display to your Raspberry Pi
+
+Below is the circuit we'll construct. Note the diagram references the Raspberry Pi pin numbers.
+
+![lnk_schematic_segmentdisplay]
+
+There are 10 pins on the single digit seven-segment display.  The pins correspond to the function from the previous picture. For example pin 7 controls the "a" LED on the segment display.
+
+```python
+#    PINs
+# Seg  Rasp
+#  1    10
+#  2    8
+#  3    1
+#  4    7
+#  5    13
+#  6    5
+#  7    3
+#  8    1
+#  9    12
+#  10   11
+```
+
+In this section you'll wire your Raspberry Pi to light up an seven-segment display by using the following diagram.
+
+1. Connect a lead from each 220Ω resistor to each segment display bar pin on the breadboard.
+1. Connect one end of the jumper wire to a terminal strip that corresponds to each Raspberry GPIO Pins #3, #5, #7, #8, #10, #12, #11, #13, GND #1.
+1. For each jumper wire, connect each GPIO pin to each pin on your segment display. Note the order is important--the jumper to the Raspberry Pi pin #10 is connected to the resistor segment display pin 1, the jumper to the Raspberry Pi pin #8 is connected to the segment display pin 2, and so on.
+
+![lnk_raspledbar]
+
+## Create Test Code to Show Digits
+
+Each LED bar in a seven-segment display has a binary state: on or off. Therefore, you can use binary to control each LED in the display `a-h`. Note that `h` represents the dot point (dp). For example, the number two is displayed with LEDs `a`, `b`, `d`, `e`, and `g` turned on, and `c`, `f`, and `h` are off.
+
+![lnk_displaytwo]
+
+In code you'll represent the LED state for each segment as a = 1 (on), b = 1 (on), c = 0 (off), and so on. The entire conversion of the number two in hexidecimal form is 0x5B as follows,
+
+![lnk_displayconversion]
+
+The entire list of A-F is as follows:
+
+```python
+# num   hgfe dcba   hex
+
+# 0 = 	0011 1111   0x3F
+# 1 =	0000 0110   0x06
+# 2 =	0101 1011   0x5B
+# 3 =	0100 1111   0x4F
+# 4 =	0110 0110   0x66
+# 5 =	0110 1101   0x6D
+# 6 =	0111 1101   0x7D
+# 7 =	0000 0111   0x07
+# 8 =   0111 1111   0x7F
+# 9 =   0110 0111   0x67
+# A =   0111 0111   0x77
+# b =   0111 1100   0x7C
+# C =   0011 1001   0x39
+# d =   0101 1110   0x5E
+# E =   0111 0001   0x71
+# F =   0111 1001   0X79
+```
+
+As you tell the display which LED to light, you'll need to use bit masking to determine each `a-h` LED to turn on or off as you loop through the 8 binary digits. Bit masking uses the `&` operator, for example 1 & 1 = 1 whereas 1 & 0 = 0. To determine if LED `a` for the number "5" (`0110 1101`) is turned on or off, you'll bit mask the `a` register using '0000 0001' (0x01) as follows,
+
+```python
+# hgfe dcba
+# 0110 1101
+#     &
+# 0000 0001
+# ---- ----
+# 0000 0001 ('a' LED should be set to on)
+```
+
+To determine the value of the 'b' LED for the number "5" (`0110 1101`), you'll shift `0x01` left (`<<`) to the 'b' register as ('0x01 << 1') to bitmask the 'b' register (`0000 0010`). For example,
+
+```python
+# hgfe dcba
+# 0110 1101
+#     &
+# 0000 0010
+# ---- ----
+# 0000 0000 ('b' LED should be set to off)
+```
+
+Try the following test code to experiment with bitmasking digits for your Seven Segment display.
+
+1. Create a file `bitshifttest.py` in your forked GitHub under the `python/raspberrypi` directory, for example `~/repos/IoT/python/raspberrypi/bitshifttest.py`
+1. Copy and paste the following variables.
+
+    ```python
+    p = ['a','b', 'c', 'd', 'e', 'f', 'g', 'h']
+    segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67,0x77,0x7C,0x39,0x5E,0x71,0X79]
+    ```
+
+1. Copy and paste the following method to calculate which LED to turn on or off.
+
+    ```python
+    def displaynumber(val):
+        i = 0
+        seg = []
+        while i < len(p):
+            seg.append(str((val & (0x01 << i)) >> i))
+            i += 1
+        print(p)
+        print(seg)
+    ```
+
+1. Copy and paste the main function to iterate through all the possible display values.
+
+    ```python
+    def main():
+        num = 0
+        while num < len(segnum):
+            if num < 10:
+                print("--{0}--".format(num))
+            else:
+                print("--{0}--".format(chr(65 + (num - 10))))
+    
+            displaynumber(segnum[num])
+            num += 1
+    
+    if __name__ == '__main__':     # Program start from here
+    		main()
+    ```
+
+1. Run the program in the VS code debugger.  Your output will display the 1 (on) or 0 (off) value for each LED segment a-f as follows,
+
+    ```python
+    --0--
+    ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+    ['1', '1', '1', '1', '1', '1', '0', '0']
+    --1--
+    ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+    ['0', '1', '1', '0', '0', '0', '0', '0']
+    --2--
+    ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+    ['1', '1', '0', '1', '1', '0', '1', '0']
+    ```
+
+## Code your Seven Segment Display
+
+In this section you'll create code that will iterate through all the numbers and show them on your seven-segment display.
+
+<!-- Introduction paragraph -->
+1. [Connect to your Raspberry Pi](https://code.visualstudio.com/docs/remote/ssh#_connect-to-a-remote-host) using Visual Studio Code.
+1. Create a file `digitdisplay.py` in your cloned GitHub under the `python/raspberrypi` directory, for example `~/repos/IoT/python/raspberrypi/digitdisplay.py`
+1. Copy and paste the following import statement
+
+    ```python
+    import RPi.GPIO as GPIO
+    import time
+    ```
+
+1. Copy and paste the method below having logic you bit shift tested,
+
+    ```python
+    def paintnumbers(val):
+        i = 0
+        for pin in pins:
+            GPIO.output(pin,(val & (0x01 << i)) >> i)
+            i += 1
+    ```
+
+1. Copy and paste the following method to obtain basic information about your Raspberry Pi.
+
+    ```python
+    def main():
+        GPIO.setmode(GPIO.BOARD)   # Pins
+        for pin in pins:
+            GPIO.setup(pin, GPIO.OUT)
+    
+        try:
+            print("--starting display of digits--")
+            while True:
+                for val in segnum:
+                    paintnumbers(val)
+                    time.sleep(0.5)
+        except KeyboardInterrupt:
+            print("Program shut down by user")
+        finally:
+            for pin in pins:
+                GPIO.output(pin,0)
+            GPIO.cleanup()
+    
+    if __name__ == '__main__':
+    	main()
+    ```
+
+## Run It
+<!-- Introduction paragraph -->
+1. Start the debugger in Visual Studio Code
+1. Verify numbers appear in your Seven Segment display.
+
+## More to Explore
+
+1. Extend the functionality to light the `dp`. For example, have the `dp` light up for the characters A through F.
+1. Extend the numbers to include letters like `H`, `h`, or symbols like `-`.
+
+## Next steps
+
+[Tutorial: Remotely Control an LED Bar Graph](tutorial-rasp-remoteled.md)
+
+<!--images-->
+
+[lnk_segdisplay]: media/tutorial-rasp-digitsegment/segdisplay.png
+[lnk_schematic_segmentdisplay]: media/tutorial-rasp-digitsegment/Schematic_SegmentDisplay.png
+[lnk_displaytwo]: media/tutorial-rasp-digitsegment/displaytwo.png
+[lnk_displayconversion]: media/tutorial-rasp-digitsegment/displayconversion.png

@@ -31,13 +31,13 @@ def message_handler(message):
         print("--Message Processed--")
 
 async def main():
+    print("Ctrl-c to quit'")
     GPIO.setmode(GPIO.BOARD)
 
     for p in LED_pins:
         GPIO.setup(p, GPIO.OUT)
         GPIO.output(p, GPIO.LOW)
 
-    print("Ctrl-C to quit'")
     print("Creating x509 cert object from file. Code id = 3a931dc7-9028-409f-be9f-7065fe6de8eb")
     x509 = X509(
         cert_file=config("X509_CERT_FILE"),

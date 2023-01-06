@@ -70,7 +70,7 @@ This section of tutorials you'll dive into the the Raspberry Pi GPIO enabled sen
 1. [Remotely Control an LED](docs/tutorial-rasp-remoteled.md)
 1. [Light Emitting Display Bar Graph](docs/tutorial-rasp-ledbar.md)
 1. [Remotely Control a Light Emitting Display Bar Graph](docs/tutorial-rasp-remoteledbar.md)
-1. Seven Segment Digit Display
+1. [Seven Segment Digit Display](docs/tutorial-rasp-digitdisplay.md)
 1. Remotely Control a Seven Segment Digit Display
 1. 8x8 LED Matrix Display
 1. Remotely Control an 8x8 LED Matrix Display
