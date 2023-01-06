@@ -73,7 +73,7 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
 
 ![lnk_verifydevice]
 
-1. Obtain your device connection string, referenced as the environment variable IOTHUB_DEVICE_CONNECTION_STRING, by clicking the device ID (step 3 in the previous example). Following the diagram below: 1️⃣ select on your device ID (last step in previous example), then 2️⃣ copy the Primary connection string.
+1. Obtain your device connection string, referenced as the environment variable IOTHUB_DEVICE_CONNECTION_STRING, by clicking the device ID (step 3 in the previous example). Following the diagram below: 1️⃣ select your device (last step in previous example), then 2️⃣ copy the Primary connection string.
 
 ![lnk_deviceconnectionstring]
 
