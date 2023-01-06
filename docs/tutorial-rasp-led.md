@@ -17,12 +17,12 @@ Lighting an LED is the starting point for electronic projects. Once connected pr
 
 - Completed the [Tutorial: Send Hostname and IP address to the Cloud](tutorial-rasp-d2cipandhostname.md)
 
-## Connect an LED to your Raspberry Pi
+## Wire an LED to your Raspberry Pi
 
 In this section you'll wire your Raspberry Pi to light up a Light Emitting Diode (LED). Below are the supplies you'll need:
 
-|#  |Item  |
-|:---|:---|
+|Quantity  |Item  |
+|:---:|:---|
 |1     | [Breadboard](https://www.circuitbread.com/ee-faq/what-is-a-breadboard) |
 |2     | [Male to male jumper wires](https://store.robotechvalley.com/product/male-to-male-jumper-wires/#:~:text=Description%3A%20male%20to%20male%20jumper%20wires%20These%20superior,arrangement%20of%20every%20one%20of%20ten%20rainbow%20tone.) |
 |1     | LED |

@@ -6,13 +6,9 @@ author: jbeman@hotmail.com
 
 # Tutorial: Light up an LED bar
 
-<!-- 2. Introductory paragraph 
-Required. Lead with a light intro that describes, in customer-friendly language, 
-what the customer will learn, or do, or accomplish. Answer the fundamental “why 
-would I want to do this?” question. Keep it short.
--->
+An LED display bar is a series of light emitting diodes (LEDs) arranged in a row or bar. LED display bars are often used to display information or graphics in a visual format. They can be used in a variety of applications, such as in advertising, signage, and public information displays. LED display bars are also commonly used in electronic devices to display notifications or other types of information.
 
-An LED bar is 10 LEDs in sequence. Once connected properly the LEDs will be controlled by an application that is local on the Raspberry Pi. This project prepares you for the next tutorial to remotely control your LED bar.
+The LED display bar will be controlled by an application that is local on the Raspberry Pi. This project prepares you for the next tutorial to remotely control your LED bar.
 
 <!-- 3. Tutorial outline 
 Required. Use the format provided in the list below.
@@ -25,34 +21,37 @@ In this tutorial, you learn how to:
 
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Completed the tutorial to [Configure your Windows Machine](tutorial-configure.md)
-- Completed the tutorial to [Connect and configure your Raspberry Pi with Visual Studio Code](tutorial-rasp-connect.md)
-
-## Connect an LED to your Raspberry Pi
-
-In this section you'll wire your Raspberry Pi to light up a Light Emitting Diode (LED) by using the following diagram.
-
-1. From the Raspberry Pi, connect GPIO17 (BCM), PIN 13 (BOARD), to a lead on the 220Ω resistor.  GPIO17 used in this example isn't special, as you can use any GPIO pin, e.g. GPIO2, GPIO12, etc.
-1. Connect the positive lead on the LED (the longest lead) to the 220Ω resistor.
-1. Connect the negative lead on the LED (the shorter lead) to Ground on the Raspberry Pi
-
-    ![lnk_raspledbar]
-
-    Note the anode (+) pins are located on the same side as the printed identifier.
-
-    ![lnk_raspposledbar]
+Completed the [Tutorial: Light up an LED](tutorial-rasp-led.md)
 
 Supplies:
 
-|#  |Item  |
-|:---|:---|
+|Quantity  |Item  |
+|:---:|:---|
 |1     | Breadboard |
 |11     | Male to male jumper wires |
 |1     | LED Bar Graph |
 |10     | 220Ω Resistors |
 |1     | (optional) GPIO Extension Board |
 |1     | (optional) 40 pin GPIO cable |
+
+Below is the circuit we'll construct.
+
+![lnk_schematicbargraph]
+
+## Wire your LED display bar to your Raspberry Pi
+
+In this section you'll wire your Raspberry Pi to light up an LED display bar by using the following diagram.
+
+1. From the Raspberry Pi, connect the LED display bar to your breadboard so the cathode pins (-) are on the left of the breadboard separation line and the anode pins (+) on the right. Note that anode (+) pins on the LED display bar are located on the same side as the printed identifier.
+
+    ![lnk_raspposledbar]
+
+1. Connect a lead from each 220Ω resistor to each LED display bar cathode pin and the other resistor lead connected to the breadboard's bus (rail) strip.
+1. Connect a jumper wire from the resistor's rail strip to a ground pin on your Raspberry Pi.
+1. Connect one end of the jumper wire to a terminal strip that corresponds to each Raspberry GPIO Pins #8, #12, #16, #18, #22, #24, #26, #32, #36, and #38.
+1. For each jumper wire, connect each GPIO pin to each anode pin on your LED display bar. Note the order is important--the jumper to pin #8 connected to the first anode pin on the LED display bar, the jumper to pin #12 to the second anode pin, etc.
+
+![lnk_raspledbar]
 
 ## Create Code to Turn Sequentially Switch On or Off the LED Graph
 <!-- Introduction paragraph -->
@@ -120,5 +119,6 @@ Supplies:
 
 <!--images-->
 
+[lnk_schematicbargraph]: media/tutorial-rasp-ledbar/schematicbargraph.png
 [lnk_raspledbar]: media/tutorial-rasp-ledbar/rasp-ledbar.png
 [lnk_raspposledbar]: media/tutorial-rasp-ledbar/rasp-posledbar.png

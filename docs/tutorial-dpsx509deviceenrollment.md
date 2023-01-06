@@ -25,6 +25,7 @@ In the previous tutorials we used symmetric keys to manage our device. However, 
 - Completed the [Tutorial: Deploy and Configure a Device Provisioning Service (DPS)](tutorial-deploydps.md)
 
 ## Create a Certificate
+
 In this section you'll remotely connect to your Raspberry Pi to create a public and private key for your certificate. The private key remains on your device whereas you'll copy the public certificate for use by your IoT Hub.
 
 1. [Remotely connect to your Raspberry Pi](tutorial-rasp-connect.md) from Visual Studio Code
