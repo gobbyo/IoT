@@ -4,7 +4,7 @@ description: #Required; article description that is displayed in search results.
 author: jbeman@hotmail.com
 ---
 
-# Tutorial: Send Device Information to the Cloud with DPS
+# Tutorial: Send Device Information to the Cloud
 
 In this tutorial, you learn how to:
 
@@ -69,7 +69,7 @@ Following the diagram below.
     dpsztputik7h47qi.azure-devices-provisioning.net
     ```
 
-## Send Device Information to the Cloud when Booting Up your Raspberry Pi
+## Send Device Information to the Cloud
 
 1. In your forked Git Hub clone, create a new directory `modules` under `raspberrypi`. For example,
 
@@ -199,7 +199,7 @@ Following the diagram below.
 
 ## Next steps
 
-[Tutorial: Send Hostname and IP address to the Cloud when Booting Up your Raspberry Pi ](tutorial-rasp-d2cipandhostname.md)
+[Tutorial: Send Hostname and IP address to the Cloud when Booting Up your Raspberry Pi](tutorial-rasp-d2cipandhostname.md)
 
 <!--images-->
 
