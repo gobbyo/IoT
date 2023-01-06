@@ -31,7 +31,6 @@ However, symmetric-key cryptography has a number of limitations, including the n
 
 Before starting this section be sure to open Visual Studio (VS) Code, select the `Terminal > New Terminal...` menu and [Authenticate your Azure Subscription](howto-connecttoazure.md) using the PowerShell (PS) session.
 
-1. Create a device in the [Azure Portal for IoT Hub](https://learn.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub).  Note this tutorial shows you where to obtain the device connection string.
 1. Create a device using PowerShell.
 
     ```powershell
@@ -70,6 +69,19 @@ Before starting this section be sure to open Visual Studio (VS) Code, select the
     -DeviceId "myDevice"
     ```
 
+1. Verify your device by opening the [Azure Portal](https://portal.azure.com). Following the diagram below: 1️⃣ select your IoT Hub instance, 2️⃣ select **Device management > Devices**, then 3️⃣ verify your device is in the list, e.g. "myDevice".
+
+![lnk_verifydevice]
+
+1. Obtain your device connection string, referenced as the environment variable IOTHUB_DEVICE_CONNECTION_STRING, by clicking the device ID (step 3 in the previous example). Following the diagram below: 1️⃣ select on your device ID (last step in previous example), then 2️⃣ copy the Primary connection string.
+
+![lnk_deviceconnectionstring]
+
 ## Next Steps
 
 [Tutorial: Send a Message from the Cloud to a Simulated Device](tutorial-cloudtodevicemsg.md)
+
+<!--image-->
+
+[lnk_verifydevice]: media/tutorial-symmetricekeydevice/verifydevice.png
+[lnk_deviceconnectionstring]: media/tutorial-symmetricekeydevice/deviceconnectionstring.png
