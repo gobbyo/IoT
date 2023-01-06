@@ -38,11 +38,11 @@ Supplies:
 
 ## Wire your seven-segment display to your Raspberry Pi
 
-Below is the circuit we'll construct. Note the diagram references the Raspberry Pi pin numbers.
+In this section you'll wire your Raspberry Pi to display numbers on a seven-segment display. Below is the circuit we'll construct. Note the diagram references the Raspberry Pi pin numbers (`GPIO.BOARD`).
 
 ![lnk_schematic_segmentdisplay]
 
-There are 10 pins on the single digit seven-segment display.  The pins correspond to the function from the previous picture. For example pin 7 controls the "a" LED on the segment display.
+There are 10 pins on the single digit seven-segment display.  The pins correspond to the function from the previous picture. For example, the Raspberry Pi pin 7 controls the "a" LED on the segment display.
 
 ```python
 #    PINs
@@ -59,7 +59,7 @@ There are 10 pins on the single digit seven-segment display.  The pins correspon
 #  10   11
 ```
 
-In this section you'll wire your Raspberry Pi to light up an seven-segment display by using the following diagram.
+Complete the wiring of your seven segment display by using the following diagram.
 
 1. Connect a lead from each 220Ω resistor to each segment display bar pin on the breadboard.
 1. Connect one end of the jumper wire to a terminal strip that corresponds to each Raspberry GPIO Pins #3, #5, #7, #8, #10, #12, #11, #13, GND #1.
