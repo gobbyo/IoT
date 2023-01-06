@@ -11,15 +11,27 @@ In this tutorial, you learn how to:
 - Add environment variables to your Raspberry Pi
 - Send Device Information to the Cloud when Booting Up your Raspberry Pi
 
-[todo] Diagram needed.
+Following the diagram below.
+
+1. Using VS Code, remote into your Raspberry Pi, update your .env file by adding DPS information
+1. Create a `provisioningdevice.py` console application
+1. Create a cron job to start the `provisioningdevice.py` console application when booting up
+1. When your Raspberry Pi boots up the `provisioningdevice.py` console application a device provisioning client is created using DPS information. The DPS client creates an IoT Hub client that connects to your IoT hub
+1. The `provisioningdevice.py` console application writes its device information to IoT Hub.
+1. Your Stream Analytics job pulls any queued messsages from IoT Hub
+1. Your Stream Analytics job writes your device message to blob storage
+1. You verify the device information exists by viewing the preview query results in Stream Analytics or if your stream analytics job is running, view the message in blob storage.
+
+![lnk_senddeviceinfo].
 
 ## Prerequisites
 
-- Completed the...
+- Completed the tutorial to [Deploy and Configure StreamAnalytics](tutorial-deploystreamtostorage.md)
 
 ## Add Variables to your Environment (.env) File
 
-1. Open your `.env` file in the root of your github forked clone directory `IoT`.
+1. [Remotely connect to your Raspberry Pi](tutorial-rasp-connect.md#set-up-remote-ssh-with-visual-studio-code)
+1. Using VS code, open or create an `.env` file in the root of your github forked clone directory `IoT`.
 1. Add the following entries to your `.env` file
 
     ```python
@@ -60,7 +72,7 @@ In this tutorial, you learn how to:
 
 ## Send Device Information to the Cloud when Booting Up your Raspberry Pi
 
-1. Create a file called `provisiondevicex509.py` in the `python/raspberrypi/` directory of your git hub clone, for example `$ ~/repos/IoT/python/raspberrypi/provisiondevicex509.py`
+1. Create a file called `provisiondevicex509.py` in the `python/raspberrypi/` under your github forked clone directory, for example `$ ~/repos/IoT/python/raspberrypi/provisiondevicex509.py`
 1. Copy and paste the following code to your `provisiondevicex509.py` file.
 
     ```python
@@ -138,6 +150,7 @@ In this tutorial, you learn how to:
 
 <!--images-->
 
+[lnk_senddeviceinfo]: media/tutorial-dpssenddeviceinfo/senddeviceinfo.png
 [lnk_deviceenrollment]: media/tutorial-dpsx509deviceenrollment/downloadpemfile.png
 [lnk_verifyenrollment]: media/tutorial-dpsx509deviceenrollment/verifyenrollment.png
-[lnk_verifymessage]: media/tutorial-dpsx509deviceenrollment/verifymessage.png
+[lnk_verifymessage]: media/tutorial-dpssenddeviceinfo/verifymessage.png

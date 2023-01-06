@@ -110,7 +110,7 @@ In summary, code forking creates a separate copy of a repository, while code bra
     Resolving deltas: 100% (105/105), done.13 (delta 72), pack-reused 0
     ```
 
-1. Select `File > Open Folder...` from the menu in Visual Studio Code and select the cloned directory `IoT`.
+1. Select `File > Open Folder...` from the menu in Visual Studio Code and select your forked cloned directory `IoT`.  The IoT directory will also be referred to as your **root clone directory** throughout these tutorials.  Note that you'll have to clone your fork to your cloud machine as well as to your Raspberry Pi (in a later tutorial).
 
 ## Install Python
 
