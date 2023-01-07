@@ -44,28 +44,15 @@ In this section you'll wire your Raspberry Pi to display numbers on a seven-segm
 
 There are 10 pins on the single digit seven-segment display.  The pins correspond to the function from the previous picture. For example, the Raspberry Pi pin 7 controls the "a" LED on the segment display.
 
-```python
-#    PINs
-# Seg  Rasp
-#  1    10
-#  2    8
-#  3    1
-#  4    7
-#  5    13
-#  6    5
-#  7    3
-#  8    1
-#  9    12
-#  10   11
-```
-
 Complete the wiring of your seven segment display by using the following diagram.
 
-1. Connect a lead from each 220Ω resistor to each segment display bar pin on the breadboard.
-1. Connect one end of the jumper wire to a terminal strip that corresponds to each Raspberry GPIO Pins #3, #5, #7, #8, #10, #12, #11, #13, GND #40.
-1. For each jumper wire, connect each GPIO pin to each pin on your segment display. Note the order is important--the jumper to the Raspberry Pi pin #10 is connected to the resistor segment display pin 1, the jumper to the Raspberry Pi pin #8 is connected to the segment display pin 2, and so on.
+1. Connect your seven segment display to the breadboard.
+1. Connect a lead of the 220Ω resistor to the breadboard rail strip, and the other lead to your Raspberry Pi ground (GND) GPIO pin.
+1. Connect a jumper wire from your seven segment display ground pins (3 & 8) to the rail strip connected to your 220Ω resistor.
+1. Connect one end of the jumper wire to a terminal strip that corresponds to each Raspberry GPIO Pin: 19,21,8,10,12,29,31,and 16.
+1. For each jumper wire, connect each GPIO pin to each pin on your segment display per the wiring diagram.
 
-![lnk_raspledbar]
+![lnk_segdisplaywiring]
 
 ## Create Test Code to Show Digits
 
@@ -244,5 +231,6 @@ In this section you'll create code that will iterate through all the numbers and
 
 [lnk_segdisplay]: media/tutorial-rasp-digitsegment/segdisplay.png
 [lnk_schematic_segmentdisplay]: media/tutorial-rasp-digitsegment/Schematic_SegmentDisplay.png
+[lnk_segdisplaywiring]: media/tutorial-rasp-digitsegment/segdisplaywiring.png
 [lnk_displaytwo]: media/tutorial-rasp-digitsegment/displaytwo.png
 [lnk_displayconversion]: media/tutorial-rasp-digitsegment/displayconversion.png
