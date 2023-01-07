@@ -3,7 +3,7 @@ import time
 from uuid import uuid4
 from azure.iot.hub import IoTHubRegistryManager
 
-data = '{ "pause": "0.25", "pm": "True", "time": [0,2,1,9] }'
+data = '{ "pause": "0.25", "pm": "True", "time": [0,2,2,3] }'
 
 def main():
     deviceId = "raspberrypi2"
