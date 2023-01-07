@@ -4,7 +4,7 @@ import json
 from uuid import uuid4
 from azure.iot.hub import IoTHubRegistryManager
 
-repeattime = 5
+repeattime = 3
 repeatpause = 1
 pause = 0.5
 
