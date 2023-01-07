@@ -20,7 +20,7 @@ def main():
         j.update(repeatpause = 1)
         j.update(pause = 0.5)
         t = []
-        hour = time.localtime().tm_hour
+        hour = time.gmtime().tm_hour
         
         if hour > 12:
             j.update(pm = 'True')
@@ -29,7 +29,7 @@ def main():
             j.update(pm = 'False')
 
         h = str(hour).zfill(2)
-        m = str(time.localtime().tm_min).zfill(2)
+        m = str(time.gmtime().tm_min).zfill(2)
         t.append(int(h[0]))
         t.append(int(h[1]))        
         t.append(int(m[0]))
