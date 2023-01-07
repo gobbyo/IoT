@@ -1,24 +1,17 @@
 import RPi.GPIO as GPIO
 
 def main():
-    LED_channel = 17
-
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(LED_channel, GPIO.OUT)
-    GPIO.output(LED_channel, GPIO.LOW)
+    pins = [3,5,7,8,10,11,12,13,15,16,18,19,21,22,23,24,26,29,31,32,33,35,36,37,38,40]
+    #invalid 27,28
+    GPIO.setmode(GPIO.BOARD)
+    for p in pins:
+        GPIO.setup(p, GPIO.OUT)
+        GPIO.output(p, GPIO.HIGH)
 
     print("Press Ctrl-C to quit'")
 
     try:
-        while True:
-            s = input("Type 'On' or 'Off': ")
-            if s == 'On':
-                GPIO.output(LED_channel, GPIO.HIGH)
-                print("On")
-            else:
-                GPIO.output(LED_channel, GPIO.LOW)
-                print("Off")
-            print("-----")
+        s = input("type anything to exit")
     except KeyboardInterrupt:
         print("Program shut down by user")
     finally:
