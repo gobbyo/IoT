@@ -36,7 +36,7 @@ def message_handler(message):
     try:
         payload = json.loads(message.data)
         seq = list(payload['time'])
-        if payload('pm') == "True":
+        if payload['pm'] == "True":
             pm = True
         pause = float(payload['pause'])
 
