@@ -38,7 +38,7 @@ def message_handler(message):
         repeat = int(payload['repeat'])
         repeatpause = int(payload['repeatpause'])
         seq = list(payload['time'])
-        if payload('pm') == "True":
+        if payload['pm'] == "True":
             pm = True
         pause = float(payload['pause'])
         for i in range(repeat):
