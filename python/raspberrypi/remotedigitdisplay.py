@@ -35,19 +35,21 @@ def message_handler(message):
     print("--Message Received--")
     try:
         payload = json.loads(message.data)
+        repeat = int(payload['repeat'])
+        repeatpause = int(payload['repeatpause'])
         seq = list(payload['time'])
         if payload('pm') == "True":
             pm = True
         pause = float(payload['pause'])
-
-        for s in seq:
-            num = segnum[int(s)]
-            if pm:
-                num |= 0x01 << 7
-            paintnumbers(num)
-            time.sleep(pause)
-        time.sleep(pause)
-        paintnumbers(0) #clear the last digit
+        for i in range(repeat):
+            for s in seq:
+                num = segnum[int(s)]
+                if pm:
+                    num |= 0x01 << 7
+                paintnumbers(num)
+                time.sleep(pause)
+            paintnumbers(0) #clear the last digit
+            time.sleep(repeatpause)
     finally:
         print("--Message Processed--")
 
