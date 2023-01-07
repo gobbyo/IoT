@@ -24,9 +24,10 @@ from azure.iot.device.aio import ProvisioningDeviceClient, IoTHubDeviceClient
 # 7 =	0000 0111   0x07
 # 8 =   0111 1111   0x7F
 # 9 =   0110 0111   0x67
+# DP=   1000 0000   0x80
 
 pins = [19,21,8,10,12,29,31,16]
-segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67]
+segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67,0x80]
 provisioning_host = config("DPS_HOST")
 id_scope = config("DPS_SCOPEID")
 registration_id = config("DPS_REGISTRATIONID")
@@ -46,12 +47,17 @@ def message_handler(message):
                 num = segnum[int(s)]
                 if pm:
                     num |= 0x01 << 7
-                paintnumbers(num)
-                time.sleep(pause)
-                paintnumbers(0) #clear the last digit
+                    paintnumbers(num)
+                    time.sleep(pause)
+                    paintnumbers(0x80) #During PM, lights the DP while number changes
+                else:
+                    paintnumbers(num)
+                    time.sleep(pause)
+                    paintnumbers(0) #clear the last digit
                 time.sleep(pause)
             time.sleep(repeatpause)
     finally:
+        paintnumbers(0) #clear the DP if PM
         print("--Message Processed--")
 
 def paintnumbers(val):
