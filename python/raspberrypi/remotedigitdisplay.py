@@ -48,7 +48,8 @@ def message_handler(message):
                     num |= 0x01 << 7
                 paintnumbers(num)
                 time.sleep(pause)
-            paintnumbers(0) #clear the last digit
+                paintnumbers(0) #clear the last digit
+                time.sleep(pause)
             time.sleep(repeatpause)
     finally:
         print("--Message Processed--")
