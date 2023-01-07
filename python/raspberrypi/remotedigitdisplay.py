@@ -60,7 +60,7 @@ async def main():
     print("Ctrl-c to quit'")
     GPIO.setmode(GPIO.BOARD)
 
-    for p in LED_pins:
+    for p in pins:
         GPIO.setup(p, GPIO.OUT)
         GPIO.output(p, GPIO.LOW)
 
