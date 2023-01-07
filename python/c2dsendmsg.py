@@ -3,8 +3,7 @@ import time
 from uuid import uuid4
 from azure.iot.hub import IoTHubRegistryManager
 
-turnOn = '{ "pause": "0.25", "state": "on", "order": [0,1,2,3,4,5,6,7,8,9] }'
-turnOff = '{ "pause": "0.25", "state": "off", "order": [0,1,2,3,4,5,6,7,8,9] }'
+data = '{ "pause": "0.25", "pm": "True", "time": [0,2,1,9] }'
 
 def main():
     deviceId = "raspberrypi2"
@@ -17,9 +16,7 @@ def main():
         props.update(messageId = "{0}".format(uuid4()))
         props.update(contentType = "application/json")
 
-        registry_manager.send_c2d_message(deviceId, turnOn, props)
-        time.sleep(2.5)
-        registry_manager.send_c2d_message(deviceId, turnOff, props)
+        registry_manager.send_c2d_message(deviceId, data, props)
     except Exception as ex:
         print ( "Unexpected error {0}" % ex )
 
