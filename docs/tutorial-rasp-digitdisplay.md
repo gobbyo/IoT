@@ -62,7 +62,7 @@ There are 10 pins on the single digit seven-segment display.  The pins correspon
 Complete the wiring of your seven segment display by using the following diagram.
 
 1. Connect a lead from each 220Ω resistor to each segment display bar pin on the breadboard.
-1. Connect one end of the jumper wire to a terminal strip that corresponds to each Raspberry GPIO Pins #3, #5, #7, #8, #10, #12, #11, #13, GND #1.
+1. Connect one end of the jumper wire to a terminal strip that corresponds to each Raspberry GPIO Pins #3, #5, #7, #8, #10, #12, #11, #13, GND #40.
 1. For each jumper wire, connect each GPIO pin to each pin on your segment display. Note the order is important--the jumper to the Raspberry Pi pin #10 is connected to the resistor segment display pin 1, the jumper to the Raspberry Pi pin #8 is connected to the segment display pin 2, and so on.
 
 ![lnk_raspledbar]
