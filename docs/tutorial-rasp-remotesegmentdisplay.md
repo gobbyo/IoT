@@ -9,19 +9,9 @@ author: jbeman@hotmail.com
 In this tutorial, you learn how to:
 
 - Connect your Raspberry Pi to IoT Hub using the Device Provisioning Service
-- Use custom properties to set the LED
-- Receive a remote command and use the message custom properties to set the LED state
+- [todo]
 
-In the [Tutorial: Remotely Control an LED](tutorial-rasp-remoteled.md) you remote controlled the LED using the message property. In this tutorial we'll explore sending a payload that describes more than the simple state of being "on" or "off". Following the diagram below.
-
-1. You'll use Visual Studio Code to remotely connect to your Raspberry Pi and create listener code to receive messages and change the state of the LED.
-1. When you start the code, your Raspberry Pi will use the Device Provisioning Service to create an IoT device client.
-1. You'll use the IoT device client to connect to IoT Hub and await for incoming messages.
-1. You'll use a local instance of Visual Studio Code to send a message to your Raspberry Pi.
-1. The listener program receives the incoming message.
-1. The listener program reads the custom LED property (on or off) then changes the state of the LED accordingly.
-
-    ![lnk_ledremotemsg]
+[todo] intro paragraph needed with diagram
 
 ## Prerequisites
 
