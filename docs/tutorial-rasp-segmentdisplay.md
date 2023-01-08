@@ -1,5 +1,5 @@
 ---
-title: One Digit Seven Segment Display 
+title: Seven Segment Display 
 description: #Required; article description that is displayed in search results. 
 author: jbeman@hotmail.com
 ---
@@ -31,7 +31,7 @@ Supplies:
 |:---:|:---|
 |1     | Breadboard |
 |9     | Male to male jumper wires |
-|1     | LED Bar Graph |
+|1     | Seven Segment Display |
 |8     | 220Ω Resistors |
 |1     | (optional) GPIO Extension Board |
 |1     | (optional) 40 pin GPIO cable |
@@ -56,7 +56,7 @@ Complete the wiring of your seven segment display by using the following diagram
 
 ## Create Test Code to Show Digits
 
-Each LED bar in a seven-segment display has a binary state: on or off. Therefore, you can use binary to control each LED in the display `a-h`. Note that `h` represents the dot point (dp). For example, the number two is displayed with LEDs `a`, `b`, `d`, `e`, and `g` turned on, and `c`, `f`, and `h` are off.
+Each LED in a seven-segment display has a binary state: on or off. Therefore, you can use binary to control each LED in the display `a-h`. Note that `h` represents the dot point (dp). For example, the number two is displayed with LEDs `a`, `b`, `d`, `e`, and `g` turned on, and `c`, `f`, and `h` are off.
 
 ![lnk_displaytwo]
 
@@ -170,7 +170,7 @@ In this section you'll create code that will iterate through all the numbers and
 
 <!-- Introduction paragraph -->
 1. [Connect to your Raspberry Pi](https://code.visualstudio.com/docs/remote/ssh#_connect-to-a-remote-host) using Visual Studio Code.
-1. Create a file `digitdisplay.py` in your cloned GitHub under the `python/raspberrypi` directory, for example `~/repos/IoT/python/raspberrypi/digitdisplay.py`
+1. Create a file `segmentdisplay.py` in your cloned GitHub under the `python/raspberrypi` directory, for example `~/repos/IoT/python/raspberrypi/segmentdisplay.py`
 1. Copy and paste the following import statement
 
     ```python
@@ -178,7 +178,7 @@ In this section you'll create code that will iterate through all the numbers and
     import time
     ```
 
-1. Copy and paste the method below having logic you bit shift tested,
+1. Copy and paste the method below having logic you bit shift tested to display a single digit.
 
     ```python
     def paintnumbers(val):
@@ -188,7 +188,7 @@ In this section you'll create code that will iterate through all the numbers and
             i += 1
     ```
 
-1. Copy and paste the following method to obtain basic information about your Raspberry Pi.
+1. Copy and paste the following method to sequentially show numbers 0 through 9 in your seven segment display.
 
     ```python
     def main():
@@ -225,7 +225,7 @@ In this section you'll create code that will iterate through all the numbers and
 
 ## Next steps
 
-[Tutorial: Remotely Control an LED Bar Graph](tutorial-rasp-remoteled.md)
+[Tutorial: Remotely Control a Seven Segment Display](tutorial-rasp-remoteled.md)
 
 <!--images-->
 
