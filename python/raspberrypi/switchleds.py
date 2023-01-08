@@ -47,8 +47,8 @@ def main():
 
     GPIO.setup(btn_in, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.setup(btn_out, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    GPIO.add_event_detect(btn_in, GPIO.RISING, my_callback_rise, bouncetime=1)
-    GPIO.add_event_detect(btn_out, GPIO.FALLING, my_callback_fall, bouncetime=1)
+    GPIO.add_event_detect(btn_in, GPIO.RISING, my_callback_rise, bouncetime=300)
+    GPIO.add_event_detect(btn_out, GPIO.FALLING, my_callback_fall, bouncetime=300)
 
     print("Press Ctrl-C to quit'")
 
