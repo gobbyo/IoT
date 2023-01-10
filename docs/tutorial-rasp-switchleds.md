@@ -26,15 +26,17 @@ Supplies:
 |Quantity  |Item  |
 |:---:|:---|
 |1     | Breadboard |
-|11     | Male to male jumper wires |
-|1     | LED Bar Graph |
-|10     | 220Ω Resistors |
+|6     | Male to male jumper wires |
+|2    | LEDs |
+|1 | Momentary Push Button 4Pin Switch |
+|1     | 1kΩ Resistor |
+|1     | 10kΩ Resistor |
 |1     | (optional) GPIO Extension Board |
 |1     | (optional) 40 pin GPIO cable |
 
 Below is the circuit we'll construct.
 
-[todo]
+![lnk_schematicswitchleds]
 
 ## Wire your Switch and LEDs
 
@@ -118,3 +120,4 @@ In this section you'll wire your Raspberry Pi to light up an LED display bar by 
 <!--images-->
 
 [lnk_switchleds]: media/tutorial-rasp-switchleds/switchleds.gif
+[lnk_schematicswitchleds]: media/tutorial-rasp-switchleds/schematicswitchleds.png

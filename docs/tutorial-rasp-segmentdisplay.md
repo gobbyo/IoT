@@ -38,7 +38,7 @@ Supplies:
 
 ## Wire your seven-segment display to your Raspberry Pi
 
-In this section you'll wire your Raspberry Pi to display numbers on a seven-segment display. Below is the circuit we'll construct. Note the diagram references the Raspberry Pi pin numbers (`GPIO.BOARD`).
+In this section you'll wire your Raspberry Pi to display numbers on a seven-segment display. Below is the circuit we'll construct.
 
 ![lnk_schematic_segmentdisplay]
 
@@ -56,15 +56,20 @@ Complete the wiring of your seven segment display by using the following diagram
 
 ## Create Test Code to Show Digits
 
-Each LED in a seven-segment display has a binary state: on or off. Therefore, you can use binary to control each LED in the display `a-h`. Note that `h` represents the dot point (dp). For example, the number two is displayed with LEDs `a`, `b`, `d`, `e`, and `g` turned on, and `c`, `f`, and `h` are off.
+You can use binary to control each LED in the display `a-h` because each LED in a seven-segment display has a binary state: on (1) or off (0).  Note that `h` represents the dot point (dp). For example, the number five is displayed with LEDs `a`, `c`, `d`, `f`, and `g` turned on, and `b`, and `e` are off.
 
-![lnk_displaytwo]
+![lnk_displayfive]
 
-In code you'll represent the LED state for each segment as a = 1 (on), b = 1 (on), c = 0 (off), and so on. The entire conversion of the number two in hexidecimal form is 0x5B as follows,
+In code you'll represent the LED state for each segment as a = 1 (on), b = 0 (off), c = 1 (on), and so on. The entire conversion for the display of number five is as follows,
 
-![lnk_displayconversion]
+```python
+# num   hgfe dcba   hex
+# 5 =	0110 1101   0x6D
+```
 
-The entire list of A-F is as follows:
+⚠️ Note the conversion above is NOT the binary or hex representation of the number 5, which would be 0000 0101 (binary) and 0x05 (hex).
+
+The entire list of numbers an A-F is as follows:
 
 ```python
 # num   hgfe dcba   hex
@@ -87,7 +92,7 @@ The entire list of A-F is as follows:
 # F =   0111 1001   0X79
 ```
 
-As you tell the display which LED to light, you'll need to use bit masking to determine each `a-h` LED to turn on or off as you loop through the 8 binary digits. Bit masking uses the `&` operator, for example 1 & 1 = 1 whereas 1 & 0 = 0. To determine if LED `a` for the number "5" (`0110 1101`) is turned on or off, you'll bit mask the `a` register using '0000 0001' (0x01) as follows,
+You'll need to use bit masking to determine each `a-h` LED to turn on or off as you loop through the 8 binary digits. Bit masking uses the `&` operator to determine the outcome of two binary values, for example 1 & 1 = 1 whereas 1 & 0 = 0. To determine if LED `a` for the number "5" (`0110 1101`) is turned on or off, you'll bit mask the `a` register using '0000 0001' (0x01) as follows,
 
 ```python
 # hgfe dcba
@@ -95,7 +100,7 @@ As you tell the display which LED to light, you'll need to use bit masking to de
 #     &
 # 0000 0001
 # ---- ----
-# 0000 0001 ('a' LED should be set to on)
+# 0000 0001 ('a' LED is set to on)
 ```
 
 To determine the value of the 'b' LED for the number "5" (`0110 1101`), you'll shift `0x01` left (`<<`) to the 'b' register as ('0x01 << 1') to bitmask the 'b' register (`0000 0010`). For example,
@@ -230,7 +235,7 @@ In this section you'll create code that will iterate through all the numbers and
 <!--images-->
 
 [lnk_segdisplay]: media/tutorial-rasp-digitsegment/segdisplay.png
-[lnk_schematic_segmentdisplay]: media/tutorial-rasp-digitsegment/Schematic_SegmentDisplay.png
+[lnk_schematic_segmentdisplay]: media/tutorial-rasp-digitsegment/schematicsegmentdisplay.png
 [lnk_segdisplaywiring]: media/tutorial-rasp-digitsegment/segdisplaywiring.png
-[lnk_displaytwo]: media/tutorial-rasp-digitsegment/displaytwo.png
+[lnk_displayfive]: media/tutorial-rasp-digitsegment/displayfive.png
 [lnk_displayconversion]: media/tutorial-rasp-digitsegment/displayconversion.png
