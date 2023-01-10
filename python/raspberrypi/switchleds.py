@@ -2,10 +2,10 @@ import RPi.GPIO as GPIO
 from threading import Timer, Lock
 import time
 
-btn_in = 11
-btn_out = 12
-led_rise = 13
-led_fall = 15
+btn_in = 11 # GPIO17
+btn_out = 12 # GPIO18
+led_green = 13 # GPIO27
+led_red = 15 # GPIO22
 
 class count:
     def __init__(self):
@@ -15,14 +15,13 @@ class count:
 cnt = count()
 
 def my_callback_rise(channel):
-    GPIO.output(led_rise, GPIO.HIGH)
-    GPIO.output(led_fall, GPIO.LOW)
-
-    print("{rise}:On {fall}:Off".format(rise=led_rise,fall=led_fall))
+    GPIO.output(led_green, GPIO.HIGH)
+    GPIO.output(led_red, GPIO.LOW)
+    print("Button Pushed")
     
 def my_callback_fall(channel):
-    GPIO.output(led_rise, GPIO.LOW)
-    GPIO.output(led_fall, GPIO.HIGH)
+    GPIO.output(led_green, GPIO.LOW)
+    GPIO.output(led_red, GPIO.HIGH)
 
     t = Timer(interval=1.0, function=turn_led_off)
     t.start()
@@ -31,24 +30,24 @@ def my_callback_fall(channel):
     cnt.i += 1
     cnt.lock.release()
 
-    print("{rise}:Off {fall}:On. Click count:{i}".format(rise=led_rise,fall=led_fall,i=cnt.i))
+    print("Button Released. Count = {i}".format(rise=led_green,fall=led_red,i=cnt.i))
 
 def turn_led_off():
-    GPIO.output(led_fall, GPIO.LOW)
-    GPIO.output(led_rise, GPIO.LOW)
-    print("{rise}:Off {fall}:Off".format(rise=led_rise,fall=led_fall))
+    GPIO.output(led_red, GPIO.LOW)
+    GPIO.output(led_green, GPIO.LOW)
+    print("All LEDs Off")
 
 def main():
     GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(led_rise, GPIO.OUT)
-    GPIO.setup(led_fall, GPIO.OUT)
-    GPIO.output(led_rise, GPIO.LOW)
-    GPIO.output(led_fall, GPIO.LOW)
+    GPIO.setup(led_green, GPIO.OUT)
+    GPIO.setup(led_red, GPIO.OUT)
+    GPIO.output(led_green, GPIO.LOW)
+    GPIO.output(led_red, GPIO.LOW)
 
     GPIO.setup(btn_in, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.setup(btn_out, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    GPIO.add_event_detect(btn_in, GPIO.RISING, my_callback_rise, bouncetime=100)
-    GPIO.add_event_detect(btn_out, GPIO.FALLING, my_callback_fall, bouncetime=100)
+    GPIO.add_event_detect(btn_in, GPIO.RISING, my_callback_rise, bouncetime=200)
+    GPIO.add_event_detect(btn_out, GPIO.FALLING, my_callback_fall, bouncetime=200)
 
     print("Press Ctrl-C to quit'")
 
