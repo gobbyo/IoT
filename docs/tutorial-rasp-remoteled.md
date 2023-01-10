@@ -205,9 +205,7 @@ In this section you'll create a program that runs locally to send a command to I
 
 ## Next steps
 
-Advance to the next article to learn how to create...
-> [!div class="nextstepaction"]
-> [Next steps button](contribute-how-to-mvc-tutorial.md)
+[Tutorial: Light up an LED bar](tutorial-rasp-ledbar.md)
 
 <!--images-->
 
