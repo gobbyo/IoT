@@ -8,16 +8,26 @@ author: jbeman@hotmail.com
 
 In this tutorial, you learn how to:
 
-- Connect your Raspberry Pi to IoT Hub using the Device Provisioning Service
-- [todo]
+- Code your Raspberry Pi to Receive Messages to Display 12-hour GMT
+- Send Remote Commands to your Seven Segment Display
 
-[todo] intro paragraph needed with diagram
+In the [Tutorial: Remotely Control an LED Display Bar](tutorial-rasp-remoteledbar.md) you remote controlled an LED display bar using the message payload. In this tutorial the call pattern is the same as the display bar, but you'll modify the message payload to describe how to animate the seven segment display. Following the diagram below.
+
+1. You'll use Visual Studio Code to remotely connect to your Raspberry Pi and create listener code to receive messages and change the state of the seven segment display.
+1. When you start the code, your Raspberry Pi will use the Device Provisioning Service to create an IoT device client.
+1. You'll use the IoT device client to connect to IoT Hub and await for incoming messages.
+1. You'll use a local instance of Visual Studio Code to send a message to your Raspberry Pi.
+1. The listener program receives the incoming message.
+1. The listener program reads the message payload then animates the display of numbers accordingly.
+
+![lnk_remotesegmentdisplay]
 
 ## Prerequisites
 
-- Completed the
+- [Tutorial: Seven Segment Display](tutorial-rasp-segmentdisplay.md)
+- [Tutorial: Remotely Control an LED](tutorial-rasp-remoteled.md)
 
-## Code your Raspberry Pi to Receive Messages to Display GMT
+## Code your Raspberry Pi to Receive Messages to Display 12-hour GMT
 
 1. [Remotely connect to your Raspberry Pi](tutorial-rasp-connect.md#set-up-remote-ssh-with-visual-studio-code).
 1. Create a file `remotesegmentdisplay.py` and save it in the `python/rasberrypi` directory from your GitHub forked clone, for example `~/repos/IoT/python/raspberrypi/remotesegmentdisplay.py`. This is a message listener program that runs on your Raspberry Pi.
@@ -33,15 +43,16 @@ In this tutorial, you learn how to:
     from azure.iot.device.aio import ProvisioningDeviceClient, IoTHubDeviceClient
     ```
 
-1. Copy and paste the following variables following your import statements from the previous step. Note the `DPS_HOST`, `DPS_SCOPEID`, and `DPS_REGISTRATIONID` will need to be added to your [`.env` file](howto-connectionstrings.md), see the following table for details.
+1. Copy and paste the following variables following your import statements from the previous step. Note the `DPS_HOST`, `DPS_SCOPEID`, and `DPS_REGISTRATIONID` should already be added to your [`.env` file](howto-connectionstrings.md) from previous tutorials.
 
     ```python
     #   7 segmented LED
     #
-    #        _a_
-    #     f |_g_| b
-    #     e |___| c _h
-    #         d
+    #       a
+    #     f   b
+    #       g
+    #     e   c _h
+    #       d
     # num   hgfe dcba   hex
     #
     # 0 = 	0011 1111   0x3F
@@ -62,12 +73,6 @@ In this tutorial, you learn how to:
     id_scope = config("DPS_SCOPEID")
     registration_id = config("DPS_REGISTRATIONID")
     ```
-
-    | **Connection Variable Name**  | **Value Found in portal.azure.com**  | **Details about finding the value**  |
-    |:---------|:---------|:---------|
-    | DPS_HOST | Device Provisioning Service > Overview > Service Endpoint | For example, "dpsztputik7h47qi.azure-devices-provisioning.net" |
-    | DPS_SCOPEID | Device Provisioning Service > Overview > ID Scope | For example, "0ne008D45AC" |
-    | DPS_REGISTRATIONID | Device Provisioning Service > Settings > Manage enrollments > Individual Enrollments | This is the value you provided in the tutorial [Create a x509 Certificate and Enroll Your Device](tutorial-dpsx509deviceenrollment.md) |
 
 1. Copy and paste the following function. Note the code reads the message payload data to...
 
@@ -205,7 +210,7 @@ In this section you'll create a program that runs locally to send a command to I
     repeatpause = 1
     pause = 0.5
 
-    # Sample JSON for GMT 10:35 AM
+    # Sample JSON for 12-hour GMT at 10:35 AM
     # { "repeat": 5, "repeatpause": 1, "pause": 0.5, "pm": "False", "time": [1,0,3,5]}
     def getpayload():
         j = {}
@@ -266,14 +271,11 @@ In this section you'll create a program that runs locally to send a command to I
 
 ## More to Explore
 
-1. ?
+- Display the number of bells on a mariners clock, where each number represents a 1/2 hour until you get to 12, then the rotation starts over.
+- Display the outside temperature and humidity.
 
 ## Next steps
 
-Advance to the next article to learn how to create...
-> [!div class="nextstepaction"]
-> [Next steps button](contribute-how-to-mvc-tutorial.md)
-
 <!--images-->
 
-[lnk_ledremotemsg]: media/tutorial-rasp-remotesegmentdisplay/ledremotemsg.png
+[lnk_remotesegmentdisplay]: media/tutorial-rasp-remotesegmentdisplay/remotesegmentdisplay.png

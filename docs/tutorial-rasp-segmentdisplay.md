@@ -230,7 +230,7 @@ In this section you'll create code that will iterate through all the numbers and
 
 ## Next steps
 
-[Tutorial: Remotely Control a Seven Segment Display](tutorial-rasp-remoteled.md)
+[Tutorial: Remotely Control a Seven Segment Display](tutorial-rasp-remotesegmentdisplay.md)
 
 <!--images-->
 

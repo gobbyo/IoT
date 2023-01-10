@@ -14,14 +14,14 @@ In this tutorial, you learn how to:
 
 In the [Tutorial: Remotely Control an LED](tutorial-rasp-remoteled.md) you remote controlled the LED using the message property. In this tutorial we'll explore sending a payload that describes more than the simple state of being "on" or "off". Following the diagram below.
 
-1. You'll use Visual Studio Code to remotely connect to your Raspberry Pi and create listener code to receive messages and change the state of the LED.
+1. You'll use Visual Studio Code to remotely connect to your Raspberry Pi and create listener code to receive messages and change the state of the LED display bar.
 1. When you start the code, your Raspberry Pi will use the Device Provisioning Service to create an IoT device client.
 1. You'll use the IoT device client to connect to IoT Hub and await for incoming messages.
 1. You'll use a local instance of Visual Studio Code to send a message to your Raspberry Pi.
 1. The listener program receives the incoming message.
-1. The listener program reads the custom LED property (on or off) then changes the state of the LED accordingly.
+1. The listener program reads the message payload then animates the LED display bar accordingly.
 
-    ![lnk_ledremotemsg]
+    ![lnk_remoteledbar]
 
 ## Prerequisites
 
@@ -222,10 +222,8 @@ In this section you'll create a program that runs locally to send a command to I
 
 ## Next steps
 
-Advance to the next article to learn how to create...
-> [!div class="nextstepaction"]
-> [Next steps button](contribute-how-to-mvc-tutorial.md)
+[Tutorial: Seven Segment Display](tutorial-rasp-segmentdisplay.md)
 
 <!--images-->
 
-[lnk_ledremotemsg]: media/tutorial-rasp-remoteledbar/ledremotemsg.png
+[lnk_remoteledbar]: media/tutorial-rasp-remoteledbar/remoteledbar.png
