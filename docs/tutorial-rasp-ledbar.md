@@ -28,15 +28,15 @@ Supplies:
 |Quantity  |Item  |
 |:---:|:---|
 |1     | Breadboard |
-|11     | Male to male jumper wires |
+|20     | Male to male jumper wires |
 |1     | LED Bar Graph |
-|10     | 220Ω Resistors |
+|1     | 220Ω Resistor |
 |1     | (optional) GPIO Extension Board |
 |1     | (optional) 40 pin GPIO cable |
 
 Below is the circuit we'll construct.
 
-![lnk_schematicbargraph]
+![lnk_schematicledbar]
 
 ## Wire your LED display bar to your Raspberry Pi
 
@@ -115,10 +115,10 @@ In this section you'll wire your Raspberry Pi to light up an LED display bar by 
 
 ## Next steps
 
-[Tutorial: Remotely Control an LED Bar Graph](tutorial-rasp-remoteled.md)
+[Tutorial: Remotely Control an LED Display Bar](tutorial-rasp-remoteledbar.md)
 
 <!--images-->
 
-[lnk_schematicbargraph]: media/tutorial-rasp-ledbar/schematicbargraph.png
+[lnk_schematicledbar]: media/tutorial-rasp-ledbar/schematicledbar.png
 [lnk_raspledbar]: media/tutorial-rasp-ledbar/rasp-ledbar.png
 [lnk_raspposledbar]: media/tutorial-rasp-ledbar/rasp-posledbar.png
