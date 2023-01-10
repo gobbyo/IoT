@@ -69,7 +69,7 @@ In code you'll represent the LED state for each segment as a = 1 (on), b = 0 (of
 
 ⚠️ Note the conversion above is NOT the binary or hex representation of the number 5, which would be 0000 0101 (binary) and 0x05 (hex).
 
-The entire list of numbers an A-F is as follows:
+Note the entire list of numbers and A-F values for a seven segment display:
 
 ```python
 # num   hgfe dcba   hex
