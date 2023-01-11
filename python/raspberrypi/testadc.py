@@ -14,9 +14,10 @@ def main():
     prev = 0
     
     while True:
-        val = adc.read_adc(0)
+        val = 0
         ch0 = adc.read_adc(0)
         ch1 = adc.read_adc(1)
+        #get the higher value
         if ch0 > ch1:
             val = ch0
         else:
