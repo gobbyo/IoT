@@ -21,9 +21,11 @@ def main():
             val = ch0
         else:
             val = ch1
-        if prev != val:
-            print('{0}'.format(val))
-            prev = val
+        
+        percent = round((val/255) * 100)
+        if prev != percent:
+            print('{0}%'.format(percent))
+            prev = percent
         time.sleep(.5)
 
 if __name__ == "__main__":
