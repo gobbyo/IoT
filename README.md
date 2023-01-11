@@ -62,44 +62,20 @@ This section of tutorials covers setting up your Raspberry Pi with an easy way t
 1. [Create an x509 Certificate to Enroll Your Device](docs/tutorial-dpsx509deviceenrollment.md)
 1. [Send Device Information to the Cloud](docs/tutorial-dpssenddeviceinfo.md)
 
-### Raspberry Pi's LEDs and Simple Displays and Cloud Messaging
-
-This section of tutorials you'll dive into the the Raspberry Pi GPIO.output enabled LEDs and displays and Cloud messaging. Note the tutorials are sequentially paired where the first tutorial focuses on wiring an electronic component (LED, Sensor, Motor, Buzzer, or Display) to your Raspberry Pi followed by the next tutorial showing you how to remotely control the component. For example, the first tutorial [Light Emitting Diode (LEDs)](docs/tutorial-rasp-led.md) has you connect an LED to your Raspberry Pi and write code to switch on or off your LED. The subsequent tutorial, [Remotely Control an LED](docs/tutorial-rasp-remoteled.md), has you code your Raspberry Pi to receive Cloud messages to remotely switch on or off the LED. Once you've completed this section you'll have the essential building blocks to build a variety of projects and enough coding experience to remotely control and manage them.
-
-1. [Light Emitting Diode (LEDs)](docs/tutorial-rasp-led.md)
-1. [Remotely Control an LED](docs/tutorial-rasp-remoteled.md)
-1. [Light Emitting Display Bar Graph](docs/tutorial-rasp-ledbar.md)
-1. [Remotely Control a Light Emitting Display Bar Graph](docs/tutorial-rasp-remoteledbar.md)
-1. [Seven Segment Digit Display](docs/tutorial-rasp-segmentdisplay.md)
-1. [Remotely Control a Seven Segment Display](docs/tutorial-rasp-remotesegmentdisplay.md)
-
-### Raspberry Pi Switch and LEDs and Cloud Messaging
+### Raspberry Pi
 
 This section of tutorials you'll explore the basics of GPIO.input as well as some cloud messaging patterns.
 
-1. Button Switch and Two LEDs
-1. Part 2: 
-
-### Raspberry Pi Sensors and Cloud Messaging
-
-1. Ultrasonic Distance Sensor
-1. Send Ultrasonic Distance Sensor Data to the Cloud
-1. Temperature and Humidity Sensor
-1. Send Temperature and Humidity Sensor Data to the Cloud
-1. Photoresistor
-1. Send Light Measurements to the Cloud
-
-### Additional Raspberry Pi Displays, Sound, and Cloud Messaging
-
+1. [Light Emitting Diode (LEDs)](docs/tutorial-rasp-led.md)
+1. [Light Emitting Display Bar Graph](docs/tutorial-rasp-ledbar.md)
+1. [Seven Segment Digit Display](docs/tutorial-rasp-segmentdisplay.md)
+1. Photoresistor and Analog to Digital Conversion
 1. 8x8 LED Matrix Display
-1. Remotely Control an 8x8 LED Matrix Display
 1. Liquid Crystal Display
 1. Remotely Control a Liquid Crystal Display
-1. Passive Buzzer
-1. Remotely Control a Passive Buzzer with Morse Code
-
-
-
+1. Active Buzzer
+1. Ultrasonic Distance Sensor
+1. Temperature and Humidity Sensor
 1. DC Motor
 1. Remotely Control a DC Motor
 1. Step Motor
@@ -108,6 +84,19 @@ This section of tutorials you'll explore the basics of GPIO.input as well as som
 1. [Remotely Control a Sensor Hat](docs/tutorial-rasp-d2csensorhat.md)
 1. Camera
 1. Remotely Control a Camera
+
+### Raspberry Pi and Cloud Messaging
+
+This section of tutorials you'll remotely control various electronics connected to your Raspberry Pi
+
+1. [Remotely Control an LED](docs/tutorial-rasp-remoteled.md)
+1. [Remotely Control a Light Emitting Display Bar Graph](docs/tutorial-rasp-remoteledbar.md)
+1. [Remotely Control a Seven Segment Display](docs/tutorial-rasp-remotesegmentdisplay.md)
+1. Remotely Control an 8x8 LED Matrix Display
+1. Send Light Measurements to the cloud
+1. Send Temperature and Humidity Sensor Data to the Cloud
+1. Remotely Control a Passive Buzzer with Morse Code
+1. Send Ultrasonic Distance Sensor Data to the Cloud
 
 ## Additional IoT Services
 
