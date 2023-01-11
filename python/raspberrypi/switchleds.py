@@ -12,17 +12,22 @@ class count:
         self.i = 0
         self.lock = Lock()
 
+t = None
 cnt = count()
 
-def my_callback_rise(channel):
+def button_pushed(channel):
     GPIO.output(led_green, GPIO.HIGH)
     GPIO.output(led_red, GPIO.LOW)
     print("Button Pushed")
     
-def my_callback_fall(channel):
+def button_released(channel):
     GPIO.output(led_green, GPIO.LOW)
     GPIO.output(led_red, GPIO.HIGH)
 
+    if t != None:
+        t.cancel()
+        time.sleep(.01)
+    
     t = Timer(interval=1.0, function=turn_led_off)
     t.start()
 
@@ -46,8 +51,8 @@ def main():
 
     GPIO.setup(btn_in, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.setup(btn_out, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    GPIO.add_event_detect(btn_in, GPIO.RISING, my_callback_rise, bouncetime=200)
-    GPIO.add_event_detect(btn_out, GPIO.FALLING, my_callback_fall, bouncetime=200)
+    GPIO.add_event_detect(btn_in, GPIO.RISING, button_pushed, bouncetime=200)
+    GPIO.add_event_detect(btn_out, GPIO.FALLING, button_released, bouncetime=200)
 
     print("Press Ctrl-C to quit'")
 
