@@ -12,13 +12,13 @@ In this tutorial, you learn how to:
 
 A button switch is a type of electrical switch that is activated by pressing a button. They are commonly used in electronic devices to turn them on or off, or to perform other functions such as adjusting the volume or changing the channel. The benefits of button switches include their ease of use and the ability to control electronic devices with a simple press of a button. Additionally, button switches are relatively inexpensive and widely available, making them a popular choice for use in a wide range of electronic devices.
 
-Following the diagram below, we'll wire a button switch to two LEDs, one red, another green, to show the states of the circuit. Note how the various states of the LED's:
+Following the diagram below, you'll wire a button switch to two LEDs, one red, another green, to show the states of the circuit. Note the various states of the LED's when pressing the button switch:
 
 1. When first starting, the red and green LEDs are off
 1. When the button switch is pressed, the green LED turns on, while the red remains off
 1. When the button switch is released, the green LED turns off, and the red turns on (until the button switch is pressed again)
 
-![lnk_switch2LEDs]
+    :::image type="content" source="media/tutorial-rasp-switchledsimple/switch2LEDs.gif" alt-text="Button switch with 2 LEDs":::
 
 ## Prerequisites
 
@@ -37,9 +37,9 @@ Supplies:
 |1     | (optional) GPIO Extension Board |
 |1     | (optional) 40 pin GPIO cable |
 
-## Wire a Button Switch and 2 LEDs to your Raspberry Pi
+## Wire a Button Switch and Two LEDs to your Raspberry Pi
 
-In this section you'll wire your Raspberry Pi to a button switch and two LEDs, a green LED when the button is pressed, and a red LED when the button is released. Below is the circuit we'll construct.
+Below is the circuit we'll construct.
 
 ![lnk_ledswitchsimpleschematic]
 
@@ -49,7 +49,7 @@ Following the diagram below:
 1. Connect the red and green LEDs having the cathode (long lead) on a connection terminal and the anode (shorter lead) connected to the breadboard rail.
 1. Connect one lead of your 220 resistor to the rail (anode leads from the LEDs), and the other lead to ground.
 
-![lnk_simpleswitchled]
+    :::image type="content" source="media/tutorial-rasp-switchledsimple/simpleswitchled.png" alt-text="Button switch with simple loop":::
 
 ## Code your Button Switch
 
@@ -113,12 +113,8 @@ Following the diagram below:
 1. Start the debugger in Visual Studio Code
 1. Verify the behavior of the LED lighting.
 
-## More to Explore
-
 ## Next steps
 
 <!--images-->
 
-[lnk_simpleswitchled]: media/tutorial-rasp-switchledsimple/simpleswitchled.png
 [lnk_ledswitchsimpleschematic]: media/tutorial-rasp-switchledsimple/ledswitchsimpleschematic.png
-[lnk_switch2LEDs]: media/tutorial-rasp-switchledsimple/switch2LEDs.gif
