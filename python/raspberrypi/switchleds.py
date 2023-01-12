@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 from threading import Timer, Lock
 import time
 
+# Pin assignments
 btn_in = 11 # GPIO17
 btn_out = 12 # GPIO18
 led_green = 13 # GPIO27
@@ -58,7 +59,8 @@ def main():
 
     try:
         while True:
-            time.sleep(2)
+            # 15 minute wait
+            time.sleep(900)
     except KeyboardInterrupt:
         print("Program shut down by user")
     finally:

@@ -69,6 +69,9 @@ This section of tutorials you'll explore the basics of GPIO.input as well as som
 1. [Light Emitting Diode (LEDs)](docs/tutorial-rasp-led.md)
 1. [Light Emitting Display Bar Graph](docs/tutorial-rasp-ledbar.md)
 1. [Seven Segment Digit Display](docs/tutorial-rasp-segmentdisplay.md)
+1. Button Switch and 2 LEDs in a Simple Loop
+1. Button Switch and 2 LEDs Waiting for Edge
+1. Button Switch and 2 LEDs with Event Detection
 1. Photoresistor and Analog to Digital Conversion
 1. 8x8 LED Matrix Display
 1. Liquid Crystal Display
