@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 
-# Pin assignments
+# Pin assignments (GPIO.BOARD)
 button = 11 # GPIO17
 led_green = 13 # GPIO27
 led_red = 15 # GPIO22

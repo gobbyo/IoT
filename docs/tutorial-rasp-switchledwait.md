@@ -1,10 +1,10 @@
 ---
-title: Button Switch and 2 LEDs in a Simple Loop 
+title: Button Switch and Waiting for Edge Lighting of LEDs  
 description: #Required; article description that is displayed in search results. 
 author: jbeman@hotmail.com
 ---
 
-# Tutorial: Button Switch and 2 LEDs in a Simple Loop
+# Tutorial: Button Switch and Waiting for Edge Lighting of LEDs
 
 In this tutorial, you learn how to:
 
@@ -16,7 +16,7 @@ In this tutorial, you learn how to:
 
 ## Prerequisites
 
-Completed the 
+Completed the
 
 Supplies:
 

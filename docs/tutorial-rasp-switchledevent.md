@@ -1,10 +1,10 @@
 ---
-title: Light up an LED 
+title: Button Switch and Event Detected Lighting of LEDs
 description: #Required; article description that is displayed in search results. 
 author: jbeman@hotmail.com
 ---
 
-# Tutorial: Light up an LED bar
+# Tutorial: Button Switch and Event Detected Lighting of LEDs
 
 ![lnk_switchleds]
 

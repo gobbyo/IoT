@@ -64,15 +64,15 @@ This section of tutorials covers setting up your Raspberry Pi with an easy way t
 
 ### Raspberry Pi
 
-This section of tutorials you'll explore the basics of GPIO.input as well as some cloud messaging patterns.
+This section of tutorials you'll explore the building blocks of various electronic components and the GPIO library.
 
 1. [Light Emitting Diode (LEDs)](docs/tutorial-rasp-led.md)
 1. [Light Emitting Display Bar Graph](docs/tutorial-rasp-ledbar.md)
 1. [Seven Segment Digit Display](docs/tutorial-rasp-segmentdisplay.md)
-1. Button Switch and 2 LEDs in a Simple Loop
-1. Button Switch and 2 LEDs Waiting for Edge
-1. Button Switch and 2 LEDs with Event Detection
-1. Light Dependent Resistor and Analog to Digital Conversion
+1. Button Switch and Simple Loop Lighting of LEDs
+1. Button Switch and Waiting for Edge Lighting of LEDs
+1. Button Switch and Event Detected Lighting of LEDs
+1. Analog to Digital Conversion of a Light Dependent Resistor
 1. 8x8 LED Matrix Display
 1. Liquid Crystal Display
 1. Remotely Control a Liquid Crystal Display
