@@ -69,7 +69,7 @@ This section of tutorials you'll explore the building blocks of various electron
 1. [Light Emitting Diode (LEDs)](docs/tutorial-rasp-led.md)
 1. [Light Emitting Display Bar Graph](docs/tutorial-rasp-ledbar.md)
 1. [Seven Segment Digit Display](docs/tutorial-rasp-segmentdisplay.md)
-1. Button Switch and Simple Loop Lighting of LEDs
+1. [Button Switch and Simple Loop Lighting of LEDs](docs/tutorial-rasp-switchledsimple.md)
 1. Button Switch and Waiting for Edge Lighting of LEDs
 1. Button Switch and Event Detected Lighting of LEDs
 1. Analog to Digital Conversion of a Light Dependent Resistor
