@@ -31,7 +31,7 @@ Supplies:
 
 ## Wire a Button Switch and 2 LEDs to your Raspberry Pi
 
-In this section you'll wire your Raspberry Pi to display numbers on a seven-segment display. Below is the circuit we'll construct.
+In this section you'll wire your Raspberry Pi to a button switch and two LEDs, a green LED when the button is pressed, and a red LED when the button is released. Below is the circuit we'll construct.
 
 ![lnk_schematic_segmentdisplay]
 
