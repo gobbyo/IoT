@@ -13,9 +13,9 @@ import RPi.GPIO as GPIO
 import time
 
 LED_rowpins = [9,14,8,12,1,7,2,5]
+rowpins =     [7,32,13,15,29,31,33,35]
 LED_colpins = [13,3,4,10,6,11,15,16]
-rowpins = [7,32,13,15,29,31,33,35]
-colpins = [37,12,16,18,22,36,38,40]
+colpins =     [37,12,16,18,22,36,38,40]
 
 def main():
 
