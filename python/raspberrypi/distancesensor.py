@@ -3,7 +3,6 @@ import time
 
 speedofsound = 343 # meters per second
 nano = 0.00000001
-yardspermeter = 1.0936133
 trig = 38
 echo = 40
 
@@ -27,7 +26,6 @@ def main():
             m_per_sec = speedofsound * ((receive - send) * nano)
             m_per_sec /= 2 # there and back again
             print("{0} centimeters".format(m_per_sec * 10))
-            print("{0} feet".format((m_per_sec * yardspermeter)/3))
     except KeyboardInterrupt:
         print("Program shut down by user")
     finally:
