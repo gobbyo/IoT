@@ -8,15 +8,16 @@ author: jbeman@hotmail.com
 
 In this tutorial, you learn how to:
 
-- [todo]
+- Wire a Button Switch and Two LEDs to your Raspberry Pi
+- Code your Button Switch in a simple loop
 
 A button switch is a type of electrical switch that is activated by pressing a button. They are commonly used in electronic devices to turn them on or off, or to perform other functions such as adjusting the volume or changing the channel. The benefits of button switches include their ease of use and the ability to control electronic devices with a simple press of a button. Additionally, button switches are relatively inexpensive and widely available, making them a popular choice for use in a wide range of electronic devices.
 
 Following the diagram below, you'll wire a button switch to two LEDs, one red, another green, to show the states of the circuit. Note the various states of the LED's when pressing the button switch:
 
-1. When first starting, the red and green LEDs are off
-1. When the button switch is pressed, the green LED turns on, while the red remains off
-1. When the button switch is released, the green LED turns off, and the red turns on (until the button switch is pressed again)
+1. When first starting, the red and green LEDs are both off.
+1. When the button switch is pressed, the green LED turns on, while the red remains off.
+1. When the button switch is released, the green LED turns off, and the red turns on (until the button switch is pressed again).
 
     :::image type="content" source="media/tutorial-rasp-switchledsimple/switch2LEDs.gif" alt-text="Button switch with 2 LEDs":::
 
@@ -53,6 +54,13 @@ Following the diagram below:
 
 ## Code your Button Switch
 
+In this section you'll code using the GPIO.input for your button switch with  
+`GPIO.setup(button, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)`
+
+While in a loop you'll check the `GPIO.input(button)` for a HIGH or LOW incoming signal to indicate which LED will be turned on or off. The `time.sleep(0.01)` is needed to allow the processor time to do other things. Having your Raspberry Pi running in a continuous loop occupies its processor, but makes for a very responsive button.
+
+1. [Connect to your Raspberry Pi](https://code.visualstudio.com/docs/remote/ssh#_connect-to-a-remote-host) using Visual Studio Code.
+1. Create a file `switchledsimple.py` in your cloned GitHub under the `python/raspberrypi` directory, for example `~/repos/IoT/python/raspberrypi/switchledsimple.py`
 1. Import statements and variables.
 
     ```python
@@ -92,12 +100,11 @@ Following the diagram below:
                         cnt += 1
                         print("Button Released. Count = {0}".format(cnt))
                     else:
-    
                         GPIO.output(led_green, GPIO.HIGH)
                         GPIO.output(led_red, GPIO.LOW)
                         print("Button Pushed")
                     last = cur
-                time.sleep(0.01) # give the processor time to do other things
+                time.sleep(0.01)
         except KeyboardInterrupt:
             print("Program shut down by user")
         finally:
@@ -112,8 +119,11 @@ Following the diagram below:
 <!-- Introduction paragraph -->
 1. Start the debugger in Visual Studio Code
 1. Verify the behavior of the LED lighting.
+1. Be sure to gracefully shut down the program by typing ctrl-c.  That way your GPIO ports have been cleaned up and ready for your next project.
 
 ## Next steps
+
+[Tutorial: Button Switch and Waiting for Edge Lighting of LEDs](tutorial-rasp-switchledwait.md)
 
 <!--images-->
 

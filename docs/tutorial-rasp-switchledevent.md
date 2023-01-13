@@ -40,18 +40,7 @@ Below is the circuit we'll construct.
 
 ## Wire your Switch and LEDs
 
-In this section you'll wire your Raspberry Pi to light up an LED display bar by using the following diagram.
-
-1. From the Raspberry Pi, connect the LED display bar to your breadboard so the cathode pins (-) are on the left of the breadboard separation line and the anode pins (+) on the right. Note that anode (+) pins on the LED display bar are located on the same side as the printed identifier.
-
-   [todo]
-
-1. Connect a lead from each 220Ω resistor to each LED display bar cathode pin and the other resistor lead connected to the breadboard's bus (rail) strip.
-1. Connect a jumper wire from the resistor's rail strip to a ground pin on your Raspberry Pi.
-1. Connect one end of the jumper wire to a terminal strip that corresponds to each Raspberry GPIO Pins #8, #12, #16, #18, #22, #24, #26, #32, #36, and #38.
-1. For each jumper wire, connect each GPIO pin to each anode pin on your LED display bar. Note the order is important--the jumper to pin #8 connected to the first anode pin on the LED display bar, the jumper to pin #12 to the second anode pin, etc.
-
-![lnk_raspledbar]
+In this section you'll wire your Raspberry Pi to light up an LED display bar by using the following diagram...
 
 ## Create Code to Turn Sequentially Switch On or Off the LED Graph
 <!-- Introduction paragraph -->
