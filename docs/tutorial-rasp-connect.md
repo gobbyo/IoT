@@ -37,6 +37,44 @@ In this tutorial you'll connect to your Raspberry pi with Visual Studio Code and
     git clone https://github.com/{your-fork}/IoT.git
     ```
 
+## Set up speed test
+
+1. run the following
+
+```azurecli
+sudo apt install apt-transport-https gnupg1 dirmngr lsb-release
+```
+
+2. run the following curl command.
+
+```azurecli
+curl -L https://packagecloud.io/ookla/speedtest-cli/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/speedtestcli-archive-keyring.gpg >/dev/null
+```
+
+1. run the following script
+
+```azurecli
+echo "deb [signed-by=/usr/share/keyrings/speedtestcli-archive-keyring.gpg] https://packagecloud.io/ookla/speedtest-cli/debian/ $(lsb_release -cs) main" | sudo tee  /etc/apt/sources.list.d/speedtest.list
+```
+
+1. Update
+
+```azurecli
+sudo apt update
+```
+
+1. Install speedtest
+
+```azurecli
+sudo apt install speedtest
+```
+
+1. run it.
+
+```azurecli
+sudo apt install speedtest
+```
+
 ## Reference
 
 - [Set up Remote Access on your Raspberry Pi](https://www.raspberrypi.com/documentation/computers/remote-access.html#introduction-to-remote-access)

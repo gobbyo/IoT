@@ -6,13 +6,13 @@ class ADC0832(object):
     
     def __init__(self):
         # Initialize pin numbers
-        self.csPin = 17
-        self.clkPin = 27
-        self.doPin = 23
-        self.diPin = 24
+        self.csPin = 11 # BCM 17
+        self.clkPin = 13 # BCM 27
+        self.doPin = 16 # BCM 23
+        self.diPin = 18 # BCM 24
 
         # Setup GPIO
-        GPIO.setmode(GPIO.BCM)
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.csPin, GPIO.OUT, initial=GPIO.HIGH)
         GPIO.setup(self.clkPin, GPIO.OUT, initial=GPIO.LOW)
 
@@ -73,13 +73,13 @@ class ADC0832(object):
 
         ## Deselect chip
         GPIO.output(self.csPin, GPIO.HIGH)
-
+        
         return dataMSBFirst if dataMSBFirst == dataLSBFirst else None
 
-    def read_adc(self, channel):
+    def read(self, channel):
         return self._getValue(1, channel)
 
-    def read_adc_difference(self, lowChannel):
+    def read_difference(self, lowChannel):
         return self._getValue(0, lowChannel)
 
     def cleanup(self):
