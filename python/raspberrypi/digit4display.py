@@ -34,6 +34,9 @@ def paintnumber(val, digit):
     time.sleep(.0025)
     GPIO.output(digit, GPIO.HIGH)
 
+def displaytime():
+    t = time.localtime()
+    return("{0}{1}".format(t.tm_hour,t.tm_min))
 def main():
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)   # Pins
@@ -48,7 +51,8 @@ def main():
     try:
         print("--starting display of digits--")
         while True:
-            num = input("0-9999: ")
+            # num = input("0-9999: ")
+            num = displaytime()
             iter = int(wait/len(num))
             for w in range(iter):
                 i = len(num)-1
