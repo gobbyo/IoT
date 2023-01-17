@@ -1,12 +1,14 @@
 import RPi.GPIO as GPIO
 import time
 
-#   7 segmented LED
+#   4 digit 7 segmented LED
 #
-#        _a_
-#     f |_g_| b
-#     e |___| c _h
-#         d
+#       digit 1        digit 2        digit 3        digit 4
+#        _a_            _a_            _a_            _a_
+#     f |_g_| b      f |_g_| b      f |_g_| b      f |_g_| b
+#     e |___| c _h   e |___| c _h   e |___| c _h   e |___| c _h
+#         d              d              d              d
+#
 # num   hgfe dcba   hex
 #
 # 0 = 	0011 1111   0x3F
@@ -37,18 +39,19 @@ def paintnumber(val, digit):
 def displaytime():
     t = time.localtime()
     return("{0}{1}".format(t.tm_hour,t.tm_min))
-def main():
+
+def setup():
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)   # Pins
-
     for pin in pins:
         GPIO.setup(pin, GPIO.OUT)
-    
     for d in digits:
         GPIO.setup(d, GPIO.OUT)
         GPIO.output(d, GPIO.HIGH)
-
+    
+def main():
     try:
+        setup()
         print("--starting display of digits--")
         while True:
             # num = input("0-9999: ")
