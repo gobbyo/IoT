@@ -38,9 +38,9 @@ def paintnumber(val, digit):
 
 def displaytime():
     t = time.localtime()
-    return("{0}{1}".format(t.tm_hour,t.tm_min))
+    return("{:02d}{:02d}".format(t.tm_hour,t.tm_min))
 
-def setup():
+def main():
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)   # Pins
     for pin in pins:
