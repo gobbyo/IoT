@@ -41,17 +41,18 @@ def displaytime():
     return("{:02d}{:02d}".format(t.tm_hour,t.tm_min))
 
 def main():
+    time.sleep(20) #need to wait 20 seconds for cronjobs
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)   # Pins
+
     for pin in pins:
         GPIO.setup(pin, GPIO.OUT)
+    
     for d in digits:
         GPIO.setup(d, GPIO.OUT)
         GPIO.output(d, GPIO.HIGH)
-    
-def main():
+
     try:
-        setup()
         print("--starting display of digits--")
         while True:
             # num = input("0-9999: ")
