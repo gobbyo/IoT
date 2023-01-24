@@ -24,7 +24,7 @@ A four digit, seven segment display has several benefits:
 - They can be *easily controlled by microcontroller* and other digital devices, making the integration easy and simple.
 - They can be *used in harsh environments* as they are available in different enclosures such as plastic, metal, and glass.
 
-For this tutorial, your seven-segment display will be controlled by an application that is local on the Raspberry Pi.
+For this tutorial, your four digit, seven-segment display will be controlled by an application that is local on the Raspberry Pi.
 
 ## Prerequisites
 
@@ -43,7 +43,7 @@ Supplies:
 
 ## Wire your four digit segment display to your Raspberry Pi
 
-In this section you'll wire your Raspberry Pi to display numbers on a four digit segment display. Below is the circuit we'll construct.
+In this section you'll wire your Raspberry Pi to display numbers on a four digit segment display. Below is the circuit you'll construct.
 
 ![lnk_digit4schematic]
 
