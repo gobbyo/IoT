@@ -49,19 +49,29 @@ In this section you'll wire your Raspberry Pi to display numbers on a four digit
 
 There are 12 pins for the display. Pins labelled D1, D2, D3, and D4 are the pins to switch the digit on (GPIO.LOW) or off (GPIO.HIGH). For example, pin 7 controls the leftmost digit. The remaining pins control each segment of the display "a" through "g". Note that "h" is the dot point (dp).
 
+![lnk_digit4pins]
+
 Like the previous seven segment display tutorial, setting the 8th pin "a" on the four digit display will cause the "a" LED to light up on all four digits. You'll have to turn on the digit to paint the number on the display while the remaining digits are off. For example, to display the number 6890, you'll write code that turns off digits 2, 3, and 4, paints the number "6" onto digit one then turn off digit 1 while digit 2 paints the number "9" and so on.
 
 Complete the wiring of your four digit segment display by using the following diagram.
 
-1. Connect your four digit segment display to your breadboard as diagrammed below. Note the lettering on the component is the bottom where pin 1-6 reside.
+1. Connect your four digit segment display to your breadboard as diagrammed below. Note the lettering on the component is the bottom where pins 1-6 reside.
 1. With 4 male jumpers, connect one end to the four display digit pins 6, 7, 10 and 11.
-1. 
+1. Connect each of the 4 male jumpers to a 220Ω resistor.
+1. Complete the connection to the GPIO pins for each digit pin per the schematic:
+
+    - D1 connects to GPIO pin 32 (GPIO12)
+    - D2 connects to GPIO pin 36 (GPIO16)
+    - D3 connects to GPIO pin 38 (GPIO20)
+    - D4 connects to GPIO pin 40 (GPIO21)
+
+1. Finish connecting the remaining segment pins ("a"-"h") per the schematic diagram.
 
 ![lnk_digit4wiring]
 
-## Code your Seven Segment Display
+## Code your Four Digit Seven Segment Display
 
-In this section you'll create code that will iterate through all the numbers and show them on your seven-segment display.
+In this section you'll create code that will iterate through all the numbers and show them on your four digit seven-segment display.
 
 <!-- Introduction paragraph -->
 1. [Connect to your Raspberry Pi](https://code.visualstudio.com/docs/remote/ssh#_connect-to-a-remote-host) using Visual Studio Code.
@@ -169,12 +179,14 @@ In this section you'll create code that will iterate through all the numbers and
 
 ## More to Explore
 
+1. Set up the time as a cron job so that your 24 hour clock works on restart.
 
 ## Next steps
 
-[Tutorial: Remotely Control a Seven Segment Display](tutorial-rasp-remotesegmentdisplay.md)
+[todo]
 
 <!--images-->
 
 [lnk_digit4schematic]: media/tutorial-rasp-digit4display/digit4schematic.png
 [lnk_digit4wiring]: media/tutorial-rasp-digit4display/digit4wiring.png
+[lnk_digit4pins]: media/tutorial-rasp-digit4display/digit4pins.png
