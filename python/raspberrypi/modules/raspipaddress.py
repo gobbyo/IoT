@@ -1,4 +1,5 @@
 import socket
+import os
 
 def get_ip_address():
     ip_address = ''
@@ -8,3 +9,6 @@ def get_ip_address():
     except socket.error as e:
         print("Error: {0}. CodeID = 2e798e2d-0802-4b1d-9860-a83e3e35b599".format(e))
     return ip_address
+
+def get_public_address():
+    return os.system('curl api.ipify.org')
