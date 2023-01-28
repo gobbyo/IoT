@@ -14,8 +14,6 @@ def main():
     try:
         state = False
         while True:
-            # 15 minute wait
-            
             if GPIO.input(motion) == GPIO.HIGH and state == False:
                 print("motion detected at {0}".format(datetime.now()))
                 state = True
