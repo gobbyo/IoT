@@ -41,7 +41,7 @@ def displaytime():
     return("{:02d}{:02d}".format(t.tm_hour,t.tm_min))
 
 def main():
-    time.sleep(20) #need to wait 20 seconds for cronjobs
+    time.sleep(5) #need to wait 5 seconds for cronjobs
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)   # Pins
 
