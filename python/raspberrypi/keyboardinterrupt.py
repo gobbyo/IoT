@@ -6,7 +6,7 @@ def run_sample():
     print("Graceful exit")
 
 def on_keypressed(e):
-    print('{0}({1})'.forabcmat(e.name, hex(e.scan_code)))
+    print('{0}({1})'.format(e.name, hex(e.scan_code)))
 
 def main():
     global cont
