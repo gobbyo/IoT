@@ -11,11 +11,14 @@
 
 import RPi.GPIO as GPIO
 import time
+import modules.eightbyeight as display
 
 LED_rowpins = [9,14,8,12,1,7,2,5]
 rowpins =     [7,11,13,19,21,23,35,37]
 LED_colpins = [13,3,4,10,6,11,15,16]
 colpins =     [8,10,12,16,18,22,24,26]
+
+wait_time = 0.25
 
 def main():
 
@@ -36,10 +39,11 @@ def main():
         i = 0
         while i in range(8):
             GPIO.output(rowpins[i], GPIO.HIGH)
-            time.sleep(0.5)
+            time.sleep(wait_time)
             GPIO.output(rowpins[i], GPIO.LOW)
             i += 1
 
+        time.sleep(wait_time)
         print("starting columns")
         for r in rowpins:
             GPIO.output(r, GPIO.HIGH)
@@ -48,10 +52,10 @@ def main():
         i = 0
         while i in range(8):
             GPIO.output(colpins[i], GPIO.LOW)
-            time.sleep(0.5)
+            time.sleep(wait_time)
             GPIO.output(colpins[i], GPIO.HIGH)
             i += 1
-                
+
     except KeyboardInterrupt:
         print("Program shut down by user")
     finally:
