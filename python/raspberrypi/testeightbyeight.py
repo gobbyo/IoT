@@ -37,7 +37,7 @@ def main():
     try:
         print("starting rows")
         i = 0
-        while i in range(8):
+        while i in range(len(rowpins)):
             GPIO.output(rowpins[i], GPIO.HIGH)
             time.sleep(wait_time)
             GPIO.output(rowpins[i], GPIO.LOW)
@@ -50,11 +50,23 @@ def main():
         for c in colpins:
             GPIO.output(c, GPIO.HIGH)
         i = 0
-        while i in range(8):
+        while i in range(len(colpins)):
             GPIO.output(colpins[i], GPIO.LOW)
             time.sleep(wait_time)
             GPIO.output(colpins[i], GPIO.HIGH)
             i += 1
+
+        print("count off")
+
+        row = 0
+        for row in range(len(rowpins)):
+            col = 0
+            GPIO.output(rowpins[row], GPIO.HIGH)
+            for col in range(len(colpins)):
+                GPIO.output(colpins[col], GPIO.LOW)
+                time.sleep(wait_time)
+                GPIO.output(colpins[col], GPIO.HIGH)
+            GPIO.output(rowpins[row], GPIO.LOW)
 
     except KeyboardInterrupt:
         print("Program shut down by user")
