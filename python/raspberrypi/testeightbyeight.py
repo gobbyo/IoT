@@ -13,9 +13,9 @@ import RPi.GPIO as GPIO
 import time
 
 LED_rowpins = [9,14,8,12,1,7,2,5]
-rowpins =     [7,32,13,15,29,31,33,35]
+rowpins =     [7,11,13,19,21,23,35,37]
 LED_colpins = [13,3,4,10,6,11,15,16]
-colpins =     [37,12,16,18,22,36,38,40]
+colpins =     [8,10,12,16,18,22,24,26]
 
 def main():
 
@@ -32,12 +32,24 @@ def main():
     print("Press Ctrl-C to quit'")
 
     try:
-        print("starting")
+        print("starting rows")
         i = 0
         while i in range(8):
             GPIO.output(rowpins[i], GPIO.HIGH)
-            time.sleep(0.001)
+            time.sleep(0.5)
             GPIO.output(rowpins[i], GPIO.LOW)
+            i += 1
+
+        print("starting columns")
+        for r in rowpins:
+            GPIO.output(r, GPIO.HIGH)
+        for c in colpins:
+            GPIO.output(c, GPIO.HIGH)
+        i = 0
+        while i in range(8):
+            GPIO.output(colpins[i], GPIO.LOW)
+            time.sleep(0.5)
+            GPIO.output(colpins[i], GPIO.HIGH)
             i += 1
                 
     except KeyboardInterrupt:
