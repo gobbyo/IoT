@@ -57,6 +57,8 @@ def main():
             i += 1
 
         print("count off")
+        for r in rowpins:
+            GPIO.output(r, GPIO.LOW)
 
         row = 0
         for row in range(len(rowpins)):
@@ -64,7 +66,7 @@ def main():
             GPIO.output(rowpins[row], GPIO.HIGH)
             for col in range(len(colpins)):
                 GPIO.output(colpins[col], GPIO.LOW)
-                time.sleep(wait_time)
+                time.sleep(wait_time/2)
                 GPIO.output(colpins[col], GPIO.HIGH)
             GPIO.output(rowpins[row], GPIO.LOW)
 
