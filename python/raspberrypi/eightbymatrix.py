@@ -9,25 +9,25 @@
 #		2	49	50	51	52	53	54	55	56
 #		5	57	58	59	60	61	62	63	64
 
-import modules.eightbyeight as disp
-
-LED_rowpins = [9,14,8,12,1,7,2,5]
-LED_colpins = [13,3,4,10,6,11,15,16]
+import modules.eightbyeightscrolltext as matrixdisplay
+import datetime
+import time as time
 
 def main():
-    word = "hello"
-    for w in word:
-        display = disp.matrix_in_binary(w)      
-        row = 0
-        while row < 8:
-            col = 0
-            while col < 8:
-                if display[row][col] == 1:
-                    print("{0}\tHIGH\t\t{1}\tLOW".format(LED_rowpins[row], LED_colpins[col]))
-                else:
-                    print("{0}\tLOW\t\t{1}\tLOW".format(LED_rowpins[row], LED_colpins[col]))
-                col += 1
-            row += 1
-        print("")
+    rowpins = [7,11,13,19,21,23,35,37]
+    colpins = [8,10,12,16,18,22,24,26]
+
+    stext = matrixdisplay.scrolldisplay()
+    stext.rowpins = rowpins
+    stext.colpins = colpins
+
+    while True:
+        t = datetime.datetime.now()
+        buf = t.strftime("Today is %A, %b %d, %Y")
+        stext.scrolltext(buf,2)
+        time.sleep(1)
+        buf = t.strftime("Time is %I:%M %p")
+        stext.scrolltext(buf,2)
+
 if __name__ == "__main__":
     main()
