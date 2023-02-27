@@ -127,3 +127,27 @@ font8x8_basic = [
     [ 0x07, 0x0C, 0x0C, 0x38, 0x0C, 0x0C, 0x07, 0x00],   # U+007D (])
     [ 0x6E, 0x3B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00],   # U+007E (~)
     [ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00] ]   # U+007F
+
+def matrix_in_binary(c):
+    w = []
+    for f in font8x8_basic[ord(c)]:
+        n = [0,0,0,0,0,0,0,0]
+        b = bin(f).split('b')[1]
+        i = 7
+        j = len(b) - 1
+        if i > 7:
+            i = 7
+        while i >= 0 and j >=0:
+            n[i] = int(b[j])
+            i -= 1
+            j -= 1
+        i = 0
+        j = 7
+        while i < 4:
+            temp = n[i]
+            n[i] = n[j]
+            n[j] = temp
+            i += 1
+            j -= 1
+        w.append(n)
+    return w
