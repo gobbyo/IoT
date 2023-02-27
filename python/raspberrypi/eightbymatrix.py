@@ -23,7 +23,7 @@ def main():
 
     while True:
         t = datetime.datetime.now()
-        buf = t.strftime("Today is %A, %b %d, %Y")
+        buf = t.strftime("Today is %A, %b. %d, %Y")
         stext.scrolltext(buf,2)
         time.sleep(1)
         buf = t.strftime("Time is %I:%M %p")
