@@ -61,6 +61,7 @@ This section of tutorials covers setting up your Raspberry Pi with an easy way t
 1. [Create a Device Provisioning Service](docs/tutorial-deploydps.md)
 1. [Create an x509 Certificate to Enroll Your Device](docs/tutorial-dpsx509deviceenrollment.md)
 1. [Send Device Information to the Cloud](docs/tutorial-dpssenddeviceinfo.md)
+1. [Send Hostname and IP address to the Cloud when Booting Up your Raspberry Pi](docs/tutorial-rasp-d2cipandhostname.md)
 
 ### Raspberry Pi
 

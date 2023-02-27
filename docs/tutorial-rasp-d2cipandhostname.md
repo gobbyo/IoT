@@ -28,7 +28,7 @@ In this tutorial you'll create device code that sends a message to IoT Hub when 
 1. Using your remote SSH session, open crontab in the GNU nano editor in your Raspberry Pi,
 
     ```azurecli
-    $ sudo crontab -e
+    $ crontab -e
     ```
 
     For example,
@@ -39,6 +39,12 @@ In this tutorial you'll create device code that sends a message to IoT Hub when 
 
     ```azurecli
     @reboot python ~/repos/IoT/python/raspberrypi/d2cipandhostname.py
+    ```
+
+    *Note that you can use the sudo command in the previous step, but you'll need to reference the full path. For example,
+    ```azurecli
+    $ sudo crontab -e
+    @reboot python /home/jbeman/repos/IoT/python/raspberrypi/d2cipandhostname.py
     ```
 
 1. Type ctrl-o and hit the enter key, for example,
