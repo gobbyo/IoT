@@ -9,6 +9,7 @@ class scrolldisplay(object):
         self.rowpins = [7,11,13,19,21,23,35,37]
         self.colpins = [8,10,12,16,18,22,24,26]
         self.wait_time = 0.002
+        GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BOARD)
 
         for rowpin in self.rowpins:
