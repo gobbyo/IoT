@@ -9,8 +9,7 @@
 #		2	49	50	51	52	53	54	55	56
 #		5	57	58	59	60	61	62	63	64
 
-import time as time
-from eightbyeightscrolltext import scrolldisplay
+import scrolltext
 from machine import Pin, RTC
 
 def main():
@@ -19,12 +18,12 @@ def main():
     rowpins = [26,18,9,20,2,8,3,6]
     colpins = [19,4,5,22,7,21,17,16]
 
-    stext = scrolldisplay()
+    stext = scrolltext.scrolldisplay()
     stext.rowpins = rowpins
     stext.colpins = colpins
 
     rtc = RTC()
-    rtc.datetime((2023, 3, 3, 6, 22, 58, 4, 0))
+    rtc.datetime((2023, 2, 6, 1, 22, 00, 4, 0))
 
     while True:
         t = rtc.datetime()
