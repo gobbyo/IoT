@@ -3,7 +3,9 @@ from machine import Pin
 import network, rp2, time
 import urequests
 import json
-#import ntptime
+import secrets
+
+callfrequency = const(1000)
 
 def main():
     day = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
@@ -19,28 +21,23 @@ def main():
     #ntptime.settime()
     #UTC_OFFSET = -8 * 60 * 60
 
-    # set your WiFi Country
+    # WiFi Country
     rp2.country('US')
 
     wlan = network.WLAN(network.STA_IF)
     wlan.active(True)
 
-    # set power mode to get WiFi power-saving off (if needed)
+    # power mode to get WiFi power-saving off (if needed)
     wlan.config(pm = 0xa11140)
 
-    wlan.connect('Clipper', 'Orcatini')
+    wlan.connect(secrets.usr, secrets.pwd)
 
     while not wlan.isconnected() and wlan.status() >= 0:
         print("connecting...")
         time.sleep(1)
 
     while True:
-        #t = time.localtime(time.time() + UTC_OFFSET)
-        #buf = "Today is {0}, {1}. {2}, {3}".format(day[t[6]], month[t[1]-1], t[2], t[0])
-        #stext.scrolltext(buf,2)
-        #buf = "{:002d}:{:002d}".format(t[3], t[4])
-        #stext.scrolltext(buf,2)
-
+        
         r = urequests.get("https://api.open-meteo.com/v1/forecast?latitude=48.50&longitude=-122.71&current_weather=true&hourly=relativehumidity_2m,pressure_msl")
         j = json.loads(r.content)
         buf = 'Temp {0} f'.format(32+(9/5*float(j['current_weather']['temperature'])))

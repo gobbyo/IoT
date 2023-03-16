@@ -3,7 +3,7 @@ from machine import Pin
 import network, rp2, time
 import urequests
 import json
-#import ntptime
+import secrets
 
 def main():
     day = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
@@ -28,7 +28,7 @@ def main():
     # set power mode to get WiFi power-saving off (if needed)
     wlan.config(pm = 0xa11140)
 
-    wlan.connect('Clipper', 'Orcatini')
+    wlan.connect(secrets.usr, secrets.pwd)
 
     while not wlan.isconnected() and wlan.status() >= 0:
         print("connecting...")
