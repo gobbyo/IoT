@@ -3,6 +3,7 @@ import time
 
 speedofsound = 343 # meters per second
 nano = 0.00000001
+inset = 1.32
 trig = 38
 echo = 40
 
@@ -12,20 +13,24 @@ def main():
     GPIO.setup(echo, GPIO.IN)
 
     try:
-            GPIO.output(trig, GPIO.HIGH)
-            time.sleep(0.000001)
-            GPIO.output(trig, GPIO.LOW)
+            while True:
+                GPIO.output(trig, GPIO.HIGH)
+                time.sleep(0.000001)
+                GPIO.output(trig, GPIO.LOW)
 
-            while GPIO.input(echo) == GPIO.LOW:
-                pass
-            send = time.time_ns()
+                while GPIO.input(echo) == GPIO.LOW:
+                    pass
+                send = time.time_ns()
 
-            while GPIO.input(echo) == GPIO.HIGH:
-                pass
-            receive = time.time_ns()
-            m_per_sec = speedofsound * ((receive - send) * nano)
-            m_per_sec /= 2 # there and back again
-            print("{0} centimeters".format(m_per_sec * 10))
+                while GPIO.input(echo) == GPIO.HIGH:
+                    pass
+                receive = time.time_ns()
+                m_per_sec = speedofsound * ((receive - send) * nano)
+                m_per_sec /= 2 # there and back again
+                distance = (m_per_sec * 10) - inset
+                print("{:0f} centimeters".format(distance))
+                time.sleep(1)
+
     except KeyboardInterrupt:
         print("Program shut down by user")
     finally:
