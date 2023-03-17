@@ -21,18 +21,6 @@ import time
 # 7 =	0000 0111   0x07
 # 8 =   0111 1111   0x7F
 # 9 =   0110 0111   0x67
-# with a dot
-# 0 = 	1011 1111   0xBF
-# 1 =	1000 0110   0x86
-# 2 =	1101 1011   0xDB
-# 3 =	1100 1111   0xDF
-# 4 =	1110 0110   0xE6
-# 5 =	1110 1101   0xED
-# 6 =	1111 1101   0xFD
-# 7 =	1000 0111   0x87
-# 8 =   1111 1111   0xFF
-# 9 =   1110 0111   0xE7 
-
 
 wait = 500
 digits = [16,19,20,10]
@@ -60,9 +48,8 @@ def paintnumber(val, digit):
 def printfloat(f):
     if f < 100:
         num = "{:.2f}".format(f)
-        print(num)
 
-        for t in range(300):
+        for w in range(wait):
             i = len(num)-1
             decimal = False
             d = 3
@@ -73,7 +60,6 @@ def printfloat(f):
                         val |= 0x01 << 7
                         decimal = False
                     paintnumber(val, digits[d])
-                    # print("paintnumber(val={0},digits[{1}]={2})".format(val,d,digits[d]))
                     d -= 1
                 else:
                     decimal = True
@@ -85,14 +71,8 @@ def main():
         pin.high()
 
     try:
-        print("--starting display of digits--")
         printfloat(23.12345)
-
-    except KeyboardInterrupt:
-        print("")
-        print("Program shut down by user")
     finally:
-        print("Program ended")
         for d in digits:
             pin = Pin(d, Pin.OUT)
             pin.high()
