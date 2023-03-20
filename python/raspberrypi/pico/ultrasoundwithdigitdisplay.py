@@ -23,7 +23,7 @@ import utime
 # 8 =   0111 1111   0x7F
 # 9 =   0110 0111   0x67
 
-wait = const(100)
+wait = const(200)
 digits = [16,19,20,10]
 pins = [17,21,12,14,15,18,11,13]
 #pins= [a,b,c,d,e,f,g,dot]
