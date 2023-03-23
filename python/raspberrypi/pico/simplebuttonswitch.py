@@ -5,7 +5,7 @@ def main():
     picopin = 25
     #picopin = "LED"
     try:
-        button=Pin(2,Pin.IN,Pin.PULL_DOWN)
+        button=Pin(15,Pin.IN,Pin.PULL_UP)
         pin=Pin(picopin,Pin.OUT)
 
         print("starting program")
