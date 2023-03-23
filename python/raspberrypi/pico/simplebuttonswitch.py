@@ -2,16 +2,19 @@ from machine import Pin
 import time
 
 def main():
-    #pico = pin 25 #
-    #picow = "LED"
+    picopin = 25
+    #picopin = "LED"
     try:
-        button=Pin(2,Pin.IN, Pin.PULL_DOWN)
+        button=Pin(2,Pin.IN,Pin.PULL_DOWN)
+        pin=Pin(picopin,Pin.OUT)
 
         print("starting program")
         while True:
             if button.value() == 1:
-                print("button.value({0})".format(button.value()))
-            time.sleep(.25)
+                pin.high()
+            else:
+                pin.low()
+            time.sleep(.025)
     except KeyboardInterrupt:
         print("Program shut down by user")
     finally:

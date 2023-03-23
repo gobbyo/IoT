@@ -1,117 +1,69 @@
-from machine import Pin
+from machine import Pin, PWM
+import distancehelper
 import time
-import utime
 
-#   4 digit 7 segmented LED
-#
-#       digit 1        digit 2        digit 3        digit 4
-#        _a_            _a_            _a_            _a_
-#     f |_g_| b      f |_g_| b      f |_g_| b      f |_g_| b
-#     e |___| c _h   e |___| c _h   e |___| c _h   e |___| c _h
-#         d              d              d              d
-#
-# num   hgfe dcba   hex
-#
-# 0 = 	0011 1111   0x3F
-# 1 =	0000 0110   0x06
-# 2 =	0101 1011   0x5B
-# 3 =	0100 1111   0x4F
-# 4 =	0110 0110   0x66
-# 5 =	0110 1101   0x6D
-# 6 =	0111 1101   0x7D
-# 7 =	0000 0111   0x07
-# 8 =   0111 1111   0x7F
-# 9 =   0110 0111   0x67
-
-wait = const(100)
-digits = [16,19,20,10]
-pins = [17,21,12,14,15,18,11,13]
-#pins= [a,b,c,d,e,f,g,dot]
-segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67]
-speedofsound = const(343) # meters per second
 nano = const(0.00000001)
-triggerpin = const(7)
-echopin = const(6)
+speedofsound = const(0.00343) # centimeters per second
+triggerpin = const(13)
+echopin = const(12)
 
-def paintnumber(val, digit):
-    digitpin = Pin(digit, Pin.OUT)
-    digitpin.low()
+def LEDindicator():
+    led = PWM(Pin(25))
+    led.freq(1000)      # Set the frequency value
+    led_value = 0       #LED brightness initial value
+    led_speed = 5      # Change brightness in increments of 5
 
-    i = 0
-    for p in pins:
-        pin = Pin(p, Pin.OUT)
-        if ((val & (0x01 << i)) >> i) == 1:
-            pin.high()
-        else:
-            pin.low()
-        i += 1
+    for i in range(75):                            
+        led_value += led_speed           
+        led.duty_u16(int(led_value * 500))     # Set the duty cycle, between 0-65535
+        time.sleep_ms(100)
+        if led_value >= 100:
+            led_value = 100
+            led_speed = -5
+        elif led_value <= 0:
+            led_value = 0
+            led_speed = 5
     
-    time.sleep(.003)
-
-    digitpin.high()
-
-def printfloat(f):
-    if f < 100:
-        for d in digits:
-            pin = Pin(d, Pin.OUT)
-            pin.high()
-        num = "{:.2f}".format(f)
-
-        for w in range(wait):
-            i = len(num)-1
-            decimal = False
-            d = 3
-            while i >= 0 & d >= 0:
-                if(num[i].isdigit()):
-                    val = segnum[int(num[i])]
-                    if decimal:
-                        val |= 0x01 << 7
-                        decimal = False
-                    paintnumber(val, digits[d])
-                    d -= 1
-                else:
-                    decimal = True
-                i -= 1
-
-def getdistancemeasure(trig, echo):
-    receive = 0
-    send = 0
-
-    trig.low()
-    utime.sleep_us(2)
-    trig.high()
-    time.sleep_us(5)
-    trig.low()
-    
-    while echo.value() == 0:
-        pass
-    send = utime.ticks_us()
-
-    while echo.value() == 1:
-        pass
-    receive = utime.ticks_us()
-
-    timepassed = receive - send
-    return (timepassed * 0.0343) / 2
+    led.duty_u16(int(0))
 
 def main():
-    #printfloat(12.75)
+    # printfloat(12.75)
     
     trig = Pin(triggerpin, Pin.OUT)
     echo = Pin(echopin, Pin.IN, Pin.PULL_DOWN)
 
     try:
-        while True:
-            distance = getdistancemeasure(trig, echo)
+        for i in range(4):
+            receive = 0
+            send = 0
 
-            print("{0} centimeters".format(distance))
-            printfloat(distance)
+            trig.low()
+            time.sleep_ms(2)
+            trig.high()
+            time.sleep_ms(5)
+            trig.low()
+            
+            while echo.value() == 0:
+                pass
+            send = time.ticks_ms()
+
+            while echo.value() == 1:
+                pass
+            receive = time.ticks_ms()
+
+            timepassed = receive - send
+            distanceincentemeters = (timepassed * speedofsound) / 2
+
+            totalInches = distancehelper.centimetersToInches(distanceincentemeters)
+            feet = distancehelper.getFeet(totalInches)
+            inches = distancehelper.getInches(feet, totalInches)
+            print("{0} feet {1} inches".format(feet,inches))
+            time.sleep(1)
         
     finally:
+        LEDindicator()
         print("Finished")
-        for d in digits:
-            pin = Pin(d, Pin.OUT)
-            pin.high()
+
 
 if __name__ == '__main__':
 	main()

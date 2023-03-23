@@ -1,7 +1,7 @@
 from machine import Pin, PWM
 import utime
 
-def main():
+def LEDindicator():
     led = PWM(Pin(25))
     led.freq(1000)      # Set the frequency value
     led_value = 0       #LED brightness initial value
@@ -19,6 +19,9 @@ def main():
             led_speed = 5
     
     led.duty_u16(int(0))
+
+def main():
+    LEDindicator()
 
 if __name__ == '__main__':
     main()

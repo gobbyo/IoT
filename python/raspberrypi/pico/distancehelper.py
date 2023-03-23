@@ -16,20 +16,3 @@ def getInches(feet, totalInches):
 def getMeters(totalcentimeters):
     s = "{0}".format(totalcentimeters / 100)
     return int(s[:s.find(".")])
-
-def main():
-    totalCentimeters = 250.65
-
-    meters = getMeters(totalCentimeters)
-    print("meters = {0}".format(meters))
-    centimeters = getCentimeters(meters, totalCentimeters)
-    print("centimeters = {0}".format(centimeters))
-
-    totalInches = centimetersToInches(totalCentimeters)
-    feet = getFeet(totalInches)
-    print("feet = {0}".format(feet))
-    inches = getInches(feet, totalInches)
-    print("inches = {0}".format(inches))
-
-if __name__ == '__main__':
-    main()
