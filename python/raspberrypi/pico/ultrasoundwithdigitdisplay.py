@@ -145,10 +145,9 @@ def main():
     echo = Pin(echopin, Pin.IN, Pin.PULL_DOWN)
     button=Pin(feetbuttonpin,Pin.IN,Pin.PULL_UP)
     samplemeasurement = False
+    display = displaydistance()
 
     try:
-        display = displaydistance()
-
         distancesample = 0
         dist = distancestringtools()
         
@@ -160,13 +159,13 @@ def main():
                 dist.set(distance)
 
             if samplemeasurement:
-                print("Distance ({0} centimeters) in METERS ({1})) & CENTIMETERS ({2})".format(distance,dist.meters,dist.centimeters))
+                #print("Distance ({0} centimeters) in METERS ({1})) & CENTIMETERS ({2})".format(distance,dist.meters,dist.centimeters))
                 
                 for w in range(wait):
                     display.printnumber(dist.meters)
                     display.printfloat(dist.centimeters)
             else:
-                print("Distance ({0} centimeters) in FEET ({1})) & INCHES ({2})".format(distance,dist.feet,dist.inches))
+                #print("Distance ({0} centimeters) in FEET ({1})) & INCHES ({2})".format(distance,dist.feet,dist.inches))
 
                 for w in range(wait):
                     display.printnumber(dist.feet)
@@ -175,7 +174,10 @@ def main():
             distancesample += 1
         
     finally:
-        print("Finished")
+        button.low()
+        trig.low()
+        display.__del__()
+        #print("Finished")
 
 if __name__ == '__main__':
 	main()
