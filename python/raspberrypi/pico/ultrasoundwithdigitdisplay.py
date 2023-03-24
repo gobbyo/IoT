@@ -2,6 +2,8 @@ from machine import Pin
 import time
 
 wait = const(10)
+millimeters = const(0.001)
+ultrasoundlimit = const(4572) #3millimeters
 segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67]
 speedofsound = const(343) # centimeters
 triggerpin = const(13)
@@ -11,34 +13,32 @@ feetbuttonpin = const(15)
 class distancestringtools(object):
 
     def __init__(self):
-        self.totalcentimeters = 0
-        self.cmtoinch = 0.39370079
-        self.meters = "0"
-        self.centimeters = "0"
-        self.feet = "0"
-        self.inches = "0"
+        self.totalmillimeters = 0
+        self.millitoinch = 0.0393701
+        self.s_meters = "0"
+        self.meters = 0
+        self.s_centimeters = "0"
+        self.centimeters = 0
+        self.s_feet = "0"
+        self.feet = 0
+        self.s_inches = "0"
+        self.inches = 0
     
-    def set(self,centimeters):
-        self.totalcentimeters = centimeters
-        s = "{0}".format(self.totalcentimeters / 100)
+    def set(self, milli):
+        self.totalmillimeters = milli
+        s = "{0}".format(milli / 1000)
         n = s.split('.')
         self.s_meters = "{0}".format(n[0])
         self.meters = int(n[0])
-        if self.meters > 0:
-            self.centimeters = int(n[1])
-        else:
-            self.centimeters = centimeters
+        self.centimeters = (milli - (self.meters * 1000)) / 10
         self.s_centimeters = "{0}".format(self.centimeters)
 
-        totalinches = self.centimeters * self.cmtoinch
+        totalinches = float(milli) * self.millitoinch
         s = "{0}".format(totalinches / 12.0)
         n = s.split('.')
         self.s_feet = "{0}".format(n[0])
         self.feet = int(n[0])
-        if self.feet > 0:
-            self.inches = float(totalinches - (float(self.feet) * 12.0))
-        else:
-            self.inches = totalinches
+        self.inches = float(totalinches - (float(self.feet) * 12.0))
         self.s_inches = "{0}".format(self.inches)
         
 class displaydistance(object):
@@ -119,7 +119,10 @@ class displaydistance(object):
                     decimal = True
                 i -= 1
 
-def getdistancemeasure(trig, echo):
+def getdistancemeasure():
+    trig = Pin(triggerpin,Pin.OUT)
+    echo = Pin(echopin,Pin.IN,Pin.PULL_DOWN)
+
     receive = 0
     send = 0
 
@@ -138,13 +141,20 @@ def getdistancemeasure(trig, echo):
     receive = time.ticks_us()
 
     timepassed = receive - send
-    return (timepassed * speedofsound * 0.0001) / 2
+
+    distanceinmillimeters = round((timepassed * speedofsound * millimeters) / 2)
+
+    if distanceinmillimeters > ultrasoundlimit:
+        distanceinmillimeters = 0
+    
+    trig.low()
+
+    return distanceinmillimeters
 
 def main():   
-    trig = Pin(triggerpin, Pin.OUT)
-    echo = Pin(echopin, Pin.IN, Pin.PULL_DOWN)
-    button=Pin(feetbuttonpin,Pin.IN,Pin.PULL_UP)
-    samplemeasurement = False
+
+    button=Pin(feetbuttonpin,Pin.IN,Pin.PULL_DOWN)
+    samplemeasurement = True
     display = displaydistance()
 
     try:
@@ -152,20 +162,20 @@ def main():
         dist = distancestringtools()
         
         for x in range(1000):
-            samplemeasurement = not button.value()
+            samplemeasurement = button.value()
 
             if(distancesample%15 == 0):
-                distance = getdistancemeasure(trig, echo)
+                distance = getdistancemeasure()
                 dist.set(distance)
 
             if samplemeasurement:
-                #print("Distance ({0} centimeters) in METERS ({1})) & CENTIMETERS ({2})".format(distance,dist.meters,dist.centimeters))
+                #print("Distance ({0} millimeters) in METERS ({1})) & CENTIMETERS ({2})".format(distance,dist.meters,dist.centimeters))
                 
                 for w in range(wait):
                     display.printnumber(dist.meters)
                     display.printfloat(dist.centimeters)
             else:
-                #print("Distance ({0} centimeters) in FEET ({1})) & INCHES ({2})".format(distance,dist.feet,dist.inches))
+                #print("Distance ({0} millimeters) in FEET ({1})) & INCHES ({2})".format(distance,dist.feet,dist.inches))
 
                 for w in range(wait):
                     display.printnumber(dist.feet)
