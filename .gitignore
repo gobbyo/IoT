@@ -1,6 +1,7 @@
 # Secrets
 .env
 secrets.py
+.vscode
 
 # Compiler outputs #
 *.a
