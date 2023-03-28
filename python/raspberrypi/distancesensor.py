@@ -28,7 +28,7 @@ def main():
                 m_per_sec = speedofsound * ((receive - send) * nano)
                 m_per_sec /= 2 # there and back again
                 distance = (m_per_sec * 10) - inset
-                print("{:0f} centimeters".format(distance))
+                print("{:.1f} centimeters".format(distance))
                 time.sleep(1)
 
     except KeyboardInterrupt:
