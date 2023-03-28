@@ -2,13 +2,16 @@ from machine import Pin
 import time
 
 wait = const(10)
+multiplex = .004
 millimeters = const(0.001)
-ultrasoundlimit = const(4572) #3millimeters
+ultrasoundlimit = const(4572) #millimeters
 segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67]
-speedofsound = const(343) # centimeters
+speedofsound = const(343) # meters per second
+
 triggerpin = const(13)
 echopin = const(12)
-feetbuttonpin = const(15)
+conversionbuttonpin = const(15)
+frontdistancebuttonpin = const(14)
 
 class distancestringtools(object):
 
@@ -44,12 +47,13 @@ class distancestringtools(object):
 class displaydistance(object):
 
     def __init__(self):
-        self.twodigits = [16,21]
-        self.twodigitpins = [26,17,18,20,19,22,28,27]
-        #twopinout   = [a, b, c, d, e, f, g, dot]
-        self.fourdigits = [6,9,10,5]
-        self.fourdigitpins = [7,11,3,1,0,8,4,2]
-        #fourpinout   = [a,b,c,d,e,f,g,dot]
+        self.twodigits =        [16,21]
+        self.twodigitpins =     [26,17,18,20,19,22,28,27]
+        #twopinout   =          [a, b, c, d, e, f, g, dot]
+        self.fourdigits =       [6,9,10,5]
+        self.fourdigitpins =    [7,11,3,1,0,8,4,2]
+        #fourpinout   =         [a,b,c,d,e,f,g,dot]
+
         for d in self.fourdigits:
             pin = Pin(d, Pin.OUT)
             pin.high()
@@ -81,7 +85,7 @@ class displaydistance(object):
                 pin.low()
             i += 1
         
-        time.sleep(.002)
+        time.sleep(multiplex)
 
         digitpin.high()
 
@@ -153,41 +157,36 @@ def getdistancemeasure():
 
 def main():   
 
-    button=Pin(feetbuttonpin,Pin.IN,Pin.PULL_DOWN)
-    samplemeasurement = True
+    frontdistancebutton=Pin(frontdistancebuttonpin,Pin.IN,Pin.PULL_DOWN)
+    conversionbutton=Pin(conversionbuttonpin,Pin.IN,Pin.PULL_DOWN)
     display = displaydistance()
 
     try:
-        distancesample = 0
-        dist = distancestringtools()
-        
-        for x in range(1000):
-            samplemeasurement = button.value()
+        d = 0
+        distance = distancestringtools()
 
-            if(distancesample%15 == 0):
-                distance = getdistancemeasure()
-                dist.set(distance)
+        while True:
+            if frontdistancebutton.value():
+                d = getdistancemeasure()
 
-            if samplemeasurement:
-                #print("Distance ({0} millimeters) in METERS ({1})) & CENTIMETERS ({2})".format(distance,dist.meters,dist.centimeters))
-                
+            distance.set(d)
+
+            if conversionbutton.value():              
                 for w in range(wait):
-                    display.printnumber(dist.meters)
-                    display.printfloat(dist.centimeters)
+                    display.printnumber(distance.meters)
+                    display.printfloat(distance.centimeters)
             else:
-                #print("Distance ({0} millimeters) in FEET ({1})) & INCHES ({2})".format(distance,dist.feet,dist.inches))
+               for w in range(wait):
+                    display.printnumber(distance.feet)
+                    display.printfloat(distance.inches)
 
-                for w in range(wait):
-                    display.printnumber(dist.feet)
-                    display.printfloat(dist.inches)
-            
-            distancesample += 1
-        
+            if frontdistancebutton.value():
+                if conversionbutton.value():
+                    break
     finally:
-        button.low()
-        trig.low()
+        conversionbutton.low()
+        frontdistancebutton.low()
         display.__del__()
-        #print("Finished")
 
 if __name__ == '__main__':
 	main()
