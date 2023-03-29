@@ -1,7 +1,7 @@
 from machine import Pin
 import time
 
-#   4 digit 7 segmented LED
+#   2 digit 7 segmented LED
 #
 #       digit 1        digit 2        
 #        _a_            _a_   
@@ -28,7 +28,7 @@ pins = [26,17,18,20,19,22,28,27]
 #pins= [a,b,c,d,e,f,g,dot]
 segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67]
 
-def temppaintnumber(val, digit, twodigitpins):
+def painttwodigit(val, digit, twodigitpins):
     digitpin = Pin(digit, Pin.OUT)
     digitpin.low()
 
@@ -76,8 +76,7 @@ def printfloat(f):
                     if decimal:
                         val |= 0x01 << 7
                         decimal = False
-                    #paintnumber(val, digits[d])
-                    temppaintnumber(val,digits[d],pins)
+                    painttwodigit(val,digits[d],pins)
                     d -= 1
                 else:
                     decimal = True
