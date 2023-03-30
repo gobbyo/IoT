@@ -1,8 +1,8 @@
 from machine import Pin
 import time
 
-wait = const(10)
-multiplex = .004
+wait = const(30)
+multiplex = .2
 millimeters = const(0.001)
 ultrasoundlimit = const(4572) #millimeters
 segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67]
@@ -12,6 +12,13 @@ triggerpin = const(13)
 echopin = const(12)
 conversionbuttonpin = const(15)
 frontdistancebuttonpin = const(14)
+
+latchpin2digit = const(26) #RCLK
+clockpin2digit = const(27) #SRCLK
+datapin2digit = const(28) #SER
+latchpin4digit = const(7) #RCLK
+clockpin4digit = const(6) #SRCLK
+datapin4digit = const(8) #SER
 
 class distancestringtools(object):
 
@@ -48,64 +55,117 @@ class displaydistance(object):
 
     def __init__(self):
         self.twodigits =        [16,21]
-        self.twodigitpins =     [26,17,18,20,19,22,28,27]
-        #twopinout   =          [a, b, c, d, e, f, g, dot]
         self.fourdigits =       [3,2,1,0]
-        self.fourdigitpins =    [7,11,3,1,0,8,4,2]
-        #fourpinout   =         [a,b,c,d,e,f,g,dot]
-
-        for d in self.fourdigits:
-            pin = Pin(d, Pin.OUT)
-            pin.high()
+        self.twodata = Pin(datapin2digit, Pin.OUT)
+        self.twoclock = Pin(clockpin2digit, Pin.OUT)
+        self.twolatch = Pin(latchpin2digit, Pin.OUT)
+        self.fourdata = Pin(datapin4digit, Pin.OUT)
+        self.fourclock = Pin(clockpin4digit, Pin.OUT)
+        self.fourlatch = Pin(latchpin4digit, Pin.OUT)
         
     def __del__(self):
+        self.clear2display()
+        self.clear4display()
         for d in self.twodigits:
             pin = Pin(d, Pin.OUT)
             pin.low()
         for d in self.fourdigits:
             pin = Pin(d, Pin.OUT)
             pin.low()
-        for n in self.twodigitpins:
-            pin = Pin(n, Pin.OUT)
-            pin.low()
-        for n in self.fourdigitpins:
-            pin = Pin(n, Pin.OUT)
-            pin.low()
+    
+    def clear2display(self):
+        data2d = Pin(datapin2digit, Pin.OUT)
+        clock2d = Pin(clockpin2digit, Pin.OUT)
+        latch2d = Pin(latchpin2digit, Pin.OUT)    
 
-    def paintnumber(self, val, digit, pins):
+        clock2d.low()
+        latch2d.low()
+        clock2d.high()
+        
+        for i in range(7, -1, -1):
+            clock2d.low()
+            data2d.low()
+            clock2d.high()
+        
+        clock2d.low()
+        latch2d.high()
+        clock2d.high()
+    
+    def clear4display(self):
+        data4d = Pin(datapin4digit, Pin.OUT)
+        clock4d = Pin(clockpin4digit, Pin.OUT)
+        latch4d = Pin(latchpin4digit, Pin.OUT)
+
+        clock4d.low()
+        latch4d.low()
+        clock4d.high()
+        
+        for i in range(7, -1, -1):
+            clock4d.low()
+            data4d.low()
+            clock4d.high()
+
+        clock4d.low()
+        latch4d.high()
+        clock4d.high()
+
+    def getArray(self, val):
+        #   [a,b,c,d,e,f,g,h]
+        a = [0,0,0,0,0,0,0,0]
+        i = 0
+        for s in a:
+            a[i] = (val & (0x01 << i)) >> i
+            i += 1
+        print(a)
+        return a
+
+    def paintdigit(self, val, digit, data, clock, latch):
         digitpin = Pin(digit, Pin.OUT)
         digitpin.low()
 
-        i = 0
-        for p in pins:
-            pin = Pin(p, Pin.OUT)
-            if ((val & (0x01 << i)) >> i) == 1:
-                pin.high()
-            else:
-                pin.low()
-            i += 1
+        #latch down, send data to register
+        clock.low()
+        latch.low()
+        clock.high()
         
+        input = self.getArray(val)
+
+        #load data in register
+        for i in range(7, -1, -1):
+            clock.low()
+            if input[i] == 1:
+                data.high()
+            else:
+                data.low()
+            clock.high()
+
+        #latch up, store data in register
+        clock.low()
+        latch.high()
+        clock.high()
+
         time.sleep(multiplex)
 
         digitpin.high()
 
     def printnumber(self, n):
-        for d in self.twodigits:
-            pin = Pin(d, Pin.OUT)
-            pin.high()
-
         num = "{0}".format(n)
         i = len(num)-1
         d = 1
 
         while i >= 0 & d >= 0:
             val = segnum[int(num[i])]
-            self.paintnumber(val, self.twodigits[d], self.twodigitpins)
+            print(val)
+            self.paintdigit(val,self.twodigits[d],self.twolatch,self.twoclock,self.twodata)
             i -= 1
-            d -= 1
+        d -= 1
 
     def printfloat(self, f):
         if f < 100:
+            for d in self.fourdigits:
+                pin = Pin(d, Pin.OUT)
+                pin.high()
+        
             num = "{:.2f}".format(f)
 
             i = len(num)-1
@@ -117,7 +177,8 @@ class displaydistance(object):
                     if decimal:
                         val |= 0x01 << 7
                         decimal = False
-                    self.paintnumber(val, self.fourdigits[d], self.fourdigitpins)
+                    self.paintdigit(val, self.fourdigits[d], self.fourlatch, self.fourclock, self.fourdata)
+                    self.clear4display()
                     d -= 1
                 else:
                     decimal = True
@@ -160,6 +221,8 @@ def main():
     frontdistancebutton=Pin(frontdistancebuttonpin,Pin.IN,Pin.PULL_DOWN)
     conversionbutton=Pin(conversionbuttonpin,Pin.IN,Pin.PULL_DOWN)
     display = displaydistance()
+    display.clear2display()
+    display.clear4display()
 
     try:
         d = 0

@@ -1,13 +1,13 @@
 from machine import Pin
 import time
 
-#   2 digit 7 segmented LED
+#   4 digit 7 segmented LED
 #
-#       digit 1        digit 2        
-#        _a_            _a_   
-#     f |_g_| b      f |_g_| b
-#     e |___| c _h   e |___| c _h
-#         d              d       
+#       digit 1        digit 2        digit 3        digit 4
+#        _a_            _a_            _a_            _a_
+#     f |_g_| b      f |_g_| b      f |_g_| b      f |_g_| b
+#     e |___| c _h   e |___| c _h   e |___| c _h   e |___| c _h
+#         d              d              d              d
 #
 # num   hgfe dcba   hex
 #
@@ -22,22 +22,23 @@ import time
 # 8 =   0111 1111   0x7F
 # 9 =   0110 0111   0x67
 
-wait = 50
-digits = [16,21]
+wait = 30
+digits = [3,2,1,0]
 segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67]
-latchpin = const(26) #RCLK
-clockpin = const(27) #SRCLK
-datapin = const(28) #SER
+latchpin = const(7) #RCLK
+clockpin = const(6) #SRCLK
+datapin = const(8) #SER
 
 def getArray(val):
     a = [0,0,0,0,0,0,0,0]
-    i = 7
-    while i >= 0:
+    i = 0
+    for s in a:
         a[i] = (val & (0x01 << i)) >> i
-        i -= 1
+        i += 1
+    print(a)
     return a
 
-def clear2display():
+def clear4display():
     data = Pin(datapin, Pin.OUT)
     clock = Pin(clockpin, Pin.OUT)
     latch = Pin(latchpin, Pin.OUT)
@@ -55,7 +56,7 @@ def clear2display():
     latch.high()
     clock.high()
 
-def painttwodigit(val, digit):
+def pintfourdigit(val, digit):
     data = Pin(datapin, Pin.OUT)
     clock = Pin(clockpin, Pin.OUT)
     latch = Pin(latchpin, Pin.OUT)
@@ -87,29 +88,29 @@ def painttwodigit(val, digit):
     time.sleep(.004)
 
     digitpin.high()
-    clear2display()
+    clear4display()
 
 def printnum(num):
-    if int(num) < 100:
+    if int(num) < 9999:
         for w in range(wait):
             i = len(num)-1
-            d = 1
+            d = 3
             while i >= 0 & d >= 0:
                 if(num[i].isdigit()):
                     val = segnum[int(num[i])]
-                    painttwodigit(val,digits[d])
+                    pintfourdigit(val,digits[d])
                     d -= 1
                 i -= 1
     
 def main():
     try:
         while True:
-            i = 0
-            while i < 100:
+            i = 1000
+            while i < 9999:
                 printnum("{0}".format(i))
                 i += 1
     finally:
-        clear2display()
+        clear4display()
         for d in digits:
             pin = Pin(d, Pin.OUT)
             pin.high()
