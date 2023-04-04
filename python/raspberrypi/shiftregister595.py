@@ -63,9 +63,10 @@ def main():
     print("Press Ctrl-C to quit'")
 
     try:
-        for s in segnum:
-            shift_update(getArray(s),data,clock,latch)
-            time.sleep(.2)
+        while True:
+            for s in segnum:
+                shift_update(getArray(s),data,clock,latch)
+                time.sleep(.25)
 
     except KeyboardInterrupt:
         print("Program shut down by user")
