@@ -60,7 +60,7 @@ def main():
     GPIO.setup(clock, GPIO.OUT)
     GPIO.setup(data, GPIO.OUT)
 
-    print("Press Ctrl-C to quit'")
+    print("Press Ctrl-C to quit")
 
     try:
         while True:
