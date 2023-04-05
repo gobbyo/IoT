@@ -66,7 +66,7 @@ def main():
         while True:
             for s in segnum:
                 shift_update(getArray(s),data,clock,latch)
-                time.sleep(.25)
+                time.sleep(.5)
 
     except KeyboardInterrupt:
         print("Program shut down by user")
