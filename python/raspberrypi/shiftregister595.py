@@ -46,7 +46,7 @@ def getArray(val):
     for s in a:
         a[i] = (val & (0x01 << i)) >> i
         i += 1
-    print(a)
+    #print(a)
     return a
 
 def main():
