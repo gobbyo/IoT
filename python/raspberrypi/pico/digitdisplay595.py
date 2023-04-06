@@ -22,8 +22,11 @@ import time
 # 8 =   0111 1111   0x7F
 # 9 =   0110 0111   0x67
 
-wait = 30
-digits = [3,2,1,0]
+waitreps = 500
+waitonpaint = 0.004
+# The variable below can be any number of digits for a 7 segment display. 
+# For example, a 2 digit 7 segment display is digitpins=[1,0], four digit 7 segment display is digitpins=[3,2,1,0], etc.
+digitpins = [3,2,1,0]
 segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67]
 latchpin = const(7) #RCLK
 clockpin = const(6) #SRCLK
@@ -35,40 +38,14 @@ def getArray(val):
     for s in a:
         a[i] = (val & (0x01 << i)) >> i
         i += 1
-    print(a)
     return a
 
-def clear4display():
-    data = Pin(datapin, Pin.OUT)
-    clock = Pin(clockpin, Pin.OUT)
-    latch = Pin(latchpin, Pin.OUT)
-
+def setregister(val,latch,clock,data):
+    #open latch for data
     clock.low()
     latch.low()
     clock.high()
-    
-    for i in range(7, -1, -1):
-        clock.low()
-        data.low()
-        clock.high()
-    
-    clock.low()
-    latch.high()
-    clock.high()
 
-def pintfourdigit(val, digit):
-    data = Pin(datapin, Pin.OUT)
-    clock = Pin(clockpin, Pin.OUT)
-    latch = Pin(latchpin, Pin.OUT)
-
-    digitpin = Pin(digit, Pin.OUT)
-    digitpin.low()
-
-    #latch down, send data to register
-    clock.low()
-    latch.low()
-    clock.high()
-    
     input = getArray(val)
 
     #load data in register
@@ -80,40 +57,54 @@ def pintfourdigit(val, digit):
             data.low()
         clock.high()
 
-    #latch up, store data in register
+    #close latch for data
     clock.low()
     latch.high()
     clock.high()
 
-    time.sleep(.004)
+def paintdigit(val,digit,latch,clock,data):
+    digit.low()
+    #display the value
+    setregister(val,latch,clock,data)
+    #wait to see it
+    time.sleep(waitonpaint)
+    #clear the display
+    setregister(0,latch,clock,data)
+    digit.high()
 
-    digitpin.high()
-    clear4display()
-
-def printnum(num):
-    if int(num) < 9999:
-        for w in range(wait):
-            i = len(num)-1
-            d = 3
-            while i >= 0 & d >= 0:
-                if(num[i].isdigit()):
-                    val = segnum[int(num[i])]
-                    pintfourdigit(val,digits[d])
-                    d -= 1
-                i -= 1
+def printnum(num,digits,latch,clock,data):
+    reps = waitreps/(len(digits)*waitonpaint*1000)
+    for w in range(reps):
+        d = len(digits)-1
+        i = len(num)-1
+        while i >= 0 & d >= 0:
+            if(num[i].isdigit()):
+                val = segnum[int(num[i])]
+                paintdigit(val,digits[d],latch,clock,data)
+                d -= 1
+            i -= 1
     
 def main():
+    latch = Pin(latchpin, Pin.OUT)
+    clock = Pin(clockpin, Pin.OUT)
+    data = Pin(datapin, Pin.OUT)
+    digits = []
+    i = 0
+    while i < len(digitpins):
+        digits.append(Pin(digitpins[i], Pin.OUT))
+        digits[i].high()
+        i += 1
+
     try:
         while True:
-            i = 1000
+            i = 0
             while i < 9999:
-                printnum("{0}".format(i))
+                printnum("{0}".format(i),digits,latch,clock,data)
                 i += 1
     finally:
-        clear4display()
         for d in digits:
-            pin = Pin(d, Pin.OUT)
-            pin.high()
+            setregister(0,latch,clock,data)
+            d.low()
 
 if __name__ == '__main__':
 	main()

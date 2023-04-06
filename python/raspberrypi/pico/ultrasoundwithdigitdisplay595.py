@@ -1,10 +1,10 @@
 from machine import Pin
 import time
 
-wait = const(20)
-multiplex = .02
+waitreps = const(20)
+waitonpaint = 0.004
 millimeters = const(0.001)
-ultrasoundlimit = const(4572) #millimeters
+ultrasoundlimit = const(4572) #set to 15 feet (in millimeters) based on the spec sheet.
 segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67]
 speedofsound = const(343) # meters per second
 
@@ -81,29 +81,12 @@ class displaydistance(object):
             i += 1
         return a
 
-    def cleardisplay(self, data, clock, latch):
+    def setregister(self,val,latch,clock,data):
+        #open latch for data
         clock.low()
         latch.low()
         clock.high()
-        
-        for i in range(7, -1, -1):
-            clock.low()
-            data.low()
-            clock.high()
-        
-        clock.low()
-        latch.high()
-        clock.high()
 
-    def paintdigit(self, val, digit, data, clock, latch):
-        digitpin = Pin(digit, Pin.OUT)
-        digitpin.low()
-
-        #latch down, send data to register
-        clock.low()
-        latch.low()
-        clock.high()
-        
         input = self.getArray(val)
 
         #load data in register
@@ -115,15 +98,20 @@ class displaydistance(object):
                 data.low()
             clock.high()
 
-        #latch up, store data in register
+        #close latch for data
         clock.low()
         latch.high()
         clock.high()
 
-        time.sleep(.003)
-
-        digitpin.high()
-        self.cleardisplay(data, clock, latch)
+    def paintdigit(self,val,digit,latch,clock,data):
+        digit.low()
+        #display the value
+        self.setregister(val,latch,clock,data)
+        #waitreps to see it
+        time.sleep(waitonpaint)
+        #clear the display
+        self.setregister(0,latch,clock,data)
+        digit.high()
 
     def printnumber(self, n):
         for d in self.twodigit:
@@ -211,11 +199,11 @@ def main():
             distance.set(d)
 
             if conversionbutton.value():              
-                for w in range(wait):
+                for w in range(waitreps):
                     display.printnumber(distance.meters)
                     display.printfloat(distance.centimeters)
             else:
-               for w in range(wait):
+               for w in range(waitreps):
                     display.printnumber(distance.feet)
                     display.printfloat(distance.inches)
 
