@@ -41,12 +41,14 @@ def getArray(val):
     return a
 
 def setregister(val,latch,clock,data):
+    input = [0,0,0,0,0,0,0,0]
     #open latch for data
     clock.low()
     latch.low()
     clock.high()
 
-    input = getArray(val)
+    if (val > 0) & (val < 10):
+        input = getArray(val)
 
     #load data in register
     for i in range(7, -1, -1):
