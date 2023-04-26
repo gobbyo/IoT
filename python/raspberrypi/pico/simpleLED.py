@@ -2,8 +2,10 @@ from machine import Pin
 from time import sleep
 
 def main():
-    #pico = pin 25, picow = "LED"
-    pin=Pin("LED",Pin.OUT)
+    #pico:
+    pin=Pin(25, Pin.OUT)
+    #picow:
+    #pin=Pin("LED", Pin.OUT)
 
     print("starting program")
     for i in range(6):

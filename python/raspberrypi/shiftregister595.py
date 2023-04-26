@@ -51,9 +51,9 @@ def getArray(val):
 
 def main():
     segnum = [0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67,0]
-    latch = 38 #RCLK
-    clock = 36 #SRCLK
-    data = 40 #SER
+    latch = 7 #RCLK
+    clock = 6 #SRCLK
+    data = 8 #SER
 
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(latch, GPIO.OUT)

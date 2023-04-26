@@ -8,10 +8,13 @@ ultrasoundlimit = const(4572) #set to 15 feet (in millimeters) based on the spec
 segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67]
 speedofsound = const(343) # meters per second
 
-triggerpin = const(13)
+triggerpin = const(11)
 echopin = const(12)
 conversionbuttonpin = const(15)
 frontdistancebuttonpin = const(14)
+
+twodigitpins = [21,16]
+fourdigitpins = [3,2,1,0]
 
 fourlatchpin = const(7) #RCLK
 fourclockpin = const(6) #SRCLK
@@ -35,27 +38,32 @@ class distancestringtools(object):
         self.inches = 0
     
     def set(self, milli):
-        self.totalmillimeters = milli
-        s = "{0}".format(milli / 1000)
-        n = s.split('.')
-        self.s_meters = "{0}".format(n[0])
-        self.meters = int(n[0])
-        self.centimeters = (milli - (self.meters * 1000)) / 10
-        self.s_centimeters = "{0}".format(self.centimeters)
+        if milli > 0:
+            self.totalmillimeters = milli
+            s = "{0}".format(milli / 1000)
+            n = s.split('.')
+            self.s_meters = "{0}".format(n[0])
+            self.meters = int(n[0])
+            self.centimeters = (milli - (self.meters * 1000)) / 10
+            self.s_centimeters = "{0}".format(self.centimeters)
 
-        totalinches = float(milli) * self.millitoinch
-        s = "{0}".format(totalinches / 12.0)
-        n = s.split('.')
-        self.s_feet = "{0}".format(n[0])
-        self.feet = int(n[0])
-        self.inches = float(totalinches - (float(self.feet) * 12.0))
-        self.s_inches = "{0}".format(self.inches)
+            totalinches = float(milli) * self.millitoinch
+            s = "{0}".format(totalinches / 12.0)
+            n = s.split('.')
+            self.s_feet = "{0}".format(n[0])
+            self.feet = int(n[0])
+            self.inches = float(totalinches - (float(self.feet) * 12.0))
+            self.s_inches = "{0}".format(self.inches)
         
 class displaydistance(object):
 
     def __init__(self):
-        self.twodigit =        [16,21]
-        self.fourdigit =       [3,2,1,0]
+        self.twodigits = []
+        for d in twodigitpins:
+            self.twodigits.append(Pin(d, Pin.OUT))
+        self.fourdigits = []
+        for f in fourdigitpins:
+            self.fourdigits.append(Pin(f, Pin.OUT))
         self.twodata = Pin(twodatapin, Pin.OUT)
         self.twoclock = Pin(twoclockpin, Pin.OUT)
         self.twolatch = Pin(twolatchpin, Pin.OUT)
@@ -64,14 +72,10 @@ class displaydistance(object):
         self.fourlatch = Pin(fourlatchpin, Pin.OUT)
         
     def __del__(self):
-        self.cleardisplay(self.twodata,self.twoclock,self.twolatch)
-        self.cleardisplay(self.fourdata,self.fourclock,self.fourlatch)
-        for d in self.twodigit:
-            pin = Pin(d, Pin.OUT)
-            pin.low()
-        for d in self.fourdigit:
-            pin = Pin(d, Pin.OUT)
-            pin.low()
+        for t in self.twodigits:
+            t.low()
+        for f in self.fourdigits:
+            f.low()
 
     def getArray(self, val):
         a = [0,0,0,0,0,0,0,0]
@@ -88,8 +92,7 @@ class displaydistance(object):
         latch.low()
         clock.high()
 
-        if (val > 0) & (val < 10):
-            input = self.getArray(val)
+        input = self.getArray(val)
 
         #load data in register
         for i in range(7, -1, -1):
@@ -116,24 +119,22 @@ class displaydistance(object):
         digit.high()
 
     def printnumber(self, n):
-        for d in self.twodigit:
+        twodigit = []
+        for d in twodigitpins:
             pin = Pin(d, Pin.OUT)
             pin.high()
-
+            twodigit.append(pin)
         num = "{0}".format(n)
         i = len(num)-1
         d = 1
 
         while i >= 0:
             val = segnum[int(num[i])]
-            self.paintdigit(val,self.twodigit[d],self.twodata,self.twoclock,self.twolatch)
+            self.paintdigit(val,self.twodigits[d],self.twodata,self.twoclock,self.twolatch)
             i -= 1
             d -= 1
 
     def printfloat(self, f):
-        for d in self.fourdigit:
-            pin = Pin(d, Pin.OUT)
-            pin.high()
         if f < 100: 
             num = "{:.2f}".format(f)
 
@@ -146,13 +147,15 @@ class displaydistance(object):
                     if decimal:
                         val |= 0x01 << 7
                         decimal = False
-                    self.paintdigit(val,self.fourdigit[d],self.fourdata,self.fourclock,self.fourlatch)
+                    self.paintdigit(val,self.fourdigits[d],self.fourdata,self.fourclock,self.fourlatch)
                     d -= 1
                 else:
                     decimal = True
                 i -= 1
 
 def getdistancemeasure():
+    print("getdistancemeasure")
+
     trig = Pin(triggerpin,Pin.OUT)
     echo = Pin(echopin,Pin.IN,Pin.PULL_DOWN)
 
@@ -160,25 +163,37 @@ def getdistancemeasure():
     send = 0
 
     trig.low()
-    time.sleep_us(2)
+    time.sleep(.002)
     trig.high()
-    time.sleep_us(5)
+    time.sleep(.002)
     trig.low()
     
+    i = 0
     while echo.value() == 0:
-        pass
-    send = time.ticks_us()
+        send = time.ticks_us()
+        if i > 1000:
+            break
+        i += 1
 
+    i = 0
     while echo.value() == 1:
-        pass
-    receive = time.ticks_us()
+        receive = time.ticks_us()
+        if i > 1000:
+            receive = send
+            break
+        i += 1
 
     timepassed = receive - send
 
-    distanceinmillimeters = round((timepassed * speedofsound * millimeters) / 2)
+    distanceinmillimeters = 0
 
-    if distanceinmillimeters > ultrasoundlimit:
+    if timepassed > 0:
+        distanceinmillimeters = round((timepassed * speedofsound * millimeters) / 2)
+    
+    if (distanceinmillimeters > ultrasoundlimit):
         distanceinmillimeters = 0
+    
+    print("distanceinmillimeters = {0}".format(distanceinmillimeters))
     
     trig.low()
 
@@ -196,22 +211,22 @@ def main():
 
         while True:
             if frontdistancebutton.value():
+                print("frontdistancebutton pushed")
                 d = getdistancemeasure()
 
             distance.set(d)
 
-            if conversionbutton.value():              
+            if conversionbutton.value():   
+                print("meters")           
                 for w in range(waitreps):
                     display.printnumber(distance.meters)
                     display.printfloat(distance.centimeters)
             else:
+               print("feet") 
                for w in range(waitreps):
                     display.printnumber(distance.feet)
                     display.printfloat(distance.inches)
 
-            if frontdistancebutton.value():
-                if conversionbutton.value():
-                    break
     finally:
         conversionbutton.low()
         frontdistancebutton.low()

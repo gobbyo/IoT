@@ -93,10 +93,10 @@ def printnum(num,digits,latch,clock,data):
                 i -= 1
     
 def main():
-    digits = [16,21]
-    latch = 38 #RCLK
-    clock = 40 #SRCLK
-    data = 36 #SER
+    digits = [21,16]
+    latch = 26 #RCLK
+    clock = 27 #SRCLK
+    data = 28 #SER
 
     try:
         GPIO.setmode(GPIO.BOARD)

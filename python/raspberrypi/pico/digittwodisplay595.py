@@ -22,15 +22,15 @@ import time
 # 8 =   0111 1111   0x7F
 # 9 =   0110 0111   0x67
 
-waitreps = 500
-waitonpaint = 0.004
+waitreps = 400
+waitonpaint = 0.001
 # The variable below can be any number of digits for a 7 segment display. 
 # For example, a 2 digit 7 segment display is digitpins=[1,0], four digit 7 segment display is digitpins=[3,2,1,0], etc.
-digitpins = [3,2,1,0]
+digitpins = [21,16]
 segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67]
-latchpin = const(7) #RCLK
-clockpin = const(6) #SRCLK
-datapin = const(8) #SER
+latchpin = const(26) #RCLK
+clockpin = const(27) #SRCLK
+datapin = const(28) #SER
 
 def getArray(val):
     a = [0,0,0,0,0,0,0,0]
@@ -47,8 +47,7 @@ def setregister(val,latch,clock,data):
     latch.low()
     clock.high()
 
-    if (val > 0) & (val < 10):
-        input = getArray(val)
+    input = getArray(val)
 
     #load data in register
     for i in range(7, -1, -1):
@@ -98,11 +97,10 @@ def main():
         i += 1
 
     try:
-        while True:
-            i = 0
-            while i < 9999:
-                printnum("{0}".format(i),digits,latch,clock,data)
-                i += 1
+        i = 1
+        while i <= 20:
+            printnum("{0}".format(i),digits,latch,clock,data)
+            i += 1
     finally:
         for d in digits:
             setregister(0,latch,clock,data)
