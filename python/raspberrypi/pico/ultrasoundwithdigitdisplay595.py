@@ -55,29 +55,37 @@ class distancestringtools(object):
             self.inches = float(totalinches - (float(self.feet) * 12.0))
             self.s_inches = "{0}".format(self.inches)
         
-class displaydistance(object):
-
+class segdisplays:
     def __init__(self):
         self.twodigits = []
         for d in twodigitpins:
-            self.twodigits.append(Pin(d, Pin.OUT))
-        self.fourdigits = []
-        for f in fourdigitpins:
-            self.fourdigits.append(Pin(f, Pin.OUT))
-        self.twodata = Pin(twodatapin, Pin.OUT)
-        self.twoclock = Pin(twoclockpin, Pin.OUT)
-        self.twolatch = Pin(twolatchpin, Pin.OUT)
-        self.fourdata = Pin(fourdatapin, Pin.OUT)
-        self.fourclock = Pin(fourclockpin, Pin.OUT)
-        self.fourlatch = Pin(fourlatchpin, Pin.OUT)
+            pin = Pin(d, Pin.OUT)
+            pin.high()
+            self.twodigits.append(pin)
+        self. fourdigits = []
+
+        for d in fourdigitpins:
+            pin = Pin(d, Pin.OUT)
+            pin.high()
+            self.fourdigits.append(pin)
         
+        self.fourlatch = Pin(fourlatchpin, Pin.OUT)
+        self.fourclock = Pin(fourclockpin, Pin.OUT)
+        self.fourdata = Pin(fourdatapin, Pin.OUT)
+            
+        self.twolatch = Pin(twolatchpin, Pin.OUT)
+        self.twoclock = Pin(twoclockpin, Pin.OUT)
+        self.twodata = Pin(twodatapin, Pin.OUT)
+    
     def __del__(self):
         for t in self.twodigits:
+            self.setregister(0,self.twolatch,self.twoclock,self.twodata)
             t.low()
         for f in self.fourdigits:
+            self.setregister(0,self.fourlatch,self.fourclock,self.fourdata)
             f.low()
 
-    def getArray(self, val):
+    def getArray(self,val):
         a = [0,0,0,0,0,0,0,0]
         i = 0
         for s in a:
@@ -112,32 +120,27 @@ class displaydistance(object):
         digit.low()
         #display the value
         self.setregister(val,latch,clock,data)
-        #waitreps to see it
+        #wait to see it
         time.sleep(waitonpaint)
         #clear the display
         self.setregister(0,latch,clock,data)
         digit.high()
 
-    def printnumber(self, n):
-        twodigit = []
-        for d in twodigitpins:
-            pin = Pin(d, Pin.OUT)
-            pin.high()
-            twodigit.append(pin)
-        num = "{0}".format(n)
-        i = len(num)-1
-        d = 1
+    def printnumber(self,d):
+        if d < 99:
+            num = "{0}".format(d)
+            d = len(self.twodigits)-1
+            i = len(num)-1
+            while i >= 0 & d >= 0:
+                if(num[i].isdigit()):
+                    val = segnum[int(num[i])]
+                    self.paintdigit(val,self.twodigits[d],self.twolatch,self.twoclock,self.twodata)
+                    d -= 1
+                i -= 1
 
-        while i >= 0:
-            val = segnum[int(num[i])]
-            self.paintdigit(val,self.twodigits[d],self.twodata,self.twoclock,self.twolatch)
-            i -= 1
-            d -= 1
-
-    def printfloat(self, f):
+    def printfloat(self,f):
         if f < 100: 
             num = "{:.2f}".format(f)
-
             i = len(num)-1
             decimal = False
             d = 3
@@ -147,7 +150,7 @@ class displaydistance(object):
                     if decimal:
                         val |= 0x01 << 7
                         decimal = False
-                    self.paintdigit(val,self.fourdigits[d],self.fourdata,self.fourclock,self.fourlatch)
+                    self.paintdigit(val,self.fourdigits[d],self.fourlatch,self.fourclock,self.fourdata)
                     d -= 1
                 else:
                     decimal = True
@@ -203,7 +206,7 @@ def main():
 
     frontdistancebutton=Pin(frontdistancebuttonpin,Pin.IN,Pin.PULL_DOWN)
     conversionbutton=Pin(conversionbuttonpin,Pin.IN,Pin.PULL_DOWN)
-    display = displaydistance()
+    display = segdisplays()
 
     try:
         d = 0
