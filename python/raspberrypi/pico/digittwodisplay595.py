@@ -26,11 +26,11 @@ waitreps = 400
 waitonpaint = 0.001
 # The variable below can be any number of digits for a 7 segment display. 
 # For example, a 2 digit 7 segment display is digitpins=[1,0], four digit 7 segment display is digitpins=[3,2,1,0], etc.
-digitpins = [21,16]
-segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67]
-latchpin = const(26) #RCLK
 clockpin = const(27) #SRCLK
 datapin = const(28) #SER
+digitpins = [21,16]
+latchpin = const(26) #RCLK
+segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67]
 
 def getArray(val):
     a = [0,0,0,0,0,0,0,0]
