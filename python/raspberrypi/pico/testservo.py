@@ -11,6 +11,9 @@ class sg90:
 
     def __init__(self, pin):
         self.__initialise(pin)
+    
+    def __del__(self):
+        self.move(0)
 
     def update_settings(self, servo_pwm_freq, min_u16_duty, max_u16_duty, min_angle, max_angle, pin):
         self.__servo_pwm_freq = servo_pwm_freq
@@ -42,34 +45,18 @@ class sg90:
 
 def main():
     servo = sg90(22)
+    servo.move(0)
+    time.sleep(1)
+    servo.move(180)
+    time.sleep(1)
+    servo.move(0)
     i = 0
-    while i < 90:
+    while i < 180:
         i += 10
         print("angle = {0}".format(i))
         servo.move(i)
-        time.sleep(.5)
-    
-    i = 90
-    while i > 0:
-        i -= 10
-        print("angle = {0}".format(i))
-        servo.move(i)
-        time.sleep(.5)
+        time.sleep(.1)
 
-    i = 0
-    while i < 180:
-        i += 30        
-        print("angle = {0}".format(i))
-        servo.move(i)
-        time.sleep(.5)
-
-    i = 180
-    while i > 0:
-        i -= 45
-        print("angle = {0}".format(i))
-        servo.move(i)
-        time.sleep(.5)
-
-
+    servo.__del__()
 if __name__ == '__main__':
     main()

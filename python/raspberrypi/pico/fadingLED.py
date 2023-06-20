@@ -2,8 +2,8 @@ from machine import Pin, PWM
 import utime
 
 def LEDindicator():
-    #pico = 25, picow = "0"
-    led = PWM(Pin(25))
+    #pico = 25, picow = 0
+    led = PWM(Pin("LED"))
     led.freq(1000)      # Set the frequency value
     led_value = 0       #LED brightness initial value
     led_speed = 5      # Change brightness in increments of 5
@@ -22,7 +22,12 @@ def LEDindicator():
     led.duty_u16(int(0))
 
 def main():
-    LEDindicator()
+    #LEDindicator()
+    led = Pin(26, Pin.OUT)
+    led.off()
+    led.on()
+    utime.sleep_ms(1000)
+    led.off()
 
 if __name__ == '__main__':
     main()

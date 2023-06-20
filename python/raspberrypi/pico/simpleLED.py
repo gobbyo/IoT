@@ -3,9 +3,9 @@ from time import sleep
 
 def main():
     #pico:
-    pin=Pin(25, Pin.OUT)
+    #pin=Pin(25, Pin.OUT)
     #picow:
-    #pin=Pin("LED", Pin.OUT)
+    pin=Pin("LED", Pin.OUT)
 
     print("starting program")
     for i in range(6):

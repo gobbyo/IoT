@@ -2,18 +2,45 @@ from machine import Pin
 import time
 
 def main():
-    picopin = 25
-    #picopin = "LED"
+    yellowswpin = 15
+    blueswpin = 16
+
     try:
-        button=Pin(15,Pin.IN,Pin.PULL_UP)
-        pin=Pin(picopin,Pin.OUT)
+        yellowbutton=Pin(yellowswpin,Pin.IN,Pin.PULL_DOWN)
+        bluebutton=Pin(blueswpin,Pin.IN,Pin.PULL_DOWN)
+        picopin = Pin(25,Pin.OUT)
+        prevyellowon = False
+        prevyellowoff = False
+        prevblueon = False
+        prevblueoff = False
 
         print("starting program")
         while True:
-            if button.value() == 1:
-                pin.high()
+            if yellowbutton.value() == 1:
+                if prevyellowon != True:
+                    print("Yellow button on")
+                    prevyellowon = True
+                    prevyellowoff = False
+                    picopin.high()
             else:
-                pin.low()
+                if prevyellowoff != True:
+                    print("Yellow button off")
+                    prevyellowoff = True
+                    prevyellowon = False
+                    picopin.low()
+
+            if bluebutton.value() == 1:
+                if prevblueon != True:
+                    print("Blue button on")
+                    prevblueon = True
+                    prevblueoff = False
+                    picopin.high()
+            else:
+                if prevblueoff != True:
+                    print("Blue button off")
+                    prevblueoff = True
+                    prevblueon = False
+                    picopin.low()
             time.sleep(.025)
     except KeyboardInterrupt:
         print("Program shut down by user")
