@@ -17,15 +17,22 @@ def testLEDBar(shiftreg, pausetime):
     shiftreg.setregister()
     
 def main():
-    onboardLED = Pin(25,Pin.OUT)
-    onboardLED.high()
-    time.sleep(2)
-    onboardLED.low()
+    try:
+        onboardLED = Pin(25,Pin.OUT)
+        onboardLED.high()
+        time.sleep(2)
+        onboardLED.low()
 
-    r = shiftregister.shiftregister()
-    r.set_registerSize(10)
-    while True:
-        testLEDBar(r,0.1)
+        r = shiftregister.shiftregister()
+        r.set_registerSize(10)
 
+        while True:
+            testLEDBar(r,0.1)
+            time.sleep(.25)
+    except KeyboardInterrupt:
+        print("stopping program")
+
+    finally:
+        print("Graceful exit")
 if __name__ == '__main__':
     main()

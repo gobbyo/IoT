@@ -3,7 +3,6 @@ import network, rp2, time
 import urequests
 import json
 import time
-import _thread
 import secrets
 import segmentdisplays
 

@@ -11,6 +11,12 @@ class shiftregister():
         self.latch = Pin(latchpin, Pin.OUT)
         self.clock = Pin(clockpin, Pin.OUT)
         self.data = Pin(datapin, Pin.OUT)
+    
+    def __delete__(self):
+        self.register = []
+        self.latch.low()
+        self.clock.low()
+        self.data.low()
 
     def set_pins(self, latch_pin, clock_pin, data_pin):
         self.latch.low()
