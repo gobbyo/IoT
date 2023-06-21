@@ -6,6 +6,19 @@ import time
 import secrets
 import segmentdisplays
 
+# the shift register is connected to the 4 digit, 7 segment display as follows:
+#   Q0 = segment A
+#   Q1 = segment B
+#   Q2 = segment C
+#   Q3 = segment D
+#   Q4 = segment E
+#   Q5 = segment F
+#   Q6 = segment G
+#   Q7 = segment DP
+#   Q8 = digit 1
+#   Q9 = digit 2
+#   Q10 = digit 3
+#   Q11 = digit 4
 def start(segdisp):
     segmentdisplays.showbacknumber(segdisp)
     segmentdisplays.showbackfloat(segdisp)
@@ -13,6 +26,7 @@ def start(segdisp):
     segmentdisplays.showforwardnumber(segdisp)
 
 def wificonnect():
+    print("Connect to WiFi")
     rp2.country('US')
     wlan = network.WLAN(network.STA_IF)
     wlan.active(True)
@@ -34,16 +48,21 @@ def syncclock(rtc):
     rtc.datetime((int(j["year"]), int(j["month"]), int(j["day"]), 0, int(j["hour"]), int(j["minute"]), int(j["seconds"]), 0))
 
 def main(): 
-    rtc = machine.RTC()
-    segdisp = segmentdisplays.segdisplays()
-    start(segdisp)
+    try:
+        rtc = RTC()
+        segdisp = segmentdisplays.segdisplays()
+        start(segdisp)
 
-    wificonnect()
-    syncclock(rtc)
-    
-    while True:
-        segdisp.printclockfloat(rtc.datetime()[5],rtc.datetime()[6])
-        segdisp.printnumber(rtc.datetime()[4])
+        wificonnect()
+        syncclock(rtc)
+        
+        while True:
+            segdisp.printclockfloat(rtc.datetime()[5],rtc.datetime()[6])
+            segdisp.printnumber(rtc.datetime()[4])
+    except KeyboardInterrupt:
+        print("stopping program")
+    finally:
+        print("Graceful exit")
 
 if __name__ == "__main__":
     main()

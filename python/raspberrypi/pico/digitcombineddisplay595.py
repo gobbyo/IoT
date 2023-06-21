@@ -52,10 +52,10 @@ class segdisplays:
             self.fourdigits.append(pin)
     def __del__(self):
         for t in self.twodigits:
-            setregister(0,twolatch,twoclock,twodata)
+            set_register(0,twolatch,twoclock,twodata)
             t.low()
         for f in self.fourdigits:
-            setregister(0,fourlatch,fourclock,fourdata)
+            set_register(0,fourlatch,fourclock,fourdata)
             f.low()
 
     def getArray(self,val):
@@ -66,7 +66,7 @@ class segdisplays:
             i += 1
         return a
 
-    def setregister(self,val,latch,clock,data):
+    def set_register(self,val,latch,clock,data):
         input = [0,0,0,0,0,0,0,0]
         #open latch for data
         clock.low()
@@ -92,11 +92,11 @@ class segdisplays:
     def paintdigit(self,val,digit,latch,clock,data):
         digit.low()
         #display the value
-        self.setregister(val,latch,clock,data)
+        self.set_register(val,latch,clock,data)
         #wait to see it
         time.sleep(waitonpaint)
         #clear the display
-        self.setregister(0,latch,clock,data)
+        self.set_register(0,latch,clock,data)
         digit.high()
 
     def printnum(self,d,digits,latch,clock,data):

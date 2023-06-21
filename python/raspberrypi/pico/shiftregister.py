@@ -1,23 +1,38 @@
 from machine import Pin
 
-#defaults
-latchpin = const(7) #RCLK
-clockpin = const(6) #SRCLK
-datapin = const(8) #SER
+#default pins for your Raspberry Pi Pico/PicoW
+latchPin = 7 #RCLK
+clockPin = 6 #SRCLK
+dataPin = 8 #SER
+
+# The shift register is a 74HC595
+# This shiftregister class helps reduce the number of pins needed by the microcontroller
+# This class also supports daisy chaining shift registers
+# To use this class, you need to connect the shift register to your microcontroller
+# The shift register is connected to the microcontroller as follows:
+#   latchPin = 7 (RCLK pin 12 on 74HC595)
+#   clockPin = 6 (SRCLK pin 11 on 74HC595)
+#   dataPin = 8 (SER pin 14 on 74HC595)
+# First, set the register size
+# Next, set the register property in the class as an array, for example if the size is 8, then the register is [0,0,0,0,0,0,0,0]
+# Then call the set_register() method to set the register
+# To change the register, change the register property then call the set_register() method again
 
 class shiftregister():
     def __init__(self) -> None:
         self.register = []
-        self.latch = Pin(latchpin, Pin.OUT)
-        self.clock = Pin(clockpin, Pin.OUT)
-        self.data = Pin(datapin, Pin.OUT)
+        self.latch = Pin(latchPin, Pin.OUT)
+        self.clock = Pin(clockPin, Pin.OUT)
+        self.data = Pin(dataPin, Pin.OUT)
     
     def __delete__(self):
         self.register = []
+        self.setregister()
         self.latch.low()
         self.clock.low()
         self.data.low()
 
+    #optional class to set the pins on your microcontroller
     def set_pins(self, latch_pin, clock_pin, data_pin):
         self.latch.low()
         self.clock.low()
@@ -33,7 +48,7 @@ class shiftregister():
         for i in range(size):
             self.register.append(0)
 
-    def setregister(self):
+    def set_register(self):
         #open latch for data
         self.clock.low()
         self.latch.low()

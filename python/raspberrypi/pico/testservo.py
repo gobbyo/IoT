@@ -45,18 +45,22 @@ class sg90:
 
 def main():
     servo = sg90(22)
-    servo.move(0)
-    time.sleep(1)
-    servo.move(180)
-    time.sleep(1)
-    servo.move(0)
-    i = 0
-    while i < 180:
-        i += 10
+    i = 90
+    servo.move(i)
+
+    while i > 10:
+        i -= 5
         print("angle = {0}".format(i))
         servo.move(i)
-        time.sleep(.1)
+        time.sleep(.05)
 
-    servo.__del__()
+    time.sleep(4)
+
+    while i < 90:
+        i += 5
+        print("angle = {0}".format(i))
+        servo.move(i)
+        time.sleep(.05)
+
 if __name__ == '__main__':
     main()
