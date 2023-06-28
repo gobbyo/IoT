@@ -34,7 +34,7 @@ def wificonnect():
     # set power mode to get WiFi power-saving off (if needed)
     wlan.config(pm = 0xa11140)
 
-    wlan.connect(secrets.usr, secrets.pwd)
+    wlan.connect(secrets.ssid, secrets.pwd)
 
     while not wlan.isconnected() and wlan.status() >= 0:
         print("connecting...")
@@ -42,10 +42,23 @@ def wificonnect():
 
 def syncclock(rtc):
     print("Sync clock")
-    externalIPaddress = urequests.get('https://api.ipify.org').text
-    r = urequests.get("https://www.timeapi.io/api/Time/current/ip?ipAddress={0}".format(externalIPaddress))
+    try:
+        externalIPaddress = urequests.get('https://api.ipify.org').text
+    except:
+        externalIPaddress = "45.115.204.194"
+    finally:
+        print("Obtaining external IP Address: {0}".format(externalIPaddress))
+    
+    timeAPI = "https://www.timeapi.io/api/Time/current/ip?ipAddress={0}".format(externalIPaddress)
+    print(timeAPI)
+    r = urequests.get(timeAPI)
+    universal = json.loads(r.content)
+    timeAPI = "https://www.timeapi.io/api/TimeZone/zone?timeZone={0}".format(universal["timeZone"])
+    print(timeAPI)
+    r = urequests.get(timeAPI)
     j = json.loads(r.content)
-    rtc.datetime((int(j["year"]), int(j["month"]), int(j["day"]), 0, int(j["hour"]), int(j["minute"]), int(j["seconds"]), 0))
+    t = (j["currentLocalTime"].split('T'))[1].split(':')
+    rtc.datetime((int(universal["year"]), int(universal["month"]), int(universal["day"]), 0, int(t[0]), int(t[1]), int(universal["seconds"]), 0))
 
 def main(): 
     try:
@@ -57,8 +70,15 @@ def main():
         syncclock(rtc)
         
         while True:
+            hour = rtc.datetime()[4]
+            #ampm = "AM"
+            if(hour > 12):
+                #ampm = "PM"
+                hour -= 12
             segdisp.printclockfloat(rtc.datetime()[5],rtc.datetime()[6])
-            segdisp.printnumber(rtc.datetime()[4])
+            segdisp.printnumber(hour)
+            #print("{:0d}:{:0>2d} {:0s}".format(hour, rtc.datetime()[5], ampm))
+            #time.sleep(60)
     except KeyboardInterrupt:
         print("stopping program")
     finally:

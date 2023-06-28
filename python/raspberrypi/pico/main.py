@@ -22,13 +22,16 @@ def main():
         while True:
             percentageOfBattery = 0
             batteryVoltage = voltagePerDegree * batteryLowVoltage.read_u16()
+            #print("Battery Voltage: ", batteryVoltage)
             percentageOfBattery = batteryVoltage/batterySizeL
-
+            #print("Percentage of batterySizeL: ", percentageOfBattery)
             if percentageOfBattery*10 < 1:
                 batteryVoltage = voltagePerDegree * batteryHighVoltage.read_u16()
                 percentageOfBattery = batteryVoltage/batterySizeH
+                #print("Percentage of batterySizeH: ", percentageOfBattery)
             
             LEDdisplay = int(percentageOfBattery*LEDMeterRange)
+            #print("LED Display: ", LEDdisplay)
             if LEDdisplay > LEDMeterRange:
                 LEDdisplay = LEDMeterRange
 
