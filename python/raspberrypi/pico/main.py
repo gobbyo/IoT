@@ -1,53 +1,57 @@
-from machine import Pin, ADC
+from machine import Pin, RTC, UART
+import network, rp2, time
+import urequests
+import json
+import time
+import secrets
 
-ADCLowVoltPin = 26 #GP26
-ADCMaxVoltPin = 27 #GP27
-PicoMaxADCVoltage = 3.3
-ADC16BitRange = 65536
-LEDMeterRange = 10
+def syncclock(rtc):
+    print("Sync clock")
+    try:
+        externalIPaddress = urequests.get('https://api.ipify.org').text
+    except:
+        externalIPaddress = "45.115.204.194"
+    finally:
+        print("Obtaining external IP Address: {0}".format(externalIPaddress))
+    
+    timeAPI = "https://www.timeapi.io/api/Time/current/ip?ipAddress={0}".format(externalIPaddress)
+    print(timeAPI)
+    r = urequests.get(timeAPI)
+    universal = json.loads(r.content)
+    timeAPI = "https://www.timeapi.io/api/TimeZone/zone?timeZone={0}".format(universal["timeZone"])
+    print(timeAPI)
+    r = urequests.get(timeAPI)
+    j = json.loads(r.content)
+    t = (j["currentLocalTime"].split('T'))[1].split(':')
+    rtc.datetime((int(universal["year"]), int(universal["month"]), int(universal["day"]), 0, int(t[0]), int(t[1]), int(universal["seconds"]), 0))
 
 def main():
-    batterySizeL = 1.5
-    batterySizeH = 3.0
-    LEDSegDisplay = []
+    rtc = RTC()
+    # set your WiFi Country
+    rp2.country('US')
 
-    try:
-        batteryLowVoltage = ADC(ADCLowVoltPin)
-        batteryHighVoltage = ADC(ADCMaxVoltPin)
-        voltagePerDegree =  PicoMaxADCVoltage / ADC16BitRange
+    wlan = network.WLAN(network.STA_IF)
+    wlan.active(True)
 
-        for i in range(LEDMeterRange):
-            LEDSegDisplay.append(Pin(i+1, Pin.OUT))
-        
-        while True:
-            percentageOfBattery = 0
-            batteryVoltage = voltagePerDegree * batteryLowVoltage.read_u16()
-            #print("Battery Voltage: ", batteryVoltage)
-            percentageOfBattery = batteryVoltage/batterySizeL
-            #print("Percentage of batterySizeL: ", percentageOfBattery)
-            if percentageOfBattery*10 < 1:
-                batteryVoltage = voltagePerDegree * batteryHighVoltage.read_u16()
-                percentageOfBattery = batteryVoltage/batterySizeH
-                #print("Percentage of batterySizeH: ", percentageOfBattery)
-            
-            LEDdisplay = int(percentageOfBattery*LEDMeterRange)
-            #print("LED Display: ", LEDdisplay)
-            if LEDdisplay > LEDMeterRange:
-                LEDdisplay = LEDMeterRange
+    # set power mode to get WiFi power-saving off (if needed)
+    wlan.config(pm = 0xa11140)
 
-            for i in range(LEDMeterRange):
-                if i < LEDdisplay:
-                    LEDSegDisplay[i].high()
-                else:
-                    LEDSegDisplay[i].low()
+    wlan.connect(secrets.ssid, secrets.pwd)
 
-    except KeyboardInterrupt:
-        print("stopping program")
-    
-    finally:
-        print("Graceful exit")
-        for i in range(LEDMeterRange):
-            LEDSegDisplay[i].low()
+    while not wlan.isconnected() and wlan.status() >= 0:
+        print("connecting...")
+        time.sleep(1)
 
-if __name__ == '__main__':
+    syncclock(rtc)
+    uart = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1))
+    uart.init(9600, bits=8, parity=None, stop=1)
+    print("UART is configured as : ", uart)
+
+    while True:
+        s = "{:0>2d}".format(rtc.datetime()[5])
+        print(s)
+        uart.write(json.dumps(s))
+        time.sleep(60)
+
+if __name__ == "__main__":
     main()

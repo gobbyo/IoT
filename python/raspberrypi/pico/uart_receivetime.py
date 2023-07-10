@@ -11,11 +11,6 @@ def main():
             if uart.any():
                 s = uart.readline().decode('utf-8')
                 print(s)
-                for i in range(3):
-                    led.on()
-                    time.sleep(.5)
-                    led.off()
-                    time.sleep(.5)
             else:
                 pass
             

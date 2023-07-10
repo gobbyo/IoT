@@ -1,5 +1,11 @@
 from machine import Pin, PWM
 import time
+import math
+
+segpins = [16,17,18,19,20,21,22]
+extendangles = [10,15,0,15,0,0,0]
+retractangles = [100,100,85,90,90,90,90]
+switchpins = [13,14,15,12]
 
 class sg90:
     __servo_pwm_freq = 50
@@ -43,30 +49,71 @@ class sg90:
         self.__motor = PWM(Pin(pin))
         self.__motor.freq(self.__servo_pwm_freq)
 
-def main():
-    servo = sg90(16)
-    switch = Pin(15, Pin.OUT)
-    switch.on()
+def getArray(val):
+    a = [0,0,0,0,0,0,0,0]
+    i = 0
+    for s in a:
+        a[i] = (val & (0x01 << i)) >> i
+        i += 1
+    return a
+
+def extend(servo,angle):
     i = 90
-    servo.move(i)
-
-    while i > 10:
+    while i >= angle:
         i -= 5
-        print("angle = {0}".format(i))
+        #print("angle = {0}".format(i))
         servo.move(i)
         time.sleep(.05)
 
-    switch.off()
-    time.sleep(1)
-    switch.on()
-
-    while i < 100:
+def retract(servo,angle):
+    i = 0
+    while i <= angle:
         i += 5
-        print("angle = {0}".format(i))
+        #print("angle = {0}".format(i))
         servo.move(i)
         time.sleep(.05)
-    
-    switch.off()
+
+def main():
+    seg = []
+    print("Start")
+    for i in segpins:
+        seg.append(sg90(i))
+
+    switch = []
+    for i in switchpins:
+        pin = Pin(i, Pin.OUT)
+        pin.off()
+        switch.append(pin)
+
+    try:
+        for i in range(0,1):
+            print("\nIteration {0}".format(i+1))
+            print("Extending...")
+            #switch
+            r = 4
+            for j in range(0,r):
+                print("Pin {0}".format(segpins[j]))
+                i = int(math.fmod(j,len(switch)))
+                switch[i].on()
+                extend(seg[j],extendangles[j])
+                switch[i].off()
+
+            time.sleep(1)
+
+            print("Retracting...")
+            for j in range(0,r):
+                print("Pin {0}".format(segpins[j]))
+                i = int(math.fmod(j,len(switch)))
+                switch[i].on()
+                retract(seg[j],retractangles[j])
+                switch[i].off()
+
+            time.sleep(1)
+
+    except KeyboardInterrupt:
+        print('KeyboardInterrupt')
+    finally:
+        print('Done')
 
 if __name__ == '__main__':
     main()

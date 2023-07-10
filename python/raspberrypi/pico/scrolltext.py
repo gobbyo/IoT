@@ -2,7 +2,8 @@ from machine import Pin
 import eightbyeight 
 import time
 
-class scrolldisplay(object):
+class scrolldisplay:
+
     def __init__(self):
         #default/initialization
         self.rowpins = [26,18,9,20,2,8,3,6]
@@ -81,7 +82,7 @@ class scrolldisplay(object):
                 row += 1
             s -= 1
 
-    def scrolltext(self, text, scrollspeed=5):
+    def scroll(self, text, scrollspeed=5):
         buf = self._createtextbuffer(" {0}".format(text), 8)
         for i in range(len(buf[0])):
             f = self._frame(buf,i,8)

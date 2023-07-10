@@ -1,9 +1,10 @@
-from machine import Pin, RTC
-import scrolltext
+from machine import Pin, RTC, UART
 import network, rp2, time
 import urequests
 import json
+import time
 import secrets
+
 
 def syncclock(rtc):
     print("Sync clock")
@@ -27,13 +28,7 @@ def syncclock(rtc):
     rtc.datetime((int(z["year"]), int(z["month"]), int(z["day"]), 0, int(t[0]), int(t[1]), int(z["seconds"]), 0))
 
 def main():
-    rowpins = [26,18,9,20,2,8,3,6]
-    colpins = [19,4,5,22,7,21,17,16]
-
-    stext = scrolltext.scrolldisplay()
-    stext.rowpins = rowpins
-    stext.colpins = colpins
-
+    rtc = RTC()
     # set your WiFi Country
     rp2.country('US')
 
@@ -49,38 +44,30 @@ def main():
         print("connecting...")
         time.sleep(1)
 
-    rtc = RTC()
     syncclock(rtc)
+    uart = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1))
+    uart.init(9600, bits=8, parity=None, stop=1)
+    print("UART is configured as : ", uart)
 
-    while True:
-        #[year, month, day, weekday, hours, minutes, seconds, subseconds]
-        t = rtc.datetime()
-        buf = "Today is {1}/{2}/{0}".format(t[1], t[2], t[0])
-        print(buf)
-        stext.scroll(buf,2)
-        buf = "{:002d}:{:002d}".format(t[3], t[4])
-        print(buf)
-        stext.scroll(buf,2)
-
-        r = urequests.get("https://api.open-meteo.com/v1/forecast?latitude=48.50&longitude=-122.71&current_weather=true&hourly=relativehumidity_2m,pressure_msl")
-        j = json.loads(r.content)
-        buf = 'Temp {0} f'.format(32+(9/5*float(j['current_weather']['temperature'])))
-        print(buf)
-        stext.scroll(buf,2)
-
-        buf = 'Wind {0} mph @ {1} degrees'.format(j['current_weather']['windspeed'], j['current_weather']['winddirection'])
-        print(buf)
-        stext.scroll(buf,2)
-
-        pressure = j['hourly']['pressure_msl']
-        humitity = j['hourly']['relativehumidity_2m']
-
-        buf = 'Pressure {0}'.format(pressure[len(pressure)-1])
-        print(buf)
-        stext.scroll(buf,2)
-        buf = 'Humidity {0}'.format(humitity[len(humitity)-1])
-        print(buf)
-        stext.scroll(buf,2)
+    try:
+        while True:
+            j = json.dumps(rtc.datetime())
+            
+            if(len(j) < 256):
+                b = bytearray(j, 'utf-8')
+                uart.write(b)
+                time.sleep(1)
+                if uart.any():
+                    uart.readinto(b)
+                    dt = b.decode('utf-8')
+                    #[year, month, day, weekday, hours, minutes, seconds, subseconds]
+                    print(dt)
+                    time.sleep(1)
+    except KeyboardInterrupt:
+        uart.deinit()
+        print('KeyboardInterrupt')
+    finally:
+        print('Done')
 
 if __name__ == "__main__":
     main()
