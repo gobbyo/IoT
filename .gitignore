@@ -1,7 +1,10 @@
-# Secrets
+# Secrets #
 .env
 secrets.py
 .vscode
+
+# Python #
+main.py
 
 # Compiler outputs #
 *.a

@@ -32,6 +32,7 @@ class servoDigitDisplay:
             self.switch.append(Pin(i, Pin.OUT))
 
     def __del__(self):
+        self.clearDisplay()
         print("servoDigitDisplay destructor")
 
     def switchOn(self,index):
@@ -41,6 +42,7 @@ class servoDigitDisplay:
         self.switch[index].off()
 
     def extend(self,index):
+        print("extend {0}".format(index))
         i = self.retractAngles[index]
         self.switchOn(index)
         
@@ -56,6 +58,7 @@ class servoDigitDisplay:
         self.switchOff(index)
 
     def retract(self,index):
+        print("retract {0}".format(index))
         i = self.extendAngles[index]
         self.switchOn(index)
         while i <= self.retractAngles[index]:
@@ -78,15 +81,24 @@ class servoDigitDisplay:
         #print("getArray {0}".format(a))
         return a
 
-    def paintNumber(self,val,show):
+    def clearDisplay(self):
+        for i in range(0,8):
+            if self.previousNumber[i] == 1:
+                self.retract(i)
+    
+    def paintNumber(self,val):
         input = []
         input = self.getArray(self.segnum[val])
 
+        print("paintNumber {0}".format(input))
+        print("previousNumber {0}".format(self.previousNumber))
+
         for i in range(0,len(input)):
             if input[i] == 1:
-                if show:
+                if self.previousNumber[i] == 0:
                     self.extend(i)               
-                else:
+            if input[i] == 0:
+                if self.previousNumber[i] == 1:
                     self.retract(i)
         
         self.previousNumber = input
